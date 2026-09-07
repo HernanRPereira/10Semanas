@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<meta name="description" content="Web interactiva: Reviso y corrijo lo que escribo - Grado 2">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Nunito:wght@700;800;900&display=swap" rel="stylesheet">
+<style>
+body { margin:0; background:#FFF9EF; }
+a { color:#1982C4; } a:hover { color:#FF595E; }
+@keyframes pop { 0% { transform:scale(.6); opacity:0; } 100% { transform:scale(1); opacity:1; } }
+</style>
+<template id="__bundler_thumbnail" data-bg-color="#FFF9EF"><svg viewBox="0 0 120 80" xmlns="http://www.w3.org/2000/svg"><rect x="14" y="12" width="92" height="56" rx="8" fill="#6A4C93"></rect><text x="60" y="52" text-anchor="middle" font-size="30">📖</text></svg></template>
+</helmet>
+<div style="min-height:100vh; display:flex; flex-direction:column; font-family:'Nunito',sans-serif; color:#2A2A40;">
+
+  <header style="display:flex; align-items:center; gap:16px; padding:14px 28px; background:#fff; box-shadow:0 4px 0 rgba(42,42,64,.08);">
+    <span style="width:44px; height:44px; border-radius:14px; background:#6A4C93; display:flex; align-items:center; justify-content:center; font-size:22px; flex:none;">📖</span>
+    <div style="display:flex; flex-direction:column;">
+      <span style="font-family:'Fredoka',sans-serif; font-size:22px; font-weight:600;">Reviso y corrijo lo que escribo</span>
+      <span style="font-size:13px; font-weight:900; color:#6A4C93; letter-spacing:1px;">ESPAÑOL · GRADO 2°</span>
+    </div>
+    <div style="flex:1;"></div>
+    <button onClick="{{ startH }}" style="display:flex; align-items:center; gap:12px; background:#2A2A40; color:#fff; border:none; border-radius:40px; padding:8px 20px; cursor:pointer; font-family:'Nunito',sans-serif;" style-hover="background:#6A4C93;">
+      <span style="font-size:13px; font-weight:900; letter-spacing:1px;">TEMPORIZADOR &#9654;</span>
+      <span style="font-family:'Fredoka',sans-serif; font-size:24px; font-weight:600; color:#FFCA3A;">{{ tH }}</span>
+    </button>
+    <span style="background:#FFCA3A; border-radius:40px; padding:10px 20px; font-family:'Fredoka',sans-serif; font-size:20px; font-weight:600;">{{ num }}</span>
+  </header>
+
+  <main style="flex:1; display:flex; flex-direction:column; align-items:center; justify-content:center; padding:32px 24px; overflow:hidden;">
+
+    <sc-if value="{{ s1 }}" hint-placeholder-val="{{ true }}">
+      <div style="display:flex; flex-direction:column; align-items:center; gap:26px; text-align:center; max-width:940px; animation:pop .4s ease;">
+        <span style="background:#8AC926; color:#fff; border-radius:30px; padding:10px 26px; font-size:16px; font-weight:900; letter-spacing:2px;">REVISIÓN</span>
+        <h1 style="margin:0; font-family:'Fredoka',sans-serif; font-size:50px; font-weight:700; line-height:1.1;">Revisar hace mejor lo que escribo</h1>
+        <div style="background:#fff; border-radius:28px; padding:30px 40px; box-shadow:0 8px 0 rgba(42,42,64,.1);">
+          <p style="margin:0; font-size:50px; line-height:1.25;">🔍 ✏️ ✅</p>
+          <p style="margin:18px 0 0; font-family:'Fredoka',sans-serif; font-size:27px; font-weight:600; color:#6A4C93;">¿Qué reviso en mi texto?</p>
+        </div>
+        <p style="margin:0; font-size:22px; font-weight:800; color:#6A4C93;">Lee tu texto en voz alta y escucha si suena bien.</p>
+      </div>
+    </sc-if>
+
+    <sc-if value="{{ s2 }}" hint-placeholder-val="{{ false }}">
+      <div style="display:flex; flex-direction:column; align-items:center; gap:24px; text-align:center; max-width:1000px; animation:pop .4s ease;">
+        <span style="background:#1982C4; color:#fff; border-radius:30px; padding:10px 26px; font-size:16px; font-weight:900; letter-spacing:2px;">TOCA UN PASO</span>
+        <div style="display:flex; gap:12px; flex-wrap:wrap; justify-content:center;">
+          <sc-for list="{{ exs }}" as="o" hint-placeholder-count="4">
+            <button onClick="{{ o.pick }}" style="border:none; border-radius:18px; background:{{ o.bg }}; color:#fff; cursor:pointer; padding:14px 24px; font-family:'Fredoka',sans-serif; font-size:21px; font-weight:600;" style-hover="transform:scale(1.06);">{{ o.name }}</button>
+          </sc-for>
+        </div>
+        <div style="background:#fff; border-radius:28px; padding:30px 44px; box-shadow:0 8px 0 rgba(42,42,64,.1); min-width:560px;">
+          <p style="margin:0; font-family:'Fredoka',sans-serif; font-size:40px; font-weight:600; line-height:1.3;">{{ exBig }}</p>
+          <p style="margin:16px 0 0; font-size:23px; font-weight:800; color:#6A4C93;">{{ exTxt }}</p>
+        </div>
+      </div>
+    </sc-if>
+
+    <sc-if value="{{ s3 }}" hint-placeholder-val="{{ false }}">
+      <div style="display:flex; flex-direction:column; align-items:center; gap:22px; text-align:center; animation:pop .4s ease;">
+        <span style="background:#FFCA3A; color:#2A2A40; border-radius:30px; padding:10px 26px; font-size:16px; font-weight:900; letter-spacing:2px;">¿ESTÁ BIEN? · {{ aNum }}</span>
+        <sc-if value="{{ aPlaying }}" hint-placeholder-val="{{ true }}">
+          <div style="background:#fff; border-radius:28px; padding:26px 50px; box-shadow:0 8px 0 rgba(42,42,64,.1); max-width:900px;">
+            <p style="margin:0; font-family:'Fredoka',sans-serif; font-size:32px; font-weight:600; line-height:1.3;">{{ aQ }}</p>
+          </div>
+          <div style="display:flex; gap:14px; flex-wrap:wrap; justify-content:center;">
+            <button onClick="{{ ap1 }}" style="min-width:210px; background:#6A4C93; color:#fff; border:none; border-radius:20px; padding:16px 28px; font-family:'Fredoka',sans-serif; font-size:25px; font-weight:600; cursor:pointer;" style-hover="transform:scale(1.06);">{{ ao1 }}</button>
+            <button onClick="{{ ap2 }}" style="min-width:210px; background:#1982C4; color:#fff; border:none; border-radius:20px; padding:16px 28px; font-family:'Fredoka',sans-serif; font-size:25px; font-weight:600; cursor:pointer;" style-hover="transform:scale(1.06);">{{ ao2 }}</button>
+            <button onClick="{{ ap3 }}" style="min-width:210px; background:#8AC926; color:#fff; border:none; border-radius:20px; padding:16px 28px; font-family:'Fredoka',sans-serif; font-size:25px; font-weight:600; cursor:pointer;" style-hover="transform:scale(1.06);">{{ ao3 }}</button>
+          </div>
+          <sc-if value="{{ aok }}" hint-placeholder-val="{{ false }}">
+            <div style="display:flex; align-items:center; gap:16px; animation:pop .3s ease;">
+              <span style="background:#8AC926; color:#fff; border-radius:30px; padding:12px 30px; font-family:'Fredoka',sans-serif; font-size:24px; font-weight:600;">¡Correcto! ★</span>
+              <button onClick="{{ aNext }}" style="background:#2A2A40; color:#fff; border:none; border-radius:30px; padding:12px 30px; font-size:18px; font-weight:900; cursor:pointer; font-family:'Nunito',sans-serif;">Siguiente &#9654;</button>
+            </div>
+          </sc-if>
+          <sc-if value="{{ abad }}" hint-placeholder-val="{{ false }}">
+            <span style="background:#FF595E; color:#fff; border-radius:30px; padding:12px 30px; font-family:'Fredoka',sans-serif; font-size:23px; font-weight:600; animation:pop .3s ease;">Mayúscula al empezar, punto al terminar.</span>
+          </sc-if>
+        </sc-if>
+        <sc-if value="{{ aDone }}" hint-placeholder-val="{{ false }}">
+          <div style="display:flex; flex-direction:column; align-items:center; gap:20px; animation:pop .4s ease;">
+            <span style="font-size:80px; font-family:'Fredoka',sans-serif; color:#FFCA3A;">★ ★ ★ ★</span>
+            <p style="margin:0; font-family:'Fredoka',sans-serif; font-size:36px; font-weight:600; color:#8AC926;">¡Muy bien! Lo lograste.</p>
+            <button onClick="{{ aReset }}" style="background:#fff; color:#6A4C93; border:3px solid #6A4C93; border-radius:40px; padding:14px 30px; font-size:18px; font-weight:900; cursor:pointer; font-family:'Nunito',sans-serif;">Jugar otra vez</button>
+          </div>
+        </sc-if>
+      </div>
+    </sc-if>
+
+    <sc-if value="{{ s4 }}" hint-placeholder-val="{{ false }}">
+      <div style="display:flex; flex-direction:column; align-items:center; gap:24px; text-align:center; animation:pop .4s ease;">
+        <span style="background:#8AC926; color:#fff; border-radius:30px; padding:10px 26px; font-size:16px; font-weight:900; letter-spacing:2px;">PAUSA ACTIVA</span>
+        <sc-if value="{{ paIdle }}" hint-placeholder-val="{{ true }}">
+          <h1 style="margin:0; font-family:'Fredoka',sans-serif; font-size:50px; font-weight:700;">4 movimientos, 20 segundos cada uno</h1>
+          <p style="margin:0; font-size:24px; font-weight:800; color:#6A4C93; max-width:700px;">Todos de pie, junto a su puesto.</p>
+          <button onClick="{{ paStart }}" style="background:#FF595E; color:#fff; border:none; border-radius:50px; padding:22px 56px; font-family:'Fredoka',sans-serif; font-size:34px; font-weight:600; cursor:pointer;" style-hover="transform:scale(1.05);">¡Comenzar! &#9654;</button>
+        </sc-if>
+        <sc-if value="{{ paRunning }}" hint-placeholder-val="{{ false }}">
+          <span style="background:#fff; border-radius:30px; padding:10px 26px; font-size:18px; font-weight:900; color:#6A4C93;">Movimiento {{ paNum }} de 4</span>
+          <div style="width:210px; height:210px; border-radius:50%; background:{{ paColor }}; display:flex; align-items:center; justify-content:center; box-shadow:0 10px 0 rgba(42,42,64,.12);">
+            <span style="font-family:'Fredoka',sans-serif; font-size:104px; font-weight:600; color:#fff;">{{ paTime }}</span>
+          </div>
+          <h1 style="margin:0; font-family:'Fredoka',sans-serif; font-size:52px; font-weight:700;">{{ paName }}</h1>
+          <p style="margin:0; font-size:26px; font-weight:800; color:#6A4C93; max-width:760px;">{{ paDesc }}</p>
+        </sc-if>
+        <sc-if value="{{ paDone }}" hint-placeholder-val="{{ false }}">
+          <h1 style="margin:0; font-family:'Fredoka',sans-serif; font-size:58px; font-weight:700; color:#8AC926;">¡Excelente trabajo!</h1>
+          <p style="margin:0; font-size:26px; font-weight:800; color:#6A4C93;">Respira profundo tres veces y vuelve a tu puesto en silencio.</p>
+          <button onClick="{{ paStart }}" style="background:#fff; color:#6A4C93; border:3px solid #6A4C93; border-radius:40px; padding:14px 30px; font-size:18px; font-weight:900; cursor:pointer; font-family:'Nunito',sans-serif;">Repetir la pausa</button>
+        </sc-if>
+      </div>
+    </sc-if>
+
+    <sc-if value="{{ s5 }}" hint-placeholder-val="{{ false }}">
+      <div style="display:flex; flex-direction:column; align-items:center; gap:22px; text-align:center; animation:pop .4s ease;">
+        <span style="background:#6A4C93; color:#fff; border-radius:30px; padding:10px 26px; font-size:16px; font-weight:900; letter-spacing:2px;">PIENSA Y RESPONDE · {{ bNum }}</span>
+        <sc-if value="{{ bPlaying }}" hint-placeholder-val="{{ true }}">
+          <h1 style="margin:0; font-family:'Fredoka',sans-serif; font-size:34px; font-weight:700; max-width:900px; line-height:1.25;">{{ bQ }}</h1>
+          <div style="display:flex; gap:14px; flex-wrap:wrap; justify-content:center; max-width:1000px;">
+            <button onClick="{{ bp1 }}" style="min-width:210px; background:#FF595E; color:#fff; border:none; border-radius:20px; padding:16px 28px; font-family:'Fredoka',sans-serif; font-size:25px; font-weight:600; cursor:pointer;" style-hover="transform:scale(1.06);">{{ bo1 }}</button>
+            <button onClick="{{ bp2 }}" style="min-width:210px; background:#1982C4; color:#fff; border:none; border-radius:20px; padding:16px 28px; font-family:'Fredoka',sans-serif; font-size:25px; font-weight:600; cursor:pointer;" style-hover="transform:scale(1.06);">{{ bo2 }}</button>
+            <button onClick="{{ bp3 }}" style="min-width:210px; background:#8AC926; color:#fff; border:none; border-radius:20px; padding:16px 28px; font-family:'Fredoka',sans-serif; font-size:25px; font-weight:600; cursor:pointer;" style-hover="transform:scale(1.06);">{{ bo3 }}</button>
+          </div>
+          <sc-if value="{{ bok }}" hint-placeholder-val="{{ false }}">
+            <div style="display:flex; align-items:center; gap:16px; animation:pop .3s ease;">
+              <span style="background:#8AC926; color:#fff; border-radius:30px; padding:12px 30px; font-family:'Fredoka',sans-serif; font-size:24px; font-weight:600;">¡Correcto! ★</span>
+              <button onClick="{{ bNext }}" style="background:#2A2A40; color:#fff; border:none; border-radius:30px; padding:12px 30px; font-size:18px; font-weight:900; cursor:pointer; font-family:'Nunito',sans-serif;">Siguiente &#9654;</button>
+            </div>
+          </sc-if>
+          <sc-if value="{{ bbad }}" hint-placeholder-val="{{ false }}">
+            <span style="background:#FF595E; color:#fff; border-radius:30px; padding:12px 30px; font-family:'Fredoka',sans-serif; font-size:23px; font-weight:600; animation:pop .3s ease;">Leer en voz alta revela los errores.</span>
+          </sc-if>
+        </sc-if>
+        <sc-if value="{{ bDone }}" hint-placeholder-val="{{ false }}">
+          <div style="display:flex; flex-direction:column; align-items:center; gap:20px; animation:pop .4s ease;">
+            <span style="font-size:80px; font-family:'Fredoka',sans-serif; color:#FFCA3A;">★ ★ ★</span>
+            <p style="margin:0; font-family:'Fredoka',sans-serif; font-size:36px; font-weight:600; color:#8AC926;">¡Lo hiciste muy bien!</p>
+            <button onClick="{{ bReset }}" style="background:#fff; color:#6A4C93; border:3px solid #6A4C93; border-radius:40px; padding:14px 30px; font-size:18px; font-weight:900; cursor:pointer; font-family:'Nunito',sans-serif;">Jugar otra vez</button>
+          </div>
+        </sc-if>
+      </div>
+    </sc-if>
+
+    <sc-if value="{{ s6 }}" hint-placeholder-val="{{ false }}">
+      <div style="display:flex; flex-direction:column; align-items:center; gap:24px; text-align:center; max-width:960px; animation:pop .4s ease;">
+        <span style="background:#FFCA3A; color:#2A2A40; border-radius:30px; padding:10px 26px; font-size:16px; font-weight:900; letter-spacing:2px;">RETO FINAL</span>
+        <h1 style="margin:0; font-family:'Fredoka',sans-serif; font-size:38px; font-weight:700; line-height:1.2;">«ayer fui al colegio y aprendi mucho» ¿Qué corrijo?</h1>
+        <div style="display:flex; gap:18px; flex-wrap:wrap; justify-content:center;">
+          <button onClick="{{ rp1 }}" style="min-width:230px; background:#fff; border:none; border-radius:24px; padding:24px 30px; font-family:'Fredoka',sans-serif; font-size:25px; font-weight:600; color:#2A2A40; cursor:pointer; box-shadow:0 6px 0 rgba(42,42,64,.1);" style-hover="transform:scale(1.05);">Mayúscula inicial, tilde en «aprendí» y punto final</button>
+          <button onClick="{{ rp2 }}" style="min-width:230px; background:#fff; border:none; border-radius:24px; padding:24px 30px; font-family:'Fredoka',sans-serif; font-size:25px; font-weight:600; color:#2A2A40; cursor:pointer; box-shadow:0 6px 0 rgba(42,42,64,.1);" style-hover="transform:scale(1.05);">Nada</button>
+          <button onClick="{{ rp3 }}" style="min-width:230px; background:#fff; border:none; border-radius:24px; padding:24px 30px; font-family:'Fredoka',sans-serif; font-size:25px; font-weight:600; color:#2A2A40; cursor:pointer; box-shadow:0 6px 0 rgba(42,42,64,.1);" style-hover="transform:scale(1.05);">Solo el dibujo</button>
+        </div>
+        <sc-if value="{{ rok }}" hint-placeholder-val="{{ false }}">
+          <div style="display:flex; flex-direction:column; align-items:center; gap:12px; animation:pop .3s ease;">
+            <span style="background:#8AC926; color:#fff; border-radius:30px; padding:14px 34px; font-family:'Fredoka',sans-serif; font-size:27px; font-weight:600;">¡Mayúscula, tilde y punto final! ★</span>
+            <p style="margin:0; font-size:22px; font-weight:800; color:#6A4C93;">Cierre: cada niño revisa su texto con la lista de cuatro puntos.</p>
+          </div>
+        </sc-if>
+        <sc-if value="{{ rbad }}" hint-placeholder-val="{{ false }}">
+          <span style="background:#FF595E; color:#fff; border-radius:30px; padding:12px 30px; font-family:'Fredoka',sans-serif; font-size:23px; font-weight:600; animation:pop .3s ease;">Revisa mayúscula, tildes y punto.</span>
+        </sc-if>
+      </div>
+    </sc-if>
+
+  </main>
+
+  <footer style="display:flex; align-items:center; justify-content:space-between; padding:16px 28px; background:#fff; box-shadow:0 -4px 0 rgba(42,42,64,.08);">
+    <button onClick="{{ prev }}" style="background:#fff; color:#6A4C93; border:3px solid #6A4C93; border-radius:40px; padding:14px 34px; font-size:18px; font-weight:900; cursor:pointer; font-family:'Nunito',sans-serif;" style-hover="background:#F1EAFB;">&#9664; Anterior</button>
+    <span style="font-size:16px; font-weight:900; color:#6A4C93; letter-spacing:1px;">{{ titulo }}</span>
+    <button onClick="{{ next }}" style="background:#1982C4; color:#fff; border:none; border-radius:40px; padding:14px 34px; font-size:18px; font-weight:900; cursor:pointer; font-family:'Nunito',sans-serif;" style-hover="background:#136394;">Siguiente &#9654;</button>
+  </footer>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;timerMinutes&quot;:{&quot;editor&quot;:&quot;int&quot;,&quot;default&quot;:5,&quot;min&quot;:1,&quot;max&quot;:20,&quot;unit&quot;:&quot;min&quot;,&quot;tsType&quot;:&quot;number&quot;,&quot;section&quot;:&quot;Temporizador&quot;},&quot;pausaSegundos&quot;:{&quot;editor&quot;:&quot;int&quot;,&quot;default&quot;:20,&quot;min&quot;:10,&quot;max&quot;:60,&quot;unit&quot;:&quot;s&quot;,&quot;tsType&quot;:&quot;number&quot;,&quot;section&quot;:&quot;Pausa activa&quot;}}">
+class Component extends DCLogic {
+  state = { screen:0, hLeft:undefined, hRun:false, ex:0, aq:0, aa:0, aDone:false, paPhase:"idle", paIdx:0, paLeft:20, bq:0, ba:0, bDone:false, r:0 };
+  EX = [{"name":"Mayúsculas 🔠","bg":"#FFCA3A","big":"🔠 al empezar","txt":"Cada oración y cada nombre propio."},{"name":"Puntos ⏹️","bg":"#FF595E","big":"⏹️ al terminar","txt":"Punto final en cada oración."},{"name":"Ortografía 🔍","bg":"#1982C4","big":"🔍 palabras","txt":"Reviso las palabras que dudo."},{"name":"Sentido ✅","bg":"#8AC926","big":"✅ ¿se entiende?","txt":"Leo en voz alta: ¿suena bien?"}];
+  QA = [{"q":"«mi mamá se llama ana»","opts":["Faltan mayúsculas","Está bien","Falta un dibujo"],"ok":0},{"q":"«Fui al parque Jugué mucho»","opts":["Está bien","Falta un punto","Sobra una palabra"],"ok":1},{"q":"«Ayer fui al parque.»","opts":["Faltan mayúsculas","Falta punto","Está bien"],"ok":2},{"q":"«El perro. corrió mucho»","opts":["El punto está mal puesto","Está bien","Falta mayúscula"],"ok":0}];
+  QB = [{"q":"¿Para qué reviso mi texto?","opts":["Para que se entienda mejor","Para tardar más","Para borrarlo"],"ok":0},{"q":"La mejor forma de notar errores es…","opts":["Cerrar el cuaderno","Leerlo en voz alta","No mirarlo"],"ok":1},{"q":"Si una palabra me hace dudar, puedo…","opts":["Inventarla","Saltarla","Preguntar o buscarla"],"ok":2}];
+  PA = [{"name":"Lupa 🔍","desc":"Haz una lupa con las manos y mira alrededor, 8 veces.","color":"#1982C4"},{"name":"Lee en voz alta 🗣️","desc":"Di una frase tres veces, cada vez más claro.","color":"#8AC926"},{"name":"Estira la mano ✋","desc":"Abre y cierra las manos 10 veces.","color":"#FFCA3A"},{"name":"Respira 🌬️","desc":"Inhala y exhala tres veces.","color":"#FF595E"}];
+  RETO_OK = 0;
+  TITLES = ["Revisar hace mejor lo que escribo","TOCA UN PASO","¿ESTÁ BIEN?","Pausa activa","PIENSA Y RESPONDE","Reto final"];
+  componentDidMount() {
+    this._iv = setInterval(() => {
+      this.setState(s => {
+        const n = {};
+        if (s.hRun && s.hLeft > 0) { n.hLeft = s.hLeft - 1; if (n.hLeft === 0) n.hRun = false; }
+        if (s.paPhase === "run") {
+          const dur = this.props.pausaSegundos ?? 20;
+          if (s.paLeft > 1) n.paLeft = s.paLeft - 1;
+          else if (s.paIdx < this.PA.length - 1) { n.paIdx = s.paIdx + 1; n.paLeft = dur; }
+          else n.paPhase = "done";
+        }
+        return Object.keys(n).length ? n : null;
+      });
+    }, 1000);
+  }
+  componentWillUnmount() { clearInterval(this._iv); }
+  renderVals() {
+    const s = this.state;
+    const go = d => this.setState(st => ({ screen: Math.max(0, Math.min(5, st.screen + d)) }));
+    const hMin = this.props.timerMinutes ?? 5;
+    const dur = this.props.pausaSegundos ?? 20;
+    const tH = s.hLeft === undefined ? hMin + ":00" : (s.hLeft === 0 ? "¡TIEMPO!" : Math.floor(s.hLeft / 60) + ":" + String(s.hLeft % 60).padStart(2, "0"));
+    const e = this.EX[s.ex];
+    const qa = this.QA[Math.min(s.aq, this.QA.length - 1)];
+    const qb = this.QB[Math.min(s.bq, this.QB.length - 1)];
+    const pa = this.PA[s.paIdx];
+    const pickA = i => () => this.setState({ aa: i === qa.ok ? 1 : 2 });
+    const pickB = i => () => this.setState({ ba: i === qb.ok ? 1 : 2 });
+    const pickR = i => () => this.setState({ r: i === this.RETO_OK ? 1 : 2 });
+    return {
+      titulo: this.TITLES[s.screen].toUpperCase(), num: (s.screen + 1) + " / 6",
+      prev: () => go(-1), next: () => go(1),
+      s1: s.screen === 0, s2: s.screen === 1, s3: s.screen === 2, s4: s.screen === 3, s5: s.screen === 4, s6: s.screen === 5,
+      tH, startH: () => this.setState({ hLeft: hMin * 60, hRun: true }),
+      exs: this.EX.map((x, i) => ({ name: x.name, bg: x.bg, pick: () => this.setState({ ex: i }) })),
+      exBig: e.big, exTxt: e.txt,
+      aNum: "PREGUNTA " + (Math.min(s.aq, this.QA.length - 1) + 1) + " DE " + this.QA.length,
+      aPlaying: !s.aDone, aDone: s.aDone, aQ: qa.q, ao1: qa.opts[0], ao2: qa.opts[1], ao3: qa.opts[2],
+      ap1: pickA(0), ap2: pickA(1), ap3: pickA(2), aok: s.aa === 1, abad: s.aa === 2,
+      aNext: () => this.setState(st => st.aq >= this.QA.length - 1 ? { aDone: true, aa: 0 } : { aq: st.aq + 1, aa: 0 }),
+      aReset: () => this.setState({ aq: 0, aa: 0, aDone: false }),
+      paIdle: s.paPhase === "idle", paRunning: s.paPhase === "run", paDone: s.paPhase === "done",
+      paStart: () => this.setState({ paPhase: "run", paIdx: 0, paLeft: dur }),
+      paNum: String(s.paIdx + 1), paName: pa.name, paDesc: pa.desc, paColor: pa.color, paTime: String(s.paLeft),
+      bNum: "PREGUNTA " + (Math.min(s.bq, this.QB.length - 1) + 1) + " DE " + this.QB.length,
+      bPlaying: !s.bDone, bDone: s.bDone, bQ: qb.q, bo1: qb.opts[0], bo2: qb.opts[1], bo3: qb.opts[2],
+      bp1: pickB(0), bp2: pickB(1), bp3: pickB(2), bok: s.ba === 1, bbad: s.ba === 2,
+      bNext: () => this.setState(st => st.bq >= this.QB.length - 1 ? { bDone: true, ba: 0 } : { bq: st.bq + 1, ba: 0 }),
+      bReset: () => this.setState({ bq: 0, ba: 0, bDone: false }),
+      rp1: pickR(0), rp2: pickR(1), rp3: pickR(2), rok: s.r === 1, rbad: s.r === 2
+    };
+  }
+}
+</script>
+</body>
+</html>

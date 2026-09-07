@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Nunito:wght@700;800;900&display=swap" rel="stylesheet">
+<style>
+body { margin:0; background:#FFF9EF; }
+a { text-decoration:none; }
+</style>
+</helmet>
+<div style="min-height:100vh; font-family:'Nunito',sans-serif; color:#2A2A40; display:flex; flex-direction:column; align-items:center; padding:56px 24px; gap:40px;">
+  <div style="text-align:center; display:flex; flex-direction:column; gap:12px; max-width:900px;">
+    <span style="align-self:center; background:#FF595E; color:#fff; border-radius:30px; padding:8px 24px; font-size:14px; font-weight:900; letter-spacing:2px;">GRADO 2° · MATERIAL DE CLASE</span>
+    <h1 style="margin:0; font-family:'Fredoka',sans-serif; font-size:56px; font-weight:700;">Mis clases de segundo</h1>
+    <p style="margin:0; font-size:18px; font-weight:800; color:#6A4C93;">35 clases listas · Cada una con diapositivas, web interactiva, 2 fichas y plan de clase.</p>
+  </div>
+
+  <div style="width:100%; max-width:1100px;">
+    <div style="display:flex; align-items:center; gap:12px; margin-bottom:14px;">
+      <span style="background:#1982C4; color:#fff; border-radius:20px; padding:8px 22px; font-family:'Fredoka',sans-serif; font-size:20px; font-weight:600;">SEMANA 4</span>
+      <span style="flex:1; height:4px; background:#E9E1D2; border-radius:2px;"></span>
+    </div>
+    <div style="display:grid; grid-template-columns:1fr 1fr; gap:22px;">
+    <sc-for list="{{ semana4 }}" as="c" hint-placeholder-count="7">
+    <div style="background:#fff; border-radius:24px; padding:22px 24px; box-shadow:0 8px 0 rgba(42,42,64,.08); display:flex; flex-direction:column; gap:14px;">
+      <div style="display:flex; align-items:center; gap:14px;">
+        <span style="min-width:52px; height:52px; border-radius:16px; background:{{ c.color }}; color:#fff; display:flex; align-items:center; justify-content:center; font-family:'Fredoka',sans-serif; font-size:26px; font-weight:600;">{{ c.icon }}</span>
+        <div>
+          <p style="margin:0; font-size:12px; font-weight:900; color:#6A4C93; letter-spacing:1px;">{{ c.materia }}</p>
+          <h2 style="margin:0; font-family:'Fredoka',sans-serif; font-size:22px; font-weight:600; line-height:1.1;">{{ c.titulo }}</h2>
+        </div>
+      </div>
+      <div style="display:flex; flex-wrap:wrap; gap:8px;">
+        <a href="{{ c.diapos }}" style="background:#FF595E; color:#fff; border-radius:24px; padding:9px 16px; font-size:13px; font-weight:900;">Diapositivas</a>
+        <a href="{{ c.web }}" style="background:#1982C4; color:#fff; border-radius:24px; padding:9px 16px; font-size:13px; font-weight:900;">Web interactiva</a>
+        <a href="{{ c.ficha1 }}" style="background:#8AC926; color:#fff; border-radius:24px; padding:9px 16px; font-size:13px; font-weight:900;">Ficha 1</a>
+        <a href="{{ c.ficha2 }}" style="background:#6A4C93; color:#fff; border-radius:24px; padding:9px 16px; font-size:13px; font-weight:900;">Ficha 2</a>
+        <a href="{{ c.plan }}" style="background:#FFCA3A; color:#2A2A40; border-radius:24px; padding:9px 16px; font-size:13px; font-weight:900;">Plan</a>
+      </div>
+    </div>
+    </sc-for>
+    </div>
+  </div>
+
+  <div style="width:100%; max-width:1100px;">
+    <div style="display:flex; align-items:center; gap:12px; margin-bottom:14px;">
+      <span style="background:#FF595E; color:#fff; border-radius:20px; padding:8px 22px; font-family:'Fredoka',sans-serif; font-size:20px; font-weight:600;">SEMANA 3</span>
+      <span style="flex:1; height:4px; background:#E9E1D2; border-radius:2px;"></span>
+    </div>
+    <div style="display:grid; grid-template-columns:1fr 1fr; gap:22px;">
+    <sc-for list="{{ semana3 }}" as="c" hint-placeholder-count="10">
+    <div style="background:#fff; border-radius:24px; padding:22px 24px; box-shadow:0 8px 0 rgba(42,42,64,.08); display:flex; flex-direction:column; gap:14px;">
+      <div style="display:flex; align-items:center; gap:14px;">
+        <span style="min-width:52px; height:52px; border-radius:16px; background:{{ c.color }}; color:#fff; display:flex; align-items:center; justify-content:center; font-family:'Fredoka',sans-serif; font-size:26px; font-weight:600;">{{ c.icon }}</span>
+        <div>
+          <p style="margin:0; font-size:12px; font-weight:900; color:#6A4C93; letter-spacing:1px;">{{ c.materia }}</p>
+          <h2 style="margin:0; font-family:'Fredoka',sans-serif; font-size:22px; font-weight:600; line-height:1.1;">{{ c.titulo }}</h2>
+        </div>
+      </div>
+      <div style="display:flex; flex-wrap:wrap; gap:8px;">
+        <a href="{{ c.diapos }}" style="background:#FF595E; color:#fff; border-radius:24px; padding:9px 16px; font-size:13px; font-weight:900;">Diapositivas</a>
+        <a href="{{ c.web }}" style="background:#1982C4; color:#fff; border-radius:24px; padding:9px 16px; font-size:13px; font-weight:900;">Web interactiva</a>
+        <a href="{{ c.ficha1 }}" style="background:#8AC926; color:#fff; border-radius:24px; padding:9px 16px; font-size:13px; font-weight:900;">Ficha 1</a>
+        <a href="{{ c.ficha2 }}" style="background:#6A4C93; color:#fff; border-radius:24px; padding:9px 16px; font-size:13px; font-weight:900;">Ficha 2</a>
+        <a href="{{ c.plan }}" style="background:#FFCA3A; color:#2A2A40; border-radius:24px; padding:9px 16px; font-size:13px; font-weight:900;">Plan</a>
+      </div>
+    </div>
+    </sc-for>
+    </div>
+  </div>
+
+  <div style="width:100%; max-width:1100px;">
+    <div style="display:flex; align-items:center; gap:12px; margin-bottom:14px;">
+      <span style="background:#8AC926; color:#fff; border-radius:20px; padding:8px 22px; font-family:'Fredoka',sans-serif; font-size:20px; font-weight:600;">SEMANA 2</span>
+      <span style="flex:1; height:4px; background:#E9E1D2; border-radius:2px;"></span>
+    </div>
+    <div style="display:grid; grid-template-columns:1fr 1fr; gap:22px;">
+    <sc-for list="{{ semana2 }}" as="c" hint-placeholder-count="9">
+    <div style="background:#fff; border-radius:24px; padding:22px 24px; box-shadow:0 8px 0 rgba(42,42,64,.08); display:flex; flex-direction:column; gap:14px;">
+      <div style="display:flex; align-items:center; gap:14px;">
+        <span style="min-width:52px; height:52px; border-radius:16px; background:{{ c.color }}; color:#fff; display:flex; align-items:center; justify-content:center; font-family:'Fredoka',sans-serif; font-size:26px; font-weight:600;">{{ c.icon }}</span>
+        <div>
+          <p style="margin:0; font-size:12px; font-weight:900; color:#6A4C93; letter-spacing:1px;">{{ c.materia }}</p>
+          <h2 style="margin:0; font-family:'Fredoka',sans-serif; font-size:22px; font-weight:600; line-height:1.1;">{{ c.titulo }}</h2>
+        </div>
+      </div>
+      <div style="display:flex; flex-wrap:wrap; gap:8px;">
+        <a href="{{ c.diapos }}" style="background:#FF595E; color:#fff; border-radius:24px; padding:9px 16px; font-size:13px; font-weight:900;">Diapositivas</a>
+        <a href="{{ c.web }}" style="background:#1982C4; color:#fff; border-radius:24px; padding:9px 16px; font-size:13px; font-weight:900;">Web interactiva</a>
+        <a href="{{ c.ficha1 }}" style="background:#8AC926; color:#fff; border-radius:24px; padding:9px 16px; font-size:13px; font-weight:900;">Ficha 1</a>
+        <a href="{{ c.ficha2 }}" style="background:#6A4C93; color:#fff; border-radius:24px; padding:9px 16px; font-size:13px; font-weight:900;">Ficha 2</a>
+        <a href="{{ c.plan }}" style="background:#FFCA3A; color:#2A2A40; border-radius:24px; padding:9px 16px; font-size:13px; font-weight:900;">Plan</a>
+      </div>
+    </div>
+    </sc-for>
+    </div>
+  </div>
+
+  <div style="width:100%; max-width:1100px;">
+    <div style="display:flex; align-items:center; gap:12px; margin-bottom:14px;">
+      <span style="background:#6A4C93; color:#fff; border-radius:20px; padding:8px 22px; font-family:'Fredoka',sans-serif; font-size:20px; font-weight:600;">SEMANA 1</span>
+      <span style="flex:1; height:4px; background:#E9E1D2; border-radius:2px;"></span>
+    </div>
+  </div>
+
+  <div style="width:100%; max-width:1100px; display:grep; display:grid; grid-template-columns:1fr 1fr; gap:22px;">
+
+    <sc-for list="{{ clases }}" as="c" hint-placeholder-count="9">
+    <div style="background:#fff; border-radius:24px; padding:22px 24px; box-shadow:0 8px 0 rgba(42,42,64,.08); display:flex; flex-direction:column; gap:14px;">
+      <div style="display:flex; align-items:center; gap:14px;">
+        <span style="min-width:52px; height:52px; border-radius:16px; background:{{ c.color }}; color:#fff; display:flex; align-items:center; justify-content:center; font-family:'Fredoka',sans-serif; font-size:26px; font-weight:600;">{{ c.icon }}</span>
+        <div>
+          <p style="margin:0; font-size:12px; font-weight:900; color:#6A4C93; letter-spacing:1px;">{{ c.materia }}</p>
+          <h2 style="margin:0; font-family:'Fredoka',sans-serif; font-size:22px; font-weight:600; line-height:1.1;">{{ c.titulo }}</h2>
+        </div>
+      </div>
+      <div style="display:flex; flex-wrap:wrap; gap:8px;">
+        <a href="{{ c.diapos }}" style="background:#FF595E; color:#fff; border-radius:24px; padding:9px 16px; font-size:13px; font-weight:900;">Diapositivas</a>
+        <a href="{{ c.web }}" style="background:#1982C4; color:#fff; border-radius:24px; padding:9px 16px; font-size:13px; font-weight:900;">Web interactiva</a>
+        <a href="{{ c.ficha1 }}" style="background:#8AC926; color:#fff; border-radius:24px; padding:9px 16px; font-size:13px; font-weight:900;">Ficha 1</a>
+        <a href="{{ c.ficha2 }}" style="background:#6A4C93; color:#fff; border-radius:24px; padding:9px 16px; font-size:13px; font-weight:900;">Ficha 2</a>
+        <a href="{{ c.plan }}" style="background:#FFCA3A; color:#2A2A40; border-radius:24px; padding:9px 16px; font-size:13px; font-weight:900;">Plan</a>
+      </div>
+    </div>
+    </sc-for>
+
+  </div>
+
+  <p style="margin:0; font-size:14px; font-weight:800; color:#6A4C93; text-align:center; max-width:800px;">Para descargar en PowerPoint o PDF, abre cada archivo y usa el botón de exportar, o pídeme los descargables por clase.</p>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  renderVals() {
+    return {
+      semana4: [
+        { icon: "🧭", color: "#1982C4", materia: "MATEMÁTICA · DBA 7", titulo: "Ubicación espacial",
+          diapos: "Ubicación Espacial (Matemática) - Diapositivas.dc.html", web: "Ubicación Espacial (Matemática) - Web.dc.html",
+          ficha1: "Ubicación Espacial (Matemática) - Ficha 1 Refuerzo.dc.html", ficha2: "Ubicación Espacial (Matemática) - Ficha 2 Evaluación.dc.html", plan: "Ubicación Espacial (Matemática) - Plan de Clase.dc.html" },
+        { icon: "🇨🇴", color: "#FFCA3A", materia: "SOCIALES · DBA 6", titulo: "Símbolos patrios",
+          diapos: "Símbolos Patrios (Sociales) - Diapositivas.dc.html", web: "Símbolos Patrios (Sociales) - Web.dc.html",
+          ficha1: "Símbolos Patrios (Sociales) - Ficha 1 Refuerzo.dc.html", ficha2: "Símbolos Patrios (Sociales) - Ficha 2 Evaluación.dc.html", plan: "Símbolos Patrios (Sociales) - Plan de Clase.dc.html" },
+        { icon: "🌦️", color: "#1982C4", materia: "INGLÉS · GUÍA 22", titulo: "Clothes & Weather",
+          diapos: "Clothes and Weather (Inglés) - Diapositivas.dc.html", web: "Clothes and Weather (Inglés) - Web.dc.html",
+          ficha1: "Clothes and Weather (Inglés) - Ficha 1 Refuerzo.dc.html", ficha2: "Clothes and Weather (Inglés) - Ficha 2 Evaluación.dc.html", plan: "Clothes and Weather (Inglés) - Plan de Clase.dc.html" },
+        { icon: "🕊️", color: "#8AC926", materia: "ÉTICA Y VALORES", titulo: "Resolución de conflictos",
+          diapos: "Resolución de Conflictos (Ética) - Diapositivas.dc.html", web: "Resolución de Conflictos (Ética) - Web.dc.html",
+          ficha1: "Resolución de Conflictos (Ética) - Ficha 1 Refuerzo.dc.html", ficha2: "Resolución de Conflictos (Ética) - Ficha 2 Evaluación.dc.html", plan: "Resolución de Conflictos (Ética) - Plan de Clase.dc.html" },
+        { icon: "📜", color: "#FF595E", materia: "ESPAÑOL · DBA 3", titulo: "Poesía y rimas (repaso)",
+          diapos: "Poesía y Rimas (Español) - Diapositivas.dc.html", web: "Poesía y Rimas (Español) - Web.dc.html",
+          ficha1: "Poesía y Rimas (Español) - Ficha 1 Refuerzo.dc.html", ficha2: "Poesía y Rimas (Español) - Ficha 2 Evaluación.dc.html", plan: "Poesía y Rimas (Español) - Plan de Clase.dc.html" },
+        { icon: "🌍", color: "#8AC926", materia: "C. NATURALES · DBA 3 · PRAE", titulo: "Cuido mi planeta (repaso)",
+          diapos: "Cuidado del Medio Ambiente (Naturales) - Diapositivas.dc.html", web: "Cuidado del Medio Ambiente (Naturales) - Web.dc.html",
+          ficha1: "Cuidado del Medio Ambiente (Naturales) - Ficha 1 Refuerzo.dc.html", ficha2: "Cuidado del Medio Ambiente (Naturales) - Ficha 2 Evaluación.dc.html", plan: "Cuidado del Medio Ambiente (Naturales) - Plan de Clase.dc.html" },
+        { icon: "❤️", color: "#6A4C93", materia: "ED. RELIGIOSA", titulo: "El perdón (repaso)",
+          diapos: "El Perdón (Religión) - Diapositivas.dc.html", web: "El Perdón (Religión) - Web.dc.html",
+          ficha1: "El Perdón (Religión) - Ficha 1 Refuerzo.dc.html", ficha2: "El Perdón (Religión) - Ficha 2 Evaluación.dc.html", plan: "El Perdón (Religión) - Plan de Clase.dc.html" }
+      ],
+      semana3: [
+        { icon: "🔍", color: "#1982C4", materia: "MATEMÁTICA · DBA 1", titulo: "Problemas aditivos",
+          diapos: "Problemas Aditivos (Matemática) - Diapositivas.dc.html", web: "Problemas Aditivos (Matemática) - Web.dc.html",
+          ficha1: "Problemas Aditivos (Matemática) - Ficha 1 Refuerzo.dc.html", ficha2: "Problemas Aditivos (Matemática) - Ficha 2 Evaluación.dc.html", plan: "Problemas Aditivos (Matemática) - Plan de Clase.dc.html" },
+        { icon: "×", color: "#8AC926", materia: "MATEMÁTICA · DBA 1", titulo: "La multiplicación",
+          diapos: "La Multiplicación (Matemática) - Diapositivas.dc.html", web: "La Multiplicación (Matemática) - Web.dc.html",
+          ficha1: "La Multiplicación (Matemática) - Ficha 1 Refuerzo.dc.html", ficha2: "La Multiplicación (Matemática) - Ficha 2 Evaluación.dc.html", plan: "La Multiplicación (Matemática) - Plan de Clase.dc.html" },
+        { icon: "📜", color: "#FF595E", materia: "ESPAÑOL · DBA 3", titulo: "Poesía y rimas",
+          diapos: "Poesía y Rimas (Español) - Diapositivas.dc.html", web: "Poesía y Rimas (Español) - Web.dc.html",
+          ficha1: "Poesía y Rimas (Español) - Ficha 1 Refuerzo.dc.html", ficha2: "Poesía y Rimas (Español) - Ficha 2 Evaluación.dc.html", plan: "Poesía y Rimas (Español) - Plan de Clase.dc.html" },
+        { icon: "🚦", color: "#FFCA3A", materia: "SOCIALES · DBA 2", titulo: "Señales y símbolos",
+          diapos: "Señales y Símbolos (Sociales) - Diapositivas.dc.html", web: "Señales y Símbolos (Sociales) - Web.dc.html",
+          ficha1: "Señales y Símbolos (Sociales) - Ficha 1 Refuerzo.dc.html", ficha2: "Señales y Símbolos (Sociales) - Ficha 2 Evaluación.dc.html", plan: "Señales y Símbolos (Sociales) - Plan de Clase.dc.html" },
+        { icon: "🌍", color: "#8AC926", materia: "C. NATURALES · DBA 3 · PRAE", titulo: "Cuido mi planeta",
+          diapos: "Cuidado del Medio Ambiente (Naturales) - Diapositivas.dc.html", web: "Cuidado del Medio Ambiente (Naturales) - Web.dc.html",
+          ficha1: "Cuidado del Medio Ambiente (Naturales) - Ficha 1 Refuerzo.dc.html", ficha2: "Cuidado del Medio Ambiente (Naturales) - Ficha 2 Evaluación.dc.html", plan: "Cuidado del Medio Ambiente (Naturales) - Plan de Clase.dc.html" },
+        { icon: "👷", color: "#FFCA3A", materia: "SOCIALES · DBA 5", titulo: "Oficios y profesiones",
+          diapos: "Actividades Económicas (Sociales) - Diapositivas.dc.html", web: "Actividades Económicas (Sociales) - Web.dc.html",
+          ficha1: "Actividades Económicas (Sociales) - Ficha 1 Refuerzo.dc.html", ficha2: "Actividades Económicas (Sociales) - Ficha 2 Evaluación.dc.html", plan: "Actividades Económicas (Sociales) - Plan de Clase.dc.html" },
+        { icon: "#", color: "#1982C4", materia: "INGLÉS · GUÍA 22", titulo: "Numbers 1–50",
+          diapos: "Numbers 1-50 (Inglés) - Diapositivas.dc.html", web: "Numbers 1-50 (Inglés) - Web.dc.html",
+          ficha1: "Numbers 1-50 (Inglés) - Ficha 1 Refuerzo.dc.html", ficha2: "Numbers 1-50 (Inglés) - Ficha 2 Evaluación.dc.html", plan: "Numbers 1-50 (Inglés) - Plan de Clase.dc.html" },
+        { icon: "🤝", color: "#8AC926", materia: "ÉTICA Y VALORES", titulo: "Trabajo en equipo",
+          diapos: "Trabajo en Equipo (Ética) - Diapositivas.dc.html", web: "Trabajo en Equipo (Ética) - Web.dc.html",
+          ficha1: "Trabajo en Equipo (Ética) - Ficha 1 Refuerzo.dc.html", ficha2: "Trabajo en Equipo (Ética) - Ficha 2 Evaluación.dc.html", plan: "Trabajo en Equipo (Ética) - Plan de Clase.dc.html" },
+        { icon: "❤️", color: "#6A4C93", materia: "ED. RELIGIOSA", titulo: "El perdón",
+          diapos: "El Perdón (Religión) - Diapositivas.dc.html", web: "El Perdón (Religión) - Web.dc.html",
+          ficha1: "El Perdón (Religión) - Ficha 1 Refuerzo.dc.html", ficha2: "El Perdón (Religión) - Ficha 2 Evaluación.dc.html", plan: "El Perdón (Religión) - Plan de Clase.dc.html" },
+        { icon: "💡", color: "#FFCA3A", materia: "TECNOLOGÍA · GUÍA 30", titulo: "Inventos e inventores",
+          diapos: "Inventos e Inventores (Tecnología) - Diapositivas.dc.html", web: "Inventos e Inventores (Tecnología) - Web.dc.html",
+          ficha1: "Inventos e Inventores (Tecnología) - Ficha 1 Refuerzo.dc.html", ficha2: "Inventos e Inventores (Tecnología) - Ficha 2 Evaluación.dc.html", plan: "Inventos e Inventores (Tecnología) - Plan de Clase.dc.html" }
+      ],
+      semana2: [
+        { icon: "🧊", color: "#1982C4", materia: "MATEMÁTICA · DBA 6", titulo: "Sólidos geométricos",
+          diapos: "Sólidos Geométricos (Matemática) - Diapositivas.dc.html", web: "Sólidos Geométricos (Matemática) - Web.dc.html",
+          ficha1: "Sólidos Geométricos (Matemática) - Ficha 1 Refuerzo.dc.html", ficha2: "Sólidos Geométricos (Matemática) - Ficha 2 Evaluación.dc.html", plan: "Sólidos Geométricos (Matemática) - Plan de Clase.dc.html" },
+        { icon: "🧠", color: "#8AC926", materia: "MATEMÁTICA · DBA 2", titulo: "Cálculo mental",
+          diapos: "Cálculo Mental (Matemática) - Diapositivas.dc.html", web: "Cálculo Mental (Matemática) - Web.dc.html",
+          ficha1: "Cálculo Mental (Matemática) - Ficha 1 Refuerzo.dc.html", ficha2: "Cálculo Mental (Matemática) - Ficha 2 Evaluación.dc.html", plan: "Cálculo Mental (Matemática) - Plan de Clase.dc.html" },
+        { icon: "📖", color: "#FF595E", materia: "ESPAÑOL · DBA 6", titulo: "Comprensión lectora",
+          diapos: "Comprensión Lectora (Español) - Diapositivas.dc.html", web: "Comprensión Lectora (Español) - Web.dc.html",
+          ficha1: "Comprensión Lectora (Español) - Ficha 1 Refuerzo.dc.html", ficha2: "Comprensión Lectora (Español) - Ficha 2 Evaluación.dc.html", plan: "Comprensión Lectora (Español) - Plan de Clase.dc.html" },
+        { icon: "✨", color: "#FF595E", materia: "ESPAÑOL · DBA 8", titulo: "El adjetivo",
+          diapos: "El Adjetivo (Español) - Diapositivas.dc.html", web: "El Adjetivo (Español) - Web.dc.html",
+          ficha1: "El Adjetivo (Español) - Ficha 1 Refuerzo.dc.html", ficha2: "El Adjetivo (Español) - Ficha 2 Evaluación.dc.html", plan: "El Adjetivo (Español) - Plan de Clase.dc.html" },
+        { icon: "🦎", color: "#8AC926", materia: "C. NATURALES · DBA 3", titulo: "Adaptaciones de los animales",
+          diapos: "Adaptaciones (Naturales) - Diapositivas.dc.html", web: "Adaptaciones (Naturales) - Web.dc.html",
+          ficha1: "Adaptaciones (Naturales) - Ficha 1 Refuerzo.dc.html", ficha2: "Adaptaciones (Naturales) - Ficha 2 Evaluación.dc.html", plan: "Adaptaciones (Naturales) - Plan de Clase.dc.html" },
+        { icon: "🚗", color: "#FFCA3A", materia: "SOCIALES · DBA 4", titulo: "Medios de transporte",
+          diapos: "Medios de Transporte (Sociales) - Diapositivas.dc.html", web: "Medios de Transporte (Sociales) - Web.dc.html",
+          ficha1: "Medios de Transporte (Sociales) - Ficha 1 Refuerzo.dc.html", ficha2: "Medios de Transporte (Sociales) - Ficha 2 Evaluación.dc.html", plan: "Medios de Transporte (Sociales) - Plan de Clase.dc.html" },
+        { icon: "🧸", color: "#1982C4", materia: "INGLÉS · GUÍA 22", titulo: "Toys (juguetes)",
+          diapos: "Toys (Inglés) - Diapositivas.dc.html", web: "Toys (Inglés) - Web.dc.html",
+          ficha1: "Toys (Inglés) - Ficha 1 Refuerzo.dc.html", ficha2: "Toys (Inglés) - Ficha 2 Evaluación.dc.html", plan: "Toys (Inglés) - Plan de Clase.dc.html" },
+        { icon: "💛", color: "#8AC926", materia: "ÉTICA Y VALORES", titulo: "La honestidad",
+          diapos: "La Honestidad (Ética) - Diapositivas.dc.html", web: "La Honestidad (Ética) - Web.dc.html",
+          ficha1: "La Honestidad (Ética) - Ficha 1 Refuerzo.dc.html", ficha2: "La Honestidad (Ética) - Ficha 2 Evaluación.dc.html", plan: "La Honestidad (Ética) - Plan de Clase.dc.html" },
+        { icon: "🛡️", color: "#1982C4", materia: "TECNOLOGÍA · GUÍA 30", titulo: "Uso seguro de la tecnología",
+          diapos: "Uso Seguro Tecnología (Tecnología) - Diapositivas.dc.html", web: "Uso Seguro Tecnología (Tecnología) - Web.dc.html",
+          ficha1: "Uso Seguro Tecnología (Tecnología) - Ficha 1 Refuerzo.dc.html", ficha2: "Uso Seguro Tecnología (Tecnología) - Ficha 2 Evaluación.dc.html", plan: "Uso Seguro Tecnología (Tecnología) - Plan de Clase.dc.html" }
+      ],
+      clases: [
+        { icon: "+", color: "#FF595E", materia: "MATEMÁTICA · DBA 1", titulo: "Clase 1 · La adición",
+          diapos: "Clase 1 - Adición - Diapositivas.dc.html", web: "Clase 1 - Adición - Web.dc.html",
+          ficha1: "Clase 1 - Adición - Ficha 1 Refuerzo.dc.html", ficha2: "Clase 1 - Adición - Ficha 2 Evaluación.dc.html", plan: "Clase 1 - Adición - Plan de Clase.dc.html" },
+        { icon: "−", color: "#6A4C93", materia: "MATEMÁTICA · DBA 1", titulo: "Clase 2 · La sustracción",
+          diapos: "Clase 2 - Sustracción - Diapositivas.dc.html", web: "Clase 2 - Sustracción - Web.dc.html",
+          ficha1: "Clase 2 - Sustracción - Ficha 1 Refuerzo.dc.html", ficha2: "Clase 2 - Sustracción - Ficha 2 Evaluación.dc.html", plan: "Clase 2 - Sustracción - Plan de Clase.dc.html" },
+        { icon: "A.", color: "#FF595E", materia: "ESPAÑOL · DBA 8", titulo: "Clase 3 · La oración",
+          diapos: "Clase 3 - La Oración - Diapositivas.dc.html", web: "Clase 3 - La Oración - Web.dc.html",
+          ficha1: "Clase 3 - La Oración - Ficha 1 Refuerzo.dc.html", ficha2: "Clase 3 - La Oración - Ficha 2 Evaluación.dc.html", plan: "Clase 3 - La Oración - Plan de Clase.dc.html" },
+        { icon: "👏", color: "#1982C4", materia: "ESPAÑOL · DBA 8", titulo: "Clase 4 · La sílaba",
+          diapos: "Clase 4 - La Sílaba - Diapositivas.dc.html", web: "Clase 4 - La Sílaba - Web.dc.html",
+          ficha1: "Clase 4 - La Sílaba - Ficha 1 Refuerzo.dc.html", ficha2: "Clase 4 - La Sílaba - Ficha 2 Evaluación.dc.html", plan: "Clase 4 - La Sílaba - Plan de Clase.dc.html" },
+        { icon: "🥚", color: "#8AC926", materia: "C. NATURALES · DBA 4", titulo: "Clase 5 · Ciclo de vida",
+          diapos: "Clase 5 - Ciclo de Vida - Diapositivas.dc.html", web: "Clase 5 - Ciclo de Vida - Web.dc.html",
+          ficha1: "Clase 5 - Ciclo de Vida - Ficha 1 Refuerzo.dc.html", ficha2: "Clase 5 - Ciclo de Vida - Ficha 2 Evaluación.dc.html", plan: "Clase 5 - Ciclo de Vida - Plan de Clase.dc.html" },
+        { icon: "🤝", color: "#FFCA3A", materia: "SOCIALES · DBA 6 y 8", titulo: "Clase 6 · Convivencia",
+          diapos: "Clase 6 - Convivencia - Diapositivas.dc.html", web: "Clase 6 - Convivencia - Web.dc.html",
+          ficha1: "Clase 6 - Convivencia - Ficha 1 Refuerzo.dc.html", ficha2: "Clase 6 - Convivencia - Ficha 2 Evaluación.dc.html", plan: "Clase 6 - Convivencia - Plan de Clase.dc.html" },
+        { icon: "ABC", color: "#1982C4", materia: "INGLÉS · GUÍA 22", titulo: "Clase 7 · The alphabet",
+          diapos: "Clase 7 - The Alphabet - Diapositivas.dc.html", web: "Clase 7 - The Alphabet - Web.dc.html",
+          ficha1: "Clase 7 - The Alphabet - Ficha 1 Refuerzo.dc.html", ficha2: "Clase 7 - The Alphabet - Ficha 2 Evaluación.dc.html", plan: "Clase 7 - The Alphabet - Plan de Clase.dc.html" },
+        { icon: "✅", color: "#FF595E", materia: "ÉTICA Y VALORES", titulo: "Clase 8 · La responsabilidad",
+          diapos: "Clase 8 - Responsabilidad - Diapositivas.dc.html", web: "Clase 8 - Responsabilidad - Web.dc.html",
+          ficha1: "Clase 8 - Responsabilidad - Ficha 1 Refuerzo.dc.html", ficha2: "Clase 8 - Responsabilidad - Ficha 2 Evaluación.dc.html", plan: "Clase 8 - Responsabilidad - Plan de Clase.dc.html" },
+        { icon: "🖥️", color: "#6A4C93", materia: "TECNOLOGÍA · GUÍA 30", titulo: "Clase 9 · El computador",
+          diapos: "Clase 9 - El Computador - Diapositivas.dc.html", web: "Clase 9 - El Computador - Web.dc.html",
+          ficha1: "Clase 9 - El Computador - Ficha 1 Refuerzo.dc.html", ficha2: "Clase 9 - El Computador - Ficha 2 Evaluación.dc.html", plan: "Clase 9 - El Computador - Plan de Clase.dc.html" }
+      ]
+    };
+  }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<meta name="description" content="Diapositivas Clase 5: Ciclo de vida de los animales, ovíparos y vivíparos - Grado 2°">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Nunito:wght@700;800;900&display=swap" rel="stylesheet">
+<style>
+body { margin:0; background:#FFF9EF; }
+a { color:#1982C4; } a:hover { color:#FF595E; }
+</style>
+</helmet>
+<x-import component-from-global-scope="deck-stage" from="./deck-stage.js" width="1920" height="1080" hint-size="100%,100%">
+
+<section data-label="Portada" data-speaker-notes="Saluda. Pregunta detonadora: ¿de dónde salen los pollitos? ¿Y los gaticos? ¿Nacen igual? Escucha 4 o 5 ideas antes de avanzar." style="background:#FFF9EF; overflow:hidden; font-family:'Nunito',sans-serif;">
+  <div style="position:absolute; top:-120px; left:-120px; width:380px; height:380px; border-radius:50%; background:#8AC926;"></div>
+  <div style="position:absolute; bottom:-140px; right:-100px; width:420px; height:420px; border-radius:50%; background:#FFCA3A;"></div>
+  <div style="position:absolute; top:120px; right:220px; width:120px; height:120px; border-radius:28px; background:#FF595E; transform:rotate(18deg);"></div>
+  <div style="position:absolute; bottom:180px; left:200px; width:90px; height:90px; border-radius:50%; background:#1982C4;"></div>
+  <div style="position:absolute; inset:0; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:36px; text-align:center;">
+    <div style="display:flex; gap:16px; align-items:center; background:#fff; border-radius:60px; padding:16px 44px; box-shadow:0 8px 0 rgba(42,42,64,.12);">
+      <span style="font-size:30px; font-weight:900; color:#8AC926; letter-spacing:2px;">CIENCIAS NATURALES</span>
+      <span style="font-size:30px; font-weight:900; color:#FF595E;">•</span>
+      <span style="font-size:30px; font-weight:900; color:#FF595E; letter-spacing:2px;">GRADO 2°</span>
+    </div>
+    <h1 style="margin:0; font-family:'Fredoka',sans-serif; font-weight:700; font-size:120px; color:#2A2A40; line-height:1.05;">El ciclo de vida<br>de los animales</h1>
+    <p style="margin:0; font-size:44px; font-weight:800; color:#2A2A40;">Ovíparos y vivíparos: ¿cómo nacen los animales?</p>
+    <div style="display:flex; gap:24px; font-size:80px;">
+      <span style="background:#fff; border-radius:28px; padding:14px 34px; box-shadow:0 6px 0 rgba(42,42,64,.1);">🥚</span>
+      <span style="background:#fff; border-radius:28px; padding:14px 34px; box-shadow:0 6px 0 rgba(42,42,64,.1);">🐣</span>
+      <span style="background:#fff; border-radius:28px; padding:14px 34px; box-shadow:0 6px 0 rgba(42,42,64,.1);">🐔</span>
+      <span style="background:#fff; border-radius:28px; padding:14px 34px; box-shadow:0 6px 0 rgba(42,42,64,.1);">🐱</span>
+    </div>
+  </div>
+</section>
+
+<section data-label="Objetivo" data-speaker-notes="Lee los objetivos. DBA 4 de Ciencias Naturales: comprender los ciclos de vida de los seres vivos." style="background:#FFF9EF; font-family:'Nunito',sans-serif; padding:100px; display:flex; flex-direction:column; gap:52px;">
+  <h2 style="margin:0; font-family:'Fredoka',sans-serif; font-weight:700; font-size:80px; color:#2A2A40;">¿Qué aprenderemos hoy?</h2>
+  <div style="display:flex; flex-direction:column; gap:28px; max-width:1500px;">
+    <div style="display:flex; align-items:center; gap:28px; background:#fff; border-radius:28px; padding:28px 40px; box-shadow:0 6px 0 rgba(42,42,64,.1);">
+      <span style="min-width:76px; height:76px; border-radius:50%; background:#FF595E; color:#fff; display:flex; align-items:center; justify-content:center; font-family:'Fredoka',sans-serif; font-size:44px; font-weight:600;">1</span>
+      <p style="margin:0; font-size:38px; font-weight:800; color:#2A2A40;">Conocer las <span style="color:#1982C4;">etapas del ciclo de vida</span>: nacer, crecer, reproducirse y morir.</p>
+    </div>
+    <div style="display:flex; align-items:center; gap:28px; background:#fff; border-radius:28px; padding:28px 40px; box-shadow:0 6px 0 rgba(42,42,64,.1);">
+      <span style="min-width:76px; height:76px; border-radius:50%; background:#FFCA3A; color:#2A2A40; display:flex; align-items:center; justify-content:center; font-family:'Fredoka',sans-serif; font-size:44px; font-weight:600;">2</span>
+      <p style="margin:0; font-size:38px; font-weight:800; color:#2A2A40;">Diferenciar animales <span style="color:#FF595E;">ovíparos</span> (nacen de huevo) y <span style="color:#8AC926;">vivíparos</span> (nacen del vientre).</p>
+    </div>
+    <div style="display:flex; align-items:center; gap:28px; background:#fff; border-radius:28px; padding:28px 40px; box-shadow:0 6px 0 rgba(42,42,64,.1);">
+      <span style="min-width:76px; height:76px; border-radius:50%; background:#8AC926; color:#fff; display:flex; align-items:center; justify-content:center; font-family:'Fredoka',sans-serif; font-size:44px; font-weight:600;">3</span>
+      <p style="margin:0; font-size:38px; font-weight:800; color:#2A2A40;">Clasificar animales de nuestro entorno según cómo nacen.</p>
+    </div>
+  </div>
+  <p style="margin:0; font-size:30px; font-weight:800; color:#6A4C93;">Necesitas: cuaderno de naturales, lápiz y colores.</p>
+</section>
+
+<section data-label="Copiado 1" data-speaker-notes="Definición del ciclo de vida y sus 4 etapas. Dibuja el círculo de flechas en el tablero mientras copian. Temporizador de 5 minutos." style="background:#fff; font-family:'Nunito',sans-serif; padding:80px 100px; display:flex; flex-direction:column; gap:40px;">
+  <div style="display:flex; align-items:center; gap:24px;">
+    <span style="background:#8AC926; color:#fff; border-radius:20px; padding:14px 30px; font-size:28px; font-weight:900; letter-spacing:1px;">ESCRIBE EN TU CUADERNO · PARTE 1</span>
+  </div>
+  <h2 style="margin:0; font-family:'Fredoka',sans-serif; font-weight:700; font-size:70px; color:#FF595E;">El ciclo de vida</h2>
+  <div style="background:repeating-linear-gradient(#fff, #fff 58px, #BFDCF2 58px, #BFDCF2 60px); border:3px solid #BFDCF2; border-radius:20px; padding:10px 40px; max-width:1500px;">
+    <p style="margin:0; font-size:40px; line-height:60px; font-weight:800; color:#2A2A40;">Todos los seres vivos cumplen un ciclo de vida: <span style="color:#8AC926;">nacen</span>, <span style="color:#FFCA3A;">crecen</span>, <span style="color:#1982C4;">se reproducen</span> y <span style="color:#6A4C93;">mueren</span>.</p>
+  </div>
+  <div style="display:flex; gap:24px; align-items:center; font-family:'Fredoka',sans-serif;">
+    <span style="background:#8AC926; color:#fff; border-radius:20px; padding:16px 36px; font-size:44px; font-weight:600;">1. Nacer</span>
+    <span style="font-size:44px; color:#6A4C93;">→</span>
+    <span style="background:#FFCA3A; color:#2A2A40; border-radius:20px; padding:16px 36px; font-size:44px; font-weight:600;">2. Crecer</span>
+    <span style="font-size:44px; color:#6A4C93;">→</span>
+    <span style="background:#1982C4; color:#fff; border-radius:20px; padding:16px 36px; font-size:44px; font-weight:600;">3. Reproducirse</span>
+    <span style="font-size:44px; color:#6A4C93;">→</span>
+    <span style="background:#6A4C93; color:#fff; border-radius:20px; padding:16px 36px; font-size:44px; font-weight:600;">4. Morir</span>
+  </div>
+  <button onClick="{{ start1 }}" style="position:absolute; right:70px; bottom:56px; display:flex; align-items:center; gap:20px; background:#2A2A40; color:#fff; border:none; border-radius:60px; padding:18px 40px; cursor:pointer; font-family:'Nunito',sans-serif;">
+    <span style="font-size:26px; font-weight:900; letter-spacing:1px;">TIEMPO PARA COPIAR ▶</span>
+    <span style="font-family:'Fredoka',sans-serif; font-size:52px; font-weight:600; color:#FFCA3A;">{{ t1 }}</span>
+  </button>
+</section>
+
+<section data-label="Copiado 2" data-speaker-notes="Los ovíparos. Pregunta antes: ¿qué animales conocen que pongan huevos? Temporizador de 5 minutos." style="background:#fff; font-family:'Nunito',sans-serif; padding:80px 100px; display:flex; flex-direction:column; gap:36px;">
+  <div style="display:flex; align-items:center; gap:24px;">
+    <span style="background:#8AC926; color:#fff; border-radius:20px; padding:14px 30px; font-size:28px; font-weight:900; letter-spacing:1px;">ESCRIBE EN TU CUADERNO · PARTE 2</span>
+  </div>
+  <h2 style="margin:0; font-family:'Fredoka',sans-serif; font-weight:700; font-size:68px; color:#FF595E;">Animales ovíparos 🥚</h2>
+  <div style="background:repeating-linear-gradient(#fff, #fff 58px, #BFDCF2 58px, #BFDCF2 60px); border:3px solid #BFDCF2; border-radius:20px; padding:10px 40px; max-width:1500px;">
+    <p style="margin:0; font-size:40px; line-height:60px; font-weight:800; color:#2A2A40;">Los ovíparos nacen de un <span style="color:#FF595E;">huevo</span>. La mamá pone los huevos y los cuida hasta que se rompen y sale la cría.</p>
+  </div>
+  <div style="display:flex; gap:28px; font-family:'Fredoka',sans-serif; flex-wrap:wrap;">
+    <span style="background:#FFF9EF; border-radius:24px; padding:20px 36px; font-size:40px; font-weight:600;">🐔 gallina</span>
+    <span style="background:#FFF9EF; border-radius:24px; padding:20px 36px; font-size:40px; font-weight:600;">🐢 tortuga</span>
+    <span style="background:#FFF9EF; border-radius:24px; padding:20px 36px; font-size:40px; font-weight:600;">🐍 serpiente</span>
+    <span style="background:#FFF9EF; border-radius:24px; padding:20px 36px; font-size:40px; font-weight:600;">🐸 rana</span>
+    <span style="background:#FFF9EF; border-radius:24px; padding:20px 36px; font-size:40px; font-weight:600;">🐟 pez</span>
+  </div>
+  <button onClick="{{ start2 }}" style="position:absolute; right:70px; bottom:56px; display:flex; align-items:center; gap:20px; background:#2A2A40; color:#fff; border:none; border-radius:60px; padding:18px 40px; cursor:pointer; font-family:'Nunito',sans-serif;">
+    <span style="font-size:26px; font-weight:900; letter-spacing:1px;">TIEMPO PARA COPIAR ▶</span>
+    <span style="font-family:'Fredoka',sans-serif; font-size:52px; font-weight:600; color:#FFCA3A;">{{ t2 }}</span>
+  </button>
+</section>
+
+<section data-label="Copiado 3" data-speaker-notes="Los vivíparos. Pregunta: ¿ustedes nacieron de un huevo? ¡No! Los humanos somos vivíparos. Temporizador de 5 minutos." style="background:#fff; font-family:'Nunito',sans-serif; padding:80px 100px; display:flex; flex-direction:column; gap:36px;">
+  <div style="display:flex; align-items:center; gap:24px;">
+    <span style="background:#8AC926; color:#fff; border-radius:20px; padding:14px 30px; font-size:28px; font-weight:900; letter-spacing:1px;">ESCRIBE EN TU CUADERNO · PARTE 3</span>
+  </div>
+  <h2 style="margin:0; font-family:'Fredoka',sans-serif; font-weight:700; font-size:68px; color:#1982C4;">Animales vivíparos 🐶</h2>
+  <div style="background:repeating-linear-gradient(#fff, #fff 58px, #BFDCF2 58px, #BFDCF2 60px); border:3px solid #BFDCF2; border-radius:20px; padding:10px 40px; max-width:1500px;">
+    <p style="margin:0; font-size:40px; line-height:60px; font-weight:800; color:#2A2A40;">Los vivíparos nacen del <span style="color:#1982C4;">vientre de su mamá</span>, ya formados y vivos. Toman leche cuando son bebés.</p>
+  </div>
+  <div style="display:flex; gap:28px; font-family:'Fredoka',sans-serif; flex-wrap:wrap;">
+    <span style="background:#FFF9EF; border-radius:24px; padding:20px 36px; font-size:40px; font-weight:600;">🐱 gato</span>
+    <span style="background:#FFF9EF; border-radius:24px; padding:20px 36px; font-size:40px; font-weight:600;">🐶 perro</span>
+    <span style="background:#FFF9EF; border-radius:24px; padding:20px 36px; font-size:40px; font-weight:600;">🐮 vaca</span>
+    <span style="background:#FFF9EF; border-radius:24px; padding:20px 36px; font-size:40px; font-weight:600;">🐴 caballo</span>
+    <span style="background:#FFF9EF; border-radius:24px; padding:20px 36px; font-size:40px; font-weight:600;">🧒 ser humano</span>
+  </div>
+  <button onClick="{{ start3 }}" style="position:absolute; right:70px; bottom:56px; display:flex; align-items:center; gap:20px; background:#2A2A40; color:#fff; border:none; border-radius:60px; padding:18px 40px; cursor:pointer; font-family:'Nunito',sans-serif;">
+    <span style="font-size:26px; font-weight:900; letter-spacing:1px;">TIEMPO PARA COPIAR ▶</span>
+    <span style="font-family:'Fredoka',sans-serif; font-size:52px; font-weight:600; color:#FFCA3A;">{{ t3 }}</span>
+  </button>
+</section>
+
+<section data-label="Copiado 4" data-speaker-notes="Ejemplo completo: el ciclo de la gallina. Los niños copian y dibujan el ciclo con flechas en círculo. Temporizador de 5 minutos." style="background:#fff; font-family:'Nunito',sans-serif; padding:80px 100px; display:flex; flex-direction:column; gap:36px;">
+  <div style="display:flex; align-items:center; gap:24px;">
+    <span style="background:#8AC926; color:#fff; border-radius:20px; padding:14px 30px; font-size:28px; font-weight:900; letter-spacing:1px;">ESCRIBE Y DIBUJA EN TU CUADERNO · PARTE 4</span>
+  </div>
+  <h2 style="margin:0; font-family:'Fredoka',sans-serif; font-weight:700; font-size:68px; color:#FFCA3A;">El ciclo de la gallina</h2>
+  <div style="display:flex; gap:36px; align-items:center; justify-content:center; font-family:'Fredoka',sans-serif;">
+    <div style="text-align:center; background:#FFF9EF; border-radius:28px; padding:30px 40px;"><p style="margin:0; font-size:80px;">🥚</p><p style="margin:8px 0 0; font-size:32px; font-weight:600; color:#2A2A40;">1. Huevo</p></div>
+    <span style="font-size:52px; color:#8AC926;">→</span>
+    <div style="text-align:center; background:#FFF9EF; border-radius:28px; padding:30px 40px;"><p style="margin:0; font-size:80px;">🐣</p><p style="margin:8px 0 0; font-size:32px; font-weight:600; color:#2A2A40;">2. Pollito</p></div>
+    <span style="font-size:52px; color:#8AC926;">→</span>
+    <div style="text-align:center; background:#FFF9EF; border-radius:28px; padding:30px 40px;"><p style="margin:0; font-size:80px;">🐤</p><p style="margin:8px 0 0; font-size:32px; font-weight:600; color:#2A2A40;">3. Pollo joven</p></div>
+    <span style="font-size:52px; color:#8AC926;">→</span>
+    <div style="text-align:center; background:#FFF9EF; border-radius:28px; padding:30px 40px;"><p style="margin:0; font-size:80px;">🐔</p><p style="margin:8px 0 0; font-size:32px; font-weight:600; color:#2A2A40;">4. Gallina</p></div>
+  </div>
+  <p style="margin:0; font-size:30px; font-weight:800; color:#6A4C93;">La gallina adulta pone nuevos huevos... ¡y el ciclo vuelve a empezar!</p>
+  <button onClick="{{ start4 }}" style="position:absolute; right:70px; bottom:56px; display:flex; align-items:center; gap:20px; background:#2A2A40; color:#fff; border:none; border-radius:60px; padding:18px 40px; cursor:pointer; font-family:'Nunito',sans-serif;">
+    <span style="font-size:26px; font-weight:900; letter-spacing:1px;">TIEMPO PARA COPIAR ▶</span>
+    <span style="font-family:'Fredoka',sans-serif; font-size:52px; font-weight:600; color:#FFCA3A;">{{ t4 }}</span>
+  </button>
+</section>
+
+<section data-label="Práctica" data-speaker-notes="Práctica individual: 10 minutos. Respuestas: pato O, conejo V, cocodrilo O, delfín V, águila O, cerdo V. Corrección colectiva: levanten la mano en O con forma de huevo." style="background:#FFF9EF; font-family:'Nunito',sans-serif; padding:80px 100px; display:flex; flex-direction:column; gap:40px;">
+  <div style="display:flex; align-items:center; gap:24px;">
+    <span style="background:#FF595E; color:#fff; border-radius:20px; padding:14px 30px; font-size:28px; font-weight:900; letter-spacing:1px;">AHORA TÚ · RESUELVE EN TU CUADERNO</span>
+  </div>
+  <h2 style="margin:0; font-family:'Fredoka',sans-serif; font-weight:700; font-size:68px; color:#2A2A40;">¡A practicar!</h2>
+  <div style="background:#fff; border-radius:28px; padding:36px 44px; max-width:1500px; box-shadow:0 6px 0 rgba(42,42,64,.1);">
+    <p style="margin:0 0 16px; font-size:30px; font-weight:900; color:#FF595E;">1. Escribe O si es ovíparo o V si es vivíparo:</p>
+    <div style="display:flex; flex-wrap:wrap; gap:18px; font-family:'Fredoka',sans-serif;">
+      <span style="background:#FFF9EF; border-radius:18px; padding:12px 30px; font-size:38px; font-weight:600;">🦆 pato ___</span>
+      <span style="background:#FFF9EF; border-radius:18px; padding:12px 30px; font-size:38px; font-weight:600;">🐰 conejo ___</span>
+      <span style="background:#FFF9EF; border-radius:18px; padding:12px 30px; font-size:38px; font-weight:600;">🐊 cocodrilo ___</span>
+      <span style="background:#FFF9EF; border-radius:18px; padding:12px 30px; font-size:38px; font-weight:600;">🐬 delfín ___</span>
+      <span style="background:#FFF9EF; border-radius:18px; padding:12px 30px; font-size:38px; font-weight:600;">🦅 águila ___</span>
+      <span style="background:#FFF9EF; border-radius:18px; padding:12px 30px; font-size:38px; font-weight:600;">🐷 cerdo ___</span>
+    </div>
+  </div>
+  <div style="background:#6A4C93; border-radius:28px; padding:32px 44px; max-width:1500px;">
+    <p style="margin:0; font-size:34px; font-weight:800; color:#fff;">2. Dibuja el ciclo de vida de tu <span style="color:#FFCA3A;">animal favorito</span> con sus 4 etapas.</p>
+  </div>
+  <button onClick="{{ start5 }}" style="position:absolute; right:70px; bottom:56px; display:flex; align-items:center; gap:20px; background:#2A2A40; color:#fff; border:none; border-radius:60px; padding:18px 40px; cursor:pointer; font-family:'Nunito',sans-serif;">
+    <span style="font-size:26px; font-weight:900; letter-spacing:1px;">TIEMPO PARA RESOLVER ▶</span>
+    <span style="font-family:'Fredoka',sans-serif; font-size:52px; font-weight:600; color:#FFCA3A;">{{ t5 }}</span>
+  </button>
+</section>
+
+<section data-label="Cierre" data-speaker-notes="Pregunta de verificación: ovíparos nacen de huevo, vivíparos del vientre. Pide 2 ejemplos de cada uno. Felicita y anuncia la ficha de evaluación." style="background:#8AC926; font-family:'Nunito',sans-serif; padding:100px; display:flex; flex-direction:column; justify-content:center; gap:48px;">
+  <span style="background:#FFCA3A; color:#2A2A40; border-radius:20px; padding:14px 30px; font-size:28px; font-weight:900; letter-spacing:1px; align-self:flex-start;">PARA TERMINAR</span>
+  <h2 style="margin:0; font-family:'Fredoka',sans-serif; font-weight:700; font-size:96px; color:#fff; max-width:1600px; line-height:1.15;">¿En qué se diferencian los ovíparos de los vivíparos?</h2>
+  <p style="margin:0; font-size:40px; font-weight:800; color:#E9F5D8;">Levanta la mano y da un ejemplo de cada uno.</p>
+  <div style="display:flex; gap:20px; align-items:center;">
+    <span style="background:#fff; border-radius:60px; padding:18px 40px; font-family:'Fredoka',sans-serif; font-size:36px; font-weight:600; color:#8AC926;">¡Hoy exploraste la naturaleza como un científico!</span>
+  </div>
+</section>
+
+</x-import>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;copyMinutes&quot;: {&quot;editor&quot;: &quot;int&quot;, &quot;default&quot;: 5, &quot;min&quot;: 1, &quot;max&quot;: 15, &quot;unit&quot;: &quot;min&quot;, &quot;tsType&quot;: &quot;number&quot;, &quot;section&quot;: &quot;Temporizadores&quot;}, &quot;practiceMinutes&quot;: {&quot;editor&quot;: &quot;int&quot;, &quot;default&quot;: 10, &quot;min&quot;: 1, &quot;max&quot;: 30, &quot;unit&quot;: &quot;min&quot;, &quot;tsType&quot;: &quot;number&quot;, &quot;section&quot;: &quot;Temporizadores&quot;}}">
+class Component extends DCLogic {
+  state = { left: {}, run: {} };
+  componentDidMount() {
+    this._iv = setInterval(() => {
+      if (!Object.keys(this.state.run).length) return;
+      this.setState(s => {
+        const left = { ...s.left }, run = { ...s.run };
+        for (const k in run) {
+          left[k] = Math.max(0, (left[k] ?? 0) - 1);
+          if (left[k] === 0) delete run[k];
+        }
+        return { left, run };
+      });
+    }, 1000);
+  }
+  componentWillUnmount() { clearInterval(this._iv); }
+  mkStart(id, mins) {
+    return () => this.setState(s => ({ left: { ...s.left, [id]: mins * 60 }, run: { ...s.run, [id]: true } }));
+  }
+  disp(id, mins) {
+    const l = this.state.left[id];
+    if (l === undefined) return mins + ":00";
+    if (l === 0) return "¡TIEMPO!";
+    return Math.floor(l / 60) + ":" + String(l % 60).padStart(2, "0");
+  }
+  renderVals() {
+    const copyMin = this.props.copyMinutes ?? 5;
+    const pracMin = this.props.practiceMinutes ?? 10;
+    return {
+      t1: this.disp("t1", copyMin), start1: this.mkStart("t1", copyMin),
+      t2: this.disp("t2", copyMin), start2: this.mkStart("t2", copyMin),
+      t3: this.disp("t3", copyMin), start3: this.mkStart("t3", copyMin),
+      t4: this.disp("t4", copyMin), start4: this.mkStart("t4", copyMin),
+      t5: this.disp("t5", pracMin), start5: this.mkStart("t5", pracMin)
+    };
+  }
+}
+</script>
+</body>
+</html>

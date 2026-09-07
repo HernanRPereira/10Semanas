@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<meta name="description" content="Diapositivas: Resolución de problemas aditivos - Grado 2°">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Nunito:wght@700;800;900&display=swap" rel="stylesheet">
+<style>
+body { margin:0; background:#FFF9EF; }
+a { color:#1982C4; } a:hover { color:#FF595E; }
+</style>
+</helmet>
+<x-import component-from-global-scope="deck-stage" from="./deck-stage.js" width="1920" height="1080" hint-size="100%,100%">
+
+<section data-label="Portada" data-speaker-notes="Saluda con energía. Pregunta detonadora: en una fiesta hay 45 niños; llegan 20 más y se van 15. ¿Cuántos quedan? ¿Qué operaciones usarías? Escucha ideas antes de avanzar." style="background:#FFF9EF; overflow:hidden; font-family:'Nunito',sans-serif;">
+  <div style="position:absolute; top:-120px; left:-120px; width:380px; height:380px; border-radius:50%; background:#FFCA3A;"></div>
+  <div style="position:absolute; bottom:-140px; right:-100px; width:420px; height:420px; border-radius:50%; background:#1982C4;"></div>
+  <div style="position:absolute; top:120px; right:220px; width:120px; height:120px; border-radius:28px; background:#FF595E; transform:rotate(18deg);"></div>
+  <div style="position:absolute; bottom:180px; left:200px; width:90px; height:90px; border-radius:50%; background:#8AC926;"></div>
+  <div style="position:absolute; inset:0; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:36px; text-align:center;">
+    <div style="display:flex; gap:16px; align-items:center; background:#fff; border-radius:60px; padding:16px 44px; box-shadow:0 8px 0 rgba(42,42,64,.12);">
+      <span style="font-size:30px; font-weight:900; color:#1982C4; letter-spacing:2px;">MATEMÁTICA</span>
+      <span style="font-size:30px; font-weight:900; color:#FF595E;">•</span>
+      <span style="font-size:30px; font-weight:900; color:#FF595E; letter-spacing:2px;">GRADO 2°</span>
+    </div>
+    <h1 style="margin:0; font-family:'Fredoka',sans-serif; font-weight:700; font-size:110px; color:#2A2A40; line-height:1.05;">Resuelvo<br>Problemas</h1>
+    <p style="margin:0; font-size:42px; font-weight:800; color:#2A2A40;">Sumas y restas juntas · ¡Soy detective matemático! 🔍</p>
+    <div style="display:flex; gap:20px; font-family:'Fredoka',sans-serif; font-size:60px; font-weight:600;">
+      <span style="width:100px;height:100px;border-radius:24px;background:#8AC926;color:#fff;display:flex;align-items:center;justify-content:center;">+</span>
+      <span style="width:100px;height:100px;border-radius:24px;background:#FFCA3A;color:#2A2A40;display:flex;align-items:center;justify-content:center;">?</span>
+      <span style="width:100px;height:100px;border-radius:24px;background:#FF595E;color:#fff;display:flex;align-items:center;justify-content:center;">−</span>
+    </div>
+  </div>
+</section>
+
+<section data-label="Objetivo" data-speaker-notes="Lee los objetivos. DBA 1 de Matemáticas: resolver problemas aditivos de composición y transformación." style="background:#FFF9EF; font-family:'Nunito',sans-serif; padding:100px; display:flex; flex-direction:column; gap:52px;">
+  <h2 style="margin:0; font-family:'Fredoka',sans-serif; font-weight:700; font-size:80px; color:#2A2A40;">¿Qué aprenderemos hoy?</h2>
+  <div style="display:flex; flex-direction:column; gap:28px; max-width:1500px;">
+    <div style="display:flex; align-items:center; gap:28px; background:#fff; border-radius:28px; padding:28px 40px; box-shadow:0 6px 0 rgba(42,42,64,.1);">
+      <span style="min-width:76px; height:76px; border-radius:50%; background:#FF595E; color:#fff; display:flex; align-items:center; justify-content:center; font-family:'Fredoka',sans-serif; font-size:44px; font-weight:600;">1</span>
+      <p style="margin:0; font-size:38px; font-weight:800; color:#2A2A40;">Leer un problema y saber <span style="color:#1982C4;">qué me preguntan</span>.</p>
+    </div>
+    <div style="display:flex; align-items:center; gap:28px; background:#fff; border-radius:28px; padding:28px 40px; box-shadow:0 6px 0 rgba(42,42,64,.1);">
+      <span style="min-width:76px; height:76px; border-radius:50%; background:#FFCA3A; color:#2A2A40; display:flex; align-items:center; justify-content:center; font-family:'Fredoka',sans-serif; font-size:44px; font-weight:600;">2</span>
+      <p style="margin:0; font-size:38px; font-weight:800; color:#2A2A40;">Decidir si <span style="color:#8AC926;">sumo</span> (gano/junto) o <span style="color:#FF595E;">resto</span> (pierdo/quito).</p>
+    </div>
+    <div style="display:flex; align-items:center; gap:28px; background:#fff; border-radius:28px; padding:28px 40px; box-shadow:0 6px 0 rgba(42,42,64,.1);">
+      <span style="min-width:76px; height:76px; border-radius:50%; background:#8AC926; color:#fff; display:flex; align-items:center; justify-content:center; font-family:'Fredoka',sans-serif; font-size:44px; font-weight:600;">3</span>
+      <p style="margin:0; font-size:38px; font-weight:800; color:#2A2A40;">Resolver problemas con dos pasos (sumar y restar).</p>
+    </div>
+  </div>
+  <p style="margin:0; font-size:30px; font-weight:800; color:#6A4C93;">Necesitas: cuaderno de matemática, lápiz y ojos de detective.</p>
+</section>
+
+<section data-label="Copiado 1" data-speaker-notes="Los 4 pasos para resolver un problema. Temporizador de 5 minutos." style="background:#fff; font-family:'Nunito',sans-serif; padding:80px 100px; display:flex; flex-direction:column; gap:36px;">
+  <div style="display:flex; align-items:center; gap:24px;">
+    <span style="background:#1982C4; color:#fff; border-radius:20px; padding:14px 30px; font-size:28px; font-weight:900; letter-spacing:1px;">ESCRIBE EN TU CUADERNO · PARTE 1</span>
+  </div>
+  <h2 style="margin:0; font-family:'Fredoka',sans-serif; font-weight:700; font-size:60px; color:#FF595E;">Los 4 pasos del detective 🔍</h2>
+  <div style="display:flex; flex-direction:column; gap:20px; max-width:1550px;">
+    <div style="display:flex; align-items:center; gap:26px;"><span style="min-width:68px; height:68px; border-radius:50%; background:#FF595E; color:#fff; display:flex; align-items:center; justify-content:center; font-family:'Fredoka',sans-serif; font-size:40px; font-weight:600;">1</span><p style="margin:0; font-size:36px; font-weight:800; color:#2A2A40;"><span style="color:#1982C4;">Leo</span> el problema con atención.</p></div>
+    <div style="display:flex; align-items:center; gap:26px;"><span style="min-width:68px; height:68px; border-radius:50%; background:#FFCA3A; color:#2A2A40; display:flex; align-items:center; justify-content:center; font-family:'Fredoka',sans-serif; font-size:40px; font-weight:600;">2</span><p style="margin:0; font-size:36px; font-weight:800; color:#2A2A40;"><span style="color:#8AC926;">Subrayo</span> los datos y la pregunta.</p></div>
+    <div style="display:flex; align-items:center; gap:26px;"><span style="min-width:68px; height:68px; border-radius:50%; background:#1982C4; color:#fff; display:flex; align-items:center; justify-content:center; font-family:'Fredoka',sans-serif; font-size:40px; font-weight:600;">3</span><p style="margin:0; font-size:36px; font-weight:800; color:#2A2A40;"><span style="color:#FF595E;">Escribo la operación</span> y la resuelvo.</p></div>
+    <div style="display:flex; align-items:center; gap:26px;"><span style="min-width:68px; height:68px; border-radius:50%; background:#8AC926; color:#fff; display:flex; align-items:center; justify-content:center; font-family:'Fredoka',sans-serif; font-size:40px; font-weight:600;">4</span><p style="margin:0; font-size:36px; font-weight:800; color:#2A2A40;"><span style="color:#6A4C93;">Respondo</span> con una frase completa.</p></div>
+  </div>
+  <button onClick="{{ start1 }}" style="position:absolute; right:70px; bottom:56px; display:flex; align-items:center; gap:20px; background:#2A2A40; color:#fff; border:none; border-radius:60px; padding:18px 40px; cursor:pointer; font-family:'Nunito',sans-serif;">
+    <span style="font-size:26px; font-weight:900; letter-spacing:1px;">TIEMPO PARA COPIAR ▶</span>
+    <span style="font-family:'Fredoka',sans-serif; font-size:52px; font-weight:600; color:#FFCA3A;">{{ t1 }}</span>
+  </button>
+</section>
+
+<section data-label="Copiado 2" data-speaker-notes="Palabras clave que indican sumar o restar. Temporizador de 5 minutos." style="background:#fff; font-family:'Nunito',sans-serif; padding:80px 100px; display:flex; flex-direction:column; gap:36px;">
+  <div style="display:flex; align-items:center; gap:24px;">
+    <span style="background:#1982C4; color:#fff; border-radius:20px; padding:14px 30px; font-size:28px; font-weight:900; letter-spacing:1px;">ESCRIBE EN TU CUADERNO · PARTE 2</span>
+  </div>
+  <h2 style="margin:0; font-family:'Fredoka',sans-serif; font-weight:700; font-size:60px; color:#1982C4;">Palabras pistas 🕵️</h2>
+  <div style="display:flex; gap:40px; max-width:1550px;">
+    <div style="flex:1; background:#E9F5D8; border-radius:24px; padding:28px 36px;">
+      <p style="margin:0 0 14px; font-size:30px; font-weight:900; color:#6FA31E;">➕ SUMO cuando...</p>
+      <p style="margin:0; font-family:'Fredoka',sans-serif; font-size:34px; font-weight:600; color:#2A2A40; line-height:1.5;">gano, junto, llegan, en total, hay más</p>
+    </div>
+    <div style="flex:1; background:#FDE3E4; border-radius:24px; padding:28px 36px;">
+      <p style="margin:0 0 14px; font-size:30px; font-weight:900; color:#FF595E;">➖ RESTO cuando...</p>
+      <p style="margin:0; font-family:'Fredoka',sans-serif; font-size:34px; font-weight:600; color:#2A2A40; line-height:1.5;">pierdo, quito, se van, quedan, cuántos más</p>
+    </div>
+  </div>
+  <button onClick="{{ start2 }}" style="position:absolute; right:70px; bottom:56px; display:flex; align-items:center; gap:20px; background:#2A2A40; color:#fff; border:none; border-radius:60px; padding:18px 40px; cursor:pointer; font-family:'Nunito',sans-serif;">
+    <span style="font-size:26px; font-weight:900; letter-spacing:1px;">TIEMPO PARA COPIAR ▶</span>
+    <span style="font-family:'Fredoka',sans-serif; font-size:52px; font-weight:600; color:#FFCA3A;">{{ t2 }}</span>
+  </button>
+</section>
+
+<section data-label="Copiado 3" data-speaker-notes="Ejemplo resuelto paso a paso: un problema de dos operaciones. Los niños copian el modelo. Temporizador de 5 minutos." style="background:#fff; font-family:'Nunito',sans-serif; padding:70px 100px; display:flex; flex-direction:column; gap:26px;">
+  <div style="display:flex; align-items:center; gap:24px;">
+    <span style="background:#1982C4; color:#fff; border-radius:20px; padding:14px 30px; font-size:28px; font-weight:900; letter-spacing:1px;">ESCRIBE EN TU CUADERNO · PARTE 3</span>
+  </div>
+  <h2 style="margin:0; font-family:'Fredoka',sans-serif; font-weight:700; font-size:52px; color:#8AC926;">Ejemplo resuelto</h2>
+  <div style="background:#FFF9EF; border:3px solid #FFCA3A; border-radius:24px; padding:26px 40px; max-width:1620px;">
+    <p style="margin:0 0 14px; font-size:32px; font-weight:800; color:#2A2A40;">En el bus iban <span style="color:#1982C4;">128 personas</span>. Suben <span style="color:#8AC926;">45</span> y bajan <span style="color:#FF595E;">62</span>. ¿Cuántas van ahora?</p>
+    <div style="display:flex; gap:24px; flex-wrap:wrap; align-items:center; font-family:'Fredoka',sans-serif;">
+      <div style="background:#E9F5D8; border-radius:18px; padding:14px 26px;"><p style="margin:0; font-size:30px; font-weight:600; color:#2A2A40;">1) 128 + 45 = 173</p></div>
+      <span style="font-size:34px; color:#6A4C93;">→</span>
+      <div style="background:#FDE3E4; border-radius:18px; padding:14px 26px;"><p style="margin:0; font-size:30px; font-weight:600; color:#2A2A40;">2) 173 − 62 = 111</p></div>
+      <span style="font-size:34px; color:#6A4C93;">→</span>
+      <div style="background:#1982C4; border-radius:18px; padding:14px 26px;"><p style="margin:0; font-size:30px; font-weight:600; color:#fff;">R: Van 111 personas.</p></div>
+    </div>
+  </div>
+  <button onClick="{{ start3 }}" style="position:absolute; right:70px; bottom:56px; display:flex; align-items:center; gap:20px; background:#2A2A40; color:#fff; border:none; border-radius:60px; padding:18px 40px; cursor:pointer; font-family:'Nunito',sans-serif;">
+    <span style="font-size:26px; font-weight:900; letter-spacing:1px;">TIEMPO PARA COPIAR ▶</span>
+    <span style="font-family:'Fredoka',sans-serif; font-size:52px; font-weight:600; color:#FFCA3A;">{{ t3 }}</span>
+  </button>
+</section>
+
+<section data-label="Copiado 4" data-speaker-notes="Un recordatorio clave: siempre respondo con una frase. Temporizador de 5 minutos." style="background:#fff; font-family:'Nunito',sans-serif; padding:80px 100px; display:flex; flex-direction:column; gap:36px;">
+  <div style="display:flex; align-items:center; gap:24px;">
+    <span style="background:#1982C4; color:#fff; border-radius:20px; padding:14px 30px; font-size:28px; font-weight:900; letter-spacing:1px;">ESCRIBE EN TU CUADERNO · PARTE 4</span>
+  </div>
+  <h2 style="margin:0; font-family:'Fredoka',sans-serif; font-weight:700; font-size:56px; color:#6A4C93;">Consejos de detective</h2>
+  <div style="display:flex; flex-direction:column; gap:18px; max-width:1550px;">
+    <div style="display:flex; align-items:center; gap:22px; background:#FFF9EF; border-radius:22px; padding:18px 32px;"><span style="font-size:44px;">📖</span><p style="margin:0; font-size:34px; font-weight:800; color:#2A2A40;">Leo el problema <span style="font-family:'Fredoka',sans-serif; color:#FF595E;">dos veces</span> antes de operar.</p></div>
+    <div style="display:flex; align-items:center; gap:22px; background:#FFF9EF; border-radius:22px; padding:18px 32px;"><span style="font-size:44px;">✏️</span><p style="margin:0; font-size:34px; font-weight:800; color:#2A2A40;">Escribo la operación <span style="font-family:'Fredoka',sans-serif; color:#1982C4;">en columnas</span>.</p></div>
+    <div style="display:flex; align-items:center; gap:22px; background:#FFF9EF; border-radius:22px; padding:18px 32px;"><span style="font-size:44px;">💬</span><p style="margin:0; font-size:34px; font-weight:800; color:#2A2A40;">Siempre respondo con una <span style="font-family:'Fredoka',sans-serif; color:#8AC926;">frase completa</span>.</p></div>
+  </div>
+  <button onClick="{{ start4 }}" style="position:absolute; right:70px; bottom:56px; display:flex; align-items:center; gap:20px; background:#2A2A40; color:#fff; border:none; border-radius:60px; padding:18px 40px; cursor:pointer; font-family:'Nunito',sans-serif;">
+    <span style="font-size:26px; font-weight:900; letter-spacing:1px;">TIEMPO PARA COPIAR ▶</span>
+    <span style="font-family:'Fredoka',sans-serif; font-size:52px; font-weight:600; color:#FFCA3A;">{{ t4 }}</span>
+  </button>
+</section>
+
+<section data-label="Práctica" data-speaker-notes="Práctica individual: 10 minutos. Respuestas: a) 215+130=345 canicas. b) 180−65=115 páginas. c) 240+60−90=210 galletas. Corrección colectiva en el tablero." style="background:#FFF9EF; font-family:'Nunito',sans-serif; padding:80px 100px; display:flex; flex-direction:column; gap:34px;">
+  <div style="display:flex; align-items:center; gap:24px;">
+    <span style="background:#FF595E; color:#fff; border-radius:20px; padding:14px 30px; font-size:28px; font-weight:900; letter-spacing:1px;">AHORA TÚ · RESUELVE EN TU CUADERNO</span>
+  </div>
+  <h2 style="margin:0; font-family:'Fredoka',sans-serif; font-weight:700; font-size:60px; color:#2A2A40;">¡A resolver!</h2>
+  <div style="display:flex; flex-direction:column; gap:18px; max-width:1620px;">
+    <div style="background:#fff; border-radius:22px; padding:22px 32px; box-shadow:0 6px 0 rgba(42,42,64,.1);"><p style="margin:0; font-size:30px; font-weight:800; color:#2A2A40;"><span style="color:#FF595E; font-weight:900;">a)</span> Tengo 215 canicas y me regalan 130. ¿Cuántas tengo?</p></div>
+    <div style="background:#fff; border-radius:22px; padding:22px 32px; box-shadow:0 6px 0 rgba(42,42,64,.1);"><p style="margin:0; font-size:30px; font-weight:800; color:#2A2A40;"><span style="color:#FFCA3A; font-weight:900;">b)</span> Un libro tiene 180 páginas. Leí 65. ¿Cuántas me faltan?</p></div>
+    <div style="background:#fff; border-radius:22px; padding:22px 32px; box-shadow:0 6px 0 rgba(42,42,64,.1);"><p style="margin:0; font-size:30px; font-weight:800; color:#2A2A40;"><span style="color:#8AC926; font-weight:900;">c)</span> Había 240 galletas. Hornean 60 y venden 90. ¿Cuántas quedan?</p></div>
+  </div>
+  <button onClick="{{ start5 }}" style="position:absolute; right:70px; bottom:56px; display:flex; align-items:center; gap:20px; background:#2A2A40; color:#fff; border:none; border-radius:60px; padding:18px 40px; cursor:pointer; font-family:'Nunito',sans-serif;">
+    <span style="font-size:26px; font-weight:900; letter-spacing:1px;">TIEMPO PARA RESOLVER ▶</span>
+    <span style="font-family:'Fredoka',sans-serif; font-size:52px; font-weight:600; color:#FFCA3A;">{{ t5 }}</span>
+  </button>
+</section>
+
+<section data-label="Cierre" data-speaker-notes="Pregunta de verificación: ¿cómo sé si un problema se resuelve sumando o restando? Repasa las palabras pista. Felicita y anuncia la ficha de evaluación." style="background:#1982C4; font-family:'Nunito',sans-serif; padding:100px; display:flex; flex-direction:column; justify-content:center; gap:48px;">
+  <span style="background:#FFCA3A; color:#2A2A40; border-radius:20px; padding:14px 30px; font-size:28px; font-weight:900; letter-spacing:1px; align-self:flex-start;">PARA TERMINAR</span>
+  <h2 style="margin:0; font-family:'Fredoka',sans-serif; font-weight:700; font-size:92px; color:#fff; max-width:1600px; line-height:1.15;">¿Cómo sé si un problema se suma o se resta?</h2>
+  <p style="margin:0; font-size:40px; font-weight:800; color:#BFDCF2;">Levanta la mano y da un ejemplo de palabra pista.</p>
+  <div style="display:flex; gap:20px; align-items:center;">
+    <span style="background:#fff; border-radius:60px; padding:18px 40px; font-family:'Fredoka',sans-serif; font-size:36px; font-weight:600; color:#1982C4;">¡Hoy resolviste como un detective matemático!</span>
+  </div>
+</section>
+
+</x-import>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;copyMinutes&quot;: {&quot;editor&quot;: &quot;int&quot;, &quot;default&quot;: 5, &quot;min&quot;: 1, &quot;max&quot;: 15, &quot;unit&quot;: &quot;min&quot;, &quot;tsType&quot;: &quot;number&quot;, &quot;section&quot;: &quot;Temporizadores&quot;}, &quot;practiceMinutes&quot;: {&quot;editor&quot;: &quot;int&quot;, &quot;default&quot;: 10, &quot;min&quot;: 1, &quot;max&quot;: 30, &quot;unit&quot;: &quot;min&quot;, &quot;tsType&quot;: &quot;number&quot;, &quot;section&quot;: &quot;Temporizadores&quot;}}">
+class Component extends DCLogic {
+  state = { left: {}, run: {} };
+  componentDidMount() {
+    this._iv = setInterval(() => {
+      if (!Object.keys(this.state.run).length) return;
+      this.setState(s => {
+        const left = { ...s.left }, run = { ...s.run };
+        for (const k in run) {
+          left[k] = Math.max(0, (left[k] ?? 0) - 1);
+          if (left[k] === 0) delete run[k];
+        }
+        return { left, run };
+      });
+    }, 1000);
+  }
+  componentWillUnmount() { clearInterval(this._iv); }
+  mkStart(id, mins) {
+    return () => this.setState(s => ({ left: { ...s.left, [id]: mins * 60 }, run: { ...s.run, [id]: true } }));
+  }
+  disp(id, mins) {
+    const l = this.state.left[id];
+    if (l === undefined) return mins + ":00";
+    if (l === 0) return "¡TIEMPO!";
+    return Math.floor(l / 60) + ":" + String(l % 60).padStart(2, "0");
+  }
+  renderVals() {
+    const copyMin = this.props.copyMinutes ?? 5;
+    const pracMin = this.props.practiceMinutes ?? 10;
+    return {
+      t1: this.disp("t1", copyMin), start1: this.mkStart("t1", copyMin),
+      t2: this.disp("t2", copyMin), start2: this.mkStart("t2", copyMin),
+      t3: this.disp("t3", copyMin), start3: this.mkStart("t3", copyMin),
+      t4: this.disp("t4", copyMin), start4: this.mkStart("t4", copyMin),
+      t5: this.disp("t5", pracMin), start5: this.mkStart("t5", pracMin)
+    };
+  }
+}
+</script>
+</body>
+</html>

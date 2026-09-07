@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<meta name="description" content="Web interactiva Clase 4: La sílaba - Grado 2°">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Nunito:wght@700;800;900&display=swap" rel="stylesheet">
+<style>
+body { margin:0; background:#FFF9EF; }
+a { color:#1982C4; } a:hover { color:#FF595E; }
+@keyframes pop { 0% { transform:scale(.6); opacity:0; } 100% { transform:scale(1); opacity:1; } }
+</style>
+<template id="__bundler_thumbnail" data-bg-color="#FFF9EF">
+<svg viewBox="0 0 120 80" xmlns="http://www.w3.org/2000/svg">
+<rect x="20" y="26" width="24" height="28" rx="8" fill="#FF595E"></rect>
+<rect x="48" y="26" width="24" height="28" rx="8" fill="#FFCA3A"></rect>
+<rect x="76" y="26" width="24" height="28" rx="8" fill="#8AC926"></rect>
+</svg>
+</template>
+</helmet>
+<div style="min-height:100vh; display:flex; flex-direction:column; font-family:'Nunito',sans-serif; color:#2A2A40;">
+
+  <header style="display:flex; align-items:center; gap:16px; padding:14px 28px; background:#fff; box-shadow:0 4px 0 rgba(42,42,64,.08);">
+    <span style="width:44px; height:44px; border-radius:14px; background:#1982C4; color:#fff; display:flex; align-items:center; justify-content:center; font-family:'Fredoka',sans-serif; font-size:20px; font-weight:600;">👏</span>
+    <div style="display:flex; flex-direction:column;">
+      <span style="font-family:'Fredoka',sans-serif; font-size:22px; font-weight:600;">La Sílaba</span>
+      <span style="font-size:13px; font-weight:900; color:#6A4C93; letter-spacing:1px;">ESPAÑOL · GRADO 2°</span>
+    </div>
+    <div style="flex:1;"></div>
+    <button onClick="{{ startH }}" style="display:flex; align-items:center; gap:12px; background:#2A2A40; color:#fff; border:none; border-radius:40px; padding:8px 20px; cursor:pointer; font-family:'Nunito',sans-serif;" style-hover="background:#6A4C93;">
+      <span style="font-size:13px; font-weight:900; letter-spacing:1px;">TEMPORIZADOR ▶</span>
+      <span style="font-family:'Fredoka',sans-serif; font-size:24px; font-weight:600; color:#FFCA3A;">{{ tH }}</span>
+    </button>
+    <span style="background:#FFCA3A; border-radius:40px; padding:10px 20px; font-family:'Fredoka',sans-serif; font-size:20px; font-weight:600;">{{ num }}</span>
+  </header>
+
+  <main style="flex:1; display:flex; flex-direction:column; align-items:center; justify-content:center; padding:32px 24px; position:relative; overflow:hidden;">
+
+    <sc-if value="{{ s1 }}" hint-placeholder-val="{{ true }}">
+      <div style="display:flex; flex-direction:column; align-items:center; gap:28px; text-align:center; max-width:900px; animation:pop .4s ease;">
+        <span style="background:#8AC926; color:#fff; border-radius:30px; padding:10px 26px; font-size:16px; font-weight:900; letter-spacing:2px;">¡BIENVENIDOS!</span>
+        <h1 style="margin:0; font-family:'Fredoka',sans-serif; font-size:56px; font-weight:700; line-height:1.1;">El juego de los aplausos</h1>
+        <div style="background:#fff; border-radius:28px; padding:32px 40px; box-shadow:0 8px 0 rgba(42,42,64,.1);">
+          <p style="margin:0; font-size:28px; font-weight:800; line-height:1.5;">Di tu nombre <span style="color:#FF595E;">aplaudiendo cada pedacito</span>: Ma-ría 👏👏, Car-los 👏👏.</p>
+          <p style="margin:20px 0 0; font-family:'Fredoka',sans-serif; font-size:34px; font-weight:600; color:#6A4C93;">¿Cuántos aplausos tiene tu nombre?</p>
+        </div>
+        <p style="margin:0; font-size:20px; font-weight:800; color:#6A4C93;">Probemos con varios nombres del salón.</p>
+      </div>
+    </sc-if>
+
+    <sc-if value="{{ s2 }}" hint-placeholder-val="{{ false }}">
+      <div style="display:flex; flex-direction:column; align-items:center; gap:24px; text-align:center; animation:pop .4s ease;">
+        <span style="background:#1982C4; color:#fff; border-radius:30px; padding:10px 26px; font-size:16px; font-weight:900; letter-spacing:2px;">PASO A PASO</span>
+        <h1 style="margin:0; font-family:'Fredoka',sans-serif; font-size:44px; font-weight:700;">Partimos la palabra «mariposa»</h1>
+        <div style="display:flex; gap:14px; font-family:'Fredoka',sans-serif;">
+          <span style="background:{{ mp1bg }}; color:{{ mp1fg }}; border-radius:22px; padding:18px 36px; font-size:64px; font-weight:600; transition:all .3s;">ma</span>
+          <span style="background:{{ mp2bg }}; color:{{ mp2fg }}; border-radius:22px; padding:18px 36px; font-size:64px; font-weight:600; transition:all .3s;">ri</span>
+          <span style="background:{{ mp3bg }}; color:{{ mp3fg }}; border-radius:22px; padding:18px 36px; font-size:64px; font-weight:600; transition:all .3s;">po</span>
+          <span style="background:{{ mp4bg }}; color:{{ mp4fg }}; border-radius:22px; padding:18px 36px; font-size:64px; font-weight:600; transition:all .3s;">sa</span>
+        </div>
+        <p style="margin:0; font-family:'Fredoka',sans-serif; font-size:40px; font-weight:600; color:#6A4C93;">{{ mpCount }}</p>
+        <div style="display:flex; gap:14px;">
+          <button onClick="{{ mpAdv }}" style="background:#8AC926; color:#fff; border:none; border-radius:40px; padding:16px 32px; font-size:20px; font-weight:900; cursor:pointer; font-family:'Nunito',sans-serif;" style-hover="background:#6FA31E;">Aplaudir 👏</button>
+          <button onClick="{{ mpReset }}" style="background:#fff; color:#6A4C93; border:3px solid #6A4C93; border-radius:40px; padding:16px 32px; font-size:20px; font-weight:900; cursor:pointer; font-family:'Nunito',sans-serif;" style-hover="background:#F1EAFB;">Reiniciar</button>
+        </div>
+        <sc-if value="{{ mpDone }}" hint-placeholder-val="{{ false }}">
+          <span style="background:#FFCA3A; color:#2A2A40; border-radius:30px; padding:12px 30px; font-family:'Fredoka',sans-serif; font-size:26px; font-weight:600; animation:pop .3s ease;">4 sílabas → ¡es POLISÍLABA!</span>
+        </sc-if>
+      </div>
+    </sc-if>
+
+    <sc-if value="{{ s3 }}" hint-placeholder-val="{{ false }}">
+      <div style="display:flex; flex-direction:column; align-items:center; gap:24px; text-align:center; animation:pop .4s ease;">
+        <h1 style="margin:0; font-family:'Fredoka',sans-serif; font-size:44px; font-weight:700;">Las 4 familias de palabras</h1>
+        <p style="margin:0; font-size:22px; font-weight:800; color:#6A4C93;">Toca cada casa para conocer a su familia.</p>
+        <div style="display:flex; gap:20px; flex-wrap:wrap; justify-content:center;">
+          <button onClick="{{ f1 }}" style="width:220px; border:none; border-radius:24px; background:#FF595E; color:#fff; cursor:pointer; padding:26px 20px; font-family:'Fredoka',sans-serif; display:flex; flex-direction:column; gap:10px; align-items:center;" style-hover="transform:scale(1.05);">
+            <span style="font-size:26px; font-weight:600;">MONOSÍLABAS</span>
+            <sc-if value="{{ f1on }}" hint-placeholder-val="{{ false }}"><span style="background:#fff; color:#FF595E; border-radius:16px; padding:8px 16px; font-size:22px; font-weight:600;">1 sílaba 👏<br>sol · pan · mar</span></sc-if>
+            <sc-if value="{{ f1off }}" hint-placeholder-val="{{ true }}"><span style="font-family:'Nunito',sans-serif; font-size:14px; font-weight:900;">TOCA AQUÍ</span></sc-if>
+          </button>
+          <button onClick="{{ f2 }}" style="width:220px; border:none; border-radius:24px; background:#FFCA3A; color:#2A2A40; cursor:pointer; padding:26px 20px; font-family:'Fredoka',sans-serif; display:flex; flex-direction:column; gap:10px; align-items:center;" style-hover="transform:scale(1.05);">
+            <span style="font-size:26px; font-weight:600;">BISÍLABAS</span>
+            <sc-if value="{{ f2on }}" hint-placeholder-val="{{ false }}"><span style="background:#fff; color:#C89B1C; border-radius:16px; padding:8px 16px; font-size:22px; font-weight:600;">2 sílabas 👏👏<br>ca-sa · ga-to</span></sc-if>
+            <sc-if value="{{ f2off }}" hint-placeholder-val="{{ true }}"><span style="font-family:'Nunito',sans-serif; font-size:14px; font-weight:900;">TOCA AQUÍ</span></sc-if>
+          </button>
+          <button onClick="{{ f3 }}" style="width:220px; border:none; border-radius:24px; background:#8AC926; color:#fff; cursor:pointer; padding:26px 20px; font-family:'Fredoka',sans-serif; display:flex; flex-direction:column; gap:10px; align-items:center;" style-hover="transform:scale(1.05);">
+            <span style="font-size:26px; font-weight:600;">TRISÍLABAS</span>
+            <sc-if value="{{ f3on }}" hint-placeholder-val="{{ false }}"><span style="background:#fff; color:#6FA31E; border-radius:16px; padding:8px 16px; font-size:22px; font-weight:600;">3 sílabas 👏👏👏<br>pe-lo-ta</span></sc-if>
+            <sc-if value="{{ f3off }}" hint-placeholder-val="{{ true }}"><span style="font-family:'Nunito',sans-serif; font-size:14px; font-weight:900;">TOCA AQUÍ</span></sc-if>
+          </button>
+          <button onClick="{{ f4 }}" style="width:220px; border:none; border-radius:24px; background:#1982C4; color:#fff; cursor:pointer; padding:26px 20px; font-family:'Fredoka',sans-serif; display:flex; flex-direction:column; gap:10px; align-items:center;" style-hover="transform:scale(1.05);">
+            <span style="font-size:26px; font-weight:600;">POLISÍLABAS</span>
+            <sc-if value="{{ f4on }}" hint-placeholder-val="{{ false }}"><span style="background:#fff; color:#1982C4; border-radius:16px; padding:8px 16px; font-size:22px; font-weight:600;">4 o más 👏👏👏👏<br>ma-ri-po-sa</span></sc-if>
+            <sc-if value="{{ f4off }}" hint-placeholder-val="{{ true }}"><span style="font-family:'Nunito',sans-serif; font-size:14px; font-weight:900;">TOCA AQUÍ</span></sc-if>
+          </button>
+        </div>
+      </div>
+    </sc-if>
+
+    <sc-if value="{{ s4 }}" hint-placeholder-val="{{ false }}">
+      <div style="display:flex; flex-direction:column; align-items:center; gap:24px; text-align:center; animation:pop .4s ease;">
+        <span style="background:#FFCA3A; color:#2A2A40; border-radius:30px; padding:10px 26px; font-size:16px; font-weight:900; letter-spacing:2px;">ACTIVIDAD 1 · {{ a1Num }}</span>
+        <h1 style="margin:0; font-family:'Fredoka',sans-serif; font-size:44px; font-weight:700;">¿Cuántas sílabas tiene?</h1>
+        <sc-if value="{{ a1Playing }}" hint-placeholder-val="{{ true }}">
+          <p style="margin:0; font-size:22px; font-weight:800; color:#6A4C93;">Aplaudan la palabra juntos y elijan.</p>
+          <div style="background:#fff; border-radius:28px; padding:28px 70px; box-shadow:0 8px 0 rgba(42,42,64,.1); font-family:'Fredoka',sans-serif;">
+            <p style="margin:0; font-size:70px; font-weight:600;">{{ a1Word }}</p>
+          </div>
+          <div style="display:flex; gap:20px;">
+            <button onClick="{{ a1p1 }}" style="width:110px; height:110px; background:#FF595E; color:#fff; border:none; border-radius:28px; font-family:'Fredoka',sans-serif; font-size:52px; font-weight:600; cursor:pointer;" style-hover="transform:scale(1.08);">1</button>
+            <button onClick="{{ a1p2 }}" style="width:110px; height:110px; background:#FFCA3A; color:#2A2A40; border:none; border-radius:28px; font-family:'Fredoka',sans-serif; font-size:52px; font-weight:600; cursor:pointer;" style-hover="transform:scale(1.08);">2</button>
+            <button onClick="{{ a1p3 }}" style="width:110px; height:110px; background:#8AC926; color:#fff; border:none; border-radius:28px; font-family:'Fredoka',sans-serif; font-size:52px; font-weight:600; cursor:pointer;" style-hover="transform:scale(1.08);">3</button>
+            <button onClick="{{ a1p4 }}" style="width:110px; height:110px; background:#1982C4; color:#fff; border:none; border-radius:28px; font-family:'Fredoka',sans-serif; font-size:52px; font-weight:600; cursor:pointer;" style-hover="transform:scale(1.08);">4</button>
+          </div>
+          <sc-if value="{{ a1ok }}" hint-placeholder-val="{{ false }}">
+            <div style="display:flex; align-items:center; gap:16px; animation:pop .3s ease;">
+              <span style="background:#8AC926; color:#fff; border-radius:30px; padding:12px 30px; font-family:'Fredoka',sans-serif; font-size:24px; font-weight:600;">{{ a1fb }}</span>
+              <button onClick="{{ a1next }}" style="background:#2A2A40; color:#fff; border:none; border-radius:30px; padding:12px 30px; font-size:18px; font-weight:900; cursor:pointer; font-family:'Nunito',sans-serif;">Siguiente ▶</button>
+            </div>
+          </sc-if>
+          <sc-if value="{{ a1bad }}" hint-placeholder-val="{{ false }}">
+            <span style="background:#FF595E; color:#fff; border-radius:30px; padding:12px 30px; font-family:'Fredoka',sans-serif; font-size:24px; font-weight:600; animation:pop .3s ease;">Aplaude otra vez más despacio...</span>
+          </sc-if>
+        </sc-if>
+        <sc-if value="{{ a1done }}" hint-placeholder-val="{{ false }}">
+          <div style="display:flex; flex-direction:column; align-items:center; gap:20px; animation:pop .4s ease;">
+            <span style="font-size:100px; font-family:'Fredoka',sans-serif; color:#FFCA3A;">★ ★ ★ ★</span>
+            <p style="margin:0; font-family:'Fredoka',sans-serif; font-size:40px; font-weight:600; color:#8AC926;">¡Contaste todas las sílabas!</p>
+            <button onClick="{{ a1Reset }}" style="background:#fff; color:#6A4C93; border:3px solid #6A4C93; border-radius:40px; padding:14px 30px; font-size:18px; font-weight:900; cursor:pointer; font-family:'Nunito',sans-serif;">Jugar otra vez</button>
+          </div>
+        </sc-if>
+      </div>
+    </sc-if>
+
+    <sc-if value="{{ s5 }}" hint-placeholder-val="{{ false }}">
+      <div style="display:flex; flex-direction:column; align-items:center; gap:24px; text-align:center; animation:pop .4s ease;">
+        <span style="background:#8AC926; color:#fff; border-radius:30px; padding:10px 26px; font-size:16px; font-weight:900; letter-spacing:2px;">PAUSA ACTIVA · ¡A MOVER EL CUERPO!</span>
+        <sc-if value="{{ paIdle }}" hint-placeholder-val="{{ true }}">
+          <h1 style="margin:0; font-family:'Fredoka',sans-serif; font-size:52px; font-weight:700;">4 movimientos, 20 segundos cada uno</h1>
+          <p style="margin:0; font-size:24px; font-weight:800; color:#6A4C93; max-width:700px;">Todos de pie, separados de las mesas. Sigue las instrucciones de la pantalla.</p>
+          <button onClick="{{ paStart }}" style="background:#FF595E; color:#fff; border:none; border-radius:50px; padding:22px 56px; font-family:'Fredoka',sans-serif; font-size:34px; font-weight:600; cursor:pointer;" style-hover="transform:scale(1.05);">¡Comenzar! ▶</button>
+        </sc-if>
+        <sc-if value="{{ paRunning }}" hint-placeholder-val="{{ false }}">
+          <span style="background:#fff; border-radius:30px; padding:10px 26px; font-size:18px; font-weight:900; color:#6A4C93;">Movimiento {{ paNum }} de 4</span>
+          <div style="width:220px; height:220px; border-radius:50%; background:{{ paColor }}; display:flex; align-items:center; justify-content:center; box-shadow:0 10px 0 rgba(42,42,64,.12);">
+            <span style="font-family:'Fredoka',sans-serif; font-size:110px; font-weight:600; color:#fff;">{{ paTime }}</span>
+          </div>
+          <h1 style="margin:0; font-family:'Fredoka',sans-serif; font-size:56px; font-weight:700;">{{ paName }}</h1>
+          <p style="margin:0; font-size:26px; font-weight:800; color:#6A4C93; max-width:700px;">{{ paDesc }}</p>
+        </sc-if>
+        <sc-if value="{{ paDone }}" hint-placeholder-val="{{ false }}">
+          <h1 style="margin:0; font-family:'Fredoka',sans-serif; font-size:60px; font-weight:700; color:#8AC926;">¡Excelente trabajo!</h1>
+          <p style="margin:0; font-size:26px; font-weight:800; color:#6A4C93;">Respira profundo tres veces y vuelve a tu puesto en silencio.</p>
+          <button onClick="{{ paStart }}" style="background:#fff; color:#6A4C93; border:3px solid #6A4C93; border-radius:40px; padding:14px 30px; font-size:18px; font-weight:900; cursor:pointer; font-family:'Nunito',sans-serif;">Repetir la pausa</button>
+        </sc-if>
+      </div>
+    </sc-if>
+
+    <sc-if value="{{ s6 }}" hint-placeholder-val="{{ false }}">
+      <div style="display:flex; flex-direction:column; align-items:center; gap:24px; text-align:center; animation:pop .4s ease;">
+        <span style="background:#6A4C93; color:#fff; border-radius:30px; padding:10px 26px; font-size:16px; font-weight:900; letter-spacing:2px;">ACTIVIDAD 2 · {{ a2Num }}</span>
+        <h1 style="margin:0; font-family:'Fredoka',sans-serif; font-size:44px; font-weight:700;">¿A qué familia pertenece?</h1>
+        <sc-if value="{{ a2Playing }}" hint-placeholder-val="{{ true }}">
+          <div style="background:#fff; border-radius:28px; padding:28px 70px; box-shadow:0 8px 0 rgba(42,42,64,.1); font-family:'Fredoka',sans-serif;">
+            <p style="margin:0; font-size:64px; font-weight:600;">{{ a2Word }}</p>
+          </div>
+          <div style="display:flex; gap:16px; flex-wrap:wrap; justify-content:center;">
+            <button onClick="{{ a2p1 }}" style="background:#FF595E; color:#fff; border:none; border-radius:24px; padding:18px 30px; font-family:'Fredoka',sans-serif; font-size:26px; font-weight:600; cursor:pointer;" style-hover="transform:scale(1.06);">Monosílaba</button>
+            <button onClick="{{ a2p2 }}" style="background:#FFCA3A; color:#2A2A40; border:none; border-radius:24px; padding:18px 30px; font-family:'Fredoka',sans-serif; font-size:26px; font-weight:600; cursor:pointer;" style-hover="transform:scale(1.06);">Bisílaba</button>
+            <button onClick="{{ a2p3 }}" style="background:#8AC926; color:#fff; border:none; border-radius:24px; padding:18px 30px; font-family:'Fredoka',sans-serif; font-size:26px; font-weight:600; cursor:pointer;" style-hover="transform:scale(1.06);">Trisílaba</button>
+            <button onClick="{{ a2p4 }}" style="background:#1982C4; color:#fff; border:none; border-radius:24px; padding:18px 30px; font-family:'Fredoka',sans-serif; font-size:26px; font-weight:600; cursor:pointer;" style-hover="transform:scale(1.06);">Polisílaba</button>
+          </div>
+          <sc-if value="{{ a2ok }}" hint-placeholder-val="{{ false }}">
+            <div style="display:flex; align-items:center; gap:16px; animation:pop .3s ease;">
+              <span style="background:#8AC926; color:#fff; border-radius:30px; padding:12px 30px; font-family:'Fredoka',sans-serif; font-size:24px; font-weight:600;">{{ a2fb }}</span>
+              <button onClick="{{ a2next }}" style="background:#2A2A40; color:#fff; border:none; border-radius:30px; padding:12px 30px; font-size:18px; font-weight:900; cursor:pointer; font-family:'Nunito',sans-serif;">Siguiente ▶</button>
+            </div>
+          </sc-if>
+          <sc-if value="{{ a2bad }}" hint-placeholder-val="{{ false }}">
+            <span style="background:#FF595E; color:#fff; border-radius:30px; padding:12px 30px; font-family:'Fredoka',sans-serif; font-size:24px; font-weight:600; animation:pop .3s ease;">Cuenta los aplausos otra vez...</span>
+          </sc-if>
+        </sc-if>
+        <sc-if value="{{ a2done }}" hint-placeholder-val="{{ false }}">
+          <div style="display:flex; flex-direction:column; align-items:center; gap:20px; animation:pop .4s ease;">
+            <span style="font-size:90px; font-family:'Fredoka',sans-serif; color:#FFCA3A;">★ ★ ★ ★</span>
+            <p style="margin:0; font-family:'Fredoka',sans-serif; font-size:40px; font-weight:600; color:#8AC926;">¡Conoces las 4 familias!</p>
+            <button onClick="{{ a2Reset }}" style="background:#fff; color:#6A4C93; border:3px solid #6A4C93; border-radius:40px; padding:14px 30px; font-size:18px; font-weight:900; cursor:pointer; font-family:'Nunito',sans-serif;">Jugar otra vez</button>
+          </div>
+        </sc-if>
+      </div>
+    </sc-if>
+
+    <sc-if value="{{ s7 }}" hint-placeholder-val="{{ false }}">
+      <div style="display:flex; flex-direction:column; align-items:center; gap:24px; text-align:center; max-width:900px; animation:pop .4s ease;">
+        <span style="background:#FFCA3A; color:#2A2A40; border-radius:30px; padding:10px 26px; font-size:16px; font-weight:900; letter-spacing:2px;">RETO FINAL</span>
+        <h1 style="margin:0; font-family:'Fredoka',sans-serif; font-size:44px; font-weight:700;">¿Cómo se separa «chocolate»?</h1>
+        <div style="display:flex; flex-direction:column; gap:16px; width:100%; max-width:640px;">
+          <button onClick="{{ rp1 }}" style="border:none; border-radius:24px; background:#fff; cursor:pointer; padding:22px 32px; font-family:'Fredoka',sans-serif; font-size:36px; font-weight:600; color:#2A2A40; box-shadow:0 6px 0 rgba(42,42,64,.1);" style-hover="transform:scale(1.03);">cho - cola - te</button>
+          <button onClick="{{ rp2 }}" style="border:none; border-radius:24px; background:#fff; cursor:pointer; padding:22px 32px; font-family:'Fredoka',sans-serif; font-size:36px; font-weight:600; color:#2A2A40; box-shadow:0 6px 0 rgba(42,42,64,.1);" style-hover="transform:scale(1.03);">cho - co - la - te</button>
+          <button onClick="{{ rp3 }}" style="border:none; border-radius:24px; background:#fff; cursor:pointer; padding:22px 32px; font-family:'Fredoka',sans-serif; font-size:36px; font-weight:600; color:#2A2A40; box-shadow:0 6px 0 rgba(42,42,64,.1);" style-hover="transform:scale(1.03);">choco - late</button>
+        </div>
+        <sc-if value="{{ rok }}" hint-placeholder-val="{{ false }}">
+          <div style="display:flex; flex-direction:column; align-items:center; gap:12px; animation:pop .3s ease;">
+            <span style="background:#8AC926; color:#fff; border-radius:30px; padding:14px 34px; font-family:'Fredoka',sans-serif; font-size:28px; font-weight:600;">¡Correcto! 4 sílabas: es polisílaba. ★★★</span>
+            <p style="margin:0; font-size:22px; font-weight:800; color:#6A4C93;">Pregunta de cierre: ¿qué es una sílaba?</p>
+          </div>
+        </sc-if>
+        <sc-if value="{{ rbad }}" hint-placeholder-val="{{ false }}">
+          <span style="background:#FF595E; color:#fff; border-radius:30px; padding:12px 30px; font-family:'Fredoka',sans-serif; font-size:24px; font-weight:600; animation:pop .3s ease;">Aplaude despacio: cho... co... la... te...</span>
+        </sc-if>
+      </div>
+    </sc-if>
+
+  </main>
+
+  <footer style="display:flex; align-items:center; justify-content:space-between; padding:16px 28px; background:#fff; box-shadow:0 -4px 0 rgba(42,42,64,.08);">
+    <button onClick="{{ prev }}" style="background:#fff; color:#6A4C93; border:3px solid #6A4C93; border-radius:40px; padding:14px 34px; font-size:18px; font-weight:900; cursor:pointer; font-family:'Nunito',sans-serif;" style-hover="background:#F1EAFB;">◀ Anterior</button>
+    <span style="font-size:16px; font-weight:900; color:#6A4C93; letter-spacing:1px;">{{ titulo }}</span>
+    <button onClick="{{ next }}" style="background:#1982C4; color:#fff; border:none; border-radius:40px; padding:14px 34px; font-size:18px; font-weight:900; cursor:pointer; font-family:'Nunito',sans-serif;" style-hover="background:#136394;">Siguiente ▶</button>
+  </footer>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;timerMinutes&quot;: {&quot;editor&quot;: &quot;int&quot;, &quot;default&quot;: 5, &quot;min&quot;: 1, &quot;max&quot;: 20, &quot;unit&quot;: &quot;min&quot;, &quot;tsType&quot;: &quot;number&quot;, &quot;section&quot;: &quot;Temporizador&quot;}}">
+class Component extends DCLogic {
+  state = {
+    screen: 0,
+    hLeft: undefined, hRun: false,
+    mp: 0,
+    fams: [false, false, false, false],
+    a1q: 0, a1ans: 0, a1done: false,
+    paPhase: "idle", paIdx: 0, paLeft: 20,
+    a2q: 0, a2ans: 0, a2done: false,
+    r: 0
+  };
+  componentDidMount() {
+    this._iv = setInterval(() => {
+      this.setState(s => {
+        const n = {};
+        if (s.hRun && s.hLeft > 0) { n.hLeft = s.hLeft - 1; if (n.hLeft === 0) n.hRun = false; }
+        if (s.paPhase === "run") {
+          if (s.paLeft > 1) n.paLeft = s.paLeft - 1;
+          else if (s.paIdx < 3) { n.paIdx = s.paIdx + 1; n.paLeft = 20; }
+          else { n.paPhase = "done"; }
+        }
+        return Object.keys(n).length ? n : null;
+      });
+    }, 1000);
+  }
+  componentWillUnmount() { clearInterval(this._iv); }
+  renderVals() {
+    const s = this.state;
+    const SCREENS = ["El juego de los aplausos", "Partimos una palabra", "Las 4 familias", "¿Cuántas sílabas?", "Pausa activa", "¿Qué familia es?", "Reto final"];
+    const go = d => this.setState(st => ({ screen: Math.max(0, Math.min(6, st.screen + d)) }));
+    const hMin = this.props.timerMinutes ?? 5;
+    const tH = s.hLeft === undefined ? hMin + ":00" : (s.hLeft === 0 ? "¡TIEMPO!" : Math.floor(s.hLeft / 60) + ":" + String(s.hLeft % 60).padStart(2, "0"));
+    const MPC = ["#FF595E", "#FFCA3A", "#8AC926", "#1982C4"];
+    const mkMp = i => ({
+      ["mp" + (i + 1) + "bg"]: s.mp > i ? MPC[i] : "#F1EAFB",
+      ["mp" + (i + 1) + "fg"]: s.mp > i ? (i === 1 ? "#2A2A40" : "#fff") : "#B9AECE"
+    });
+    const mkFam = i => ({
+      ["f" + (i + 1)]: () => this.setState(st => { const f = [...st.fams]; f[i] = true; return { fams: f }; }),
+      ["f" + (i + 1) + "on"]: s.fams[i],
+      ["f" + (i + 1) + "off"]: !s.fams[i]
+    });
+    const A1 = [
+      { word: "sol", n: 1 }, { word: "gato", n: 2 }, { word: "banano", n: 3 }, { word: "televisor", n: 4 }
+    ];
+    const q1 = A1[Math.min(s.a1q, 3)];
+    const a1pick = n => () => this.setState({ a1ans: n === q1.n ? 1 : 2 });
+    const A2 = [
+      { word: "pan", fam: 1 }, { word: "mesa", fam: 2 }, { word: "zapato", fam: 3 }, { word: "bicicleta", fam: 4 }
+    ];
+    const q2 = A2[Math.min(s.a2q, 3)];
+    const a2pick = f => () => this.setState({ a2ans: f === q2.fam ? 1 : 2 });
+    const FAMN = ["", "monosílaba", "bisílaba", "trisílaba", "polisílaba"];
+    const PA = [
+      { name: "Manos al cielo", desc: "Estírate muy alto, como si quisieras tocar las nubes.", color: "#FF595E" },
+      { name: "Toco mis pies", desc: "Dóblate despacio y trata de tocar la punta de tus zapatos.", color: "#1982C4" },
+      { name: "Giro mi cabeza", desc: "Muy despacio, mira hacia un lado y luego hacia el otro.", color: "#6A4C93" },
+      { name: "Salto de estrella", desc: "Salta suavemente abriendo brazos y piernas como una estrella.", color: "#8AC926" }
+    ];
+    const pa = PA[s.paIdx];
+    return {
+      titulo: SCREENS[s.screen].toUpperCase(),
+      num: (s.screen + 1) + " / 7",
+      prev: () => go(-1), next: () => go(1),
+      s1: s.screen === 0, s2: s.screen === 1, s3: s.screen === 2, s4: s.screen === 3,
+      s5: s.screen === 4, s6: s.screen === 5, s7: s.screen === 6,
+      tH, startH: () => this.setState({ hLeft: hMin * 60, hRun: true }),
+      ...mkMp(0), ...mkMp(1), ...mkMp(2), ...mkMp(3),
+      mpCount: s.mp === 0 ? "Pulsa «Aplaudir» para cada golpe de voz" : "👏".repeat(s.mp) + "  " + s.mp + (s.mp === 1 ? " sílaba" : " sílabas"),
+      mpDone: s.mp >= 4,
+      mpAdv: () => this.setState(st => ({ mp: Math.min(4, st.mp + 1) })),
+      mpReset: () => this.setState({ mp: 0 }),
+      ...mkFam(0), ...mkFam(1), ...mkFam(2), ...mkFam(3),
+      a1Num: "PALABRA " + (Math.min(s.a1q, 3) + 1) + " DE 4",
+      a1Playing: !s.a1done, a1done: s.a1done,
+      a1Word: q1.word,
+      a1p1: a1pick(1), a1p2: a1pick(2), a1p3: a1pick(3), a1p4: a1pick(4),
+      a1ok: s.a1ans === 1, a1bad: s.a1ans === 2,
+      a1fb: "¡Correcto! " + q1.word + " tiene " + q1.n + (q1.n === 1 ? " sílaba." : " sílabas."),
+      a1next: () => this.setState(st => st.a1q >= 3 ? { a1done: true, a1ans: 0 } : { a1q: st.a1q + 1, a1ans: 0 }),
+      a1Reset: () => this.setState({ a1q: 0, a1ans: 0, a1done: false }),
+      paIdle: s.paPhase === "idle", paRunning: s.paPhase === "run", paDone: s.paPhase === "done",
+      paStart: () => this.setState({ paPhase: "run", paIdx: 0, paLeft: 20 }),
+      paNum: String(s.paIdx + 1), paName: pa.name, paDesc: pa.desc, paColor: pa.color, paTime: String(s.paLeft),
+      a2Num: "PALABRA " + (Math.min(s.a2q, 3) + 1) + " DE 4",
+      a2Playing: !s.a2done, a2done: s.a2done,
+      a2Word: q2.word,
+      a2p1: a2pick(1), a2p2: a2pick(2), a2p3: a2pick(3), a2p4: a2pick(4),
+      a2ok: s.a2ans === 1, a2bad: s.a2ans === 2,
+      a2fb: "¡Correcto! «" + q2.word + "» es " + FAMN[q2.fam] + ".",
+      a2next: () => this.setState(st => st.a2q >= 3 ? { a2done: true, a2ans: 0 } : { a2q: st.a2q + 1, a2ans: 0 }),
+      a2Reset: () => this.setState({ a2q: 0, a2ans: 0, a2done: false }),
+      rp1: () => this.setState({ r: 2 }), rp2: () => this.setState({ r: 1 }), rp3: () => this.setState({ r: 2 }),
+      rok: s.r === 1, rbad: s.r === 2
+    };
+  }
+}
+</script>
+</body>
+</html>

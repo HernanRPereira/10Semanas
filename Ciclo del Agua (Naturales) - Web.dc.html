@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<meta name="description" content="Web interactiva: Ciclo del agua - Grado 2°">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Nunito:wght@700;800;900&display=swap" rel="stylesheet">
+<style>
+body { margin:0; background:#FFF9EF; }
+a { color:#1982C4; } a:hover { color:#FF595E; }
+@keyframes pop { 0% { transform:scale(.6); opacity:0; } 100% { transform:scale(1); opacity:1; } }
+</style>
+<template id="__bundler_thumbnail" data-bg-color="#FFF9EF">
+<svg viewBox="0 0 120 80" xmlns="http://www.w3.org/2000/svg">
+<circle cx="60" cy="40" r="26" fill="#1982C4"></circle>
+<text x="60" y="52" text-anchor="middle" font-size="30">💧</text>
+</svg>
+</template>
+</helmet>
+<div style="min-height:100vh; display:flex; flex-direction:column; font-family:'Nunito',sans-serif; color:#2A2A40;">
+
+  <header style="display:flex; align-items:center; gap:16px; padding:14px 28px; background:#fff; box-shadow:0 4px 0 rgba(42,42,64,.08);">
+    <span style="width:44px; height:44px; border-radius:14px; background:#1982C4; color:#fff; display:flex; align-items:center; justify-content:center; font-size:22px;">💧</span>
+    <div style="display:flex; flex-direction:column;">
+      <span style="font-family:'Fredoka',sans-serif; font-size:22px; font-weight:600;">El Ciclo del Agua</span>
+      <span style="font-size:13px; font-weight:900; color:#6A4C93; letter-spacing:1px;">CIENCIAS NATURALES · GRADO 2°</span>
+    </div>
+    <div style="flex:1;"></div>
+    <button onClick="{{ startH }}" style="display:flex; align-items:center; gap:12px; background:#2A2A40; color:#fff; border:none; border-radius:40px; padding:8px 20px; cursor:pointer; font-family:'Nunito',sans-serif;" style-hover="background:#6A4C93;">
+      <span style="font-size:13px; font-weight:900; letter-spacing:1px;">TEMPORIZADOR ▶</span>
+      <span style="font-family:'Fredoka',sans-serif; font-size:24px; font-weight:600; color:#FFCA3A;">{{ tH }}</span>
+    </button>
+    <span style="background:#FFCA3A; border-radius:40px; padding:10px 20px; font-family:'Fredoka',sans-serif; font-size:20px; font-weight:600;">{{ num }}</span>
+  </header>
+
+  <main style="flex:1; display:flex; flex-direction:column; align-items:center; justify-content:center; padding:32px 24px; position:relative; overflow:hidden;">
+
+    <sc-if value="{{ s1 }}" hint-placeholder-val="{{ true }}">
+      <div style="display:flex; flex-direction:column; align-items:center; gap:28px; text-align:center; max-width:900px; animation:pop .4s ease;">
+        <span style="background:#8AC926; color:#fff; border-radius:30px; padding:10px 26px; font-size:16px; font-weight:900; letter-spacing:2px;">¡BIENVENIDOS!</span>
+        <h1 style="margin:0; font-family:'Fredoka',sans-serif; font-size:52px; font-weight:700; line-height:1.1;">El viaje de una gota</h1>
+        <div style="background:#fff; border-radius:28px; padding:32px 40px; box-shadow:0 8px 0 rgba(42,42,64,.1);">
+          <p style="margin:0; font-size:56px;">☀️ 💧 ☁️ 🌧️</p>
+          <p style="margin:18px 0 0; font-family:'Fredoka',sans-serif; font-size:30px; font-weight:600; color:#6A4C93;">¿A dónde va el agua de un charco cuando sale el sol? ¿De dónde viene la lluvia?</p>
+        </div>
+        <p style="margin:0; font-size:22px; font-weight:800; color:#6A4C93;">Piensa y comparte con la clase.</p>
+      </div>
+    </sc-if>
+
+    <sc-if value="{{ s2 }}" hint-placeholder-val="{{ false }}">
+      <div style="display:flex; flex-direction:column; align-items:center; gap:22px; text-align:center; animation:pop .4s ease;">
+        <span style="background:#1982C4; color:#fff; border-radius:30px; padding:10px 26px; font-size:16px; font-weight:900; letter-spacing:2px;">EL CICLO PASO A PASO</span>
+        <h1 style="margin:0; font-family:'Fredoka',sans-serif; font-size:38px; font-weight:700;">Toca «Siguiente» y sigue el viaje del agua</h1>
+        <div style="display:flex; gap:14px; align-items:center; flex-wrap:wrap; justify-content:center;">
+          <div style="text-align:center; background:{{ c1bg }}; border-radius:22px; padding:18px 22px; transition:all .3s;"><p style="margin:0; font-size:46px; opacity:{{ c1op }};">☀️💧</p><p style="margin:5px 0 0; font-family:'Fredoka',sans-serif; font-size:17px; font-weight:600;">1. Evaporación</p></div>
+          <span style="font-size:28px; color:#1982C4;">→</span>
+          <div style="text-align:center; background:{{ c2bg }}; border-radius:22px; padding:18px 22px; transition:all .3s;"><p style="margin:0; font-size:46px; opacity:{{ c2op }};">☁️</p><p style="margin:5px 0 0; font-family:'Fredoka',sans-serif; font-size:17px; font-weight:600;">2. Condensación</p></div>
+          <span style="font-size:28px; color:#1982C4;">→</span>
+          <div style="text-align:center; background:{{ c3bg }}; border-radius:22px; padding:18px 22px; transition:all .3s;"><p style="margin:0; font-size:46px; opacity:{{ c3op }};">🌧️</p><p style="margin:5px 0 0; font-family:'Fredoka',sans-serif; font-size:17px; font-weight:600;">3. Precipitación</p></div>
+          <span style="font-size:28px; color:#1982C4;">→</span>
+          <div style="text-align:center; background:{{ c4bg }}; border-radius:22px; padding:18px 22px; transition:all .3s;"><p style="margin:0; font-size:46px; opacity:{{ c4op }};">🏞️</p><p style="margin:5px 0 0; font-family:'Fredoka',sans-serif; font-size:17px; font-weight:600;">4. Escurrimiento</p></div>
+        </div>
+        <div style="background:#fff; border-radius:24px; padding:20px 32px; box-shadow:0 6px 0 rgba(42,42,64,.1); max-width:760px; min-height:60px;">
+          <p style="margin:0; font-size:24px; font-weight:800;">{{ stepTxt }}</p>
+        </div>
+        <div style="display:flex; gap:14px;">
+          <button onClick="{{ stepAdv }}" style="background:#1982C4; color:#fff; border:none; border-radius:40px; padding:16px 32px; font-size:20px; font-weight:900; cursor:pointer; font-family:'Nunito',sans-serif;" style-hover="background:#136394;">Siguiente ▶</button>
+          <button onClick="{{ stepReset }}" style="background:#fff; color:#6A4C93; border:3px solid #6A4C93; border-radius:40px; padding:16px 32px; font-size:20px; font-weight:900; cursor:pointer; font-family:'Nunito',sans-serif;" style-hover="background:#F1EAFB;">Reiniciar</button>
+        </div>
+      </div>
+    </sc-if>
+
+    <sc-if value="{{ s3 }}" hint-placeholder-val="{{ false }}">
+      <div style="display:flex; flex-direction:column; align-items:center; gap:22px; text-align:center; animation:pop .4s ease;">
+        <span style="background:#FFCA3A; color:#2A2A40; border-radius:30px; padding:10px 26px; font-size:16px; font-weight:900; letter-spacing:2px;">¿QUÉ CAMBIO ES? · {{ a1Num }}</span>
+        <sc-if value="{{ a1Playing }}" hint-placeholder-val="{{ true }}">
+          <div style="background:#fff; border-radius:28px; padding:24px 50px; box-shadow:0 8px 0 rgba(42,42,64,.1); max-width:820px;">
+            <p style="margin:0; font-size:56px;">{{ a1Emoji }}</p>
+            <p style="margin:12px 0 0; font-family:'Fredoka',sans-serif; font-size:28px; font-weight:600;">{{ a1Text }}</p>
+          </div>
+          <div style="display:flex; gap:14px; flex-wrap:wrap; justify-content:center;">
+            <button onClick="{{ a1p1 }}" style="background:#FF595E; color:#fff; border:none; border-radius:20px; padding:16px 26px; font-family:'Fredoka',sans-serif; font-size:24px; font-weight:600; cursor:pointer;" style-hover="transform:scale(1.06);">Evaporación</button>
+            <button onClick="{{ a1p2 }}" style="background:#6A4C93; color:#fff; border:none; border-radius:20px; padding:16px 26px; font-family:'Fredoka',sans-serif; font-size:24px; font-weight:600; cursor:pointer;" style-hover="transform:scale(1.06);">Condensación</button>
+            <button onClick="{{ a1p3 }}" style="background:#1982C4; color:#fff; border:none; border-radius:20px; padding:16px 26px; font-family:'Fredoka',sans-serif; font-size:24px; font-weight:600; cursor:pointer;" style-hover="transform:scale(1.06);">Congelación</button>
+          </div>
+          <sc-if value="{{ a1ok }}" hint-placeholder-val="{{ false }}">
+            <div style="display:flex; align-items:center; gap:16px; animation:pop .3s ease;">
+              <span style="background:#8AC926; color:#fff; border-radius:30px; padding:12px 30px; font-family:'Fredoka',sans-serif; font-size:24px; font-weight:600;">¡Correcto! ★</span>
+              <button onClick="{{ a1next }}" style="background:#2A2A40; color:#fff; border:none; border-radius:30px; padding:12px 30px; font-size:18px; font-weight:900; cursor:pointer; font-family:'Nunito',sans-serif;">Siguiente ▶</button>
+            </div>
+          </sc-if>
+          <sc-if value="{{ a1bad }}" hint-placeholder-val="{{ false }}">
+            <span style="background:#FF595E; color:#fff; border-radius:30px; padding:12px 30px; font-family:'Fredoka',sans-serif; font-size:24px; font-weight:600; animation:pop .3s ease;">¿Hay calor o frío? Piénsalo otra vez.</span>
+          </sc-if>
+        </sc-if>
+        <sc-if value="{{ a1done }}" hint-placeholder-val="{{ false }}">
+          <div style="display:flex; flex-direction:column; align-items:center; gap:20px; animation:pop .4s ease;">
+            <span style="font-size:100px; font-family:'Fredoka',sans-serif; color:#FFCA3A;">★ ★ ★ ★ ★</span>
+            <p style="margin:0; font-family:'Fredoka',sans-serif; font-size:36px; font-weight:600; color:#8AC926;">¡Conoces los cambios del agua!</p>
+            <button onClick="{{ a1Reset }}" style="background:#fff; color:#6A4C93; border:3px solid #6A4C93; border-radius:40px; padding:14px 30px; font-size:18px; font-weight:900; cursor:pointer; font-family:'Nunito',sans-serif;">Jugar otra vez</button>
+          </div>
+        </sc-if>
+      </div>
+    </sc-if>
+
+    <sc-if value="{{ s4 }}" hint-placeholder-val="{{ false }}">
+      <div style="display:flex; flex-direction:column; align-items:center; gap:24px; text-align:center; animation:pop .4s ease;">
+        <span style="background:#8AC926; color:#fff; border-radius:30px; padding:10px 26px; font-size:16px; font-weight:900; letter-spacing:2px;">PAUSA ACTIVA · ¡SÉ UNA GOTA!</span>
+        <sc-if value="{{ paIdle }}" hint-placeholder-val="{{ true }}">
+          <h1 style="margin:0; font-family:'Fredoka',sans-serif; font-size:52px; font-weight:700;">4 movimientos, 20 segundos cada uno</h1>
+          <p style="margin:0; font-size:24px; font-weight:800; color:#6A4C93; max-width:700px;">Todos de pie. Sé una gota de agua que viaja por el ciclo.</p>
+          <button onClick="{{ paStart }}" style="background:#FF595E; color:#fff; border:none; border-radius:50px; padding:22px 56px; font-family:'Fredoka',sans-serif; font-size:34px; font-weight:600; cursor:pointer;" style-hover="transform:scale(1.05);">¡Comenzar! ▶</button>
+        </sc-if>
+        <sc-if value="{{ paRunning }}" hint-placeholder-val="{{ false }}">
+          <span style="background:#fff; border-radius:30px; padding:10px 26px; font-size:18px; font-weight:900; color:#6A4C93;">Movimiento {{ paNum }} de 4</span>
+          <div style="width:220px; height:220px; border-radius:50%; background:{{ paColor }}; display:flex; align-items:center; justify-content:center; box-shadow:0 10px 0 rgba(42,42,64,.12);">
+            <span style="font-family:'Fredoka',sans-serif; font-size:110px; font-weight:600; color:#fff;">{{ paTime }}</span>
+          </div>
+          <h1 style="margin:0; font-family:'Fredoka',sans-serif; font-size:56px; font-weight:700;">{{ paName }}</h1>
+          <p style="margin:0; font-size:26px; font-weight:800; color:#6A4C93; max-width:700px;">{{ paDesc }}</p>
+        </sc-if>
+        <sc-if value="{{ paDone }}" hint-placeholder-val="{{ false }}">
+          <h1 style="margin:0; font-family:'Fredoka',sans-serif; font-size:60px; font-weight:700; color:#8AC926;">¡Excelente trabajo!</h1>
+          <p style="margin:0; font-size:26px; font-weight:800; color:#6A4C93;">Respira profundo tres veces y vuelve a tu puesto en silencio.</p>
+          <button onClick="{{ paStart }}" style="background:#fff; color:#6A4C93; border:3px solid #6A4C93; border-radius:40px; padding:14px 30px; font-size:18px; font-weight:900; cursor:pointer; font-family:'Nunito',sans-serif;">Repetir la pausa</button>
+        </sc-if>
+      </div>
+    </sc-if>
+
+    <sc-if value="{{ s5 }}" hint-placeholder-val="{{ false }}">
+      <div style="display:flex; flex-direction:column; align-items:center; gap:22px; text-align:center; animation:pop .4s ease;">
+        <span style="background:#6A4C93; color:#fff; border-radius:30px; padding:10px 26px; font-size:16px; font-weight:900; letter-spacing:2px;">ORDENA EL CICLO · {{ a2Num }}</span>
+        <h1 style="margin:0; font-family:'Fredoka',sans-serif; font-size:36px; font-weight:700; max-width:860px;">{{ a2Q }}</h1>
+        <sc-if value="{{ a2Playing }}" hint-placeholder-val="{{ true }}">
+          <div style="display:flex; gap:16px; flex-wrap:wrap; justify-content:center;">
+            <button onClick="{{ a2p1 }}" style="min-width:170px; background:#FF595E; color:#fff; border:none; border-radius:22px; padding:18px 28px; font-family:'Fredoka',sans-serif; font-size:26px; font-weight:600; cursor:pointer;" style-hover="transform:scale(1.06);">{{ a2o1 }}</button>
+            <button onClick="{{ a2p2 }}" style="min-width:170px; background:#1982C4; color:#fff; border:none; border-radius:22px; padding:18px 28px; font-family:'Fredoka',sans-serif; font-size:26px; font-weight:600; cursor:pointer;" style-hover="transform:scale(1.06);">{{ a2o2 }}</button>
+            <button onClick="{{ a2p3 }}" style="min-width:170px; background:#8AC926; color:#fff; border:none; border-radius:22px; padding:18px 28px; font-family:'Fredoka',sans-serif; font-size:26px; font-weight:600; cursor:pointer;" style-hover="transform:scale(1.06);">{{ a2o3 }}</button>
+          </div>
+          <sc-if value="{{ a2ok }}" hint-placeholder-val="{{ false }}">
+            <div style="display:flex; align-items:center; gap:16px; animation:pop .3s ease;">
+              <span style="background:#8AC926; color:#fff; border-radius:30px; padding:12px 30px; font-family:'Fredoka',sans-serif; font-size:24px; font-weight:600;">¡Correcto! ★</span>
+              <button onClick="{{ a2next }}" style="background:#2A2A40; color:#fff; border:none; border-radius:30px; padding:12px 30px; font-size:18px; font-weight:900; cursor:pointer; font-family:'Nunito',sans-serif;">Siguiente ▶</button>
+            </div>
+          </sc-if>
+          <sc-if value="{{ a2bad }}" hint-placeholder-val="{{ false }}">
+            <span style="background:#FF595E; color:#fff; border-radius:30px; padding:12px 30px; font-family:'Fredoka',sans-serif; font-size:24px; font-weight:600; animation:pop .3s ease;">Recuerda el orden del ciclo.</span>
+          </sc-if>
+        </sc-if>
+        <sc-if value="{{ a2done }}" hint-placeholder-val="{{ false }}">
+          <div style="display:flex; flex-direction:column; align-items:center; gap:20px; animation:pop .4s ease;">
+            <span style="font-size:90px; font-family:'Fredoka',sans-serif; color:#FFCA3A;">★ ★ ★ ★</span>
+            <p style="margin:0; font-family:'Fredoka',sans-serif; font-size:36px; font-weight:600; color:#8AC926;">¡Dominas el ciclo del agua!</p>
+            <button onClick="{{ a2Reset }}" style="background:#fff; color:#6A4C93; border:3px solid #6A4C93; border-radius:40px; padding:14px 30px; font-size:18px; font-weight:900; cursor:pointer; font-family:'Nunito',sans-serif;">Jugar otra vez</button>
+          </div>
+        </sc-if>
+      </div>
+    </sc-if>
+
+    <sc-if value="{{ s6 }}" hint-placeholder-val="{{ false }}">
+      <div style="display:flex; flex-direction:column; align-items:center; gap:24px; text-align:center; max-width:900px; animation:pop .4s ease;">
+        <span style="background:#FFCA3A; color:#2A2A40; border-radius:30px; padding:10px 26px; font-size:16px; font-weight:900; letter-spacing:2px;">RETO FINAL</span>
+        <h1 style="margin:0; font-family:'Fredoka',sans-serif; font-size:40px; font-weight:700;">El sol calienta el charco. ¿Qué ocurre primero?</h1>
+        <div style="display:flex; gap:20px; flex-wrap:wrap; justify-content:center;">
+          <button onClick="{{ rp1 }}" style="min-width:200px; background:#fff; border:none; border-radius:24px; padding:22px 28px; font-family:'Fredoka',sans-serif; font-size:26px; font-weight:600; color:#2A2A40; cursor:pointer; box-shadow:0 6px 0 rgba(42,42,64,.1);" style-hover="transform:scale(1.04);">☀️💧<br>Se evapora</button>
+          <button onClick="{{ rp2 }}" style="min-width:200px; background:#fff; border:none; border-radius:24px; padding:22px 28px; font-family:'Fredoka',sans-serif; font-size:26px; font-weight:600; color:#2A2A40; cursor:pointer; box-shadow:0 6px 0 rgba(42,42,64,.1);" style-hover="transform:scale(1.04);">🧊<br>Se congela</button>
+          <button onClick="{{ rp3 }}" style="min-width:200px; background:#fff; border:none; border-radius:24px; padding:22px 28px; font-family:'Fredoka',sans-serif; font-size:26px; font-weight:600; color:#2A2A40; cursor:pointer; box-shadow:0 6px 0 rgba(42,42,64,.1);" style-hover="transform:scale(1.04);">🌧️<br>Llueve</button>
+        </div>
+        <sc-if value="{{ rok }}" hint-placeholder-val="{{ false }}">
+          <div style="display:flex; flex-direction:column; align-items:center; gap:12px; animation:pop .3s ease;">
+            <span style="background:#8AC926; color:#fff; border-radius:30px; padding:14px 34px; font-family:'Fredoka',sans-serif; font-size:28px; font-weight:600;">¡Se evapora! El calor la convierte en vapor. ★★★</span>
+            <p style="margin:0; font-size:22px; font-weight:800; color:#6A4C93;">Cierre: di los 4 pasos del ciclo del agua.</p>
+          </div>
+        </sc-if>
+        <sc-if value="{{ rbad }}" hint-placeholder-val="{{ false }}">
+          <span style="background:#FF595E; color:#fff; border-radius:30px; padding:12px 30px; font-family:'Fredoka',sans-serif; font-size:24px; font-weight:600; animation:pop .3s ease;">Con calor el agua sube al cielo. Intenta otra vez.</span>
+        </sc-if>
+      </div>
+    </sc-if>
+
+  </main>
+
+  <footer style="display:flex; align-items:center; justify-content:space-between; padding:16px 28px; background:#fff; box-shadow:0 -4px 0 rgba(42,42,64,.08);">
+    <button onClick="{{ prev }}" style="background:#fff; color:#6A4C93; border:3px solid #6A4C93; border-radius:40px; padding:14px 34px; font-size:18px; font-weight:900; cursor:pointer; font-family:'Nunito',sans-serif;" style-hover="background:#F1EAFB;">◀ Anterior</button>
+    <span style="font-size:16px; font-weight:900; color:#6A4C93; letter-spacing:1px;">{{ titulo }}</span>
+    <button onClick="{{ next }}" style="background:#1982C4; color:#fff; border:none; border-radius:40px; padding:14px 34px; font-size:18px; font-weight:900; cursor:pointer; font-family:'Nunito',sans-serif;" style-hover="background:#136394;">Siguiente ▶</button>
+  </footer>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;timerMinutes&quot;: {&quot;editor&quot;: &quot;int&quot;, &quot;default&quot;: 5, &quot;min&quot;: 1, &quot;max&quot;: 20, &quot;unit&quot;: &quot;min&quot;, &quot;tsType&quot;: &quot;number&quot;, &quot;section&quot;: &quot;Temporizador&quot;}}">
+class Component extends DCLogic {
+  state = {
+    screen: 0, hLeft: undefined, hRun: false, step: 0,
+    a1q: 0, a1ans: 0, a1done: false,
+    paPhase: "idle", paIdx: 0, paLeft: 20,
+    a2q: 0, a2ans: 0, a2done: false, r: 0
+  };
+  componentDidMount() {
+    this._iv = setInterval(() => {
+      this.setState(s => {
+        const n = {};
+        if (s.hRun && s.hLeft > 0) { n.hLeft = s.hLeft - 1; if (n.hLeft === 0) n.hRun = false; }
+        if (s.paPhase === "run") {
+          if (s.paLeft > 1) n.paLeft = s.paLeft - 1;
+          else if (s.paIdx < 3) { n.paIdx = s.paIdx + 1; n.paLeft = 20; }
+          else { n.paPhase = "done"; }
+        }
+        return Object.keys(n).length ? n : null;
+      });
+    }, 1000);
+  }
+  componentWillUnmount() { clearInterval(this._iv); }
+  renderVals() {
+    const s = this.state;
+    const SCREENS = ["El viaje de una gota", "El ciclo paso a paso", "¿Qué cambio es?", "Pausa activa", "Ordena el ciclo", "Reto final"];
+    const go = d => this.setState(st => ({ screen: Math.max(0, Math.min(5, st.screen + d)) }));
+    const hMin = this.props.timerMinutes ?? 5;
+    const tH = s.hLeft === undefined ? hMin + ":00" : (s.hLeft === 0 ? "¡TIEMPO!" : Math.floor(s.hLeft / 60) + ":" + String(s.hLeft % 60).padStart(2, "0"));
+    const STEP = [
+      "Pulsa «Siguiente» para ver el primer paso del ciclo.",
+      "1. EVAPORACIÓN: el sol calienta el agua de ríos y mares, y sube como vapor.",
+      "2. CONDENSACIÓN: arriba hace frío y el vapor se junta formando las nubes.",
+      "3. PRECIPITACIÓN: las nubes se llenan y cae la lluvia (o granizo y nieve).",
+      "4. ESCURRIMIENTO: el agua corre por el suelo y vuelve a los ríos y mares. ¡Y todo empieza otra vez! 🔄"
+    ];
+    const bg = i => s.step >= i ? "#E3F0FA" : "#F3EFE4";
+    const op = i => s.step >= i ? "1" : "0.3";
+    const A1 = [
+      { emoji: "🫖", text: "El vapor sale de la olla caliente.", ok: 0 },
+      { emoji: "🪟", text: "Se forman gotas en la ventana fría.", ok: 1 },
+      { emoji: "🧊", text: "El agua en el congelador se vuelve hielo.", ok: 2 },
+      { emoji: "☀️💧", text: "El charco desaparece con el sol.", ok: 0 },
+      { emoji: "☁️", text: "El vapor forma una nube en el cielo.", ok: 1 }
+    ];
+    const q1 = A1[Math.min(s.a1q, 4)];
+    const a1pick = i => () => this.setState({ a1ans: i === q1.ok ? 1 : 2 });
+    const A2 = [
+      { q: "¿Qué pasa DESPUÉS de la evaporación?", opts: ["Condensación", "Escurrimiento", "Nada"], ok: 0 },
+      { q: "¿Qué pasa DESPUÉS de la condensación?", opts: ["Evaporación", "Precipitación", "Congelación"], ok: 1 },
+      { q: "¿Cuál es el PRIMER paso del ciclo?", opts: ["Lluvia", "Nubes", "Evaporación"], ok: 2 },
+      { q: "Cuando llueve, el agua vuelve a...", opts: ["Ríos y mares", "El congelador", "Las nubes"], ok: 0 }
+    ];
+    const q2 = A2[Math.min(s.a2q, 3)];
+    const a2pick = i => () => this.setState({ a2ans: i === q2.ok ? 1 : 2 });
+    const PA = [
+      { name: "Sube el vapor", desc: "Agáchate y sube despacio con los brazos como vapor caliente.", color: "#FFCA3A" },
+      { name: "Forma la nube", desc: "Junta los brazos redondos sobre tu cabeza: eres una nube.", color: "#6A4C93" },
+      { name: "Cae la lluvia", desc: "Mueve los dedos hacia abajo como gotas que caen.", color: "#1982C4" },
+      { name: "Corre al río", desc: "Mueve los brazos como olas y corre suavemente en tu puesto.", color: "#8AC926" }
+    ];
+    const pa = PA[s.paIdx];
+    return {
+      titulo: SCREENS[s.screen].toUpperCase(), num: (s.screen + 1) + " / 6",
+      prev: () => go(-1), next: () => go(1),
+      s1: s.screen === 0, s2: s.screen === 1, s3: s.screen === 2, s4: s.screen === 3, s5: s.screen === 4, s6: s.screen === 5,
+      tH, startH: () => this.setState({ hLeft: hMin * 60, hRun: true }),
+      stepTxt: STEP[s.step],
+      c1bg: bg(1), c1op: op(1), c2bg: bg(2), c2op: op(2), c3bg: bg(3), c3op: op(3), c4bg: bg(4), c4op: op(4),
+      stepAdv: () => this.setState(st => ({ step: Math.min(4, st.step + 1) })),
+      stepReset: () => this.setState({ step: 0 }),
+      a1Num: "SITUACIÓN " + (Math.min(s.a1q, 4) + 1) + " DE 5",
+      a1Playing: !s.a1done, a1done: s.a1done, a1Emoji: q1.emoji, a1Text: q1.text,
+      a1p1: a1pick(0), a1p2: a1pick(1), a1p3: a1pick(2),
+      a1ok: s.a1ans === 1, a1bad: s.a1ans === 2,
+      a1next: () => this.setState(st => st.a1q >= 4 ? { a1done: true, a1ans: 0 } : { a1q: st.a1q + 1, a1ans: 0 }),
+      a1Reset: () => this.setState({ a1q: 0, a1ans: 0, a1done: false }),
+      paIdle: s.paPhase === "idle", paRunning: s.paPhase === "run", paDone: s.paPhase === "done",
+      paStart: () => this.setState({ paPhase: "run", paIdx: 0, paLeft: 20 }),
+      paNum: String(s.paIdx + 1), paName: pa.name, paDesc: pa.desc, paColor: pa.color, paTime: String(s.paLeft),
+      a2Num: "PREGUNTA " + (Math.min(s.a2q, 3) + 1) + " DE 4",
+      a2Playing: !s.a2done, a2done: s.a2done, a2Q: q2.q,
+      a2o1: q2.opts[0], a2o2: q2.opts[1], a2o3: q2.opts[2],
+      a2p1: a2pick(0), a2p2: a2pick(1), a2p3: a2pick(2),
+      a2ok: s.a2ans === 1, a2bad: s.a2ans === 2,
+      a2next: () => this.setState(st => st.a2q >= 3 ? { a2done: true, a2ans: 0 } : { a2q: st.a2q + 1, a2ans: 0 }),
+      a2Reset: () => this.setState({ a2q: 0, a2ans: 0, a2done: false }),
+      rp1: () => this.setState({ r: 1 }), rp2: () => this.setState({ r: 2 }), rp3: () => this.setState({ r: 2 }),
+      rok: s.r === 1, rbad: s.r === 2
+    };
+  }
+}
+</script>
+</body>
+</html>

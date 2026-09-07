@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<meta name="description" content="Web interactiva: Herramientas de dibujo digital - Grado 2°">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Nunito:wght@700;800;900&display=swap" rel="stylesheet">
+<style>
+body { margin:0; background:#FFF9EF; }
+a { color:#1982C4; } a:hover { color:#FF595E; }
+@keyframes pop { 0% { transform:scale(.6); opacity:0; } 100% { transform:scale(1); opacity:1; } }
+</style>
+<template id="__bundler_thumbnail" data-bg-color="#FFF9EF">
+<svg viewBox="0 0 120 80" xmlns="http://www.w3.org/2000/svg">
+<circle cx="60" cy="40" r="26" fill="#1982C4"></circle>
+<text x="60" y="52" text-anchor="middle" font-size="30">🖌️</text>
+</svg>
+</template>
+</helmet>
+<div style="min-height:100vh; display:flex; flex-direction:column; font-family:'Nunito',sans-serif; color:#2A2A40;">
+
+  <header style="display:flex; align-items:center; gap:16px; padding:14px 28px; background:#fff; box-shadow:0 4px 0 rgba(42,42,64,.08);">
+    <span style="width:44px; height:44px; border-radius:14px; background:#1982C4; color:#fff; display:flex; align-items:center; justify-content:center; font-size:22px;">🖌️</span>
+    <div style="display:flex; flex-direction:column;">
+      <span style="font-family:'Fredoka',sans-serif; font-size:22px; font-weight:600;">Dibujo Digital</span>
+      <span style="font-size:13px; font-weight:900; color:#6A4C93; letter-spacing:1px;">TECNOLOGÍA · GRADO 2°</span>
+    </div>
+    <div style="flex:1;"></div>
+    <button onClick="{{ startH }}" style="display:flex; align-items:center; gap:12px; background:#2A2A40; color:#fff; border:none; border-radius:40px; padding:8px 20px; cursor:pointer; font-family:'Nunito',sans-serif;" style-hover="background:#6A4C93;">
+      <span style="font-size:13px; font-weight:900; letter-spacing:1px;">TEMPORIZADOR ▶</span>
+      <span style="font-family:'Fredoka',sans-serif; font-size:24px; font-weight:600; color:#FFCA3A;">{{ tH }}</span>
+    </button>
+    <span style="background:#FFCA3A; border-radius:40px; padding:10px 20px; font-family:'Fredoka',sans-serif; font-size:20px; font-weight:600;">{{ num }}</span>
+  </header>
+
+  <main style="flex:1; display:flex; flex-direction:column; align-items:center; justify-content:center; padding:32px 24px; position:relative; overflow:hidden;">
+
+    <sc-if value="{{ s1 }}" hint-placeholder-val="{{ true }}">
+      <div style="display:flex; flex-direction:column; align-items:center; gap:26px; text-align:center; max-width:900px; animation:pop .4s ease;">
+        <span style="background:#8AC926; color:#fff; border-radius:30px; padding:10px 26px; font-size:16px; font-weight:900; letter-spacing:2px;">¡BIENVENIDOS!</span>
+        <h1 style="margin:0; font-family:'Fredoka',sans-serif; font-size:52px; font-weight:700; line-height:1.1;">Dibujar con el computador</h1>
+        <div style="background:#fff; border-radius:28px; padding:30px 40px; box-shadow:0 8px 0 rgba(42,42,64,.1);">
+          <p style="margin:0; font-size:56px;">✏️ 🖌️ 🎨</p>
+          <p style="margin:18px 0 0; font-family:'Fredoka',sans-serif; font-size:32px; font-weight:600; color:#6A4C93;">¿Se puede dibujar sin lápiz ni papel? ¿Cómo lo haríamos en un computador?</p>
+        </div>
+        <p style="margin:0; font-size:22px; font-weight:800; color:#6A4C93;">Piensa y comparte con la clase.</p>
+      </div>
+    </sc-if>
+
+    <sc-if value="{{ s2 }}" hint-placeholder-val="{{ false }}">
+      <div style="display:flex; flex-direction:column; align-items:center; gap:20px; text-align:center; animation:pop .4s ease;">
+        <span style="background:#1982C4; color:#fff; border-radius:30px; padding:10px 26px; font-size:16px; font-weight:900; letter-spacing:2px;">LAS HERRAMIENTAS · TOCA CADA UNA</span>
+        <h1 style="margin:0; font-family:'Fredoka',sans-serif; font-size:38px; font-weight:700;">¿Para qué sirve cada herramienta?</h1>
+        <div style="display:flex; gap:12px; flex-wrap:wrap; justify-content:center; max-width:820px;">
+          <sc-for list="{{ tools }}" as="t" hint-placeholder-count="6">
+            <button onClick="{{ t.pick }}" style="width:120px; border:none; border-radius:18px; background:{{ t.bg }}; cursor:pointer; padding:16px 8px; display:flex; flex-direction:column; gap:4px; align-items:center;" style-hover="transform:scale(1.07);">
+              <span style="font-size:40px;">{{ t.icon }}</span>
+              <span style="font-family:'Fredoka',sans-serif; font-size:17px; font-weight:600; color:#2A2A40;">{{ t.name }}</span>
+            </button>
+          </sc-for>
+        </div>
+        <div style="background:#fff; border-radius:22px; padding:20px 36px; box-shadow:0 8px 0 rgba(42,42,64,.1); min-width:480px;">
+          <p style="margin:0; font-family:'Fredoka',sans-serif; font-size:26px; font-weight:600; color:#1982C4;">{{ toolName }}</p>
+          <p style="margin:6px 0 0; font-size:21px; font-weight:800; color:#6A4C93;">{{ toolInfo }}</p>
+        </div>
+      </div>
+    </sc-if>
+
+    <sc-if value="{{ s3 }}" hint-placeholder-val="{{ false }}">
+      <div style="display:flex; flex-direction:column; align-items:center; gap:20px; text-align:center; animation:pop .4s ease;">
+        <span style="background:#FFCA3A; color:#2A2A40; border-radius:30px; padding:10px 26px; font-size:16px; font-weight:900; letter-spacing:2px;">DIBUJEMOS UNA CASA · PASO {{ pasoNum }}</span>
+        <h1 style="margin:0; font-family:'Fredoka',sans-serif; font-size:34px; font-weight:700; max-width:820px;">{{ pasoTxt }}</h1>
+        <div style="background:#fff; border:3px solid #2A2A40; border-radius:16px; padding:20px; box-shadow:0 8px 0 rgba(42,42,64,.1); width:340px; height:250px; display:flex; align-items:center; justify-content:center;">
+          <p style="margin:0; font-size:120px; line-height:1;">{{ pasoArt }}</p>
+        </div>
+        <div style="display:flex; gap:14px;">
+          <button onClick="{{ pasoAdv }}" style="background:#8AC926; color:#fff; border:none; border-radius:40px; padding:16px 32px; font-size:20px; font-weight:900; cursor:pointer; font-family:'Nunito',sans-serif;" style-hover="background:#6FA31E;">Siguiente paso ▶</button>
+          <button onClick="{{ pasoReset }}" style="background:#fff; color:#6A4C93; border:3px solid #6A4C93; border-radius:40px; padding:16px 32px; font-size:20px; font-weight:900; cursor:pointer; font-family:'Nunito',sans-serif;" style-hover="background:#F1EAFB;">Reiniciar</button>
+        </div>
+        <p style="margin:0; font-size:18px; font-weight:800; color:#6A4C93;">Herramienta que usamos: <span style="font-family:'Fredoka',sans-serif; color:#FF595E; font-size:22px;">{{ pasoTool }}</span></p>
+      </div>
+    </sc-if>
+
+    <sc-if value="{{ s4 }}" hint-placeholder-val="{{ false }}">
+      <div style="display:flex; flex-direction:column; align-items:center; gap:24px; text-align:center; animation:pop .4s ease;">
+        <span style="background:#8AC926; color:#fff; border-radius:30px; padding:10px 26px; font-size:16px; font-weight:900; letter-spacing:2px;">PAUSA ACTIVA · ¡DESCANSA LOS OJOS!</span>
+        <sc-if value="{{ paIdle }}" hint-placeholder-val="{{ true }}">
+          <h1 style="margin:0; font-family:'Fredoka',sans-serif; font-size:52px; font-weight:700;">4 movimientos, 20 segundos cada uno</h1>
+          <p style="margin:0; font-size:24px; font-weight:800; color:#6A4C93; max-width:700px;">Después de usar el computador hay que descansar la vista y las manos.</p>
+          <button onClick="{{ paStart }}" style="background:#FF595E; color:#fff; border:none; border-radius:50px; padding:22px 56px; font-family:'Fredoka',sans-serif; font-size:34px; font-weight:600; cursor:pointer;" style-hover="transform:scale(1.05);">¡Comenzar! ▶</button>
+        </sc-if>
+        <sc-if value="{{ paRunning }}" hint-placeholder-val="{{ false }}">
+          <span style="background:#fff; border-radius:30px; padding:10px 26px; font-size:18px; font-weight:900; color:#6A4C93;">Movimiento {{ paNum }} de 4</span>
+          <div style="width:220px; height:220px; border-radius:50%; background:{{ paColor }}; display:flex; align-items:center; justify-content:center; box-shadow:0 10px 0 rgba(42,42,64,.12);">
+            <span style="font-family:'Fredoka',sans-serif; font-size:110px; font-weight:600; color:#fff;">{{ paTime }}</span>
+          </div>
+          <h1 style="margin:0; font-family:'Fredoka',sans-serif; font-size:52px; font-weight:700;">{{ paName }}</h1>
+          <p style="margin:0; font-size:26px; font-weight:800; color:#6A4C93; max-width:700px;">{{ paDesc }}</p>
+        </sc-if>
+        <sc-if value="{{ paDone }}" hint-placeholder-val="{{ false }}">
+          <h1 style="margin:0; font-family:'Fredoka',sans-serif; font-size:60px; font-weight:700; color:#8AC926;">¡Excelente trabajo!</h1>
+          <p style="margin:0; font-size:26px; font-weight:800; color:#6A4C93;">Respira profundo tres veces y vuelve a tu puesto en silencio.</p>
+          <button onClick="{{ paStart }}" style="background:#fff; color:#6A4C93; border:3px solid #6A4C93; border-radius:40px; padding:14px 30px; font-size:18px; font-weight:900; cursor:pointer; font-family:'Nunito',sans-serif;">Repetir la pausa</button>
+        </sc-if>
+      </div>
+    </sc-if>
+
+    <sc-if value="{{ s5 }}" hint-placeholder-val="{{ false }}">
+      <div style="display:flex; flex-direction:column; align-items:center; gap:20px; text-align:center; animation:pop .4s ease;">
+        <span style="background:#6A4C93; color:#fff; border-radius:30px; padding:10px 26px; font-size:16px; font-weight:900; letter-spacing:2px;">¿QUÉ HERRAMIENTA USO? · {{ a1Num }}</span>
+        <h1 style="margin:0; font-family:'Fredoka',sans-serif; font-size:34px; font-weight:700; max-width:820px;">{{ a1Q }}</h1>
+        <sc-if value="{{ a1Playing }}" hint-placeholder-val="{{ true }}">
+          <div style="display:flex; gap:16px; flex-wrap:wrap; justify-content:center;">
+            <button onClick="{{ a1p1 }}" style="min-width:150px; background:#fff; border:none; border-radius:20px; padding:18px 22px; cursor:pointer; box-shadow:0 6px 0 rgba(42,42,64,.1); display:flex; flex-direction:column; gap:4px; align-items:center;" style-hover="transform:scale(1.05);"><span style="font-size:44px;">{{ a1i1 }}</span><span style="font-family:'Fredoka',sans-serif; font-size:18px; font-weight:600;">{{ a1o1 }}</span></button>
+            <button onClick="{{ a1p2 }}" style="min-width:150px; background:#fff; border:none; border-radius:20px; padding:18px 22px; cursor:pointer; box-shadow:0 6px 0 rgba(42,42,64,.1); display:flex; flex-direction:column; gap:4px; align-items:center;" style-hover="transform:scale(1.05);"><span style="font-size:44px;">{{ a1i2 }}</span><span style="font-family:'Fredoka',sans-serif; font-size:18px; font-weight:600;">{{ a1o2 }}</span></button>
+            <button onClick="{{ a1p3 }}" style="min-width:150px; background:#fff; border:none; border-radius:20px; padding:18px 22px; cursor:pointer; box-shadow:0 6px 0 rgba(42,42,64,.1); display:flex; flex-direction:column; gap:4px; align-items:center;" style-hover="transform:scale(1.05);"><span style="font-size:44px;">{{ a1i3 }}</span><span style="font-family:'Fredoka',sans-serif; font-size:18px; font-weight:600;">{{ a1o3 }}</span></button>
+          </div>
+          <sc-if value="{{ a1ok }}" hint-placeholder-val="{{ false }}">
+            <div style="display:flex; align-items:center; gap:16px; animation:pop .3s ease;">
+              <span style="background:#8AC926; color:#fff; border-radius:30px; padding:12px 30px; font-family:'Fredoka',sans-serif; font-size:24px; font-weight:600;">¡Correcto! ★</span>
+              <button onClick="{{ a1next }}" style="background:#2A2A40; color:#fff; border:none; border-radius:30px; padding:12px 30px; font-size:18px; font-weight:900; cursor:pointer; font-family:'Nunito',sans-serif;">Siguiente ▶</button>
+            </div>
+          </sc-if>
+          <sc-if value="{{ a1bad }}" hint-placeholder-val="{{ false }}">
+            <span style="background:#FF595E; color:#fff; border-radius:30px; padding:12px 30px; font-family:'Fredoka',sans-serif; font-size:24px; font-weight:600; animation:pop .3s ease;">Piensa qué hace cada herramienta.</span>
+          </sc-if>
+        </sc-if>
+        <sc-if value="{{ a1done }}" hint-placeholder-val="{{ false }}">
+          <div style="display:flex; flex-direction:column; align-items:center; gap:20px; animation:pop .4s ease;">
+            <span style="font-size:100px; font-family:'Fredoka',sans-serif; color:#FFCA3A;">★ ★ ★ ★ ★</span>
+            <p style="margin:0; font-family:'Fredoka',sans-serif; font-size:36px; font-weight:600; color:#8AC926;">¡Dominas las herramientas!</p>
+            <button onClick="{{ a1Reset }}" style="background:#fff; color:#6A4C93; border:3px solid #6A4C93; border-radius:40px; padding:14px 30px; font-size:18px; font-weight:900; cursor:pointer; font-family:'Nunito',sans-serif;">Jugar otra vez</button>
+          </div>
+        </sc-if>
+      </div>
+    </sc-if>
+
+    <sc-if value="{{ s6 }}" hint-placeholder-val="{{ false }}">
+      <div style="display:flex; flex-direction:column; align-items:center; gap:24px; text-align:center; max-width:900px; animation:pop .4s ease;">
+        <span style="background:#FFCA3A; color:#2A2A40; border-radius:30px; padding:10px 26px; font-size:16px; font-weight:900; letter-spacing:2px;">RETO FINAL</span>
+        <h1 style="margin:0; font-family:'Fredoka',sans-serif; font-size:40px; font-weight:700;">Me equivoqué en mi dibujo. ¿Qué herramienta uso?</h1>
+        <div style="display:flex; gap:20px;">
+          <button onClick="{{ rp1 }}" style="min-width:170px; background:#fff; border:none; border-radius:24px; padding:22px 26px; cursor:pointer; box-shadow:0 6px 0 rgba(42,42,64,.1); display:flex; flex-direction:column; gap:6px; align-items:center;" style-hover="transform:scale(1.05);"><span style="font-size:56px;">🪣</span><span style="font-family:'Fredoka',sans-serif; font-size:20px; font-weight:600;">Balde</span></button>
+          <button onClick="{{ rp2 }}" style="min-width:170px; background:#fff; border:none; border-radius:24px; padding:22px 26px; cursor:pointer; box-shadow:0 6px 0 rgba(42,42,64,.1); display:flex; flex-direction:column; gap:6px; align-items:center;" style-hover="transform:scale(1.05);"><span style="font-size:56px;">🧽</span><span style="font-family:'Fredoka',sans-serif; font-size:20px; font-weight:600;">Borrador</span></button>
+          <button onClick="{{ rp3 }}" style="min-width:170px; background:#fff; border:none; border-radius:24px; padding:22px 26px; cursor:pointer; box-shadow:0 6px 0 rgba(42,42,64,.1); display:flex; flex-direction:column; gap:6px; align-items:center;" style-hover="transform:scale(1.05);"><span style="font-size:56px;">🎨</span><span style="font-family:'Fredoka',sans-serif; font-size:20px; font-weight:600;">Paleta</span></button>
+        </div>
+        <sc-if value="{{ rok }}" hint-placeholder-val="{{ false }}">
+          <div style="display:flex; flex-direction:column; align-items:center; gap:12px; animation:pop .3s ease;">
+            <span style="background:#8AC926; color:#fff; border-radius:30px; padding:14px 34px; font-family:'Fredoka',sans-serif; font-size:28px; font-weight:600;">¡El borrador! Corrige los errores. ★★★</span>
+            <p style="margin:0; font-size:22px; font-weight:800; color:#6A4C93;">Cierre: nombra 3 herramientas y para qué sirven.</p>
+          </div>
+        </sc-if>
+        <sc-if value="{{ rbad }}" hint-placeholder-val="{{ false }}">
+          <span style="background:#FF595E; color:#fff; border-radius:30px; padding:12px 30px; font-family:'Fredoka',sans-serif; font-size:24px; font-weight:600; animation:pop .3s ease;">Esa hace otra cosa. Busca la que borra.</span>
+        </sc-if>
+      </div>
+    </sc-if>
+
+  </main>
+
+  <footer style="display:flex; align-items:center; justify-content:space-between; padding:16px 28px; background:#fff; box-shadow:0 -4px 0 rgba(42,42,64,.08);">
+    <button onClick="{{ prev }}" style="background:#fff; color:#6A4C93; border:3px solid #6A4C93; border-radius:40px; padding:14px 34px; font-size:18px; font-weight:900; cursor:pointer; font-family:'Nunito',sans-serif;" style-hover="background:#F1EAFB;">◀ Anterior</button>
+    <span style="font-size:16px; font-weight:900; color:#6A4C93; letter-spacing:1px;">{{ titulo }}</span>
+    <button onClick="{{ next }}" style="background:#1982C4; color:#fff; border:none; border-radius:40px; padding:14px 34px; font-size:18px; font-weight:900; cursor:pointer; font-family:'Nunito',sans-serif;" style-hover="background:#136394;">Siguiente ▶</button>
+  </footer>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;timerMinutes&quot;: {&quot;editor&quot;: &quot;int&quot;, &quot;default&quot;: 5, &quot;min&quot;: 1, &quot;max&quot;: 20, &quot;unit&quot;: &quot;min&quot;, &quot;tsType&quot;: &quot;number&quot;, &quot;section&quot;: &quot;Temporizador&quot;}}">
+class Component extends DCLogic {
+  state = {
+    screen: 0,
+    hLeft: undefined, hRun: false,
+    tool: 0,
+    paso: 0,
+    paPhase: "idle", paIdx: 0, paLeft: 20,
+    a1q: 0, a1ans: 0, a1done: false,
+    r: 0
+  };
+  TOOLS = [
+    { icon: "✏️", name: "Lápiz", info: "Dibuja líneas delgadas, como un lápiz de verdad.", bg: "#FDE3E4" },
+    { icon: "🖌️", name: "Pincel", info: "Hace trazos gruesos y suaves, como pintar.", bg: "#E3F0FA" },
+    { icon: "🧽", name: "Borrador", info: "Borra lo que dibujé por error.", bg: "#E9F5D8" },
+    { icon: "🔷", name: "Formas", info: "Dibuja círculos, cuadrados y triángulos perfectos.", bg: "#FFF3D6" },
+    { icon: "🎨", name: "Paleta", info: "Aquí elijo el color que voy a usar.", bg: "#F1EAFB" },
+    { icon: "🪣", name: "Balde", info: "Rellena una figura completa con un color.", bg: "#FDE3E4" }
+  ];
+  componentDidMount() {
+    this._iv = setInterval(() => {
+      this.setState(s => {
+        const n = {};
+        if (s.hRun && s.hLeft > 0) { n.hLeft = s.hLeft - 1; if (n.hLeft === 0) n.hRun = false; }
+        if (s.paPhase === "run") {
+          if (s.paLeft > 1) n.paLeft = s.paLeft - 1;
+          else if (s.paIdx < 3) { n.paIdx = s.paIdx + 1; n.paLeft = 20; }
+          else { n.paPhase = "done"; }
+        }
+        return Object.keys(n).length ? n : null;
+      });
+    }, 1000);
+  }
+  componentWillUnmount() { clearInterval(this._iv); }
+  renderVals() {
+    const s = this.state;
+    const SCREENS = ["Dibujar con el computador", "Las herramientas", "Dibujemos una casa", "Pausa activa", "¿Qué herramienta uso?", "Reto final"];
+    const go = d => this.setState(st => ({ screen: Math.max(0, Math.min(5, st.screen + d)) }));
+    const hMin = this.props.timerMinutes ?? 5;
+    const tH = s.hLeft === undefined ? hMin + ":00" : (s.hLeft === 0 ? "¡TIEMPO!" : Math.floor(s.hLeft / 60) + ":" + String(s.hLeft % 60).padStart(2, "0"));
+    const tools = this.TOOLS.map((t, i) => ({ icon: t.icon, name: t.name, bg: t.bg, pick: () => this.setState({ tool: i }) }));
+    const tl = this.TOOLS[s.tool];
+    const PASOS = [
+      { txt: "Paso 1: con FORMAS hago un cuadrado (la pared).", art: "⬜", tool: "🔷 Formas" },
+      { txt: "Paso 2: hago un triángulo encima (el techo).", art: "🔺\n⬜", tool: "🔷 Formas" },
+      { txt: "Paso 3: con el LÁPIZ dibujo la puerta y la ventana.", art: "🏠", tool: "✏️ Lápiz" },
+      { txt: "Paso 4: elijo un color y uso el BALDE para rellenar.", art: "🏡", tool: "🪣 Balde" },
+      { txt: "¡Listo! Guardo mi dibujo. 🎉", art: "🏡✨", tool: "💾 Guardar" }
+    ];
+    const ps = PASOS[s.paso];
+    const A1 = [
+      { q: "Quiero pintar todo el cielo de azul de una vez.", o: [["🪣", "Balde"], ["✏️", "Lápiz"], ["🧽", "Borrador"]], ok: 0 },
+      { q: "Quiero hacer un círculo perfecto.", o: [["✏️", "Lápiz"], ["🔷", "Formas"], ["🎨", "Paleta"]], ok: 1 },
+      { q: "Me equivoqué y quiero quitar una línea.", o: [["🖌️", "Pincel"], ["🪣", "Balde"], ["🧽", "Borrador"]], ok: 2 },
+      { q: "Quiero cambiar de color rojo a verde.", o: [["🎨", "Paleta"], ["🧽", "Borrador"], ["🔷", "Formas"]], ok: 0 },
+      { q: "Quiero dibujar líneas finas a mano.", o: [["🪣", "Balde"], ["✏️", "Lápiz"], ["🔷", "Formas"]], ok: 1 }
+    ];
+    const q1 = A1[Math.min(s.a1q, 4)];
+    const a1pick = i => () => this.setState({ a1ans: i === q1.ok ? 1 : 2 });
+    const PA = [
+      { name: "Ojos de lado a lado", desc: "Mira a la izquierda y a la derecha, sin mover la cabeza.", color: "#1982C4" },
+      { name: "Parpadea fuerte", desc: "Aprieta los ojos y ábrelos, 5 veces. Descansa la vista.", color: "#FF595E" },
+      { name: "Estira las manos", desc: "Abre y cierra las manos; mueve las muñecas en círculos.", color: "#8AC926" },
+      { name: "Mira lejos", desc: "Mira por la ventana o al fondo del salón y respira.", color: "#6A4C93" }
+    ];
+    const pa = PA[s.paIdx];
+    return {
+      titulo: SCREENS[s.screen].toUpperCase(),
+      num: (s.screen + 1) + " / 6",
+      prev: () => go(-1), next: () => go(1),
+      s1: s.screen === 0, s2: s.screen === 1, s3: s.screen === 2, s4: s.screen === 3,
+      s5: s.screen === 4, s6: s.screen === 5,
+      tH, startH: () => this.setState({ hLeft: hMin * 60, hRun: true }),
+      tools, toolName: tl.name, toolInfo: tl.info,
+      pasoNum: (s.paso + 1) + " DE 5", pasoTxt: ps.txt, pasoArt: ps.art, pasoTool: ps.tool,
+      pasoAdv: () => this.setState(st => ({ paso: Math.min(4, st.paso + 1) })),
+      pasoReset: () => this.setState({ paso: 0 }),
+      paIdle: s.paPhase === "idle", paRunning: s.paPhase === "run", paDone: s.paPhase === "done",
+      paStart: () => this.setState({ paPhase: "run", paIdx: 0, paLeft: 20 }),
+      paNum: String(s.paIdx + 1), paName: pa.name, paDesc: pa.desc, paColor: pa.color, paTime: String(s.paLeft),
+      a1Num: "CASO " + (Math.min(s.a1q, 4) + 1) + " DE 5",
+      a1Playing: !s.a1done, a1done: s.a1done,
+      a1Q: q1.q,
+      a1i1: q1.o[0][0], a1o1: q1.o[0][1], a1i2: q1.o[1][0], a1o2: q1.o[1][1], a1i3: q1.o[2][0], a1o3: q1.o[2][1],
+      a1p1: a1pick(0), a1p2: a1pick(1), a1p3: a1pick(2),
+      a1ok: s.a1ans === 1, a1bad: s.a1ans === 2,
+      a1next: () => this.setState(st => st.a1q >= 4 ? { a1done: true, a1ans: 0 } : { a1q: st.a1q + 1, a1ans: 0 }),
+      a1Reset: () => this.setState({ a1q: 0, a1ans: 0, a1done: false }),
+      rp1: () => this.setState({ r: 2 }), rp2: () => this.setState({ r: 1 }), rp3: () => this.setState({ r: 2 }),
+      rok: s.r === 1, rbad: s.r === 2
+    };
+  }
+}
+</script>
+</body>
+</html>

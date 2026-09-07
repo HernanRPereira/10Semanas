@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<meta name="description" content="Web interactiva Clase 5: Ciclo de vida de los animales - Grado 2°">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Nunito:wght@700;800;900&display=swap" rel="stylesheet">
+<style>
+body { margin:0; background:#FFF9EF; }
+a { color:#1982C4; } a:hover { color:#FF595E; }
+@keyframes pop { 0% { transform:scale(.6); opacity:0; } 100% { transform:scale(1); opacity:1; } }
+</style>
+<template id="__bundler_thumbnail" data-bg-color="#FFF9EF">
+<svg viewBox="0 0 120 80" xmlns="http://www.w3.org/2000/svg">
+<circle cx="60" cy="40" r="26" fill="#8AC926"></circle>
+<ellipse cx="60" cy="40" rx="12" ry="16" fill="#FFF9EF"></ellipse>
+</svg>
+</template>
+</helmet>
+<div style="min-height:100vh; display:flex; flex-direction:column; font-family:'Nunito',sans-serif; color:#2A2A40;">
+
+  <header style="display:flex; align-items:center; gap:16px; padding:14px 28px; background:#fff; box-shadow:0 4px 0 rgba(42,42,64,.08);">
+    <span style="width:44px; height:44px; border-radius:14px; background:#8AC926; color:#fff; display:flex; align-items:center; justify-content:center; font-size:22px;">🥚</span>
+    <div style="display:flex; flex-direction:column;">
+      <span style="font-family:'Fredoka',sans-serif; font-size:22px; font-weight:600;">El Ciclo de Vida</span>
+      <span style="font-size:13px; font-weight:900; color:#6A4C93; letter-spacing:1px;">CIENCIAS NATURALES · GRADO 2°</span>
+    </div>
+    <div style="flex:1;"></div>
+    <button onClick="{{ startH }}" style="display:flex; align-items:center; gap:12px; background:#2A2A40; color:#fff; border:none; border-radius:40px; padding:8px 20px; cursor:pointer; font-family:'Nunito',sans-serif;" style-hover="background:#6A4C93;">
+      <span style="font-size:13px; font-weight:900; letter-spacing:1px;">TEMPORIZADOR ▶</span>
+      <span style="font-family:'Fredoka',sans-serif; font-size:24px; font-weight:600; color:#FFCA3A;">{{ tH }}</span>
+    </button>
+    <span style="background:#FFCA3A; border-radius:40px; padding:10px 20px; font-family:'Fredoka',sans-serif; font-size:20px; font-weight:600;">{{ num }}</span>
+  </header>
+
+  <main style="flex:1; display:flex; flex-direction:column; align-items:center; justify-content:center; padding:32px 24px; position:relative; overflow:hidden;">
+
+    <sc-if value="{{ s1 }}" hint-placeholder-val="{{ true }}">
+      <div style="display:flex; flex-direction:column; align-items:center; gap:28px; text-align:center; max-width:900px; animation:pop .4s ease;">
+        <span style="background:#8AC926; color:#fff; border-radius:30px; padding:10px 26px; font-size:16px; font-weight:900; letter-spacing:2px;">¡BIENVENIDOS!</span>
+        <h1 style="margin:0; font-family:'Fredoka',sans-serif; font-size:56px; font-weight:700; line-height:1.1;">El misterio de los bebés animales</h1>
+        <div style="background:#fff; border-radius:28px; padding:32px 40px; box-shadow:0 8px 0 rgba(42,42,64,.1);">
+          <p style="margin:0; font-size:60px;">🐣 🐱</p>
+          <p style="margin:20px 0 0; font-family:'Fredoka',sans-serif; font-size:34px; font-weight:600; color:#6A4C93;">¿De dónde salen los pollitos? ¿Y los gaticos?<br>¿Nacen igual?</p>
+        </div>
+        <p style="margin:0; font-size:20px; font-weight:800; color:#6A4C93;">Piensa y comparte tu idea con la clase.</p>
+      </div>
+    </sc-if>
+
+    <sc-if value="{{ s2 }}" hint-placeholder-val="{{ false }}">
+      <div style="display:flex; flex-direction:column; align-items:center; gap:24px; text-align:center; animation:pop .4s ease;">
+        <span style="background:#1982C4; color:#fff; border-radius:30px; padding:10px 26px; font-size:16px; font-weight:900; letter-spacing:2px;">PASO A PASO</span>
+        <h1 style="margin:0; font-family:'Fredoka',sans-serif; font-size:44px; font-weight:700;">El ciclo de la gallina</h1>
+        <p style="margin:0; font-size:22px; font-weight:800; color:#6A4C93;">Pulsa «Siguiente etapa» para ver cómo crece.</p>
+        <div style="display:flex; gap:20px; align-items:center;">
+          <div style="text-align:center; background:{{ e1bg }}; border-radius:24px; padding:22px 30px; transition:all .3s;"><p style="margin:0; font-size:64px; opacity:{{ e1op }};">🥚</p><p style="margin:6px 0 0; font-family:'Fredoka',sans-serif; font-size:22px; font-weight:600;">Huevo</p></div>
+          <span style="font-size:36px; color:#8AC926;">→</span>
+          <div style="text-align:center; background:{{ e2bg }}; border-radius:24px; padding:22px 30px; transition:all .3s;"><p style="margin:0; font-size:64px; opacity:{{ e2op }};">🐣</p><p style="margin:6px 0 0; font-family:'Fredoka',sans-serif; font-size:22px; font-weight:600;">Pollito</p></div>
+          <span style="font-size:36px; color:#8AC926;">→</span>
+          <div style="text-align:center; background:{{ e3bg }}; border-radius:24px; padding:22px 30px; transition:all .3s;"><p style="margin:0; font-size:64px; opacity:{{ e3op }};">🐤</p><p style="margin:6px 0 0; font-family:'Fredoka',sans-serif; font-size:22px; font-weight:600;">Pollo joven</p></div>
+          <span style="font-size:36px; color:#8AC926;">→</span>
+          <div style="text-align:center; background:{{ e4bg }}; border-radius:24px; padding:22px 30px; transition:all .3s;"><p style="margin:0; font-size:64px; opacity:{{ e4op }};">🐔</p><p style="margin:6px 0 0; font-family:'Fredoka',sans-serif; font-size:22px; font-weight:600;">Gallina</p></div>
+        </div>
+        <div style="background:#fff; border-radius:24px; padding:20px 32px; box-shadow:0 6px 0 rgba(42,42,64,.1); max-width:640px; min-height:60px;">
+          <p style="margin:0; font-size:24px; font-weight:800;">{{ eTexto }}</p>
+        </div>
+        <div style="display:flex; gap:14px;">
+          <button onClick="{{ eAdv }}" style="background:#8AC926; color:#fff; border:none; border-radius:40px; padding:16px 32px; font-size:20px; font-weight:900; cursor:pointer; font-family:'Nunito',sans-serif;" style-hover="background:#6FA31E;">Siguiente etapa ▶</button>
+          <button onClick="{{ eReset }}" style="background:#fff; color:#6A4C93; border:3px solid #6A4C93; border-radius:40px; padding:16px 32px; font-size:20px; font-weight:900; cursor:pointer; font-family:'Nunito',sans-serif;" style-hover="background:#F1EAFB;">Reiniciar</button>
+        </div>
+      </div>
+    </sc-if>
+
+    <sc-if value="{{ s3 }}" hint-placeholder-val="{{ false }}">
+      <div style="display:flex; flex-direction:column; align-items:center; gap:24px; text-align:center; animation:pop .4s ease;">
+        <h1 style="margin:0; font-family:'Fredoka',sans-serif; font-size:44px; font-weight:700;">Dos formas de nacer</h1>
+        <p style="margin:0; font-size:22px; font-weight:800; color:#6A4C93;">Toca cada tarjeta para descubrir el secreto.</p>
+        <div style="display:flex; gap:28px; flex-wrap:wrap; justify-content:center;">
+          <button onClick="{{ ov }}" style="width:340px; border:none; border-radius:28px; background:#FF595E; color:#fff; cursor:pointer; padding:34px 28px; font-family:'Fredoka',sans-serif; display:flex; flex-direction:column; gap:12px; align-items:center;" style-hover="transform:scale(1.04);">
+            <span style="font-size:70px;">🥚</span>
+            <span style="font-size:34px; font-weight:600;">OVÍPAROS</span>
+            <sc-if value="{{ ovOn }}" hint-placeholder-val="{{ false }}"><span style="background:#fff; color:#FF595E; border-radius:18px; padding:12px 18px; font-size:22px; font-weight:600;">Nacen de un HUEVO 🐔🐢🐍🐸🐟</span></sc-if>
+            <sc-if value="{{ ovOff }}" hint-placeholder-val="{{ true }}"><span style="font-family:'Nunito',sans-serif; font-size:15px; font-weight:900; letter-spacing:1px;">¿CÓMO NACEMOS? TOCA AQUÍ</span></sc-if>
+          </button>
+          <button onClick="{{ vi }}" style="width:340px; border:none; border-radius:28px; background:#1982C4; color:#fff; cursor:pointer; padding:34px 28px; font-family:'Fredoka',sans-serif; display:flex; flex-direction:column; gap:12px; align-items:center;" style-hover="transform:scale(1.04);">
+            <span style="font-size:70px;">🐶</span>
+            <span style="font-size:34px; font-weight:600;">VIVÍPAROS</span>
+            <sc-if value="{{ viOn }}" hint-placeholder-val="{{ false }}"><span style="background:#fff; color:#1982C4; border-radius:18px; padding:12px 18px; font-size:22px; font-weight:600;">Nacen del VIENTRE de mamá 🐱🐮🐴🧒</span></sc-if>
+            <sc-if value="{{ viOff }}" hint-placeholder-val="{{ true }}"><span style="font-family:'Nunito',sans-serif; font-size:15px; font-weight:900; letter-spacing:1px;">¿CÓMO NACEMOS? TOCA AQUÍ</span></sc-if>
+          </button>
+        </div>
+      </div>
+    </sc-if>
+
+    <sc-if value="{{ s4 }}" hint-placeholder-val="{{ false }}">
+      <div style="display:flex; flex-direction:column; align-items:center; gap:24px; text-align:center; animation:pop .4s ease;">
+        <span style="background:#FFCA3A; color:#2A2A40; border-radius:30px; padding:10px 26px; font-size:16px; font-weight:900; letter-spacing:2px;">ACTIVIDAD 1 · {{ a1Num }}</span>
+        <h1 style="margin:0; font-family:'Fredoka',sans-serif; font-size:44px; font-weight:700;">¿Huevo o vientre?</h1>
+        <sc-if value="{{ a1Playing }}" hint-placeholder-val="{{ true }}">
+          <div style="background:#fff; border-radius:28px; padding:24px 70px; box-shadow:0 8px 0 rgba(42,42,64,.1); font-family:'Fredoka',sans-serif;">
+            <p style="margin:0; font-size:90px;">{{ a1Emoji }}</p>
+            <p style="margin:8px 0 0; font-size:40px; font-weight:600;">{{ a1Name }}</p>
+          </div>
+          <div style="display:flex; gap:20px;">
+            <button onClick="{{ a1ov }}" style="min-width:240px; background:#FF595E; color:#fff; border:none; border-radius:24px; padding:20px 36px; font-family:'Fredoka',sans-serif; font-size:32px; font-weight:600; cursor:pointer;" style-hover="transform:scale(1.06);">🥚 Ovíparo</button>
+            <button onClick="{{ a1vi }}" style="min-width:240px; background:#1982C4; color:#fff; border:none; border-radius:24px; padding:20px 36px; font-family:'Fredoka',sans-serif; font-size:32px; font-weight:600; cursor:pointer;" style-hover="transform:scale(1.06);">🐶 Vivíparo</button>
+          </div>
+          <sc-if value="{{ a1ok }}" hint-placeholder-val="{{ false }}">
+            <div style="display:flex; align-items:center; gap:16px; animation:pop .3s ease;">
+              <span style="background:#8AC926; color:#fff; border-radius:30px; padding:12px 30px; font-family:'Fredoka',sans-serif; font-size:24px; font-weight:600;">{{ a1fb }}</span>
+              <button onClick="{{ a1next }}" style="background:#2A2A40; color:#fff; border:none; border-radius:30px; padding:12px 30px; font-size:18px; font-weight:900; cursor:pointer; font-family:'Nunito',sans-serif;">Siguiente ▶</button>
+            </div>
+          </sc-if>
+          <sc-if value="{{ a1bad }}" hint-placeholder-val="{{ false }}">
+            <span style="background:#FF595E; color:#fff; border-radius:30px; padding:12px 30px; font-family:'Fredoka',sans-serif; font-size:24px; font-weight:600; animation:pop .3s ease;">Piensa: ¿has visto sus huevos o nace vivo?</span>
+          </sc-if>
+        </sc-if>
+        <sc-if value="{{ a1done }}" hint-placeholder-val="{{ false }}">
+          <div style="display:flex; flex-direction:column; align-items:center; gap:20px; animation:pop .4s ease;">
+            <span style="font-size:90px; font-family:'Fredoka',sans-serif; color:#FFCA3A;">★ ★ ★ ★ ★ ★</span>
+            <p style="margin:0; font-family:'Fredoka',sans-serif; font-size:40px; font-weight:600; color:#8AC926;">¡Clasificaste los 6 animales!</p>
+            <button onClick="{{ a1Reset }}" style="background:#fff; color:#6A4C93; border:3px solid #6A4C93; border-radius:40px; padding:14px 30px; font-size:18px; font-weight:900; cursor:pointer; font-family:'Nunito',sans-serif;">Jugar otra vez</button>
+          </div>
+        </sc-if>
+      </div>
+    </sc-if>
+
+    <sc-if value="{{ s5 }}" hint-placeholder-val="{{ false }}">
+      <div style="display:flex; flex-direction:column; align-items:center; gap:24px; text-align:center; animation:pop .4s ease;">
+        <span style="background:#8AC926; color:#fff; border-radius:30px; padding:10px 26px; font-size:16px; font-weight:900; letter-spacing:2px;">PAUSA ACTIVA · ¡A MOVER EL CUERPO!</span>
+        <sc-if value="{{ paIdle }}" hint-placeholder-val="{{ true }}">
+          <h1 style="margin:0; font-family:'Fredoka',sans-serif; font-size:52px; font-weight:700;">4 movimientos de animales, 20 segundos</h1>
+          <p style="margin:0; font-size:24px; font-weight:800; color:#6A4C93; max-width:700px;">Todos de pie, separados de las mesas. ¡Hoy nos movemos como animales!</p>
+          <button onClick="{{ paStart }}" style="background:#FF595E; color:#fff; border:none; border-radius:50px; padding:22px 56px; font-family:'Fredoka',sans-serif; font-size:34px; font-weight:600; cursor:pointer;" style-hover="transform:scale(1.05);">¡Comenzar! ▶</button>
+        </sc-if>
+        <sc-if value="{{ paRunning }}" hint-placeholder-val="{{ false }}">
+          <span style="background:#fff; border-radius:30px; padding:10px 26px; font-size:18px; font-weight:900; color:#6A4C93;">Movimiento {{ paNum }} de 4</span>
+          <div style="width:220px; height:220px; border-radius:50%; background:{{ paColor }}; display:flex; align-items:center; justify-content:center; box-shadow:0 10px 0 rgba(42,42,64,.12);">
+            <span style="font-family:'Fredoka',sans-serif; font-size:110px; font-weight:600; color:#fff;">{{ paTime }}</span>
+          </div>
+          <h1 style="margin:0; font-family:'Fredoka',sans-serif; font-size:56px; font-weight:700;">{{ paName }}</h1>
+          <p style="margin:0; font-size:26px; font-weight:800; color:#6A4C93; max-width:700px;">{{ paDesc }}</p>
+        </sc-if>
+        <sc-if value="{{ paDone }}" hint-placeholder-val="{{ false }}">
+          <h1 style="margin:0; font-family:'Fredoka',sans-serif; font-size:60px; font-weight:700; color:#8AC926;">¡Excelente trabajo!</h1>
+          <p style="margin:0; font-size:26px; font-weight:800; color:#6A4C93;">Respira profundo tres veces y vuelve a tu puesto en silencio.</p>
+          <button onClick="{{ paStart }}" style="background:#fff; color:#6A4C93; border:3px solid #6A4C93; border-radius:40px; padding:14px 30px; font-size:18px; font-weight:900; cursor:pointer; font-family:'Nunito',sans-serif;">Repetir la pausa</button>
+        </sc-if>
+      </div>
+    </sc-if>
+
+    <sc-if value="{{ s6 }}" hint-placeholder-val="{{ false }}">
+      <div style="display:flex; flex-direction:column; align-items:center; gap:24px; text-align:center; animation:pop .4s ease;">
+        <span style="background:#6A4C93; color:#fff; border-radius:30px; padding:10px 26px; font-size:16px; font-weight:900; letter-spacing:2px;">ACTIVIDAD 2 · ORDENA EL CICLO</span>
+        <h1 style="margin:0; font-family:'Fredoka',sans-serif; font-size:44px; font-weight:700;">El ciclo de la rana 🐸</h1>
+        <sc-if value="{{ a2Playing }}" hint-placeholder-val="{{ true }}">
+          <p style="margin:0; font-size:22px; font-weight:800; color:#6A4C93;">Toca las etapas en el orden correcto.</p>
+          <div style="min-height:100px; display:flex; gap:14px; align-items:center; justify-content:center; background:#fff; border-radius:24px; padding:18px 36px; box-shadow:0 6px 0 rgba(42,42,64,.1); flex-wrap:wrap; max-width:800px;">
+            <sc-if value="{{ a2Empty }}" hint-placeholder-val="{{ true }}"><span style="font-family:'Fredoka',sans-serif; font-size:24px; font-weight:600; color:#D0C6E4;">Aquí aparece el ciclo ordenado...</span></sc-if>
+            <span style="font-family:'Fredoka',sans-serif; font-size:44px; font-weight:600;">{{ a2Built }}</span>
+          </div>
+          <div style="display:flex; gap:16px; flex-wrap:wrap; justify-content:center;">
+            <sc-for list="{{ a2Items }}" as="it" hint-placeholder-count="4">
+              <button onClick="{{ it.pick }}" style="border:none; border-radius:22px; background:{{ it.bg }}; color:#fff; cursor:pointer; padding:16px 24px; font-family:'Fredoka',sans-serif; font-size:24px; font-weight:600; opacity:{{ it.op }}; display:flex; flex-direction:column; align-items:center; gap:4px;" style-hover="transform:scale(1.06);"><span style="font-size:44px;">{{ it.emoji }}</span>{{ it.text }}</button>
+            </sc-for>
+          </div>
+          <sc-if value="{{ a2ok }}" hint-placeholder-val="{{ false }}">
+            <span style="background:#8AC926; color:#fff; border-radius:30px; padding:12px 30px; font-family:'Fredoka',sans-serif; font-size:24px; font-weight:600; animation:pop .3s ease;">¡Perfecto! Huevo → renacuajo → rana joven → rana adulta ★</span>
+          </sc-if>
+          <sc-if value="{{ a2bad }}" hint-placeholder-val="{{ false }}">
+            <div style="display:flex; align-items:center; gap:16px; animation:pop .3s ease;">
+              <span style="background:#FF595E; color:#fff; border-radius:30px; padding:12px 30px; font-family:'Fredoka',sans-serif; font-size:24px; font-weight:600;">Ese orden no es...</span>
+              <button onClick="{{ a2retry }}" style="background:#2A2A40; color:#fff; border:none; border-radius:30px; padding:12px 30px; font-size:18px; font-weight:900; cursor:pointer; font-family:'Nunito',sans-serif;">Intentar de nuevo</button>
+            </div>
+          </sc-if>
+        </sc-if>
+      </div>
+    </sc-if>
+
+    <sc-if value="{{ s7 }}" hint-placeholder-val="{{ false }}">
+      <div style="display:flex; flex-direction:column; align-items:center; gap:24px; text-align:center; max-width:900px; animation:pop .4s ease;">
+        <span style="background:#FFCA3A; color:#2A2A40; border-radius:30px; padding:10px 26px; font-size:16px; font-weight:900; letter-spacing:2px;">RETO FINAL</span>
+        <h1 style="margin:0; font-family:'Fredoka',sans-serif; font-size:44px; font-weight:700;">¿Cuál de estos animales es ovíparo?</h1>
+        <div style="display:flex; gap:20px;">
+          <button onClick="{{ rp1 }}" style="min-width:200px; background:#fff; border:none; border-radius:24px; padding:24px 36px; font-family:'Fredoka',sans-serif; font-size:32px; font-weight:600; color:#2A2A40; cursor:pointer; box-shadow:0 6px 0 rgba(42,42,64,.1);" style-hover="transform:scale(1.05);">🐮<br>vaca</button>
+          <button onClick="{{ rp2 }}" style="min-width:200px; background:#fff; border:none; border-radius:24px; padding:24px 36px; font-family:'Fredoka',sans-serif; font-size:32px; font-weight:600; color:#2A2A40; cursor:pointer; box-shadow:0 6px 0 rgba(42,42,64,.1);" style-hover="transform:scale(1.05);">🐢<br>tortuga</button>
+          <button onClick="{{ rp3 }}" style="min-width:200px; background:#fff; border:none; border-radius:24px; padding:24px 36px; font-family:'Fredoka',sans-serif; font-size:32px; font-weight:600; color:#2A2A40; cursor:pointer; box-shadow:0 6px 0 rgba(42,42,64,.1);" style-hover="transform:scale(1.05);">🐰<br>conejo</button>
+        </div>
+        <sc-if value="{{ rok }}" hint-placeholder-val="{{ false }}">
+          <div style="display:flex; flex-direction:column; align-items:center; gap:12px; animation:pop .3s ease;">
+            <span style="background:#8AC926; color:#fff; border-radius:30px; padding:14px 34px; font-family:'Fredoka',sans-serif; font-size:28px; font-weight:600;">¡La tortuga! Pone sus huevos en la arena. ★★★</span>
+            <p style="margin:0; font-size:22px; font-weight:800; color:#6A4C93;">Pregunta de cierre: ¿en qué se diferencian ovíparos y vivíparos?</p>
+          </div>
+        </sc-if>
+        <sc-if value="{{ rbad }}" hint-placeholder-val="{{ false }}">
+          <span style="background:#FF595E; color:#fff; border-radius:30px; padding:12px 30px; font-family:'Fredoka',sans-serif; font-size:24px; font-weight:600; animation:pop .3s ease;">Ese animal nace del vientre de su mamá...</span>
+        </sc-if>
+      </div>
+    </sc-if>
+
+  </main>
+
+  <footer style="display:flex; align-items:center; justify-content:space-between; padding:16px 28px; background:#fff; box-shadow:0 -4px 0 rgba(42,42,64,.08);">
+    <button onClick="{{ prev }}" style="background:#fff; color:#6A4C93; border:3px solid #6A4C93; border-radius:40px; padding:14px 34px; font-size:18px; font-weight:900; cursor:pointer; font-family:'Nunito',sans-serif;" style-hover="background:#F1EAFB;">◀ Anterior</button>
+    <span style="font-size:16px; font-weight:900; color:#6A4C93; letter-spacing:1px;">{{ titulo }}</span>
+    <button onClick="{{ next }}" style="background:#1982C4; color:#fff; border:none; border-radius:40px; padding:14px 34px; font-size:18px; font-weight:900; cursor:pointer; font-family:'Nunito',sans-serif;" style-hover="background:#136394;">Siguiente ▶</button>
+  </footer>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;timerMinutes&quot;: {&quot;editor&quot;: &quot;int&quot;, &quot;default&quot;: 5, &quot;min&quot;: 1, &quot;max&quot;: 20, &quot;unit&quot;: &quot;min&quot;, &quot;tsType&quot;: &quot;number&quot;, &quot;section&quot;: &quot;Temporizador&quot;}}">
+class Component extends DCLogic {
+  state = {
+    screen: 0,
+    hLeft: undefined, hRun: false,
+    et: 0,
+    ov: false, vi: false,
+    a1q: 0, a1ans: 0, a1done: false,
+    paPhase: "idle", paIdx: 0, paLeft: 20,
+    a2picked: [], a2state: 0,
+    r: 0
+  };
+  componentDidMount() {
+    this._iv = setInterval(() => {
+      this.setState(s => {
+        const n = {};
+        if (s.hRun && s.hLeft > 0) { n.hLeft = s.hLeft - 1; if (n.hLeft === 0) n.hRun = false; }
+        if (s.paPhase === "run") {
+          if (s.paLeft > 1) n.paLeft = s.paLeft - 1;
+          else if (s.paIdx < 3) { n.paIdx = s.paIdx + 1; n.paLeft = 20; }
+          else { n.paPhase = "done"; }
+        }
+        return Object.keys(n).length ? n : null;
+      });
+    }, 1000);
+  }
+  componentWillUnmount() { clearInterval(this._iv); }
+  renderVals() {
+    const s = this.state;
+    const SCREENS = ["El misterio de los bebés", "El ciclo de la gallina", "Dos formas de nacer", "¿Huevo o vientre?", "Pausa activa", "El ciclo de la rana", "Reto final"];
+    const go = d => this.setState(st => ({ screen: Math.max(0, Math.min(6, st.screen + d)) }));
+    const hMin = this.props.timerMinutes ?? 5;
+    const tH = s.hLeft === undefined ? hMin + ":00" : (s.hLeft === 0 ? "¡TIEMPO!" : Math.floor(s.hLeft / 60) + ":" + String(s.hLeft % 60).padStart(2, "0"));
+    const ETXT = [
+      "Todo empieza con un huevo que la gallina cuida con calor.",
+      "¡Crac! El huevo se rompe y nace el pollito: esta es la etapa de NACER.",
+      "El pollito come y CRECE hasta ser un pollo joven.",
+      "Ya adulta, la gallina pone nuevos huevos: SE REPRODUCE y el ciclo vuelve a empezar."
+    ];
+    const mkEt = i => ({
+      ["e" + (i + 1) + "bg"]: s.et >= i ? "#FFF3D6" : "#F5F0E6",
+      ["e" + (i + 1) + "op"]: s.et >= i ? "1" : "0.25"
+    });
+    const A1 = [
+      { emoji: "🐍", name: "serpiente", ov: true }, { emoji: "🐱", name: "gato", ov: false },
+      { emoji: "🐢", name: "tortuga", ov: true }, { emoji: "🐮", name: "vaca", ov: false },
+      { emoji: "🐸", name: "rana", ov: true }, { emoji: "🐴", name: "caballo", ov: false }
+    ];
+    const q1 = A1[Math.min(s.a1q, 5)];
+    const a1pick = ans => () => this.setState({ a1ans: ans === q1.ov ? 1 : 2 });
+    const CYCLE = [
+      { emoji: "🥚", text: "Huevos" }, { emoji: "🐟", text: "Renacuajo" },
+      { emoji: "🐸", text: "Rana joven" }, { emoji: "🐸", text: "Rana adulta" }
+    ];
+    const COLORS = ["#FF595E", "#FFCA3A", "#8AC926", "#1982C4"];
+    const ORDER = [2, 0, 3, 1];
+    const a2Items = ORDER.map(idx => ({
+      emoji: CYCLE[idx].emoji, text: CYCLE[idx].text, bg: COLORS[idx],
+      op: s.a2picked.includes(idx) ? "0.25" : "1",
+      pick: () => this.setState(st => {
+        if (st.a2state === 1 || st.a2picked.includes(idx)) return null;
+        const picked = [...st.a2picked, idx];
+        let a2state = 0;
+        if (picked.length === 4) a2state = picked.every((v, i) => v === i) ? 1 : 2;
+        return { a2picked: picked, a2state };
+      })
+    }));
+    const PA = [
+      { name: "Salta como rana", desc: "Agáchate y salta hacia adelante como una ranita. ¡Croac!", color: "#8AC926" },
+      { name: "Vuela como pájaro", desc: "Abre los brazos y aletea suave como un pájaro en el cielo.", color: "#1982C4" },
+      { name: "Camina como tortuga", desc: "Muévete leeeento, muy lento, como una tortuga tranquila.", color: "#FF595E" },
+      { name: "Estírate como gato", desc: "Estira los brazos y la espalda como un gato al despertar.", color: "#6A4C93" }
+    ];
+    const pa = PA[s.paIdx];
+    return {
+      titulo: SCREENS[s.screen].toUpperCase(),
+      num: (s.screen + 1) + " / 7",
+      prev: () => go(-1), next: () => go(1),
+      s1: s.screen === 0, s2: s.screen === 1, s3: s.screen === 2, s4: s.screen === 3,
+      s5: s.screen === 4, s6: s.screen === 5, s7: s.screen === 6,
+      tH, startH: () => this.setState({ hLeft: hMin * 60, hRun: true }),
+      ...mkEt(0), ...mkEt(1), ...mkEt(2), ...mkEt(3),
+      eTexto: ETXT[s.et],
+      eAdv: () => this.setState(st => ({ et: Math.min(3, st.et + 1) })),
+      eReset: () => this.setState({ et: 0 }),
+      ov: () => this.setState({ ov: true }), vi: () => this.setState({ vi: true }),
+      ovOn: s.ov, ovOff: !s.ov, viOn: s.vi, viOff: !s.vi,
+      a1Num: "ANIMAL " + (Math.min(s.a1q, 5) + 1) + " DE 6",
+      a1Playing: !s.a1done, a1done: s.a1done,
+      a1Emoji: q1.emoji, a1Name: q1.name,
+      a1ov: a1pick(true), a1vi: a1pick(false),
+      a1ok: s.a1ans === 1, a1bad: s.a1ans === 2,
+      a1fb: "¡Correcto! " + (q1.ov ? "Nace de un huevo." : "Nace del vientre de su mamá."),
+      a1next: () => this.setState(st => st.a1q >= 5 ? { a1done: true, a1ans: 0 } : { a1q: st.a1q + 1, a1ans: 0 }),
+      a1Reset: () => this.setState({ a1q: 0, a1ans: 0, a1done: false }),
+      paIdle: s.paPhase === "idle", paRunning: s.paPhase === "run", paDone: s.paPhase === "done",
+      paStart: () => this.setState({ paPhase: "run", paIdx: 0, paLeft: 20 }),
+      paNum: String(s.paIdx + 1), paName: pa.name, paDesc: pa.desc, paColor: pa.color, paTime: String(s.paLeft),
+      a2Items,
+      a2Built: s.a2picked.map(i => CYCLE[i].emoji).join(" → "),
+      a2Empty: s.a2picked.length === 0,
+      a2Playing: true,
+      a2ok: s.a2state === 1, a2bad: s.a2state === 2,
+      a2retry: () => this.setState({ a2picked: [], a2state: 0 }),
+      rp1: () => this.setState({ r: 2 }), rp2: () => this.setState({ r: 1 }), rp3: () => this.setState({ r: 2 }),
+      rok: s.r === 1, rbad: s.r === 2
+    };
+  }
+}
+</script>
+</body>
+</html>

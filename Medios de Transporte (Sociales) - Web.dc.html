@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<meta name="description" content="Web interactiva: Los medios de transporte - Grado 2°">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Nunito:wght@700;800;900&display=swap" rel="stylesheet">
+<style>
+body { margin:0; background:#FFF9EF; }
+a { color:#1982C4; } a:hover { color:#FF595E; }
+@keyframes pop { 0% { transform:scale(.6); opacity:0; } 100% { transform:scale(1); opacity:1; } }
+</style>
+<template id="__bundler_thumbnail" data-bg-color="#FFF9EF">
+<svg viewBox="0 0 120 80" xmlns="http://www.w3.org/2000/svg">
+<rect x="30" y="34" width="60" height="22" rx="6" fill="#FF595E"></rect>
+<circle cx="44" cy="58" r="7" fill="#2A2A40"></circle>
+<circle cx="76" cy="58" r="7" fill="#2A2A40"></circle>
+</svg>
+</template>
+</helmet>
+<div style="min-height:100vh; display:flex; flex-direction:column; font-family:'Nunito',sans-serif; color:#2A2A40;">
+
+  <header style="display:flex; align-items:center; gap:16px; padding:14px 28px; background:#fff; box-shadow:0 4px 0 rgba(42,42,64,.08);">
+    <span style="width:44px; height:44px; border-radius:14px; background:#FFCA3A; color:#2A2A40; display:flex; align-items:center; justify-content:center; font-size:22px;">🚗</span>
+    <div style="display:flex; flex-direction:column;">
+      <span style="font-family:'Fredoka',sans-serif; font-size:22px; font-weight:600;">Medios de Transporte</span>
+      <span style="font-size:13px; font-weight:900; color:#6A4C93; letter-spacing:1px;">CIENCIAS SOCIALES · GRADO 2°</span>
+    </div>
+    <div style="flex:1;"></div>
+    <button onClick="{{ startH }}" style="display:flex; align-items:center; gap:12px; background:#2A2A40; color:#fff; border:none; border-radius:40px; padding:8px 20px; cursor:pointer; font-family:'Nunito',sans-serif;" style-hover="background:#6A4C93;">
+      <span style="font-size:13px; font-weight:900; letter-spacing:1px;">TEMPORIZADOR ▶</span>
+      <span style="font-family:'Fredoka',sans-serif; font-size:24px; font-weight:600; color:#FFCA3A;">{{ tH }}</span>
+    </button>
+    <span style="background:#FFCA3A; border-radius:40px; padding:10px 20px; font-family:'Fredoka',sans-serif; font-size:20px; font-weight:600;">{{ num }}</span>
+  </header>
+
+  <main style="flex:1; display:flex; flex-direction:column; align-items:center; justify-content:center; padding:32px 24px; position:relative; overflow:hidden;">
+
+    <sc-if value="{{ s1 }}" hint-placeholder-val="{{ true }}">
+      <div style="display:flex; flex-direction:column; align-items:center; gap:28px; text-align:center; max-width:900px; animation:pop .4s ease;">
+        <span style="background:#8AC926; color:#fff; border-radius:30px; padding:10px 26px; font-size:16px; font-weight:900; letter-spacing:2px;">¡BIENVENIDOS!</span>
+        <h1 style="margin:0; font-family:'Fredoka',sans-serif; font-size:56px; font-weight:700; line-height:1.1;">Un viaje por el tiempo</h1>
+        <div style="background:#fff; border-radius:28px; padding:32px 40px; box-shadow:0 8px 0 rgba(42,42,64,.1);">
+          <p style="margin:0; font-size:60px;">🐎 ➡️ 🚗</p>
+          <p style="margin:20px 0 0; font-family:'Fredoka',sans-serif; font-size:34px; font-weight:600; color:#6A4C93;">¿Cómo viajaban las personas antes de que existieran los carros y los aviones?</p>
+        </div>
+        <p style="margin:0; font-size:20px; font-weight:800; color:#6A4C93;">Piensa y comparte tu idea con la clase.</p>
+      </div>
+    </sc-if>
+
+    <sc-if value="{{ s2 }}" hint-placeholder-val="{{ false }}">
+      <div style="display:flex; flex-direction:column; align-items:center; gap:24px; text-align:center; animation:pop .4s ease;">
+        <span style="background:#1982C4; color:#fff; border-radius:30px; padding:10px 26px; font-size:16px; font-weight:900; letter-spacing:2px;">LOS 3 TIPOS</span>
+        <h1 style="margin:0; font-family:'Fredoka',sans-serif; font-size:44px; font-weight:700;">Toca cada camino y descubre sus transportes</h1>
+        <div style="display:flex; gap:20px; flex-wrap:wrap; justify-content:center;">
+          <button onClick="{{ t1c }}" style="width:270px; border:none; border-radius:24px; background:#8AC926; color:#fff; cursor:pointer; padding:26px 20px; font-family:'Fredoka',sans-serif; display:flex; flex-direction:column; gap:10px; align-items:center;" style-hover="transform:scale(1.04);">
+            <span style="font-size:30px; font-weight:600;">🛣️ TERRESTRE</span>
+            <sc-if value="{{ t1on }}" hint-placeholder-val="{{ false }}"><span style="background:#fff; color:#6FA31E; border-radius:16px; padding:10px 16px; font-size:34px;">🚗 🚲 🚌 🚂</span></sc-if>
+            <sc-if value="{{ t1off }}" hint-placeholder-val="{{ true }}"><span style="font-family:'Nunito',sans-serif; font-size:14px; font-weight:900;">TOCA AQUÍ · van por la tierra</span></sc-if>
+          </button>
+          <button onClick="{{ t2c }}" style="width:270px; border:none; border-radius:24px; background:#1982C4; color:#fff; cursor:pointer; padding:26px 20px; font-family:'Fredoka',sans-serif; display:flex; flex-direction:column; gap:10px; align-items:center;" style-hover="transform:scale(1.04);">
+            <span style="font-size:30px; font-weight:600;">🌊 ACUÁTICO</span>
+            <sc-if value="{{ t2on }}" hint-placeholder-val="{{ false }}"><span style="background:#fff; color:#1982C4; border-radius:16px; padding:10px 16px; font-size:34px;">⛵ 🚤 🛳️</span></sc-if>
+            <sc-if value="{{ t2off }}" hint-placeholder-val="{{ true }}"><span style="font-family:'Nunito',sans-serif; font-size:14px; font-weight:900;">TOCA AQUÍ · van por el agua</span></sc-if>
+          </button>
+          <button onClick="{{ t3c }}" style="width:270px; border:none; border-radius:24px; background:#FF595E; color:#fff; cursor:pointer; padding:26px 20px; font-family:'Fredoka',sans-serif; display:flex; flex-direction:column; gap:10px; align-items:center;" style-hover="transform:scale(1.04);">
+            <span style="font-size:30px; font-weight:600;">☁️ AÉREO</span>
+            <sc-if value="{{ t3on }}" hint-placeholder-val="{{ false }}"><span style="background:#fff; color:#FF595E; border-radius:16px; padding:10px 16px; font-size:34px;">✈️ 🚁 🎈</span></sc-if>
+            <sc-if value="{{ t3off }}" hint-placeholder-val="{{ true }}"><span style="font-family:'Nunito',sans-serif; font-size:14px; font-weight:900;">TOCA AQUÍ · van por el aire</span></sc-if>
+          </button>
+        </div>
+      </div>
+    </sc-if>
+
+    <sc-if value="{{ s3 }}" hint-placeholder-val="{{ false }}">
+      <div style="display:flex; flex-direction:column; align-items:center; gap:24px; text-align:center; animation:pop .4s ease;">
+        <span style="background:#FFCA3A; color:#2A2A40; border-radius:30px; padding:10px 26px; font-size:16px; font-weight:900; letter-spacing:2px;">ACTIVIDAD 1 · {{ a1Num }}</span>
+        <h1 style="margin:0; font-family:'Fredoka',sans-serif; font-size:44px; font-weight:700;">¿Terrestre, acuático o aéreo?</h1>
+        <sc-if value="{{ a1Playing }}" hint-placeholder-val="{{ true }}">
+          <div style="background:#fff; border-radius:28px; padding:24px 70px; box-shadow:0 8px 0 rgba(42,42,64,.1);">
+            <p style="margin:0; font-size:100px;">{{ a1Emoji }}</p>
+            <p style="margin:0; font-family:'Fredoka',sans-serif; font-size:34px; font-weight:600; color:#6A4C93;">{{ a1Name }}</p>
+          </div>
+          <div style="display:flex; gap:16px; flex-wrap:wrap; justify-content:center;">
+            <button onClick="{{ a1p1 }}" style="background:#8AC926; color:#fff; border:none; border-radius:22px; padding:16px 28px; font-family:'Fredoka',sans-serif; font-size:26px; font-weight:600; cursor:pointer;" style-hover="transform:scale(1.06);">🛣️ Terrestre</button>
+            <button onClick="{{ a1p2 }}" style="background:#1982C4; color:#fff; border:none; border-radius:22px; padding:16px 28px; font-family:'Fredoka',sans-serif; font-size:26px; font-weight:600; cursor:pointer;" style-hover="transform:scale(1.06);">🌊 Acuático</button>
+            <button onClick="{{ a1p3 }}" style="background:#FF595E; color:#fff; border:none; border-radius:22px; padding:16px 28px; font-family:'Fredoka',sans-serif; font-size:26px; font-weight:600; cursor:pointer;" style-hover="transform:scale(1.06);">☁️ Aéreo</button>
+          </div>
+          <sc-if value="{{ a1ok }}" hint-placeholder-val="{{ false }}">
+            <div style="display:flex; align-items:center; gap:16px; animation:pop .3s ease;">
+              <span style="background:#8AC926; color:#fff; border-radius:30px; padding:12px 30px; font-family:'Fredoka',sans-serif; font-size:24px; font-weight:600;">¡Correcto! ★</span>
+              <button onClick="{{ a1next }}" style="background:#2A2A40; color:#fff; border:none; border-radius:30px; padding:12px 30px; font-size:18px; font-weight:900; cursor:pointer; font-family:'Nunito',sans-serif;">Siguiente ▶</button>
+            </div>
+          </sc-if>
+          <sc-if value="{{ a1bad }}" hint-placeholder-val="{{ false }}">
+            <span style="background:#FF595E; color:#fff; border-radius:30px; padding:12px 30px; font-family:'Fredoka',sans-serif; font-size:24px; font-weight:600; animation:pop .3s ease;">Piensa por dónde va e intenta otra vez.</span>
+          </sc-if>
+        </sc-if>
+        <sc-if value="{{ a1done }}" hint-placeholder-val="{{ false }}">
+          <div style="display:flex; flex-direction:column; align-items:center; gap:20px; animation:pop .4s ease;">
+            <span style="font-size:100px; font-family:'Fredoka',sans-serif; color:#FFCA3A;">★ ★ ★ ★ ★ ★</span>
+            <p style="margin:0; font-family:'Fredoka',sans-serif; font-size:40px; font-weight:600; color:#8AC926;">¡Clasificaste todos los transportes!</p>
+            <button onClick="{{ a1Reset }}" style="background:#fff; color:#6A4C93; border:3px solid #6A4C93; border-radius:40px; padding:14px 30px; font-size:18px; font-weight:900; cursor:pointer; font-family:'Nunito',sans-serif;">Jugar otra vez</button>
+          </div>
+        </sc-if>
+      </div>
+    </sc-if>
+
+    <sc-if value="{{ s4 }}" hint-placeholder-val="{{ false }}">
+      <div style="display:flex; flex-direction:column; align-items:center; gap:24px; text-align:center; animation:pop .4s ease;">
+        <span style="background:#8AC926; color:#fff; border-radius:30px; padding:10px 26px; font-size:16px; font-weight:900; letter-spacing:2px;">PAUSA ACTIVA · ¡A MOVER EL CUERPO!</span>
+        <sc-if value="{{ paIdle }}" hint-placeholder-val="{{ true }}">
+          <h1 style="margin:0; font-family:'Fredoka',sans-serif; font-size:52px; font-weight:700;">4 movimientos de transporte, 20 segundos</h1>
+          <p style="margin:0; font-size:24px; font-weight:800; color:#6A4C93; max-width:700px;">Todos de pie, separados de las mesas. ¡Nos movemos como los transportes!</p>
+          <button onClick="{{ paStart }}" style="background:#FF595E; color:#fff; border:none; border-radius:50px; padding:22px 56px; font-family:'Fredoka',sans-serif; font-size:34px; font-weight:600; cursor:pointer;" style-hover="transform:scale(1.05);">¡Comenzar! ▶</button>
+        </sc-if>
+        <sc-if value="{{ paRunning }}" hint-placeholder-val="{{ false }}">
+          <span style="background:#fff; border-radius:30px; padding:10px 26px; font-size:18px; font-weight:900; color:#6A4C93;">Movimiento {{ paNum }} de 4</span>
+          <div style="width:220px; height:220px; border-radius:50%; background:{{ paColor }}; display:flex; align-items:center; justify-content:center; box-shadow:0 10px 0 rgba(42,42,64,.12);">
+            <span style="font-family:'Fredoka',sans-serif; font-size:110px; font-weight:600; color:#fff;">{{ paTime }}</span>
+          </div>
+          <h1 style="margin:0; font-family:'Fredoka',sans-serif; font-size:56px; font-weight:700;">{{ paName }}</h1>
+          <p style="margin:0; font-size:26px; font-weight:800; color:#6A4C93; max-width:700px;">{{ paDesc }}</p>
+        </sc-if>
+        <sc-if value="{{ paDone }}" hint-placeholder-val="{{ false }}">
+          <h1 style="margin:0; font-family:'Fredoka',sans-serif; font-size:60px; font-weight:700; color:#8AC926;">¡Excelente trabajo!</h1>
+          <p style="margin:0; font-size:26px; font-weight:800; color:#6A4C93;">Respira profundo tres veces y vuelve a tu puesto en silencio.</p>
+          <button onClick="{{ paStart }}" style="background:#fff; color:#6A4C93; border:3px solid #6A4C93; border-radius:40px; padding:14px 30px; font-size:18px; font-weight:900; cursor:pointer; font-family:'Nunito',sans-serif;">Repetir la pausa</button>
+        </sc-if>
+      </div>
+    </sc-if>
+
+    <sc-if value="{{ s5 }}" hint-placeholder-val="{{ false }}">
+      <div style="display:flex; flex-direction:column; align-items:center; gap:24px; text-align:center; animation:pop .4s ease;">
+        <span style="background:#6A4C93; color:#fff; border-radius:30px; padding:10px 26px; font-size:16px; font-weight:900; letter-spacing:2px;">ACTIVIDAD 2 · ANTES O AHORA</span>
+        <h1 style="margin:0; font-family:'Fredoka',sans-serif; font-size:44px; font-weight:700;">¿Es de antes o de ahora?</h1>
+        <sc-if value="{{ a2Playing }}" hint-placeholder-val="{{ true }}">
+          <div style="background:#fff; border-radius:28px; padding:24px 70px; box-shadow:0 8px 0 rgba(42,42,64,.1);">
+            <p style="margin:0; font-size:100px;">{{ a2Emoji }}</p>
+            <p style="margin:0; font-family:'Fredoka',sans-serif; font-size:34px; font-weight:600; color:#6A4C93;">{{ a2Name }}</p>
+          </div>
+          <div style="display:flex; gap:20px;">
+            <button onClick="{{ a2p1 }}" style="min-width:220px; background:#C89B1C; color:#fff; border:none; border-radius:24px; padding:20px 36px; font-family:'Fredoka',sans-serif; font-size:32px; font-weight:600; cursor:pointer;" style-hover="transform:scale(1.06);">⏳ De antes</button>
+            <button onClick="{{ a2p2 }}" style="min-width:220px; background:#1982C4; color:#fff; border:none; border-radius:24px; padding:20px 36px; font-family:'Fredoka',sans-serif; font-size:32px; font-weight:600; cursor:pointer;" style-hover="transform:scale(1.06);">🚀 De ahora</button>
+          </div>
+          <sc-if value="{{ a2ok }}" hint-placeholder-val="{{ false }}">
+            <div style="display:flex; align-items:center; gap:16px; animation:pop .3s ease;">
+              <span style="background:#8AC926; color:#fff; border-radius:30px; padding:12px 30px; font-family:'Fredoka',sans-serif; font-size:24px; font-weight:600;">¡Correcto! ★</span>
+              <button onClick="{{ a2next }}" style="background:#2A2A40; color:#fff; border:none; border-radius:30px; padding:12px 30px; font-size:18px; font-weight:900; cursor:pointer; font-family:'Nunito',sans-serif;">Siguiente ▶</button>
+            </div>
+          </sc-if>
+          <sc-if value="{{ a2bad }}" hint-placeholder-val="{{ false }}">
+            <span style="background:#FF595E; color:#fff; border-radius:30px; padding:12px 30px; font-family:'Fredoka',sans-serif; font-size:24px; font-weight:600; animation:pop .3s ease;">Piensa si es antiguo o moderno...</span>
+          </sc-if>
+        </sc-if>
+        <sc-if value="{{ a2done }}" hint-placeholder-val="{{ false }}">
+          <div style="display:flex; flex-direction:column; align-items:center; gap:20px; animation:pop .4s ease;">
+            <span style="font-size:90px; font-family:'Fredoka',sans-serif; color:#FFCA3A;">★ ★ ★ ★</span>
+            <p style="margin:0; font-family:'Fredoka',sans-serif; font-size:40px; font-weight:600; color:#8AC926;">¡Entiendes cómo cambió el transporte!</p>
+            <button onClick="{{ a2Reset }}" style="background:#fff; color:#6A4C93; border:3px solid #6A4C93; border-radius:40px; padding:14px 30px; font-size:18px; font-weight:900; cursor:pointer; font-family:'Nunito',sans-serif;">Jugar otra vez</button>
+          </div>
+        </sc-if>
+      </div>
+    </sc-if>
+
+    <sc-if value="{{ s6 }}" hint-placeholder-val="{{ false }}">
+      <div style="display:flex; flex-direction:column; align-items:center; gap:24px; text-align:center; max-width:900px; animation:pop .4s ease;">
+        <span style="background:#FFCA3A; color:#2A2A40; border-radius:30px; padding:10px 26px; font-size:16px; font-weight:900; letter-spacing:2px;">RETO FINAL</span>
+        <h1 style="margin:0; font-family:'Fredoka',sans-serif; font-size:44px; font-weight:700;">¿Cuál transporte usaban ANTES que el carro?</h1>
+        <div style="display:flex; gap:20px;">
+          <button onClick="{{ rp1 }}" style="min-width:190px; background:#fff; border:none; border-radius:24px; padding:24px 30px; font-family:'Fredoka',sans-serif; font-size:28px; font-weight:600; color:#2A2A40; cursor:pointer; box-shadow:0 6px 0 rgba(42,42,64,.1);" style-hover="transform:scale(1.05);">✈️<br>Avión</button>
+          <button onClick="{{ rp2 }}" style="min-width:190px; background:#fff; border:none; border-radius:24px; padding:24px 30px; font-family:'Fredoka',sans-serif; font-size:28px; font-weight:600; color:#2A2A40; cursor:pointer; box-shadow:0 6px 0 rgba(42,42,64,.1);" style-hover="transform:scale(1.05);">🐎<br>Caballo</button>
+          <button onClick="{{ rp3 }}" style="min-width:190px; background:#fff; border:none; border-radius:24px; padding:24px 30px; font-family:'Fredoka',sans-serif; font-size:28px; font-weight:600; color:#2A2A40; cursor:pointer; box-shadow:0 6px 0 rgba(42,42,64,.1);" style-hover="transform:scale(1.05);">🚀<br>Cohete</button>
+        </div>
+        <sc-if value="{{ rok }}" hint-placeholder-val="{{ false }}">
+          <div style="display:flex; flex-direction:column; align-items:center; gap:12px; animation:pop .3s ease;">
+            <span style="background:#8AC926; color:#fff; border-radius:30px; padding:14px 34px; font-family:'Fredoka',sans-serif; font-size:28px; font-weight:600;">¡El caballo! Antes viajaban con animales. ★★★</span>
+            <p style="margin:0; font-size:22px; font-weight:800; color:#6A4C93;">Pregunta de cierre: nombra los 3 tipos de transporte.</p>
+          </div>
+        </sc-if>
+        <sc-if value="{{ rbad }}" hint-placeholder-val="{{ false }}">
+          <span style="background:#FF595E; color:#fff; border-radius:30px; padding:12px 30px; font-family:'Fredoka',sans-serif; font-size:24px; font-weight:600; animation:pop .3s ease;">Eso es moderno. Piensa en tiempos muy antiguos...</span>
+        </sc-if>
+      </div>
+    </sc-if>
+
+  </main>
+
+  <footer style="display:flex; align-items:center; justify-content:space-between; padding:16px 28px; background:#fff; box-shadow:0 -4px 0 rgba(42,42,64,.08);">
+    <button onClick="{{ prev }}" style="background:#fff; color:#6A4C93; border:3px solid #6A4C93; border-radius:40px; padding:14px 34px; font-size:18px; font-weight:900; cursor:pointer; font-family:'Nunito',sans-serif;" style-hover="background:#F1EAFB;">◀ Anterior</button>
+    <span style="font-size:16px; font-weight:900; color:#6A4C93; letter-spacing:1px;">{{ titulo }}</span>
+    <button onClick="{{ next }}" style="background:#1982C4; color:#fff; border:none; border-radius:40px; padding:14px 34px; font-size:18px; font-weight:900; cursor:pointer; font-family:'Nunito',sans-serif;" style-hover="background:#136394;">Siguiente ▶</button>
+  </footer>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;timerMinutes&quot;: {&quot;editor&quot;: &quot;int&quot;, &quot;default&quot;: 5, &quot;min&quot;: 1, &quot;max&quot;: 20, &quot;unit&quot;: &quot;min&quot;, &quot;tsType&quot;: &quot;number&quot;, &quot;section&quot;: &quot;Temporizador&quot;}}">
+class Component extends DCLogic {
+  state = {
+    screen: 0,
+    hLeft: undefined, hRun: false,
+    tipos: [false, false, false],
+    a1q: 0, a1ans: 0, a1done: false,
+    paPhase: "idle", paIdx: 0, paLeft: 20,
+    a2q: 0, a2ans: 0, a2done: false,
+    r: 0
+  };
+  componentDidMount() {
+    this._iv = setInterval(() => {
+      this.setState(s => {
+        const n = {};
+        if (s.hRun && s.hLeft > 0) { n.hLeft = s.hLeft - 1; if (n.hLeft === 0) n.hRun = false; }
+        if (s.paPhase === "run") {
+          if (s.paLeft > 1) n.paLeft = s.paLeft - 1;
+          else if (s.paIdx < 3) { n.paIdx = s.paIdx + 1; n.paLeft = 20; }
+          else { n.paPhase = "done"; }
+        }
+        return Object.keys(n).length ? n : null;
+      });
+    }, 1000);
+  }
+  componentWillUnmount() { clearInterval(this._iv); }
+  renderVals() {
+    const s = this.state;
+    const SCREENS = ["Un viaje por el tiempo", "Los 3 tipos", "¿Terrestre, acuático o aéreo?", "Pausa activa", "¿Antes o ahora?", "Reto final"];
+    const go = d => this.setState(st => ({ screen: Math.max(0, Math.min(5, st.screen + d)) }));
+    const hMin = this.props.timerMinutes ?? 5;
+    const tH = s.hLeft === undefined ? hMin + ":00" : (s.hLeft === 0 ? "¡TIEMPO!" : Math.floor(s.hLeft / 60) + ":" + String(s.hLeft % 60).padStart(2, "0"));
+    const mkTipo = (i, key) => ({
+      [key + "c"]: () => this.setState(st => { const t = [...st.tipos]; t[i] = true; return { tipos: t }; }),
+      [key + "on"]: s.tipos[i], [key + "off"]: !s.tipos[i]
+    });
+    // tipos: 0 terrestre, 1 acuático, 2 aéreo
+    const A1 = [
+      { emoji: "🚗", name: "carro", ok: 0 }, { emoji: "⛵", name: "velero", ok: 1 },
+      { emoji: "✈️", name: "avión", ok: 2 }, { emoji: "🚲", name: "bicicleta", ok: 0 },
+      { emoji: "🚤", name: "lancha", ok: 1 }, { emoji: "🚁", name: "helicóptero", ok: 2 }
+    ];
+    const q1 = A1[Math.min(s.a1q, 5)];
+    const a1pick = i => () => this.setState({ a1ans: i === q1.ok ? 1 : 2 });
+    // antes(0) / ahora(1)
+    const A2 = [
+      { emoji: "🐎", name: "caballo", ok: 0 }, { emoji: "🚀", name: "cohete", ok: 1 },
+      { emoji: "🛶", name: "canoa de remos", ok: 0 }, { emoji: "🚄", name: "tren bala", ok: 1 }
+    ];
+    const q2 = A2[Math.min(s.a2q, 3)];
+    const a2pick = i => () => this.setState({ a2ans: i === q2.ok ? 1 : 2 });
+    const PA = [
+      { name: "Maneja el carro", desc: "Agarra un volante imaginario y muévelo de lado a lado.", color: "#FF595E" },
+      { name: "Rema el barco", desc: "Rema con los brazos hacia atrás, como en una canoa.", color: "#1982C4" },
+      { name: "Vuela el avión", desc: "Abre los brazos como alas e inclínate a los lados.", color: "#8AC926" },
+      { name: "Pedalea la bici", desc: "Acostado o de pie, mueve las piernas como pedaleando.", color: "#6A4C93" }
+    ];
+    const pa = PA[s.paIdx];
+    return {
+      titulo: SCREENS[s.screen].toUpperCase(),
+      num: (s.screen + 1) + " / 6",
+      prev: () => go(-1), next: () => go(1),
+      s1: s.screen === 0, s2: s.screen === 1, s3: s.screen === 2, s4: s.screen === 3,
+      s5: s.screen === 4, s6: s.screen === 5,
+      tH, startH: () => this.setState({ hLeft: hMin * 60, hRun: true }),
+      ...mkTipo(0, "t1"), ...mkTipo(1, "t2"), ...mkTipo(2, "t3"),
+      a1Num: "TRANSPORTE " + (Math.min(s.a1q, 5) + 1) + " DE 6",
+      a1Playing: !s.a1done, a1done: s.a1done,
+      a1Emoji: q1.emoji, a1Name: q1.name,
+      a1p1: a1pick(0), a1p2: a1pick(1), a1p3: a1pick(2),
+      a1ok: s.a1ans === 1, a1bad: s.a1ans === 2,
+      a1next: () => this.setState(st => st.a1q >= 5 ? { a1done: true, a1ans: 0 } : { a1q: st.a1q + 1, a1ans: 0 }),
+      a1Reset: () => this.setState({ a1q: 0, a1ans: 0, a1done: false }),
+      paIdle: s.paPhase === "idle", paRunning: s.paPhase === "run", paDone: s.paPhase === "done",
+      paStart: () => this.setState({ paPhase: "run", paIdx: 0, paLeft: 20 }),
+      paNum: String(s.paIdx + 1), paName: pa.name, paDesc: pa.desc, paColor: pa.color, paTime: String(s.paLeft),
+      a2Num: "IMAGEN " + (Math.min(s.a2q, 3) + 1) + " DE 4",
+      a2Playing: !s.a2done, a2done: s.a2done,
+      a2Emoji: q2.emoji, a2Name: q2.name,
+      a2p1: a2pick(0), a2p2: a2pick(1),
+      a2ok: s.a2ans === 1, a2bad: s.a2ans === 2,
+      a2next: () => this.setState(st => st.a2q >= 3 ? { a2done: true, a2ans: 0 } : { a2q: st.a2q + 1, a2ans: 0 }),
+      a2Reset: () => this.setState({ a2q: 0, a2ans: 0, a2done: false }),
+      rp1: () => this.setState({ r: 2 }), rp2: () => this.setState({ r: 1 }), rp3: () => this.setState({ r: 2 }),
+      rok: s.r === 1, rbad: s.r === 2
+    };
+  }
+}
+</script>
+</body>
+</html>

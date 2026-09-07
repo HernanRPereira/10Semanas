@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Nunito:wght@700;800;900&display=swap" rel="stylesheet">
+<style>
+body { margin:0; }
+a { color:#1982C4; } a:hover { color:#FF595E; }
+</style>
+<template id="__bundler_thumbnail" data-bg-color="#FFF9EF"><svg viewBox="0 0 120 80" xmlns="http://www.w3.org/2000/svg"><rect x="40" y="16" width="40" height="48" rx="6" fill="#FFCA3A"></rect><rect x="48" y="28" width="24" height="4" rx="2" fill="#2A2A40"></rect><rect x="48" y="38" width="24" height="4" rx="2" fill="#2A2A40"></rect><rect x="48" y="48" width="16" height="4" rx="2" fill="#2A2A40"></rect></svg></template>
+</helmet>
+<x-import component-from-global-scope="doc-page" from="./doc-page.js" size="letter" orientation="portrait" margin="0.4in" hint-size="8.5in,11in">
+<div style="font-family:'Nunito',sans-serif; color:#2A2A40;">
+
+  <div style="display:flex; align-items:center; gap:14px; background:#1982C4; border-radius:16px; padding:12px 18px;">
+    <span style="width:46px; height:46px; border-radius:12px; background:#FFCA3A; color:#2A2A40; display:flex; align-items:center; justify-content:center; font-size:22px;">🛡️</span>
+    <div style="flex:1;">
+      <p style="margin:0; font-family:'Fredoka',sans-serif; font-size:20px; font-weight:600; color:#fff;">Ficha de refuerzo · Uso seguro de la tecnología</p>
+      <p style="margin:0; font-size:12px; font-weight:900; color:#BFDCF2; letter-spacing:1px;">TECNOLOGÍA · GRADO 2° · SEGURIDAD DIGITAL</p>
+    </div>
+    <span style="background:#fff; color:#1982C4; border-radius:12px; padding:6px 12px; font-family:'Fredoka',sans-serif; font-size:16px; font-weight:600;">N.° 1</span>
+  </div>
+
+  <div style="display:flex; gap:16px; margin-top:10px; font-size:13px; font-weight:800;">
+    <p style="margin:0; flex:2;">Nombre: ______________________________________________</p>
+    <p style="margin:0; flex:1;">Fecha: ____________________</p>
+  </div>
+
+  <div style="display:flex; align-items:center; gap:10px; margin-top:12px;">
+    <span style="width:26px; height:26px; border-radius:50%; background:#FF595E; color:#fff; display:flex; align-items:center; justify-content:center; font-family:'Fredoka',sans-serif; font-size:15px; font-weight:600;">1</span>
+    <p style="margin:0; font-size:14px; font-weight:900;">Colorea el círculo de <span style="color:#8AC926;">VERDE</span> si es seguro y de <span style="color:#FF595E;">ROJO</span> si es inseguro.</p>
+  </div>
+  <div style="display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-top:8px; break-inside:avoid;">
+    <div style="border:2px solid #2A2A40; border-radius:14px; padding:10px 14px; display:flex; align-items:center; gap:12px;"><span style="width:26px; height:26px; border:2px solid #2A2A40; border-radius:50%;"></span><span style="font-size:26px;">🙋</span><p style="margin:0; font-size:14px; font-weight:800;">Aviso a un adulto si veo algo raro.</p></div>
+    <div style="border:2px solid #2A2A40; border-radius:14px; padding:10px 14px; display:flex; align-items:center; gap:12px;"><span style="width:26px; height:26px; border:2px solid #2A2A40; border-radius:50%;"></span><span style="font-size:26px;">🏠</span><p style="margin:0; font-size:14px; font-weight:800;">Doy mi dirección a un desconocido.</p></div>
+    <div style="border:2px solid #2A2A40; border-radius:14px; padding:10px 14px; display:flex; align-items:center; gap:12px;"><span style="width:26px; height:26px; border:2px solid #2A2A40; border-radius:50%;"></span><span style="font-size:26px;">⏰</span><p style="margin:0; font-size:14px; font-weight:800;">Uso la tablet con permiso y poco tiempo.</p></div>
+    <div style="border:2px solid #2A2A40; border-radius:14px; padding:10px 14px; display:flex; align-items:center; gap:12px;"><span style="width:26px; height:26px; border:2px solid #2A2A40; border-radius:50%;"></span><span style="font-size:26px;">📷</span><p style="margin:0; font-size:14px; font-weight:800;">Envío fotos a alguien que no conozco.</p></div>
+  </div>
+
+  <div style="display:flex; align-items:center; gap:10px; margin-top:12px;">
+    <span style="width:26px; height:26px; border-radius:50%; background:#FFCA3A; color:#2A2A40; display:flex; align-items:center; justify-content:center; font-family:'Fredoka',sans-serif; font-size:15px; font-weight:600;">2</span>
+    <p style="margin:0; font-size:14px; font-weight:900;">Completa las reglas de oro de seguridad.</p>
+  </div>
+  <div style="background:#FFF9EF; border:2px solid #FFCA3A; border-radius:12px; padding:10px 16px; margin-top:8px; break-inside:avoid; display:flex; flex-direction:column; gap:8px; font-size:14px; font-weight:800;">
+    <p style="margin:0;">⏰ Uso las pantallas un tiempo ____________________ y con permiso.</p>
+    <p style="margin:0;">🙋 Si algo me incomoda, aviso a un ____________________.</p>
+    <p style="margin:0;">🔒 No doy mis ____________________ a desconocidos.</p>
+  </div>
+
+  <div style="display:flex; align-items:center; gap:10px; margin-top:12px;">
+    <span style="width:26px; height:26px; border-radius:50%; background:#8AC926; color:#fff; display:flex; align-items:center; justify-content:center; font-family:'Fredoka',sans-serif; font-size:15px; font-weight:600;">3</span>
+    <p style="margin:0; font-size:14px; font-weight:900;">Dibuja el semáforo: un ejemplo de lo que SÍ y de lo que NO.</p>
+  </div>
+  <div style="display:flex; gap:10px; margin-top:8px; break-inside:avoid;">
+    <div style="flex:1; border:2px solid #8AC926; border-radius:12px; overflow:hidden;"><p style="margin:0; background:#8AC926; color:#fff; text-align:center; font-size:13px; font-weight:900; padding:5px;">🟢 SÍ PUEDO</p><div style="height:80px;"></div></div>
+    <div style="flex:1; border:2px solid #FF595E; border-radius:12px; overflow:hidden;"><p style="margin:0; background:#FF595E; color:#fff; text-align:center; font-size:13px; font-weight:900; padding:5px;">🔴 NO DEBO</p><div style="height:80px;"></div></div>
+  </div>
+
+  <div style="display:flex; align-items:center; gap:10px; margin-top:12px;">
+    <span style="width:26px; height:26px; border-radius:50%; background:#6A4C93; color:#fff; display:flex; align-items:center; justify-content:center; font-family:'Fredoka',sans-serif; font-size:15px; font-weight:600;">4</span>
+    <p style="margin:0; font-size:14px; font-weight:900;">Escribe una regla para cuidar tus ojos al usar pantallas.</p>
+  </div>
+  <div style="margin-top:8px; break-inside:avoid;">
+    <div style="border-bottom:2px solid #BFDCF2; height:22px;"></div>
+  </div>
+
+  <p style="margin:12px 0 0; text-align:center; font-family:'Fredoka',sans-serif; font-size:14px; font-weight:600; color:#8AC926;">¡Eres un ciberniño seguro! ★</p>
+</div>
+</x-import>
+</x-dc>
+</body>
+</html>

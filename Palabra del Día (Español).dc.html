@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<meta name="description" content="Palabra del Día - sección diaria de vocabulario para Grado 2°">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Nunito:wght@700;800;900&display=swap" rel="stylesheet">
+<style>
+body { margin:0; background:#FFF9EF; }
+a { color:#1982C4; } a:hover { color:#FF595E; }
+@keyframes pop { 0% { transform:scale(.7); opacity:0; } 100% { transform:scale(1); opacity:1; } }
+@keyframes floaty { 0%,100% { transform:translateY(0); } 50% { transform:translateY(-10px); } }
+@keyframes spin360 { 0% { transform:rotate(0); } 100% { transform:rotate(360deg); } }
+</style>
+<template id="__bundler_thumbnail" data-bg-color="#FFF9EF">
+<svg viewBox="0 0 120 80" xmlns="http://www.w3.org/2000/svg">
+<circle cx="60" cy="40" r="26" fill="#FF595E"></circle>
+<text x="60" y="52" text-anchor="middle" font-size="30">📖</text>
+</svg>
+</template>
+</helmet>
+<div style="min-height:100vh; display:flex; flex-direction:column; font-family:'Nunito',sans-serif; color:#2A2A40; overflow:hidden;">
+
+  <div style="position:absolute; top:-90px; left:-90px; width:300px; height:300px; border-radius:50%; background:#FFCA3A; opacity:.5;"></div>
+  <div style="position:absolute; bottom:-110px; right:-80px; width:340px; height:340px; border-radius:50%; background:#1982C4; opacity:.35;"></div>
+  <div style="position:absolute; top:120px; right:80px; width:70px; height:70px; border-radius:20px; background:#8AC926; opacity:.5; animation:floaty 4s ease-in-out infinite;"></div>
+  <div style="position:absolute; bottom:120px; left:90px; width:56px; height:56px; border-radius:50%; background:#FF595E; opacity:.5; animation:floaty 5s ease-in-out infinite;"></div>
+
+  <header style="display:flex; align-items:center; gap:16px; padding:16px 30px; position:relative; z-index:2;">
+    <span style="width:46px; height:46px; border-radius:14px; background:#FF595E; color:#fff; display:flex; align-items:center; justify-content:center; font-size:24px;">📖</span>
+    <div style="display:flex; flex-direction:column;">
+      <span style="font-family:'Fredoka',sans-serif; font-size:22px; font-weight:600;">Palabra del Día</span>
+      <span style="font-size:13px; font-weight:900; color:#6A4C93; letter-spacing:1px;">ESPAÑOL · GRADO 2° · VOCABULARIO</span>
+    </div>
+    <div style="flex:1;"></div>
+    <span style="background:#fff; border-radius:40px; padding:10px 20px; font-family:'Fredoka',sans-serif; font-size:16px; font-weight:600; color:#6A4C93; box-shadow:0 4px 0 rgba(42,42,64,.08);">Palabra n.° {{ dayNum }}</span>
+  </header>
+
+  <main style="flex:1; display:flex; flex-direction:column; align-items:center; justify-content:center; padding:24px; position:relative; z-index:2;">
+
+    <sc-if value="{{ idle }}" hint-placeholder-val="{{ true }}">
+      <div style="display:flex; flex-direction:column; align-items:center; gap:34px; text-align:center; animation:pop .4s ease;">
+        <h1 style="margin:0; font-family:'Fredoka',sans-serif; font-size:60px; font-weight:700; line-height:1.05; max-width:820px;">¿Cuál será la<br>palabra de hoy? 🎁</h1>
+        <p style="margin:0; font-size:24px; font-weight:800; color:#6A4C93; max-width:640px;">Pulsa el botón y deja que la ruleta de palabras elija una nueva para aprender.</p>
+        <button onClick="{{ spin }}" style="background:#FF595E; color:#fff; border:none; border-radius:60px; padding:24px 60px; font-family:'Fredoka',sans-serif; font-size:40px; font-weight:600; cursor:pointer; box-shadow:0 10px 0 rgba(42,42,64,.15);" style-hover="transform:scale(1.05); background:#e8474c;">🎲 ¡Sorpréndeme!</button>
+      </div>
+    </sc-if>
+
+    <sc-if value="{{ spinning }}" hint-placeholder-val="{{ false }}">
+      <div style="display:flex; flex-direction:column; align-items:center; gap:28px; text-align:center;">
+        <div style="width:120px; height:120px; border-radius:28px; background:#FFCA3A; display:flex; align-items:center; justify-content:center; box-shadow:0 10px 0 rgba(42,42,64,.15); animation:spin360 .7s linear infinite;">
+          <span style="font-size:64px;">🎲</span>
+        </div>
+        <div style="background:#fff; border-radius:28px; padding:24px 60px; box-shadow:0 8px 0 rgba(42,42,64,.1); min-width:420px;">
+          <p style="margin:0; font-family:'Fredoka',sans-serif; font-size:52px; font-weight:600; color:#1982C4;">{{ flashWord }}</p>
+        </div>
+        <p style="margin:0; font-size:22px; font-weight:900; color:#6A4C93; letter-spacing:1px;">Eligiendo una palabra especial...</p>
+      </div>
+    </sc-if>
+
+    <sc-if value="{{ revealed }}" hint-placeholder-val="{{ false }}">
+      <div style="display:flex; flex-direction:column; align-items:center; gap:20px; text-align:center; animation:pop .45s ease; width:100%; max-width:860px;">
+        <span style="background:#8AC926; color:#fff; border-radius:30px; padding:8px 24px; font-size:15px; font-weight:900; letter-spacing:2px;">✨ LA PALABRA DE HOY ES ✨</span>
+        <div style="background:#fff; border-radius:32px; padding:30px 40px; box-shadow:0 12px 0 rgba(42,42,64,.1); width:100%; display:flex; flex-direction:column; gap:18px;">
+          <div style="display:flex; align-items:center; justify-content:center; gap:24px; flex-wrap:wrap;">
+            <span style="font-size:96px;">{{ w.emoji }}</span>
+            <div style="text-align:left;">
+              <p style="margin:0; font-family:'Fredoka',sans-serif; font-size:72px; font-weight:700; color:#FF595E; line-height:1;">{{ w.word }}</p>
+              <p style="margin:6px 0 0; font-size:22px; font-weight:900; color:#6A4C93;">{{ w.tipo }} · {{ w.silabas }}</p>
+            </div>
+          </div>
+          <div style="display:grid; grid-template-columns:1fr 1fr; gap:14px; text-align:left;">
+            <div style="background:#E3F0FA; border-radius:18px; padding:16px 22px;">
+              <p style="margin:0 0 6px; font-size:14px; font-weight:900; color:#1982C4; letter-spacing:1px;">¿QUÉ SIGNIFICA?</p>
+              <p style="margin:0; font-size:22px; font-weight:800; line-height:1.45;">{{ w.def }}</p>
+            </div>
+            <div style="background:#E9F5D8; border-radius:18px; padding:16px 22px;">
+              <p style="margin:0 0 6px; font-size:14px; font-weight:900; color:#6FA31E; letter-spacing:1px;">LA USO ASÍ</p>
+              <p style="margin:0; font-size:22px; font-weight:800; line-height:1.45; font-style:italic;">“{{ w.ejemplo }}”</p>
+            </div>
+          </div>
+          <div style="background:#FFF3D6; border-radius:18px; padding:14px 22px; text-align:left;">
+            <p style="margin:0; font-size:20px; font-weight:800;"><span style="font-weight:900; color:#C89B1C;">Sinónimo:</span> {{ w.sinonimo }} &nbsp;·&nbsp; <span style="font-weight:900; color:#C89B1C;">Reto:</span> {{ w.reto }}</p>
+          </div>
+        </div>
+        <div style="display:flex; gap:14px; flex-wrap:wrap; justify-content:center;">
+          <button onClick="{{ spin }}" style="background:#1982C4; color:#fff; border:none; border-radius:50px; padding:16px 36px; font-family:'Fredoka',sans-serif; font-size:24px; font-weight:600; cursor:pointer; box-shadow:0 6px 0 rgba(42,42,64,.12);" style-hover="transform:scale(1.05);">🎲 Otra palabra</button>
+          <button onClick="{{ copiar }}" style="background:#fff; color:#6A4C93; border:3px solid #6A4C93; border-radius:50px; padding:14px 32px; font-size:20px; font-weight:900; cursor:pointer; font-family:'Nunito',sans-serif;" style-hover="background:#F1EAFB;">✍️ La copio en el cuaderno</button>
+        </div>
+      </div>
+    </sc-if>
+
+  </main>
+
+  <footer style="text-align:center; padding:14px; position:relative; z-index:2;">
+    <p style="margin:0; font-size:15px; font-weight:800; color:#6A4C93;">Cada día una palabra nueva para hablar y escribir mejor. 🌟</p>
+  </footer>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;: {&quot;width&quot;: 1100, &quot;height&quot;: 720}}">
+class Component extends DCLogic {
+  state = { phase: "idle", idx: 0, flash: 0, spins: 0 };
+  WORDS = [
+    { word: "Diminuto", emoji: "🐜", tipo: "adjetivo", silabas: "di-mi-nu-to", def: "Que es muy, muy pequeño.", ejemplo: "La hormiga es un animal diminuto.", sinonimo: "pequeñito", reto: "Di algo diminuto que veas hoy." },
+    { word: "Veloz", emoji: "🐆", tipo: "adjetivo", silabas: "ve-loz", def: "Que se mueve muy rápido.", ejemplo: "El guepardo es muy veloz al correr.", sinonimo: "rápido", reto: "¿Qué animal veloz conoces?" },
+    { word: "Curioso", emoji: "🔍", tipo: "adjetivo", silabas: "cu-rio-so", def: "Que quiere aprender y descubrir cosas nuevas.", ejemplo: "Soy curioso y hago muchas preguntas.", sinonimo: "preguntón", reto: "Nombra algo que te da curiosidad." },
+    { word: "Gigantesco", emoji: "🦕", tipo: "adjetivo", silabas: "gi-gan-tes-co", def: "Que es enorme, muy grande.", ejemplo: "El dinosaurio era gigantesco.", sinonimo: "enorme", reto: "Di algo gigantesco." },
+    { word: "Silencioso", emoji: "🤫", tipo: "adjetivo", silabas: "si-len-cio-so", def: "Que casi no hace ruido.", ejemplo: "El gato camina silencioso.", sinonimo: "calladito", reto: "¿Cuándo debemos estar silenciosos?" },
+    { word: "Valiente", emoji: "🦁", tipo: "adjetivo", silabas: "va-lien-te", def: "Que no tiene miedo de hacer lo correcto.", ejemplo: "La niña valiente ayudó a su amigo.", sinonimo: "audaz", reto: "Cuenta algo valiente que hiciste." },
+    { word: "Brillante", emoji: "✨", tipo: "adjetivo", silabas: "bri-llan-te", def: "Que brilla mucho o que es muy inteligente.", ejemplo: "Tuvo una idea brillante.", sinonimo: "reluciente", reto: "Nombra algo brillante." },
+    { word: "Enorme", emoji: "🐘", tipo: "adjetivo", silabas: "e-nor-me", def: "Que es muy grande.", ejemplo: "El elefante tiene orejas enormes.", sinonimo: "gigante", reto: "Di algo enorme de tu ciudad." },
+    { word: "Delicioso", emoji: "🍰", tipo: "adjetivo", silabas: "de-li-cio-so", def: "Que sabe muy rico.", ejemplo: "El postre estaba delicioso.", sinonimo: "sabroso", reto: "¿Cuál comida te parece deliciosa?" },
+    { word: "Explorar", emoji: "🧭", tipo: "verbo", silabas: "ex-plo-rar", def: "Recorrer un lugar para descubrirlo.", ejemplo: "Vamos a explorar el bosque.", sinonimo: "descubrir", reto: "¿Qué lugar te gustaría explorar?" },
+    { word: "Asombroso", emoji: "🤩", tipo: "adjetivo", silabas: "a-som-bro-so", def: "Que causa mucha sorpresa y admiración.", ejemplo: "El mago hizo un truco asombroso.", sinonimo: "increíble", reto: "Cuenta algo asombroso que viste." },
+    { word: "Amable", emoji: "🤗", tipo: "adjetivo", silabas: "a-ma-ble", def: "Que trata bien a los demás.", ejemplo: "Mi vecina es muy amable.", sinonimo: "bondadoso", reto: "¿Cómo puedes ser amable hoy?" },
+    { word: "Frágil", emoji: "🥚", tipo: "adjetivo", silabas: "frá-gil", def: "Que se rompe con facilidad.", ejemplo: "El huevo es frágil, cuídalo.", sinonimo: "delicado", reto: "Nombra algo frágil de tu casa." },
+    { word: "Húmedo", emoji: "💧", tipo: "adjetivo", silabas: "hú-me-do", def: "Que tiene un poco de agua, mojado.", ejemplo: "El pasto está húmedo en la mañana.", sinonimo: "mojado", reto: "¿Qué está húmedo después de llover?" },
+    { word: "Travieso", emoji: "🐒", tipo: "adjetivo", silabas: "tra-vie-so", def: "Que hace muchas travesuras.", ejemplo: "El mono travieso saltaba por todos lados.", sinonimo: "juguetón", reto: "Cuenta una travesura divertida." },
+    { word: "Resplandor", emoji: "🌟", tipo: "sustantivo", silabas: "res-plan-dor", def: "Luz muy fuerte y bonita.", ejemplo: "El resplandor del sol iluminó el mar.", sinonimo: "brillo", reto: "¿Qué cosa tiene resplandor?" },
+    { word: "Aventura", emoji: "🗺️", tipo: "sustantivo", silabas: "a-ven-tu-ra", def: "Algo emocionante que vivimos.", ejemplo: "El viaje fue una gran aventura.", sinonimo: "hazaña", reto: "Cuenta una aventura que tuviste." },
+    { word: "Generoso", emoji: "🎁", tipo: "adjetivo", silabas: "ge-ne-ro-so", def: "Que comparte con los demás.", ejemplo: "Fue generoso y compartió su merienda.", sinonimo: "dadivoso", reto: "¿Cómo eres generoso con tus amigos?" },
+    { word: "Misterioso", emoji: "🕵️", tipo: "adjetivo", silabas: "mis-te-rio-so", def: "Que no se conoce o cuesta entender.", ejemplo: "Se oyó un ruido misterioso.", sinonimo: "secreto", reto: "Describe algo misterioso." },
+    { word: "Esfuerzo", emoji: "💪", tipo: "sustantivo", silabas: "es-fuer-zo", def: "La fuerza que ponemos para lograr algo.", ejemplo: "Con esfuerzo aprendí a leer.", sinonimo: "empeño", reto: "¿En qué haces mucho esfuerzo?" }
+  ];
+  componentWillUnmount() { clearInterval(this._iv); clearTimeout(this._to); }
+  spin = () => {
+    clearInterval(this._iv); clearTimeout(this._to);
+    this.setState({ phase: "spinning" });
+    this._iv = setInterval(() => this.setState(s => ({ flash: Math.floor(Math.random() * this.WORDS.length) })), 90);
+    this._to = setTimeout(() => {
+      clearInterval(this._iv);
+      this.setState(s => {
+        let n = Math.floor(Math.random() * this.WORDS.length);
+        if (n === s.idx) n = (n + 1) % this.WORDS.length;
+        return { phase: "revealed", idx: n, spins: s.spins + 1 };
+      });
+    }, 1700);
+  };
+  renderVals() {
+    const s = this.state;
+    return {
+      idle: s.phase === "idle", spinning: s.phase === "spinning", revealed: s.phase === "revealed",
+      spin: this.spin,
+      copiar: () => {},
+      flashWord: this.WORDS[s.flash].word,
+      w: this.WORDS[s.idx],
+      dayNum: s.spins === 0 ? "—" : String(s.spins)
+    };
+  }
+}
+</script>
+</body>
+</html>

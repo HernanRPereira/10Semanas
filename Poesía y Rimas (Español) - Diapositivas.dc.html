@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<meta name="description" content="Diapositivas: Poesía, rimas, retahílas y trabalenguas - Grado 2°">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Nunito:wght@700;800;900&display=swap" rel="stylesheet">
+<style>
+body { margin:0; background:#FFF9EF; }
+a { color:#1982C4; } a:hover { color:#FF595E; }
+</style>
+</helmet>
+<x-import component-from-global-scope="deck-stage" from="./deck-stage.js" width="1920" height="1080" hint-size="100%,100%">
+
+<section data-label="Portada" data-speaker-notes="Saluda con energía. Pregunta detonadora: gato rima con... ¿pato? ¿zapato? ¿casa? ¿Qué palabras suenan parecido al final? Escucha ideas antes de avanzar." style="background:#FFF9EF; overflow:hidden; font-family:'Nunito',sans-serif;">
+  <div style="position:absolute; top:-120px; left:-120px; width:380px; height:380px; border-radius:50%; background:#FF595E;"></div>
+  <div style="position:absolute; bottom:-140px; right:-100px; width:420px; height:420px; border-radius:50%; background:#FFCA3A;"></div>
+  <div style="position:absolute; top:120px; right:220px; width:120px; height:120px; border-radius:28px; background:#1982C4; transform:rotate(18deg);"></div>
+  <div style="position:absolute; bottom:180px; left:200px; width:90px; height:90px; border-radius:50%; background:#8AC926;"></div>
+  <div style="position:absolute; inset:0; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:36px; text-align:center;">
+    <div style="display:flex; gap:16px; align-items:center; background:#fff; border-radius:60px; padding:16px 44px; box-shadow:0 8px 0 rgba(42,42,64,.12);">
+      <span style="font-size:30px; font-weight:900; color:#FF595E; letter-spacing:2px;">ESPAÑOL</span>
+      <span style="font-size:30px; font-weight:900; color:#1982C4;">•</span>
+      <span style="font-size:30px; font-weight:900; color:#1982C4; letter-spacing:2px;">GRADO 2°</span>
+    </div>
+    <h1 style="margin:0; font-family:'Fredoka',sans-serif; font-weight:700; font-size:110px; color:#2A2A40; line-height:1.05;">Poesía y Rimas</h1>
+    <p style="margin:0; font-size:42px; font-weight:800; color:#2A2A40;">Rimas, retahílas y trabalenguas · ¡Jugamos con las palabras!</p>
+    <div style="display:flex; gap:22px; font-size:72px;">
+      <span style="background:#fff; border-radius:24px; padding:12px 24px; box-shadow:0 6px 0 rgba(42,42,64,.1);">📜</span>
+      <span style="background:#fff; border-radius:24px; padding:12px 24px; box-shadow:0 6px 0 rgba(42,42,64,.1);">🎵</span>
+      <span style="background:#fff; border-radius:24px; padding:12px 24px; box-shadow:0 6px 0 rgba(42,42,64,.1);">😛</span>
+    </div>
+  </div>
+</section>
+
+<section data-label="Objetivo" data-speaker-notes="Lee los objetivos. DBA 3 de Lenguaje: disfrutar la lectura de textos poéticos y jugar con el lenguaje." style="background:#FFF9EF; font-family:'Nunito',sans-serif; padding:100px; display:flex; flex-direction:column; gap:52px;">
+  <h2 style="margin:0; font-family:'Fredoka',sans-serif; font-weight:700; font-size:80px; color:#2A2A40;">¿Qué aprenderemos hoy?</h2>
+  <div style="display:flex; flex-direction:column; gap:28px; max-width:1500px;">
+    <div style="display:flex; align-items:center; gap:28px; background:#fff; border-radius:28px; padding:28px 40px; box-shadow:0 6px 0 rgba(42,42,64,.1);">
+      <span style="min-width:76px; height:76px; border-radius:50%; background:#FF595E; color:#fff; display:flex; align-items:center; justify-content:center; font-family:'Fredoka',sans-serif; font-size:44px; font-weight:600;">1</span>
+      <p style="margin:0; font-size:38px; font-weight:800; color:#2A2A40;">Descubrir qué es una <span style="color:#1982C4;">rima</span> y encontrar palabras que rimen.</p>
+    </div>
+    <div style="display:flex; align-items:center; gap:28px; background:#fff; border-radius:28px; padding:28px 40px; box-shadow:0 6px 0 rgba(42,42,64,.1);">
+      <span style="min-width:76px; height:76px; border-radius:50%; background:#FFCA3A; color:#2A2A40; display:flex; align-items:center; justify-content:center; font-family:'Fredoka',sans-serif; font-size:44px; font-weight:600;">2</span>
+      <p style="margin:0; font-size:38px; font-weight:800; color:#2A2A40;">Conocer <span style="color:#8AC926;">poesías, retahílas y trabalenguas</span>.</p>
+    </div>
+    <div style="display:flex; align-items:center; gap:28px; background:#fff; border-radius:28px; padding:28px 40px; box-shadow:0 6px 0 rgba(42,42,64,.1);">
+      <span style="min-width:76px; height:76px; border-radius:50%; background:#8AC926; color:#fff; display:flex; align-items:center; justify-content:center; font-family:'Fredoka',sans-serif; font-size:44px; font-weight:600;">3</span>
+      <p style="margin:0; font-size:38px; font-weight:800; color:#2A2A40;">Crear mis propias rimas y disfrutar los sonidos.</p>
+    </div>
+  </div>
+  <p style="margin:0; font-size:30px; font-weight:800; color:#6A4C93;">Necesitas: cuaderno de español, lápiz y tu mejor voz.</p>
+</section>
+
+<section data-label="Copiado 1" data-speaker-notes="Qué es la rima. Temporizador de 5 minutos." style="background:#fff; font-family:'Nunito',sans-serif; padding:80px 100px; display:flex; flex-direction:column; gap:40px;">
+  <div style="display:flex; align-items:center; gap:24px;">
+    <span style="background:#FF595E; color:#fff; border-radius:20px; padding:14px 30px; font-size:28px; font-weight:900; letter-spacing:1px;">ESCRIBE EN TU CUADERNO · PARTE 1</span>
+  </div>
+  <h2 style="margin:0; font-family:'Fredoka',sans-serif; font-weight:700; font-size:64px; color:#FF595E;">La rima</h2>
+  <div style="background:repeating-linear-gradient(#fff, #fff 58px, #BFDCF2 58px, #BFDCF2 60px); border:3px solid #BFDCF2; border-radius:20px; padding:10px 40px; max-width:1500px;">
+    <p style="margin:0; font-size:40px; line-height:60px; font-weight:800; color:#2A2A40;">Hay rima cuando dos palabras <span style="color:#1982C4;">terminan con un sonido parecido</span>.</p>
+  </div>
+  <div style="display:flex; gap:24px; flex-wrap:wrap; font-family:'Fredoka',sans-serif;">
+    <span style="background:#FFF9EF; border-radius:20px; padding:16px 30px; font-size:40px; font-weight:600;">gato — pa<span style="color:#FF595E;">to</span></span>
+    <span style="background:#FFF9EF; border-radius:20px; padding:16px 30px; font-size:40px; font-weight:600;">flor — amor</span>
+    <span style="background:#FFF9EF; border-radius:20px; padding:16px 30px; font-size:40px; font-weight:600;">luna — cuna</span>
+    <span style="background:#FFF9EF; border-radius:20px; padding:16px 30px; font-size:40px; font-weight:600;">ratón — corazón</span>
+  </div>
+  <button onClick="{{ start1 }}" style="position:absolute; right:70px; bottom:56px; display:flex; align-items:center; gap:20px; background:#2A2A40; color:#fff; border:none; border-radius:60px; padding:18px 40px; cursor:pointer; font-family:'Nunito',sans-serif;">
+    <span style="font-size:26px; font-weight:900; letter-spacing:1px;">TIEMPO PARA COPIAR ▶</span>
+    <span style="font-family:'Fredoka',sans-serif; font-size:52px; font-weight:600; color:#FFCA3A;">{{ t1 }}</span>
+  </button>
+</section>
+
+<section data-label="Copiado 2" data-speaker-notes="Una poesía corta para copiar y leer con ritmo. Temporizador de 5 minutos." style="background:#fff; font-family:'Nunito',sans-serif; padding:70px 100px; display:flex; flex-direction:column; gap:28px;">
+  <div style="display:flex; align-items:center; gap:24px;">
+    <span style="background:#FF595E; color:#fff; border-radius:20px; padding:14px 30px; font-size:28px; font-weight:900; letter-spacing:1px;">LEE Y COPIA EN TU CUADERNO · PARTE 2</span>
+  </div>
+  <h2 style="margin:0; font-family:'Fredoka',sans-serif; font-weight:700; font-size:56px; color:#1982C4;">Una poesía: «La luna»</h2>
+  <div style="background:#FFF9EF; border:3px solid #FFCA3A; border-radius:24px; padding:30px 50px; max-width:1400px;">
+    <p style="margin:0; font-family:'Fredoka',sans-serif; font-size:44px; line-height:1.6; font-weight:600; color:#2A2A40;">La luna sale en la noche,<br>brilla como un gran <span style="color:#FF595E;">broche</span>.<br>Ilumina el cielo azul,<br>y en el mar pone su <span style="color:#1982C4;">luz</span>.</p>
+  </div>
+  <p style="margin:0; font-size:30px; font-weight:800; color:#6A4C93;">Fíjate: noche rima con broche · azul rima con luz.</p>
+  <button onClick="{{ start2 }}" style="position:absolute; right:70px; bottom:56px; display:flex; align-items:center; gap:20px; background:#2A2A40; color:#fff; border:none; border-radius:60px; padding:18px 40px; cursor:pointer; font-family:'Nunito',sans-serif;">
+    <span style="font-size:26px; font-weight:900; letter-spacing:1px;">TIEMPO PARA COPIAR ▶</span>
+    <span style="font-family:'Fredoka',sans-serif; font-size:52px; font-weight:600; color:#FFCA3A;">{{ t2 }}</span>
+  </button>
+</section>
+
+<section data-label="Copiado 3" data-speaker-notes="Retahíla y trabalenguas. Léanlos en voz alta y jueguen. Temporizador de 5 minutos." style="background:#fff; font-family:'Nunito',sans-serif; padding:80px 100px; display:flex; flex-direction:column; gap:28px;">
+  <div style="display:flex; align-items:center; gap:24px;">
+    <span style="background:#FF595E; color:#fff; border-radius:20px; padding:14px 30px; font-size:28px; font-weight:900; letter-spacing:1px;">ESCRIBE EN TU CUADERNO · PARTE 3</span>
+  </div>
+  <h2 style="margin:0; font-family:'Fredoka',sans-serif; font-weight:700; font-size:52px; color:#8AC926;">Retahílas y trabalenguas</h2>
+  <div style="display:flex; gap:30px; max-width:1620px;">
+    <div style="flex:1; background:#E9F5D8; border-radius:24px; padding:24px 32px;">
+      <p style="margin:0 0 12px; font-size:26px; font-weight:900; color:#6FA31E;">🎵 RETAHÍLA (se dice de corrido)</p>
+      <p style="margin:0; font-family:'Fredoka',sans-serif; font-size:30px; font-weight:600; color:#2A2A40; line-height:1.5;">Una, dola, tela, catola,<br>quila, quileta, estaba la reina<br>en su gabinete.</p>
+    </div>
+    <div style="flex:1; background:#FDE3E4; border-radius:24px; padding:24px 32px;">
+      <p style="margin:0 0 12px; font-size:26px; font-weight:900; color:#FF595E;">😛 TRABALENGUAS (difícil de decir)</p>
+      <p style="margin:0; font-family:'Fredoka',sans-serif; font-size:30px; font-weight:600; color:#2A2A40; line-height:1.5;">Tres tristes tigres<br>tragaban trigo<br>en un trigal.</p>
+    </div>
+  </div>
+  <button onClick="{{ start3 }}" style="position:absolute; right:70px; bottom:56px; display:flex; align-items:center; gap:20px; background:#2A2A40; color:#fff; border:none; border-radius:60px; padding:18px 40px; cursor:pointer; font-family:'Nunito',sans-serif;">
+    <span style="font-size:26px; font-weight:900; letter-spacing:1px;">TIEMPO PARA COPIAR ▶</span>
+    <span style="font-family:'Fredoka',sans-serif; font-size:52px; font-weight:600; color:#FFCA3A;">{{ t3 }}</span>
+  </button>
+</section>
+
+<section data-label="Copiado 4" data-speaker-notes="Diferencias entre poesía, retahíla y trabalenguas. Temporizador de 5 minutos." style="background:#fff; font-family:'Nunito',sans-serif; padding:80px 100px; display:flex; flex-direction:column; gap:36px;">
+  <div style="display:flex; align-items:center; gap:24px;">
+    <span style="background:#FF595E; color:#fff; border-radius:20px; padding:14px 30px; font-size:28px; font-weight:900; letter-spacing:1px;">ESCRIBE EN TU CUADERNO · PARTE 4</span>
+  </div>
+  <h2 style="margin:0; font-family:'Fredoka',sans-serif; font-weight:700; font-size:56px; color:#6A4C93;">Cada texto es especial</h2>
+  <div style="display:flex; flex-direction:column; gap:18px; max-width:1550px;">
+    <div style="display:flex; align-items:center; gap:22px; background:#FFF9EF; border-radius:22px; padding:18px 32px;"><span style="font-size:44px;">📜</span><p style="margin:0; font-size:34px; font-weight:800; color:#2A2A40;"><span style="font-family:'Fredoka',sans-serif; color:#FF595E;">Poesía:</span> versos bonitos que riman y expresan sentimientos.</p></div>
+    <div style="display:flex; align-items:center; gap:22px; background:#FFF9EF; border-radius:22px; padding:18px 32px;"><span style="font-size:44px;">🎵</span><p style="margin:0; font-size:34px; font-weight:800; color:#2A2A40;"><span style="font-family:'Fredoka',sans-serif; color:#8AC926;">Retahíla:</span> versos que se dicen de corrido, para jugar.</p></div>
+    <div style="display:flex; align-items:center; gap:22px; background:#FFF9EF; border-radius:22px; padding:18px 32px;"><span style="font-size:44px;">😛</span><p style="margin:0; font-size:34px; font-weight:800; color:#2A2A40;"><span style="font-family:'Fredoka',sans-serif; color:#1982C4;">Trabalenguas:</span> frases difíciles de pronunciar rápido.</p></div>
+  </div>
+  <button onClick="{{ start4 }}" style="position:absolute; right:70px; bottom:56px; display:flex; align-items:center; gap:20px; background:#2A2A40; color:#fff; border:none; border-radius:60px; padding:18px 40px; cursor:pointer; font-family:'Nunito',sans-serif;">
+    <span style="font-size:26px; font-weight:900; letter-spacing:1px;">TIEMPO PARA COPIAR ▶</span>
+    <span style="font-family:'Fredoka',sans-serif; font-size:52px; font-weight:600; color:#FFCA3A;">{{ t4 }}</span>
+  </button>
+</section>
+
+<section data-label="Práctica" data-speaker-notes="Práctica individual: 10 minutos. Respuestas rima: sol-caracol, mano-gusano, pera-madera. Corrección compartiendo en voz alta." style="background:#FFF9EF; font-family:'Nunito',sans-serif; padding:80px 100px; display:flex; flex-direction:column; gap:34px;">
+  <div style="display:flex; align-items:center; gap:24px;">
+    <span style="background:#FF595E; color:#fff; border-radius:20px; padding:14px 30px; font-size:28px; font-weight:900; letter-spacing:1px;">AHORA TÚ · RESUELVE EN TU CUADERNO</span>
+  </div>
+  <h2 style="margin:0; font-family:'Fredoka',sans-serif; font-weight:700; font-size:60px; color:#2A2A40;">¡A jugar con las palabras!</h2>
+  <div style="background:#fff; border-radius:28px; padding:28px 44px; max-width:1620px; box-shadow:0 6px 0 rgba(42,42,64,.1);">
+    <p style="margin:0 0 14px; font-size:30px; font-weight:900; color:#FF595E;">1. Escribe una palabra que rime:</p>
+    <div style="display:flex; flex-wrap:wrap; gap:16px; font-family:'Fredoka',sans-serif; font-size:38px; font-weight:600; color:#2A2A40;">
+      <span style="background:#FFF9EF; border-radius:16px; padding:10px 26px;">sol → ______</span>
+      <span style="background:#FFF9EF; border-radius:16px; padding:10px 26px;">mano → ______</span>
+      <span style="background:#FFF9EF; border-radius:16px; padding:10px 26px;">pera → ______</span>
+    </div>
+  </div>
+  <div style="background:#6A4C93; border-radius:28px; padding:24px 44px; max-width:1620px;">
+    <p style="margin:0; font-size:30px; font-weight:800; color:#fff;">2. Inventa <span style="color:#FFCA3A;">2 versos que rimen</span> sobre tu animal favorito.</p>
+  </div>
+  <button onClick="{{ start5 }}" style="position:absolute; right:70px; bottom:56px; display:flex; align-items:center; gap:20px; background:#2A2A40; color:#fff; border:none; border-radius:60px; padding:18px 40px; cursor:pointer; font-family:'Nunito',sans-serif;">
+    <span style="font-size:26px; font-weight:900; letter-spacing:1px;">TIEMPO PARA RESOLVER ▶</span>
+    <span style="font-family:'Fredoka',sans-serif; font-size:52px; font-weight:600; color:#FFCA3A;">{{ t5 }}</span>
+  </button>
+</section>
+
+<section data-label="Cierre" data-speaker-notes="Pregunta de verificación: ¿qué es una rima? Da un ejemplo. Recita el trabalenguas juntos. Felicita y anuncia la ficha de evaluación." style="background:#FF595E; font-family:'Nunito',sans-serif; padding:100px; display:flex; flex-direction:column; justify-content:center; gap:48px;">
+  <span style="background:#FFCA3A; color:#2A2A40; border-radius:20px; padding:14px 30px; font-size:28px; font-weight:900; letter-spacing:1px; align-self:flex-start;">PARA TERMINAR</span>
+  <h2 style="margin:0; font-family:'Fredoka',sans-serif; font-weight:700; font-size:100px; color:#fff; max-width:1600px; line-height:1.15;">¿Qué es una rima? Dinos un ejemplo.</h2>
+  <p style="margin:0; font-size:40px; font-weight:800; color:#FFD9DA;">Levanta la mano y comparte dos palabras que rimen.</p>
+  <div style="display:flex; gap:20px; align-items:center;">
+    <span style="background:#fff; border-radius:60px; padding:18px 40px; font-family:'Fredoka',sans-serif; font-size:36px; font-weight:600; color:#FF595E;">¡Hoy jugaste con la magia de las palabras!</span>
+  </div>
+</section>
+
+</x-import>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;copyMinutes&quot;: {&quot;editor&quot;: &quot;int&quot;, &quot;default&quot;: 5, &quot;min&quot;: 1, &quot;max&quot;: 15, &quot;unit&quot;: &quot;min&quot;, &quot;tsType&quot;: &quot;number&quot;, &quot;section&quot;: &quot;Temporizadores&quot;}, &quot;practiceMinutes&quot;: {&quot;editor&quot;: &quot;int&quot;, &quot;default&quot;: 10, &quot;min&quot;: 1, &quot;max&quot;: 30, &quot;unit&quot;: &quot;min&quot;, &quot;tsType&quot;: &quot;number&quot;, &quot;section&quot;: &quot;Temporizadores&quot;}}">
+class Component extends DCLogic {
+  state = { left: {}, run: {} };
+  componentDidMount() {
+    this._iv = setInterval(() => {
+      if (!Object.keys(this.state.run).length) return;
+      this.setState(s => {
+        const left = { ...s.left }, run = { ...s.run };
+        for (const k in run) {
+          left[k] = Math.max(0, (left[k] ?? 0) - 1);
+          if (left[k] === 0) delete run[k];
+        }
+        return { left, run };
+      });
+    }, 1000);
+  }
+  componentWillUnmount() { clearInterval(this._iv); }
+  mkStart(id, mins) {
+    return () => this.setState(s => ({ left: { ...s.left, [id]: mins * 60 }, run: { ...s.run, [id]: true } }));
+  }
+  disp(id, mins) {
+    const l = this.state.left[id];
+    if (l === undefined) return mins + ":00";
+    if (l === 0) return "¡TIEMPO!";
+    return Math.floor(l / 60) + ":" + String(l % 60).padStart(2, "0");
+  }
+  renderVals() {
+    const copyMin = this.props.copyMinutes ?? 5;
+    const pracMin = this.props.practiceMinutes ?? 10;
+    return {
+      t1: this.disp("t1", copyMin), start1: this.mkStart("t1", copyMin),
+      t2: this.disp("t2", copyMin), start2: this.mkStart("t2", copyMin),
+      t3: this.disp("t3", copyMin), start3: this.mkStart("t3", copyMin),
+      t4: this.disp("t4", copyMin), start4: this.mkStart("t4", copyMin),
+      t5: this.disp("t5", pracMin), start5: this.mkStart("t5", pracMin)
+    };
+  }
+}
+</script>
+</body>
+</html>

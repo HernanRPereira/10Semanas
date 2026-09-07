@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<meta name="description" content="Web interactiva Clase 1: La adición - Grado 2°">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Nunito:wght@700;800;900&display=swap" rel="stylesheet">
+<style>
+body { margin:0; background:#FFF9EF; }
+a { color:#1982C4; } a:hover { color:#FF595E; }
+@keyframes pop { 0% { transform:scale(.6); opacity:0; } 100% { transform:scale(1); opacity:1; } }
+</style>
+<template id="__bundler_thumbnail" data-bg-color="#FFF9EF">
+<svg viewBox="0 0 120 80" xmlns="http://www.w3.org/2000/svg">
+<rect x="34" y="14" width="52" height="52" rx="14" fill="#FF595E"></rect>
+<rect x="54" y="26" width="12" height="28" rx="4" fill="#FFF9EF"></rect>
+<rect x="46" y="34" width="28" height="12" rx="4" fill="#FFF9EF"></rect>
+</svg>
+</template>
+</helmet>
+<div style="min-height:100vh; display:flex; flex-direction:column; font-family:'Nunito',sans-serif; color:#2A2A40;">
+
+  <header style="display:flex; align-items:center; gap:16px; padding:14px 28px; background:#fff; box-shadow:0 4px 0 rgba(42,42,64,.08);">
+    <span style="width:44px; height:44px; border-radius:14px; background:#FF595E; color:#fff; display:flex; align-items:center; justify-content:center; font-family:'Fredoka',sans-serif; font-size:24px; font-weight:600;">+</span>
+    <div style="display:flex; flex-direction:column;">
+      <span style="font-family:'Fredoka',sans-serif; font-size:22px; font-weight:600;">La Adición</span>
+      <span style="font-size:13px; font-weight:900; color:#6A4C93; letter-spacing:1px;">MATEMÁTICA · GRADO 2°</span>
+    </div>
+    <div style="flex:1;"></div>
+    <button onClick="{{ startH }}" style="display:flex; align-items:center; gap:12px; background:#2A2A40; color:#fff; border:none; border-radius:40px; padding:8px 20px; cursor:pointer; font-family:'Nunito',sans-serif;" style-hover="background:#6A4C93;">
+      <span style="font-size:13px; font-weight:900; letter-spacing:1px;">TEMPORIZADOR ▶</span>
+      <span style="font-family:'Fredoka',sans-serif; font-size:24px; font-weight:600; color:#FFCA3A;">{{ tH }}</span>
+    </button>
+    <span style="background:#FFCA3A; border-radius:40px; padding:10px 20px; font-family:'Fredoka',sans-serif; font-size:20px; font-weight:600;">{{ num }}</span>
+  </header>
+
+  <main style="flex:1; display:flex; flex-direction:column; align-items:center; justify-content:center; padding:32px 24px; position:relative; overflow:hidden;">
+
+    <sc-if value="{{ s1 }}" hint-placeholder-val="{{ true }}">
+      <div style="display:flex; flex-direction:column; align-items:center; gap:28px; text-align:center; max-width:900px; animation:pop .4s ease;">
+        <span style="background:#8AC926; color:#fff; border-radius:30px; padding:10px 26px; font-size:16px; font-weight:900; letter-spacing:2px;">¡BIENVENIDOS!</span>
+        <h1 style="margin:0; font-family:'Fredoka',sans-serif; font-size:56px; font-weight:700; line-height:1.1;">La tienda de Don Pepe</h1>
+        <div style="background:#fff; border-radius:28px; padding:32px 40px; box-shadow:0 8px 0 rgba(42,42,64,.1);">
+          <p style="margin:0; font-size:28px; font-weight:800; line-height:1.5;">En la tienda hay <span style="color:#1982C4;">125 bombones</span>. Hoy llegó una caja con <span style="color:#FF595E;">138 bombones más</span>.</p>
+          <p style="margin:20px 0 0; font-family:'Fredoka',sans-serif; font-size:34px; font-weight:600; color:#6A4C93;">¿Cómo podemos saber cuántos hay ahora?</p>
+        </div>
+        <p style="margin:0; font-size:20px; font-weight:800; color:#6A4C93;">Piensa y comparte tu idea con la clase.</p>
+      </div>
+    </sc-if>
+
+    <sc-if value="{{ s2 }}" hint-placeholder-val="{{ false }}">
+      <div style="display:flex; flex-direction:column; align-items:center; gap:28px; text-align:center; animation:pop .4s ease;">
+        <h1 style="margin:0; font-family:'Fredoka',sans-serif; font-size:48px; font-weight:700;">Recordemos: el valor posicional</h1>
+        <p style="margin:0; font-size:24px; font-weight:800; color:#6A4C93;">Toca cada tarjeta del número <span style="color:#FF595E;">347</span> para descubrir su valor.</p>
+        <div style="display:flex; gap:24px;">
+          <button onClick="{{ tC }}" style="width:180px; height:220px; border:none; border-radius:28px; background:#FF595E; color:#fff; cursor:pointer; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:8px; font-family:'Fredoka',sans-serif;" style-hover="transform:scale(1.05);">
+            <span style="font-size:90px; font-weight:600;">3</span>
+            <sc-if value="{{ vpC }}" hint-placeholder-val="{{ false }}"><span style="font-size:24px; font-weight:600; background:#fff; color:#FF595E; border-radius:20px; padding:6px 16px;">3 centenas = 300</span></sc-if>
+            <sc-if value="{{ vpCoff }}" hint-placeholder-val="{{ true }}"><span style="font-family:'Nunito',sans-serif; font-size:15px; font-weight:900; letter-spacing:1px;">¿CENTENAS?</span></sc-if>
+          </button>
+          <button onClick="{{ tD }}" style="width:180px; height:220px; border:none; border-radius:28px; background:#1982C4; color:#fff; cursor:pointer; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:8px; font-family:'Fredoka',sans-serif;" style-hover="transform:scale(1.05);">
+            <span style="font-size:90px; font-weight:600;">4</span>
+            <sc-if value="{{ vpD }}" hint-placeholder-val="{{ false }}"><span style="font-size:24px; font-weight:600; background:#fff; color:#1982C4; border-radius:20px; padding:6px 16px;">4 decenas = 40</span></sc-if>
+            <sc-if value="{{ vpDoff }}" hint-placeholder-val="{{ true }}"><span style="font-family:'Nunito',sans-serif; font-size:15px; font-weight:900; letter-spacing:1px;">¿DECENAS?</span></sc-if>
+          </button>
+          <button onClick="{{ tU }}" style="width:180px; height:220px; border:none; border-radius:28px; background:#8AC926; color:#fff; cursor:pointer; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:8px; font-family:'Fredoka',sans-serif;" style-hover="transform:scale(1.05);">
+            <span style="font-size:90px; font-weight:600;">7</span>
+            <sc-if value="{{ vpU }}" hint-placeholder-val="{{ false }}"><span style="font-size:24px; font-weight:600; background:#fff; color:#8AC926; border-radius:20px; padding:6px 16px;">7 unidades = 7</span></sc-if>
+            <sc-if value="{{ vpUoff }}" hint-placeholder-val="{{ true }}"><span style="font-family:'Nunito',sans-serif; font-size:15px; font-weight:900; letter-spacing:1px;">¿UNIDADES?</span></sc-if>
+          </button>
+        </div>
+        <sc-if value="{{ vpAll }}" hint-placeholder-val="{{ false }}">
+          <p style="margin:0; font-family:'Fredoka',sans-serif; font-size:28px; font-weight:600; color:#8AC926;">¡Muy bien! 300 + 40 + 7 = 347</p>
+        </sc-if>
+      </div>
+    </sc-if>
+
+    <sc-if value="{{ s3 }}" hint-placeholder-val="{{ false }}">
+      <div style="display:flex; gap:60px; align-items:center; animation:pop .4s ease;">
+        <div style="display:flex; flex-direction:column; gap:24px; max-width:520px;">
+          <span style="background:#1982C4; color:#fff; border-radius:30px; padding:10px 26px; font-size:16px; font-weight:900; letter-spacing:2px; align-self:flex-start;">PASO A PASO</span>
+          <h1 style="margin:0; font-family:'Fredoka',sans-serif; font-size:44px; font-weight:700;">Suma sin reagrupación</h1>
+          <div style="background:#fff; border-radius:24px; padding:26px 32px; box-shadow:0 6px 0 rgba(42,42,64,.1); min-height:110px;">
+            <p style="margin:0; font-size:26px; font-weight:800; line-height:1.5;">{{ sinTexto }}</p>
+          </div>
+          <div style="display:flex; gap:14px;">
+            <button onClick="{{ sinAdv }}" style="background:#8AC926; color:#fff; border:none; border-radius:40px; padding:16px 32px; font-size:20px; font-weight:900; cursor:pointer; font-family:'Nunito',sans-serif;" style-hover="background:#6FA31E;">Siguiente paso ▶</button>
+            <button onClick="{{ sinReset }}" style="background:#fff; color:#6A4C93; border:3px solid #6A4C93; border-radius:40px; padding:16px 32px; font-size:20px; font-weight:900; cursor:pointer; font-family:'Nunito',sans-serif;" style-hover="background:#F1EAFB;">Reiniciar</button>
+          </div>
+        </div>
+        <div style="display:grid; grid-template-columns:repeat(4, 84px); gap:8px; justify-items:center; align-items:center; font-family:'Fredoka',sans-serif; background:#fff; border-radius:28px; padding:32px 40px; box-shadow:0 8px 0 rgba(42,42,64,.1);">
+          <div></div><span style="font-size:32px; color:#FF595E; height:36px;">{{ sinAC }}</span><span style="font-size:32px; color:#1982C4; height:36px;">{{ sinAD }}</span><span style="font-size:32px; color:#8AC926; height:36px;">{{ sinAU }}</span>
+          <div></div>
+          <div style="width:52px;height:52px;border-radius:50%;background:#FF595E;color:#fff;display:flex;align-items:center;justify-content:center;font-size:28px;font-weight:600;">C</div>
+          <div style="width:52px;height:52px;border-radius:50%;background:#1982C4;color:#fff;display:flex;align-items:center;justify-content:center;font-size:28px;font-weight:600;">D</div>
+          <div style="width:52px;height:52px;border-radius:50%;background:#8AC926;color:#fff;display:flex;align-items:center;justify-content:center;font-size:28px;font-weight:600;">U</div>
+          <div></div><span style="font-size:60px; font-weight:600;">2</span><span style="font-size:60px; font-weight:600;">1</span><span style="font-size:60px; font-weight:600;">3</span>
+          <span style="font-size:60px; font-weight:600; color:#6A4C93;">+</span><span style="font-size:60px; font-weight:600;">1</span><span style="font-size:60px; font-weight:600;">3</span><span style="font-size:60px; font-weight:600;">4</span>
+          <div style="grid-column:1 / span 4; width:100%; border-top:6px solid #2A2A40; margin:4px 0;"></div>
+          <div></div><span style="font-size:60px; font-weight:600; color:#8AC926; min-height:70px;">{{ sinC }}</span><span style="font-size:60px; font-weight:600; color:#8AC926; min-height:70px;">{{ sinD }}</span><span style="font-size:60px; font-weight:600; color:#8AC926; min-height:70px;">{{ sinU }}</span>
+        </div>
+      </div>
+    </sc-if>
+
+    <sc-if value="{{ s4 }}" hint-placeholder-val="{{ false }}">
+      <div style="display:flex; flex-direction:column; align-items:center; gap:24px; text-align:center; animation:pop .4s ease;">
+        <span style="background:#FFCA3A; color:#2A2A40; border-radius:30px; padding:10px 26px; font-size:16px; font-weight:900; letter-spacing:2px;">ACTIVIDAD 1 · {{ a1Num }}</span>
+        <h1 style="margin:0; font-family:'Fredoka',sans-serif; font-size:44px; font-weight:700;">Elige la respuesta correcta</h1>
+        <sc-if value="{{ a1Playing }}" hint-placeholder-val="{{ true }}">
+          <div style="background:#fff; border-radius:28px; padding:28px 60px; box-shadow:0 8px 0 rgba(42,42,64,.1); font-family:'Fredoka',sans-serif;">
+            <p style="margin:0; font-size:64px; font-weight:600;">{{ a1Top }} + {{ a1Bot }} = ?</p>
+          </div>
+          <div style="display:flex; gap:20px;">
+            <button onClick="{{ a1p1 }}" style="min-width:160px; background:#FF595E; color:#fff; border:none; border-radius:24px; padding:20px 36px; font-family:'Fredoka',sans-serif; font-size:44px; font-weight:600; cursor:pointer;" style-hover="transform:scale(1.06);">{{ a1o1 }}</button>
+            <button onClick="{{ a1p2 }}" style="min-width:160px; background:#1982C4; color:#fff; border:none; border-radius:24px; padding:20px 36px; font-family:'Fredoka',sans-serif; font-size:44px; font-weight:600; cursor:pointer;" style-hover="transform:scale(1.06);">{{ a1o2 }}</button>
+            <button onClick="{{ a1p3 }}" style="min-width:160px; background:#6A4C93; color:#fff; border:none; border-radius:24px; padding:20px 36px; font-family:'Fredoka',sans-serif; font-size:44px; font-weight:600; cursor:pointer;" style-hover="transform:scale(1.06);">{{ a1o3 }}</button>
+          </div>
+          <sc-if value="{{ a1ok }}" hint-placeholder-val="{{ false }}">
+            <div style="display:flex; align-items:center; gap:16px; animation:pop .3s ease;">
+              <span style="background:#8AC926; color:#fff; border-radius:30px; padding:12px 30px; font-family:'Fredoka',sans-serif; font-size:26px; font-weight:600;">¡Correcto! ★</span>
+              <button onClick="{{ a1nextQ }}" style="background:#2A2A40; color:#fff; border:none; border-radius:30px; padding:12px 30px; font-size:18px; font-weight:900; cursor:pointer; font-family:'Nunito',sans-serif;">Siguiente ▶</button>
+            </div>
+          </sc-if>
+          <sc-if value="{{ a1bad }}" hint-placeholder-val="{{ false }}">
+            <span style="background:#FF595E; color:#fff; border-radius:30px; padding:12px 30px; font-family:'Fredoka',sans-serif; font-size:26px; font-weight:600; animation:pop .3s ease;">Casi... revisa si hay que llevar e intenta otra vez.</span>
+          </sc-if>
+        </sc-if>
+        <sc-if value="{{ a1done }}" hint-placeholder-val="{{ false }}">
+          <div style="display:flex; flex-direction:column; align-items:center; gap:20px; animation:pop .4s ease;">
+            <span style="font-size:100px; font-family:'Fredoka',sans-serif; color:#FFCA3A;">★ ★ ★</span>
+            <p style="margin:0; font-family:'Fredoka',sans-serif; font-size:40px; font-weight:600; color:#8AC926;">¡Completaste las 3 sumas!</p>
+            <button onClick="{{ a1Reset }}" style="background:#fff; color:#6A4C93; border:3px solid #6A4C93; border-radius:40px; padding:14px 30px; font-size:18px; font-weight:900; cursor:pointer; font-family:'Nunito',sans-serif;">Jugar otra vez</button>
+          </div>
+        </sc-if>
+      </div>
+    </sc-if>
+
+    <sc-if value="{{ s5 }}" hint-placeholder-val="{{ false }}">
+      <div style="display:flex; flex-direction:column; align-items:center; gap:24px; text-align:center; animation:pop .4s ease;">
+        <span style="background:#8AC926; color:#fff; border-radius:30px; padding:10px 26px; font-size:16px; font-weight:900; letter-spacing:2px;">PAUSA ACTIVA · ¡A MOVER EL CUERPO!</span>
+        <sc-if value="{{ paIdle }}" hint-placeholder-val="{{ true }}">
+          <h1 style="margin:0; font-family:'Fredoka',sans-serif; font-size:52px; font-weight:700;">4 movimientos, 20 segundos cada uno</h1>
+          <p style="margin:0; font-size:24px; font-weight:800; color:#6A4C93; max-width:700px;">Todos de pie, separados de las mesas. Sigue las instrucciones de la pantalla.</p>
+          <button onClick="{{ paStart }}" style="background:#FF595E; color:#fff; border:none; border-radius:50px; padding:22px 56px; font-family:'Fredoka',sans-serif; font-size:34px; font-weight:600; cursor:pointer;" style-hover="transform:scale(1.05);">¡Comenzar! ▶</button>
+        </sc-if>
+        <sc-if value="{{ paRunning }}" hint-placeholder-val="{{ false }}">
+          <span style="background:#fff; border-radius:30px; padding:10px 26px; font-size:18px; font-weight:900; color:#6A4C93;">Movimiento {{ paNum }} de 4</span>
+          <div style="width:220px; height:220px; border-radius:50%; background:{{ paColor }}; display:flex; align-items:center; justify-content:center; box-shadow:0 10px 0 rgba(42,42,64,.12);">
+            <span style="font-family:'Fredoka',sans-serif; font-size:110px; font-weight:600; color:#fff;">{{ paTime }}</span>
+          </div>
+          <h1 style="margin:0; font-family:'Fredoka',sans-serif; font-size:56px; font-weight:700;">{{ paName }}</h1>
+          <p style="margin:0; font-size:26px; font-weight:800; color:#6A4C93; max-width:700px;">{{ paDesc }}</p>
+        </sc-if>
+        <sc-if value="{{ paDone }}" hint-placeholder-val="{{ false }}">
+          <h1 style="margin:0; font-family:'Fredoka',sans-serif; font-size:60px; font-weight:700; color:#8AC926;">¡Excelente trabajo!</h1>
+          <p style="margin:0; font-size:26px; font-weight:800; color:#6A4C93;">Respira profundo tres veces y vuelve a tu puesto en silencio.</p>
+          <button onClick="{{ paStart }}" style="background:#fff; color:#6A4C93; border:3px solid #6A4C93; border-radius:40px; padding:14px 30px; font-size:18px; font-weight:900; cursor:pointer; font-family:'Nunito',sans-serif;">Repetir la pausa</button>
+        </sc-if>
+      </div>
+    </sc-if>
+
+    <sc-if value="{{ s6 }}" hint-placeholder-val="{{ false }}">
+      <div style="display:flex; gap:60px; align-items:center; animation:pop .4s ease;">
+        <div style="display:flex; flex-direction:column; gap:24px; max-width:520px;">
+          <span style="background:#FF595E; color:#fff; border-radius:30px; padding:10px 26px; font-size:16px; font-weight:900; letter-spacing:2px; align-self:flex-start;">PASO A PASO</span>
+          <h1 style="margin:0; font-family:'Fredoka',sans-serif; font-size:44px; font-weight:700;">Suma llevando</h1>
+          <div style="background:#fff; border-radius:24px; padding:26px 32px; box-shadow:0 6px 0 rgba(42,42,64,.1); min-height:140px;">
+            <p style="margin:0; font-size:26px; font-weight:800; line-height:1.5;">{{ conTexto }}</p>
+          </div>
+          <div style="display:flex; gap:14px;">
+            <button onClick="{{ conAdv }}" style="background:#8AC926; color:#fff; border:none; border-radius:40px; padding:16px 32px; font-size:20px; font-weight:900; cursor:pointer; font-family:'Nunito',sans-serif;" style-hover="background:#6FA31E;">Siguiente paso ▶</button>
+            <button onClick="{{ conReset }}" style="background:#fff; color:#6A4C93; border:3px solid #6A4C93; border-radius:40px; padding:16px 32px; font-size:20px; font-weight:900; cursor:pointer; font-family:'Nunito',sans-serif;" style-hover="background:#F1EAFB;">Reiniciar</button>
+          </div>
+        </div>
+        <div style="display:grid; grid-template-columns:repeat(4, 84px); gap:8px; justify-items:center; align-items:center; font-family:'Fredoka',sans-serif; background:#fff; border-radius:28px; padding:32px 40px; box-shadow:0 8px 0 rgba(42,42,64,.1);">
+          <div></div><span style="font-size:34px; font-weight:600; color:#FF595E; height:40px;">{{ llevC }}</span><span style="font-size:34px; font-weight:600; color:#FF595E; height:40px;">{{ llevD }}</span><div></div>
+          <div></div>
+          <div style="width:52px;height:52px;border-radius:50%;background:#FF595E;color:#fff;display:flex;align-items:center;justify-content:center;font-size:28px;font-weight:600;">C</div>
+          <div style="width:52px;height:52px;border-radius:50%;background:#1982C4;color:#fff;display:flex;align-items:center;justify-content:center;font-size:28px;font-weight:600;">D</div>
+          <div style="width:52px;height:52px;border-radius:50%;background:#8AC926;color:#fff;display:flex;align-items:center;justify-content:center;font-size:28px;font-weight:600;">U</div>
+          <div></div><span style="font-size:60px; font-weight:600;">2</span><span style="font-size:60px; font-weight:600;">6</span><span style="font-size:60px; font-weight:600;">8</span>
+          <span style="font-size:60px; font-weight:600; color:#6A4C93;">+</span><span style="font-size:60px; font-weight:600;">1</span><span style="font-size:60px; font-weight:600;">5</span><span style="font-size:60px; font-weight:600;">4</span>
+          <div style="grid-column:1 / span 4; width:100%; border-top:6px solid #2A2A40; margin:4px 0;"></div>
+          <div></div><span style="font-size:60px; font-weight:600; color:#8AC926; min-height:70px;">{{ conC }}</span><span style="font-size:60px; font-weight:600; color:#8AC926; min-height:70px;">{{ conD }}</span><span style="font-size:60px; font-weight:600; color:#8AC926; min-height:70px;">{{ conU }}</span>
+        </div>
+      </div>
+    </sc-if>
+
+    <sc-if value="{{ s7 }}" hint-placeholder-val="{{ false }}">
+      <div style="display:flex; flex-direction:column; align-items:center; gap:24px; text-align:center; animation:pop .4s ease;">
+        <span style="background:#6A4C93; color:#fff; border-radius:30px; padding:10px 26px; font-size:16px; font-weight:900; letter-spacing:2px;">ACTIVIDAD 2 · {{ a2Num }}</span>
+        <h1 style="margin:0; font-family:'Fredoka',sans-serif; font-size:44px; font-weight:700;">¿Hay que llevar o no?</h1>
+        <sc-if value="{{ a2Playing }}" hint-placeholder-val="{{ true }}">
+          <p style="margin:0; font-size:22px; font-weight:800; color:#6A4C93;">Mira solo la columna de las unidades y decide.</p>
+          <div style="background:#fff; border-radius:28px; padding:28px 60px; box-shadow:0 8px 0 rgba(42,42,64,.1); font-family:'Fredoka',sans-serif;">
+            <p style="margin:0; font-size:64px; font-weight:600;">{{ a2Sum }}</p>
+          </div>
+          <div style="display:flex; gap:20px;">
+            <button onClick="{{ a2yes }}" style="min-width:220px; background:#FF595E; color:#fff; border:none; border-radius:24px; padding:20px 36px; font-family:'Fredoka',sans-serif; font-size:36px; font-weight:600; cursor:pointer;" style-hover="transform:scale(1.06);">¡Sí, llevo!</button>
+            <button onClick="{{ a2no }}" style="min-width:220px; background:#1982C4; color:#fff; border:none; border-radius:24px; padding:20px 36px; font-family:'Fredoka',sans-serif; font-size:36px; font-weight:600; cursor:pointer;" style-hover="transform:scale(1.06);">No llevo</button>
+          </div>
+          <sc-if value="{{ a2ok }}" hint-placeholder-val="{{ false }}">
+            <div style="display:flex; align-items:center; gap:16px; animation:pop .3s ease;">
+              <span style="background:#8AC926; color:#fff; border-radius:30px; padding:12px 30px; font-family:'Fredoka',sans-serif; font-size:26px; font-weight:600;">{{ a2fb }}</span>
+              <button onClick="{{ a2next }}" style="background:#2A2A40; color:#fff; border:none; border-radius:30px; padding:12px 30px; font-size:18px; font-weight:900; cursor:pointer; font-family:'Nunito',sans-serif;">Siguiente ▶</button>
+            </div>
+          </sc-if>
+          <sc-if value="{{ a2bad }}" hint-placeholder-val="{{ false }}">
+            <span style="background:#FF595E; color:#fff; border-radius:30px; padding:12px 30px; font-family:'Fredoka',sans-serif; font-size:26px; font-weight:600; animation:pop .3s ease;">{{ a2fb }}</span>
+          </sc-if>
+        </sc-if>
+        <sc-if value="{{ a2done }}" hint-placeholder-val="{{ false }}">
+          <div style="display:flex; flex-direction:column; align-items:center; gap:20px; animation:pop .4s ease;">
+            <span style="font-size:90px; font-family:'Fredoka',sans-serif; color:#FFCA3A;">★ ★ ★ ★</span>
+            <p style="margin:0; font-family:'Fredoka',sans-serif; font-size:40px; font-weight:600; color:#8AC926;">¡Detective de sumas experto!</p>
+            <button onClick="{{ a2Reset }}" style="background:#fff; color:#6A4C93; border:3px solid #6A4C93; border-radius:40px; padding:14px 30px; font-size:18px; font-weight:900; cursor:pointer; font-family:'Nunito',sans-serif;">Jugar otra vez</button>
+          </div>
+        </sc-if>
+      </div>
+    </sc-if>
+
+    <sc-if value="{{ s8 }}" hint-placeholder-val="{{ false }}">
+      <div style="display:flex; flex-direction:column; align-items:center; gap:24px; text-align:center; max-width:900px; animation:pop .4s ease;">
+        <span style="background:#FFCA3A; color:#2A2A40; border-radius:30px; padding:10px 26px; font-size:16px; font-weight:900; letter-spacing:2px;">RETO FINAL</span>
+        <h1 style="margin:0; font-family:'Fredoka',sans-serif; font-size:44px; font-weight:700;">El gran pedido de Don Pepe</h1>
+        <div style="background:#fff; border-radius:28px; padding:30px 44px; box-shadow:0 8px 0 rgba(42,42,64,.1);">
+          <p style="margin:0; font-size:28px; font-weight:800; line-height:1.5;">Don Pepe vendió <span style="color:#1982C4;">176 dulces</span> en la mañana y <span style="color:#FF595E;">148 dulces</span> en la tarde. ¿Cuántos dulces vendió en total?</p>
+        </div>
+        <div style="display:flex; gap:20px;">
+          <button onClick="{{ rp1 }}" style="min-width:160px; background:#6A4C93; color:#fff; border:none; border-radius:24px; padding:20px 36px; font-family:'Fredoka',sans-serif; font-size:44px; font-weight:600; cursor:pointer;" style-hover="transform:scale(1.06);">314</button>
+          <button onClick="{{ rp2 }}" style="min-width:160px; background:#FF595E; color:#fff; border:none; border-radius:24px; padding:20px 36px; font-family:'Fredoka',sans-serif; font-size:44px; font-weight:600; cursor:pointer;" style-hover="transform:scale(1.06);">324</button>
+          <button onClick="{{ rp3 }}" style="min-width:160px; background:#1982C4; color:#fff; border:none; border-radius:24px; padding:20px 36px; font-family:'Fredoka',sans-serif; font-size:44px; font-weight:600; cursor:pointer;" style-hover="transform:scale(1.06);">224</button>
+        </div>
+        <sc-if value="{{ rok }}" hint-placeholder-val="{{ false }}">
+          <div style="display:flex; flex-direction:column; align-items:center; gap:12px; animation:pop .3s ease;">
+            <span style="background:#8AC926; color:#fff; border-radius:30px; padding:14px 34px; font-family:'Fredoka',sans-serif; font-size:30px; font-weight:600;">¡324! Sumaste llevando dos veces. ★★★</span>
+            <p style="margin:0; font-size:22px; font-weight:800; color:#6A4C93;">Pregunta de cierre: ¿cuándo debemos llevar al sumar?</p>
+          </div>
+        </sc-if>
+        <sc-if value="{{ rbad }}" hint-placeholder-val="{{ false }}">
+          <span style="background:#FF595E; color:#fff; border-radius:30px; padding:12px 30px; font-family:'Fredoka',sans-serif; font-size:26px; font-weight:600; animation:pop .3s ease;">Revisa las llevadas e intenta de nuevo.</span>
+        </sc-if>
+      </div>
+    </sc-if>
+
+  </main>
+
+  <footer style="display:flex; align-items:center; justify-content:space-between; padding:16px 28px; background:#fff; box-shadow:0 -4px 0 rgba(42,42,64,.08);">
+    <button onClick="{{ prev }}" style="background:#fff; color:#6A4C93; border:3px solid #6A4C93; border-radius:40px; padding:14px 34px; font-size:18px; font-weight:900; cursor:pointer; font-family:'Nunito',sans-serif;" style-hover="background:#F1EAFB;">◀ Anterior</button>
+    <span style="font-size:16px; font-weight:900; color:#6A4C93; letter-spacing:1px;">{{ titulo }}</span>
+    <button onClick="{{ next }}" style="background:#1982C4; color:#fff; border:none; border-radius:40px; padding:14px 34px; font-size:18px; font-weight:900; cursor:pointer; font-family:'Nunito',sans-serif;" style-hover="background:#136394;">Siguiente ▶</button>
+  </footer>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;timerMinutes&quot;: {&quot;editor&quot;: &quot;int&quot;, &quot;default&quot;: 5, &quot;min&quot;: 1, &quot;max&quot;: 20, &quot;unit&quot;: &quot;min&quot;, &quot;tsType&quot;: &quot;number&quot;, &quot;section&quot;: &quot;Temporizador&quot;}}">
+class Component extends DCLogic {
+  state = {
+    screen: 0,
+    hLeft: undefined, hRun: false,
+    vpC: false, vpD: false, vpU: false,
+    sinStep: 0, conStep: 0,
+    a1q: 0, a1ans: 0, a1done: false,
+    paPhase: "idle", paIdx: 0, paLeft: 20,
+    a2q: 0, a2ans: 0, a2done: false,
+    r: 0
+  };
+  componentDidMount() {
+    this._iv = setInterval(() => {
+      this.setState(s => {
+        const n = {};
+        if (s.hRun && s.hLeft > 0) { n.hLeft = s.hLeft - 1; if (n.hLeft === 0) n.hRun = false; }
+        if (s.paPhase === "run") {
+          if (s.paLeft > 1) n.paLeft = s.paLeft - 1;
+          else if (s.paIdx < 3) { n.paIdx = s.paIdx + 1; n.paLeft = 20; }
+          else { n.paPhase = "done"; }
+        }
+        return Object.keys(n).length ? n : null;
+      });
+    }, 1000);
+  }
+  componentWillUnmount() { clearInterval(this._iv); }
+  renderVals() {
+    const s = this.state;
+    const SCREENS = ["La tienda de Don Pepe", "Valor posicional", "Suma sin reagrupación", "Actividad 1", "Pausa activa", "Suma llevando", "Actividad 2", "Reto final"];
+    const go = d => this.setState(st => ({ screen: Math.max(0, Math.min(7, st.screen + d)) }));
+    const hMin = this.props.timerMinutes ?? 5;
+    const tH = s.hLeft === undefined ? hMin + ":00" : (s.hLeft === 0 ? "¡TIEMPO!" : Math.floor(s.hLeft / 60) + ":" + String(s.hLeft % 60).padStart(2, "0"));
+    const SIN = [
+      "Primero ordenamos los números en columnas. Vamos a sumar 213 + 134. Pulsa «Siguiente paso».",
+      "Unidades: 3 + 4 = 7. Escribimos el 7 en la columna verde.",
+      "Decenas: 1 + 3 = 4. Escribimos el 4 en la columna azul.",
+      "Centenas: 2 + 1 = 3. ¡El total es 347! Nadie tuvo que llevar."
+    ];
+    const CON = [
+      "Ahora sumamos 268 + 154. ¡Atención: aquí sí vamos a llevar! Pulsa «Siguiente paso».",
+      "Unidades: 8 + 4 = 12. ¡Es más de 9! Escribo el 2 y llevo 1 a las decenas.",
+      "Decenas: 1 que llevaba + 6 + 5 = 12. Escribo el 2 y llevo 1 a las centenas.",
+      "Centenas: 1 que llevaba + 2 + 1 = 4. ¡El total es 422!"
+    ];
+    const A1 = [
+      { top: 321, bot: 256, opts: [577, 567, 587], ok: 0 },
+      { top: 145, bot: 238, opts: [373, 383, 393], ok: 1 },
+      { top: 476, bot: 248, opts: [714, 724, 624], ok: 1 }
+    ];
+    const q = A1[Math.min(s.a1q, 2)];
+    const a1pick = i => () => this.setState(st => ({ a1ans: i === q.ok ? 1 : 2 }));
+    const A2 = [
+      { sum: "236 + 145", lleva: true }, { sum: "321 + 254", lleva: false },
+      { sum: "508 + 229", lleva: true }, { sum: "143 + 425", lleva: false }
+    ];
+    const it = A2[Math.min(s.a2q, 3)];
+    const a2pick = ans => () => this.setState({ a2ans: ans === it.lleva ? 1 : 2 });
+    const PA = [
+      { name: "Manos al cielo", desc: "Estírate muy alto, como si quisieras tocar las nubes.", color: "#FF595E" },
+      { name: "Toco mis pies", desc: "Dóblate despacio y trata de tocar la punta de tus zapatos.", color: "#1982C4" },
+      { name: "Giro mi cabeza", desc: "Muy despacio, mira hacia un lado y luego hacia el otro.", color: "#6A4C93" },
+      { name: "Salto de estrella", desc: "Salta suavemente abriendo brazos y piernas como una estrella.", color: "#8AC926" }
+    ];
+    const pa = PA[s.paIdx];
+    return {
+      titulo: SCREENS[s.screen].toUpperCase(),
+      num: (s.screen + 1) + " / 8",
+      prev: () => go(-1), next: () => go(1),
+      s1: s.screen === 0, s2: s.screen === 1, s3: s.screen === 2, s4: s.screen === 3,
+      s5: s.screen === 4, s6: s.screen === 5, s7: s.screen === 6, s8: s.screen === 7,
+      tH, startH: () => this.setState({ hLeft: hMin * 60, hRun: true }),
+      vpC: s.vpC, vpD: s.vpD, vpU: s.vpU,
+      vpCoff: !s.vpC, vpDoff: !s.vpD, vpUoff: !s.vpU,
+      vpAll: s.vpC && s.vpD && s.vpU,
+      tC: () => this.setState({ vpC: true }), tD: () => this.setState({ vpD: true }), tU: () => this.setState({ vpU: true }),
+      sinTexto: SIN[s.sinStep],
+      sinU: s.sinStep >= 1 ? "7" : "", sinD: s.sinStep >= 2 ? "4" : "", sinC: s.sinStep >= 3 ? "3" : "",
+      sinAU: s.sinStep === 1 ? "▼" : "", sinAD: s.sinStep === 2 ? "▼" : "", sinAC: s.sinStep === 3 ? "▼" : "",
+      sinAdv: () => this.setState(st => ({ sinStep: Math.min(3, st.sinStep + 1) })),
+      sinReset: () => this.setState({ sinStep: 0 }),
+      conTexto: CON[s.conStep],
+      conU: s.conStep >= 1 ? "2" : "", conD: s.conStep >= 2 ? "2" : "", conC: s.conStep >= 3 ? "4" : "",
+      llevD: s.conStep >= 1 && s.conStep < 4 ? "1" : (s.conStep >= 1 ? "1" : ""),
+      llevC: s.conStep >= 2 ? "1" : "",
+      conAdv: () => this.setState(st => ({ conStep: Math.min(3, st.conStep + 1) })),
+      conReset: () => this.setState({ conStep: 0 }),
+      a1Num: "PREGUNTA " + (Math.min(s.a1q, 2) + 1) + " DE 3",
+      a1Playing: !s.a1done, a1done: s.a1done,
+      a1Top: String(q.top), a1Bot: String(q.bot),
+      a1o1: String(q.opts[0]), a1o2: String(q.opts[1]), a1o3: String(q.opts[2]),
+      a1p1: a1pick(0), a1p2: a1pick(1), a1p3: a1pick(2),
+      a1ok: s.a1ans === 1, a1bad: s.a1ans === 2,
+      a1nextQ: () => this.setState(st => st.a1q >= 2 ? { a1done: true, a1ans: 0 } : { a1q: st.a1q + 1, a1ans: 0 }),
+      a1Reset: () => this.setState({ a1q: 0, a1ans: 0, a1done: false }),
+      paIdle: s.paPhase === "idle", paRunning: s.paPhase === "run", paDone: s.paPhase === "done",
+      paStart: () => this.setState({ paPhase: "run", paIdx: 0, paLeft: 20 }),
+      paNum: String(s.paIdx + 1), paName: pa.name, paDesc: pa.desc, paColor: pa.color, paTime: String(s.paLeft),
+      a2Num: "SUMA " + (Math.min(s.a2q, 3) + 1) + " DE 4",
+      a2Playing: !s.a2done, a2done: s.a2done,
+      a2Sum: it.sum,
+      a2yes: a2pick(true), a2no: a2pick(false),
+      a2ok: s.a2ans === 1, a2bad: s.a2ans === 2,
+      a2fb: s.a2ans === 1 ? (it.lleva ? "¡Correcto! Las unidades suman 10 o más." : "¡Correcto! Las unidades suman menos de 10.") : "Suma las unidades con cuidado e intenta otra vez.",
+      a2next: () => this.setState(st => st.a2q >= 3 ? { a2done: true, a2ans: 0 } : { a2q: st.a2q + 1, a2ans: 0 }),
+      a2Reset: () => this.setState({ a2q: 0, a2ans: 0, a2done: false }),
+      rp1: () => this.setState({ r: 2 }), rp2: () => this.setState({ r: 1 }), rp3: () => this.setState({ r: 2 }),
+      rok: s.r === 1, rbad: s.r === 2
+    };
+  }
+}
+</script>
+</body>
+</html>

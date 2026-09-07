@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Nunito:wght@700;800;900&display=swap" rel="stylesheet">
+<style>
+body { margin:0; background:#FFF9EF; }
+a { color:#1982C4; } a:hover { color:#FF595E; }
+</style>
+<template id="__bundler_thumbnail" data-bg-color="#FFF9EF"><svg viewBox="0 0 120 80" xmlns="http://www.w3.org/2000/svg"><rect x="16" y="12" width="88" height="56" rx="8" fill="#6A4C93"></rect><text x="60" y="52" text-anchor="middle" font-size="26">🗺️</text></svg></template>
+</helmet>
+<div style="max-width:1180px; margin:0 auto; padding:40px 28px 70px; font-family:'Nunito',sans-serif; color:#2A2A40;">
+  <p style="margin:0; font-size:13px; font-weight:900; letter-spacing:3px; color:#6A4C93;">GRADO 2° · PERIODOS 2 Y 3</p>
+  <h1 style="margin:6px 0 0; font-family:'Fredoka',sans-serif; font-size:46px; font-weight:700;">Plan maestro · 10 semanas</h1>
+  <p style="margin:10px 0 0; font-size:17px; font-weight:800; color:#6A4C93; max-width:780px;">100 clases, 10 por semana, de lunes a viernes. Semanas 1 a 5 desarrollan el Periodo 2; semanas 6 a 10 el Periodo 3. Matemáticas integra la medida y los datos con sumas llevando, restas prestando, multiplicación y divisiones sencillas. Naturales y Sociales toman temas nuevos de tercero (cuerpo humano, luz y sonido) y Sociales suma Historia de Colombia y geografía, enlazada con Naturales. Cada clase tendrá web, tablero, ficha de refuerzo ×2 y ficha de casa.</p>
+
+  <div style="display:flex; flex-wrap:wrap; gap:10px; margin-top:22px;">
+    <span style="background:#FF595E; color:#fff; border-radius:30px; padding:8px 18px; font-size:12px; font-weight:900; letter-spacing:1px;">LUNES · MATEMÁTICAS ×2</span>
+    <span style="background:#6A4C93; color:#fff; border-radius:30px; padding:8px 18px; font-size:12px; font-weight:900; letter-spacing:1px;">MARTES · LENGUAJE ×2</span>
+    <span style="background:#1982C4; color:#fff; border-radius:30px; padding:8px 18px; font-size:12px; font-weight:900; letter-spacing:1px;">MIÉRCOLES · NATURALES + SOCIALES</span>
+    <span style="background:#8AC926; color:#fff; border-radius:30px; padding:8px 18px; font-size:12px; font-weight:900; letter-spacing:1px;">JUEVES · INGLÉS + ÉTICA</span>
+    <span style="background:#FFCA3A; color:#2A2A40; border-radius:30px; padding:8px 18px; font-size:12px; font-weight:900; letter-spacing:1px;">VIERNES · ARTÍSTICA + INFORMÁTICA</span>
+  </div>
+
+  <div style="display:flex; flex-direction:column; gap:22px; margin-top:32px;">
+    <sc-for list="{{ semanas }}" as="w" hint-placeholder-count="10">
+      <div style="background:#fff; border-radius:22px; padding:22px 26px 24px; box-shadow:0 5px 0 rgba(42,42,64,.07);">
+        <div style="display:flex; align-items:center; gap:14px; flex-wrap:wrap;">
+          <span style="width:52px; height:52px; border-radius:15px; background:#2A2A40; color:#FFCA3A; display:flex; align-items:center; justify-content:center; font-family:'Fredoka',sans-serif; font-size:24px; font-weight:600; flex:none;">{{ w.n }}</span>
+          <div style="flex:1; min-width:200px;">
+            <p style="margin:0; font-size:11px; font-weight:900; letter-spacing:2px; color:#6A4C93;">{{ w.periodo }}</p>
+            <p style="margin:2px 0 0; font-family:'Fredoka',sans-serif; font-size:26px; font-weight:600;">{{ w.titulo }}</p>
+          </div>
+          <span style="background:#FFF9EF; border:2px solid #FFCA3A; border-radius:30px; padding:8px 16px; font-size:12px; font-weight:900; color:#C89B1C;">{{ w.eje }}</span>
+        </div>
+        <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:10px; margin-top:16px;">
+          <sc-for list="{{ w.clases }}" as="c" hint-placeholder-count="10">
+            <div style="display:flex; align-items:flex-start; gap:11px; background:#FFF9EF; border-radius:14px; padding:11px 14px;">
+              <span style="width:34px; height:34px; border-radius:11px; background:{{ c.color }}; display:flex; align-items:center; justify-content:center; font-size:17px; flex:none;">{{ c.icono }}</span>
+              <div style="min-width:0;">
+                <p style="margin:0; font-size:9.5px; font-weight:900; letter-spacing:1.5px; color:#8A8272;">{{ c.meta }}</p>
+                <p style="margin:2px 0 0; font-size:15px; font-weight:900; line-height:1.25;">{{ c.tema }}</p>
+              </div>
+            </div>
+          </sc-for>
+        </div>
+      </div>
+    </sc-for>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  DAYS = [
+    ["LUNES", "MATEMÁTICAS", "#FF595E", "🔢"],
+    ["LUNES", "MATEMÁTICAS", "#FF595E", "📏"],
+    ["MARTES", "LENGUA CASTELLANA", "#6A4C93", "📖"],
+    ["MARTES", "LENGUA CASTELLANA", "#6A4C93", "✍️"],
+    ["MIÉRCOLES", "C. NATURALES", "#1982C4", "🔬"],
+    ["MIÉRCOLES", "C. SOCIALES", "#1982C4", "🌎"],
+    ["JUEVES", "ENGLISH", "#8AC926", "🗣️"],
+    ["JUEVES", "ÉTICA Y VALORES", "#8AC926", "🤝"],
+    ["VIERNES", "ARTÍSTICA", "#FFCA3A", "🎨"],
+    ["VIERNES", "INFORMÁTICA", "#FFCA3A", "💻"]
+  ];
+  W = [
+    ["Medir y narrar", "Medida + sumas llevando · El cuento", ["Medimos con la cuarta y el pie", "Sumas llevando con centímetros", "El cuento y sus partes", "Los personajes del cuento", "La nutrición de los seres vivos", "Los pueblos indígenas de Colombia", "My family", "Las reglas de mi salón", "El sonido: fuerte y suave", "Abrir el programa de dibujo"]],
+    ["Longitud y escenario", "El metro + restas prestando · Espacios", ["El metro y el centímetro", "Restas prestando: comparar longitudes", "El lugar donde pasa el cuento", "Lo que hacen los personajes", "Las partes de la planta", "La llegada de los españoles", "Parts of the body", "Acuerdos y responsabilidades", "El ritmo y el pulso", "Dibujar líneas y formas"]],
+    ["Peso y predicción", "La balanza + suma y resta · Predecir", ["El peso: gramos y kilogramos", "Sumas y restas con la balanza", "Predecir de qué trata el texto", "La portada y el título nos avisan", "La fotosíntesis: la planta se alimenta", "La época colonial", "Animals: farm and wild", "Somos diferentes y nos respetamos", "Instrumentos con material reciclado", "Pintar y rellenar con color"]],
+    ["Capacidad y memoria", "El litro + multiplicación · Recontar", ["La capacidad: el litro", "Multiplicar litros y envases", "Comparar dos cuentos", "Recontar un cuento con mis palabras", "El sistema digestivo", "La independencia: el 20 de julio", "My favourite animal", "Cuando alguien es excluido", "Canciones y rondas con pulso", "Escribir mi nombre en el computador"]],
+    ["Formas y poesía", "Geometría + perímetro · Poema y rima", ["Figuras planas y cuerpos geométricos", "El perímetro: sumar los lados", "El poema y la rima", "Adivinanzas y trabalenguas", "El sistema respiratorio", "Próceres y símbolos patrios", "Numbers and colours review", "Mis acuerdos con mis compañeros", "Dibujo el sonido que escucho", "Guardar y abrir mi trabajo"]],
+    ["El tiempo y el oyente", "El reloj + suma y resta · A quién le hablo", ["La hora en el reloj", "Sumas y restas con el tiempo", "¿A quién le hablo?", "Hablar en público con claridad", "La circulación y el corazón", "El mapa de Colombia: cómo se lee", "What's your name?", "Todos somos distintos: la identidad", "El gesto y la cara", "Íconos y símbolos del computador"]],
+    ["Rectas y relatos", "Paralelas + multiplicar · El cuento escrito", ["Horizontal, vertical y paralelas", "Filas × columnas: multiplicar cuadrículas", "Escribo un cuento", "Inicio, nudo y final", "La luz, las sombras y cómo vemos", "El relieve: montañas y llanuras", "I like / I don't like", "Niñas y niños: iguales en derechos", "Represento un oficio", "Aplicaciones para aprender"]],
+    ["Patrones y descripción", "Secuencias + tablas · Describir e informar", ["Patrones y secuencias", "Multiplicar de 2, de 5 y de 10", "Describo mi lugar favorito", "La noticia: qué, quién, dónde", "El sonido: cómo viaja", "Los ríos de Colombia", "My favourite food", "Culturas y creencias distintas", "Mimo y movimiento", "Cuidado del computador"]],
+    ["Datos y explicaciones", "Pictogramas + divisiones sencillas · Exponer", ["Tablas de conteo y pictogramas", "Repartir los datos: divisiones sencillas", "Explico algo que sé", "Escribo una carta", "El suelo y el relieve donde vivimos", "Las regiones naturales de Colombia", "Where is it? In, on, under", "Digo no a la discriminación", "Representamos un cuento", "Escribo y decoro un texto"]],
+    ["Cierre y muestra", "Gráficos y azar + las 4 operaciones", ["Leemos gráficos de nuestro salón", "Repaso: sumar, restar, multiplicar y repartir", "Reviso y corrijo lo que escribo", "Presento mi texto a la clase", "El clima y los seres vivos", "Antioquia y Medellín en el mapa", "All about me", "Nuestro acuerdo de convivencia", "Muestra artística", "Mi portafolio digital"]]
+  ];
+  renderVals() {
+    return {
+      semanas: this.W.map((w, i) => ({
+        n: String(i + 1).padStart(2, "0"),
+        periodo: i < 5 ? "SEMANA " + (i + 1) + " · PERIODO 2" : "SEMANA " + (i + 1) + " · PERIODO 3",
+        titulo: w[0], eje: w[1],
+        clases: w[2].map((t, j) => ({
+          tema: t, color: this.DAYS[j][2], icono: this.DAYS[j][3],
+          meta: this.DAYS[j][0] + " · " + this.DAYS[j][1]
+        }))
+      }))
+    };
+  }
+}
+</script>
+</body>
+</html>

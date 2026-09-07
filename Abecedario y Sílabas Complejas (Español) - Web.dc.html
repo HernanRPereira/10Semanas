@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<meta name="description" content="Web interactiva: Abecedario, sílabas complejas, lectura y expresión oral - Grado 2°">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Nunito:wght@700;800;900&display=swap" rel="stylesheet">
+<style>
+body { margin:0; background:#FFF9EF; }
+a { color:#1982C4; } a:hover { color:#FF595E; }
+@keyframes pop { 0% { transform:scale(.6); opacity:0; } 100% { transform:scale(1); opacity:1; } }
+</style>
+<template id="__bundler_thumbnail" data-bg-color="#FFF9EF">
+<svg viewBox="0 0 120 80" xmlns="http://www.w3.org/2000/svg">
+<circle cx="60" cy="40" r="26" fill="#FF595E"></circle>
+<text x="60" y="51" text-anchor="middle" font-family="sans-serif" font-size="24" font-weight="bold" fill="#fff">Br</text>
+</svg>
+</template>
+</helmet>
+<div style="min-height:100vh; display:flex; flex-direction:column; font-family:'Nunito',sans-serif; color:#2A2A40;">
+
+  <header style="display:flex; align-items:center; gap:16px; padding:14px 28px; background:#fff; box-shadow:0 4px 0 rgba(42,42,64,.08);">
+    <span style="width:44px; height:44px; border-radius:14px; background:#FF595E; color:#fff; display:flex; align-items:center; justify-content:center; font-family:'Fredoka',sans-serif; font-size:22px; font-weight:600;">Aa</span>
+    <div style="display:flex; flex-direction:column;">
+      <span style="font-family:'Fredoka',sans-serif; font-size:22px; font-weight:600;">Letras, Sílabas y Palabras</span>
+      <span style="font-size:13px; font-weight:900; color:#6A4C93; letter-spacing:1px;">ESPAÑOL · GRADO 2°</span>
+    </div>
+    <div style="flex:1;"></div>
+    <button onClick="{{ startH }}" style="display:flex; align-items:center; gap:12px; background:#2A2A40; color:#fff; border:none; border-radius:40px; padding:8px 20px; cursor:pointer; font-family:'Nunito',sans-serif;" style-hover="background:#6A4C93;">
+      <span style="font-size:13px; font-weight:900; letter-spacing:1px;">TEMPORIZADOR ▶</span>
+      <span style="font-family:'Fredoka',sans-serif; font-size:24px; font-weight:600; color:#FFCA3A;">{{ tH }}</span>
+    </button>
+    <span style="background:#FFCA3A; border-radius:40px; padding:10px 20px; font-family:'Fredoka',sans-serif; font-size:20px; font-weight:600;">{{ num }}</span>
+  </header>
+
+  <main style="flex:1; display:flex; flex-direction:column; align-items:center; justify-content:center; padding:32px 24px; position:relative; overflow:hidden;">
+
+    <sc-if value="{{ s1 }}" hint-placeholder-val="{{ true }}">
+      <div style="display:flex; flex-direction:column; align-items:center; gap:28px; text-align:center; max-width:900px; animation:pop .4s ease;">
+        <span style="background:#8AC926; color:#fff; border-radius:30px; padding:10px 26px; font-size:16px; font-weight:900; letter-spacing:2px;">¡BIENVENIDOS!</span>
+        <h1 style="margin:0; font-family:'Fredoka',sans-serif; font-size:52px; font-weight:700; line-height:1.1;">Palabras que suenan fuerte</h1>
+        <div style="background:#fff; border-radius:28px; padding:32px 40px; box-shadow:0 8px 0 rgba(42,42,64,.1);">
+          <p style="margin:0; font-size:56px;">🌳 ✈️ 🚂</p>
+          <p style="margin:16px 0 0; font-size:26px; font-weight:800;">á-r-<span style="color:#FF595E;">bol</span> · a-<span style="color:#1982C4;">vión</span> · <span style="color:#8AC926;">tren</span></p>
+          <p style="margin:14px 0 0; font-family:'Fredoka',sans-serif; font-size:30px; font-weight:600; color:#6A4C93;">¿Escuchas dos consonantes juntas? ¡Hoy aprendemos br, bl, tr, pl y más!</p>
+        </div>
+        <p style="margin:0; font-size:20px; font-weight:800; color:#6A4C93;">Piensa una palabra con «tr» y compártela con la clase.</p>
+      </div>
+    </sc-if>
+
+    <sc-if value="{{ s2 }}" hint-placeholder-val="{{ false }}">
+      <div style="display:flex; flex-direction:column; align-items:center; gap:22px; text-align:center; animation:pop .4s ease;">
+        <span style="background:#1982C4; color:#fff; border-radius:30px; padding:10px 26px; font-size:16px; font-weight:900; letter-spacing:2px;">TOCA Y ESCUCHA · GRUPOS CONSONÁNTICOS</span>
+        <h1 style="margin:0; font-family:'Fredoka',sans-serif; font-size:40px; font-weight:700;">Toca cada grupo y mira un ejemplo</h1>
+        <div style="display:grid; grid-template-columns:repeat(4, 1fr); gap:12px; max-width:820px;">
+          <sc-for list="{{ grupos }}" as="g" hint-placeholder-count="8">
+            <button onClick="{{ g.pick }}" style="border:none; border-radius:18px; background:{{ g.bg }}; color:#fff; cursor:pointer; padding:18px 8px; font-family:'Fredoka',sans-serif; font-size:34px; font-weight:600;" style-hover="transform:scale(1.08);">{{ g.par }}</button>
+          </sc-for>
+        </div>
+        <div style="background:#fff; border-radius:24px; padding:22px 40px; box-shadow:0 8px 0 rgba(42,42,64,.1); min-width:420px; display:flex; align-items:center; justify-content:center; gap:20px;">
+          <span style="font-size:64px;">{{ ejEmoji }}</span>
+          <div style="text-align:left;">
+            <p style="margin:0; font-family:'Fredoka',sans-serif; font-size:40px; font-weight:600; color:#2A2A40;">{{ ejPal }}</p>
+            <p style="margin:2px 0 0; font-size:20px; font-weight:800; color:#6A4C93;">{{ ejHint }}</p>
+          </div>
+        </div>
+      </div>
+    </sc-if>
+
+    <sc-if value="{{ s3 }}" hint-placeholder-val="{{ false }}">
+      <div style="display:flex; flex-direction:column; align-items:center; gap:22px; text-align:center; animation:pop .4s ease;">
+        <span style="background:#FFCA3A; color:#2A2A40; border-radius:30px; padding:10px 26px; font-size:16px; font-weight:900; letter-spacing:2px;">ACTIVIDAD 1 · {{ a1Num }}</span>
+        <h1 style="margin:0; font-family:'Fredoka',sans-serif; font-size:40px; font-weight:700;">¿Qué grupo completa la palabra?</h1>
+        <sc-if value="{{ a1Playing }}" hint-placeholder-val="{{ true }}">
+          <div style="background:#fff; border-radius:28px; padding:22px 60px; box-shadow:0 8px 0 rgba(42,42,64,.1); display:flex; align-items:center; gap:20px;">
+            <span style="font-size:70px;">{{ a1Emoji }}</span>
+            <p style="margin:0; font-family:'Fredoka',sans-serif; font-size:56px; font-weight:600; color:#2A2A40;">{{ a1Word }}</p>
+          </div>
+          <div style="display:flex; gap:16px;">
+            <button onClick="{{ a1p1 }}" style="min-width:120px; background:#FF595E; color:#fff; border:none; border-radius:22px; padding:16px 30px; font-family:'Fredoka',sans-serif; font-size:38px; font-weight:600; cursor:pointer;" style-hover="transform:scale(1.06);">{{ a1o1 }}</button>
+            <button onClick="{{ a1p2 }}" style="min-width:120px; background:#1982C4; color:#fff; border:none; border-radius:22px; padding:16px 30px; font-family:'Fredoka',sans-serif; font-size:38px; font-weight:600; cursor:pointer;" style-hover="transform:scale(1.06);">{{ a1o2 }}</button>
+            <button onClick="{{ a1p3 }}" style="min-width:120px; background:#8AC926; color:#fff; border:none; border-radius:22px; padding:16px 30px; font-family:'Fredoka',sans-serif; font-size:38px; font-weight:600; cursor:pointer;" style-hover="transform:scale(1.06);">{{ a1o3 }}</button>
+          </div>
+          <sc-if value="{{ a1ok }}" hint-placeholder-val="{{ false }}">
+            <div style="display:flex; align-items:center; gap:16px; animation:pop .3s ease;">
+              <span style="background:#8AC926; color:#fff; border-radius:30px; padding:12px 30px; font-family:'Fredoka',sans-serif; font-size:24px; font-weight:600;">¡Correcto! {{ a1Full }} ★</span>
+              <button onClick="{{ a1next }}" style="background:#2A2A40; color:#fff; border:none; border-radius:30px; padding:12px 30px; font-size:18px; font-weight:900; cursor:pointer; font-family:'Nunito',sans-serif;">Siguiente ▶</button>
+            </div>
+          </sc-if>
+          <sc-if value="{{ a1bad }}" hint-placeholder-val="{{ false }}">
+            <span style="background:#FF595E; color:#fff; border-radius:30px; padding:12px 30px; font-family:'Fredoka',sans-serif; font-size:24px; font-weight:600; animation:pop .3s ease;">Escucha el sonido inicial e intenta otra vez.</span>
+          </sc-if>
+        </sc-if>
+        <sc-if value="{{ a1done }}" hint-placeholder-val="{{ false }}">
+          <div style="display:flex; flex-direction:column; align-items:center; gap:20px; animation:pop .4s ease;">
+            <span style="font-size:90px; font-family:'Fredoka',sans-serif; color:#FFCA3A;">★ ★ ★ ★ ★</span>
+            <p style="margin:0; font-family:'Fredoka',sans-serif; font-size:38px; font-weight:600; color:#8AC926;">¡Dominas los grupos consonánticos!</p>
+            <button onClick="{{ a1Reset }}" style="background:#fff; color:#6A4C93; border:3px solid #6A4C93; border-radius:40px; padding:14px 30px; font-size:18px; font-weight:900; cursor:pointer; font-family:'Nunito',sans-serif;">Jugar otra vez</button>
+          </div>
+        </sc-if>
+      </div>
+    </sc-if>
+
+    <sc-if value="{{ s4 }}" hint-placeholder-val="{{ false }}">
+      <div style="display:flex; flex-direction:column; align-items:center; gap:20px; text-align:center; animation:pop .4s ease; max-width:960px;">
+        <span style="background:#6A4C93; color:#fff; border-radius:30px; padding:10px 26px; font-size:16px; font-weight:900; letter-spacing:2px;">COMPRENSIÓN LECTORA · LEE CON ATENCIÓN</span>
+        <h1 style="margin:0; font-family:'Fredoka',sans-serif; font-size:38px; font-weight:700;">El tren de Bruno</h1>
+        <div style="background:#fff; border-radius:24px; padding:24px 40px; box-shadow:0 8px 0 rgba(42,42,64,.1); text-align:left;">
+          <p style="margin:0; font-size:26px; font-weight:800; line-height:1.7;">Bruno tiene un <span style="color:#FF595E;">tren</span> azul. El tren pasa por un <span style="color:#1982C4;">prado</span> lleno de flores. En el prado hay una <span style="color:#8AC926;">cabra</span> blanca que come pasto. Bruno sonríe y sopla el silbato: ¡<span style="color:#6A4C93;">pruu, pruu</span>!</p>
+        </div>
+        <sc-if value="{{ lecPlaying }}" hint-placeholder-val="{{ true }}">
+          <div style="background:#FFF9EF; border-radius:22px; padding:18px 30px; box-shadow:0 6px 0 rgba(42,42,64,.08); width:100%;">
+            <p style="margin:0 0 12px; font-size:24px; font-weight:900; color:#6A4C93;">{{ lecNum }} · {{ lecQ }}</p>
+            <div style="display:flex; gap:14px; justify-content:center; flex-wrap:wrap;">
+              <button onClick="{{ lp1 }}" style="background:#FF595E; color:#fff; border:none; border-radius:20px; padding:14px 26px; font-family:'Fredoka',sans-serif; font-size:26px; font-weight:600; cursor:pointer;" style-hover="transform:scale(1.06);">{{ lo1 }}</button>
+              <button onClick="{{ lp2 }}" style="background:#1982C4; color:#fff; border:none; border-radius:20px; padding:14px 26px; font-family:'Fredoka',sans-serif; font-size:26px; font-weight:600; cursor:pointer;" style-hover="transform:scale(1.06);">{{ lo2 }}</button>
+              <button onClick="{{ lp3 }}" style="background:#8AC926; color:#fff; border:none; border-radius:20px; padding:14px 26px; font-family:'Fredoka',sans-serif; font-size:26px; font-weight:600; cursor:pointer;" style-hover="transform:scale(1.06);">{{ lo3 }}</button>
+            </div>
+          </div>
+          <sc-if value="{{ lecOk }}" hint-placeholder-val="{{ false }}">
+            <div style="display:flex; align-items:center; gap:16px; animation:pop .3s ease;">
+              <span style="background:#8AC926; color:#fff; border-radius:30px; padding:12px 30px; font-family:'Fredoka',sans-serif; font-size:24px; font-weight:600;">¡Muy bien leído! ★</span>
+              <button onClick="{{ lecNext }}" style="background:#2A2A40; color:#fff; border:none; border-radius:30px; padding:12px 30px; font-size:18px; font-weight:900; cursor:pointer; font-family:'Nunito',sans-serif;">Siguiente ▶</button>
+            </div>
+          </sc-if>
+          <sc-if value="{{ lecBad }}" hint-placeholder-val="{{ false }}">
+            <span style="background:#FF595E; color:#fff; border-radius:30px; padding:12px 30px; font-family:'Fredoka',sans-serif; font-size:24px; font-weight:600; animation:pop .3s ease;">Vuelve a leer el cuento y busca la respuesta.</span>
+          </sc-if>
+        </sc-if>
+        <sc-if value="{{ lecDone }}" hint-placeholder-val="{{ false }}">
+          <div style="display:flex; flex-direction:column; align-items:center; gap:16px; animation:pop .4s ease;">
+            <span style="font-size:80px; font-family:'Fredoka',sans-serif; color:#FFCA3A;">★ ★ ★</span>
+            <p style="margin:0; font-family:'Fredoka',sans-serif; font-size:36px; font-weight:600; color:#8AC926;">¡Entendiste todo el cuento!</p>
+            <button onClick="{{ lecReset }}" style="background:#fff; color:#6A4C93; border:3px solid #6A4C93; border-radius:40px; padding:14px 30px; font-size:18px; font-weight:900; cursor:pointer; font-family:'Nunito',sans-serif;">Leer otra vez</button>
+          </div>
+        </sc-if>
+      </div>
+    </sc-if>
+
+    <sc-if value="{{ s5 }}" hint-placeholder-val="{{ false }}">
+      <div style="display:flex; flex-direction:column; align-items:center; gap:24px; text-align:center; animation:pop .4s ease;">
+        <span style="background:#8AC926; color:#fff; border-radius:30px; padding:10px 26px; font-size:16px; font-weight:900; letter-spacing:2px;">PAUSA ACTIVA · ¡A MOVER EL CUERPO!</span>
+        <sc-if value="{{ paIdle }}" hint-placeholder-val="{{ true }}">
+          <h1 style="margin:0; font-family:'Fredoka',sans-serif; font-size:52px; font-weight:700;">4 movimientos, 20 segundos cada uno</h1>
+          <p style="margin:0; font-size:24px; font-weight:800; color:#6A4C93; max-width:700px;">Todos de pie, separados de las mesas. Di la palabra fuerte mientras te mueves.</p>
+          <button onClick="{{ paStart }}" style="background:#FF595E; color:#fff; border:none; border-radius:50px; padding:22px 56px; font-family:'Fredoka',sans-serif; font-size:34px; font-weight:600; cursor:pointer;" style-hover="transform:scale(1.05);">¡Comenzar! ▶</button>
+        </sc-if>
+        <sc-if value="{{ paRunning }}" hint-placeholder-val="{{ false }}">
+          <span style="background:#fff; border-radius:30px; padding:10px 26px; font-size:18px; font-weight:900; color:#6A4C93;">Movimiento {{ paNum }} de 4</span>
+          <div style="width:220px; height:220px; border-radius:50%; background:{{ paColor }}; display:flex; align-items:center; justify-content:center; box-shadow:0 10px 0 rgba(42,42,64,.12);">
+            <span style="font-family:'Fredoka',sans-serif; font-size:110px; font-weight:600; color:#fff;">{{ paTime }}</span>
+          </div>
+          <h1 style="margin:0; font-family:'Fredoka',sans-serif; font-size:56px; font-weight:700;">{{ paName }}</h1>
+          <p style="margin:0; font-size:26px; font-weight:800; color:#6A4C93; max-width:700px;">{{ paDesc }}</p>
+        </sc-if>
+        <sc-if value="{{ paDone }}" hint-placeholder-val="{{ false }}">
+          <h1 style="margin:0; font-family:'Fredoka',sans-serif; font-size:60px; font-weight:700; color:#8AC926;">¡Excelente trabajo!</h1>
+          <p style="margin:0; font-size:26px; font-weight:800; color:#6A4C93;">Respira profundo tres veces y vuelve a tu puesto en silencio.</p>
+          <button onClick="{{ paStart }}" style="background:#fff; color:#6A4C93; border:3px solid #6A4C93; border-radius:40px; padding:14px 30px; font-size:18px; font-weight:900; cursor:pointer; font-family:'Nunito',sans-serif;">Repetir la pausa</button>
+        </sc-if>
+      </div>
+    </sc-if>
+
+    <sc-if value="{{ s6 }}" hint-placeholder-val="{{ false }}">
+      <div style="display:flex; flex-direction:column; align-items:center; gap:22px; text-align:center; animation:pop .4s ease; max-width:960px;">
+        <span style="background:#1982C4; color:#fff; border-radius:30px; padding:10px 26px; font-size:16px; font-weight:900; letter-spacing:2px;">EXPRESIÓN ORAL · NARRO Y DESCRIBO</span>
+        <h1 style="margin:0; font-family:'Fredoka',sans-serif; font-size:40px; font-weight:700;">¡Te toca hablar ante el grupo!</h1>
+        <p style="margin:0; font-size:22px; font-weight:800; color:#6A4C93;">Toca el botón para recibir una tarjeta. Piensa y cuéntala en voz alta a tus compañeros.</p>
+        <div style="background:#fff; border-radius:28px; padding:30px 44px; box-shadow:0 8px 0 rgba(42,42,64,.1); min-width:560px; min-height:180px; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:12px;">
+          <span style="font-size:80px;">{{ talkEmoji }}</span>
+          <p style="margin:0; font-family:'Fredoka',sans-serif; font-size:32px; font-weight:600; color:#2A2A40;">{{ talkText }}</p>
+        </div>
+        <div style="display:flex; gap:14px;">
+          <button onClick="{{ talkNext }}" style="background:#8AC926; color:#fff; border:none; border-radius:40px; padding:16px 34px; font-size:20px; font-weight:900; cursor:pointer; font-family:'Nunito',sans-serif;" style-hover="background:#6FA31E;">Otra tarjeta 🎲</button>
+        </div>
+        <div style="background:#FFF3D6; border-radius:20px; padding:16px 28px; max-width:720px;">
+          <p style="margin:0; font-size:20px; font-weight:800; color:#2A2A40;">Recuerda: hablo <span style="color:#FF595E;">fuerte y claro</span>, miro a mis compañeros y cuento <span style="color:#1982C4;">principio, mitad y final</span>.</p>
+        </div>
+      </div>
+    </sc-if>
+
+    <sc-if value="{{ s7 }}" hint-placeholder-val="{{ false }}">
+      <div style="display:flex; flex-direction:column; align-items:center; gap:24px; text-align:center; max-width:900px; animation:pop .4s ease;">
+        <span style="background:#FFCA3A; color:#2A2A40; border-radius:30px; padding:10px 26px; font-size:16px; font-weight:900; letter-spacing:2px;">RETO FINAL</span>
+        <h1 style="margin:0; font-family:'Fredoka',sans-serif; font-size:42px; font-weight:700;">¿Cuál palabra tiene un grupo como «br, tr, pl»?</h1>
+        <div style="display:flex; gap:20px;">
+          <button onClick="{{ rp1 }}" style="min-width:190px; background:#fff; border:none; border-radius:24px; padding:24px 30px; font-family:'Fredoka',sans-serif; font-size:34px; font-weight:600; color:#2A2A40; cursor:pointer; box-shadow:0 6px 0 rgba(42,42,64,.1);" style-hover="transform:scale(1.05);">mesa</button>
+          <button onClick="{{ rp2 }}" style="min-width:190px; background:#fff; border:none; border-radius:24px; padding:24px 30px; font-family:'Fredoka',sans-serif; font-size:34px; font-weight:600; color:#2A2A40; cursor:pointer; box-shadow:0 6px 0 rgba(42,42,64,.1);" style-hover="transform:scale(1.05);">bruja</button>
+          <button onClick="{{ rp3 }}" style="min-width:190px; background:#fff; border:none; border-radius:24px; padding:24px 30px; font-family:'Fredoka',sans-serif; font-size:34px; font-weight:600; color:#2A2A40; cursor:pointer; box-shadow:0 6px 0 rgba(42,42,64,.1);" style-hover="transform:scale(1.05);">gato</button>
+        </div>
+        <sc-if value="{{ rok }}" hint-placeholder-val="{{ false }}">
+          <div style="display:flex; flex-direction:column; align-items:center; gap:12px; animation:pop .3s ease;">
+            <span style="background:#8AC926; color:#fff; border-radius:30px; padding:14px 34px; font-family:'Fredoka',sans-serif; font-size:28px; font-weight:600;">¡Sí! bru-ja tiene «br». ★★★</span>
+            <p style="margin:0; font-size:22px; font-weight:800; color:#6A4C93;">Cierre: di una palabra con «pl» y otra con «tr».</p>
+          </div>
+        </sc-if>
+        <sc-if value="{{ rbad }}" hint-placeholder-val="{{ false }}">
+          <span style="background:#FF595E; color:#fff; border-radius:30px; padding:12px 30px; font-family:'Fredoka',sans-serif; font-size:24px; font-weight:600; animation:pop .3s ease;">Esa no tiene dos consonantes juntas. Intenta otra.</span>
+        </sc-if>
+      </div>
+    </sc-if>
+
+  </main>
+
+  <footer style="display:flex; align-items:center; justify-content:space-between; padding:16px 28px; background:#fff; box-shadow:0 -4px 0 rgba(42,42,64,.08);">
+    <button onClick="{{ prev }}" style="background:#fff; color:#6A4C93; border:3px solid #6A4C93; border-radius:40px; padding:14px 34px; font-size:18px; font-weight:900; cursor:pointer; font-family:'Nunito',sans-serif;" style-hover="background:#F1EAFB;">◀ Anterior</button>
+    <span style="font-size:16px; font-weight:900; color:#6A4C93; letter-spacing:1px;">{{ titulo }}</span>
+    <button onClick="{{ next }}" style="background:#1982C4; color:#fff; border:none; border-radius:40px; padding:14px 34px; font-size:18px; font-weight:900; cursor:pointer; font-family:'Nunito',sans-serif;" style-hover="background:#136394;">Siguiente ▶</button>
+  </footer>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;timerMinutes&quot;: {&quot;editor&quot;: &quot;int&quot;, &quot;default&quot;: 5, &quot;min&quot;: 1, &quot;max&quot;: 20, &quot;unit&quot;: &quot;min&quot;, &quot;tsType&quot;: &quot;number&quot;, &quot;section&quot;: &quot;Temporizador&quot;}}">
+class Component extends DCLogic {
+  state = {
+    screen: 0,
+    hLeft: undefined, hRun: false,
+    grupo: 0,
+    a1q: 0, a1ans: 0, a1done: false,
+    lecq: 0, lecans: 0, lecdone: false,
+    paPhase: "idle", paIdx: 0, paLeft: 20,
+    talk: 0,
+    r: 0
+  };
+  componentDidMount() {
+    this._iv = setInterval(() => {
+      this.setState(s => {
+        const n = {};
+        if (s.hRun && s.hLeft > 0) { n.hLeft = s.hLeft - 1; if (n.hLeft === 0) n.hRun = false; }
+        if (s.paPhase === "run") {
+          if (s.paLeft > 1) n.paLeft = s.paLeft - 1;
+          else if (s.paIdx < 3) { n.paIdx = s.paIdx + 1; n.paLeft = 20; }
+          else { n.paPhase = "done"; }
+        }
+        return Object.keys(n).length ? n : null;
+      });
+    }, 1000);
+  }
+  componentWillUnmount() { clearInterval(this._iv); }
+  renderVals() {
+    const s = this.state;
+    const SCREENS = ["Palabras que suenan fuerte", "Grupos consonánticos", "Completa la palabra", "El tren de Bruno", "Pausa activa", "Narro y describo", "Reto final"];
+    const go = d => this.setState(st => ({ screen: Math.max(0, Math.min(6, st.screen + d)) }));
+    const hMin = this.props.timerMinutes ?? 5;
+    const tH = s.hLeft === undefined ? hMin + ":00" : (s.hLeft === 0 ? "¡TIEMPO!" : Math.floor(s.hLeft / 60) + ":" + String(s.hLeft % 60).padStart(2, "0"));
+    const G = [
+      { par: "br", emoji: "🌉", pal: "brazo", hint: "b + r", bg: "#FF595E" },
+      { par: "bl", emoji: "🔵", pal: "blusa", hint: "b + l", bg: "#1982C4" },
+      { par: "tr", emoji: "🚂", pal: "tren", hint: "t + r", bg: "#8AC926" },
+      { par: "pl", emoji: "🍽️", pal: "plato", hint: "p + l", bg: "#6A4C93" },
+      { par: "cr", emoji: "✏️", pal: "cruz", hint: "c + r", bg: "#C89B1C" },
+      { par: "cl", emoji: "🔑", pal: "clavo", hint: "c + l", bg: "#FF595E" },
+      { par: "gr", emoji: "🐸", pal: "grillo", hint: "g + r", bg: "#1982C4" },
+      { par: "fl", emoji: "🌸", pal: "flor", hint: "f + l", bg: "#8AC926" }
+    ];
+    const g = G[s.grupo];
+    const grupos = G.map((x, i) => ({ par: x.par, bg: x.bg, pick: () => this.setState({ grupo: i }) }));
+    const A1 = [
+      { emoji: "🚂", word: "___en", opts: ["tr", "bl", "pl"], ok: 0, full: "tren" },
+      { emoji: "🌸", word: "___or", opts: ["gr", "fl", "br"], ok: 1, full: "flor" },
+      { emoji: "🍽️", word: "___ato", opts: ["cl", "tr", "pl"], ok: 2, full: "plato" },
+      { emoji: "🐸", word: "___illo", opts: ["gr", "bl", "fl"], ok: 0, full: "grillo" },
+      { emoji: "👗", word: "___usa", opts: ["tr", "bl", "cr"], ok: 1, full: "blusa" }
+    ];
+    const q1 = A1[Math.min(s.a1q, 4)];
+    const a1pick = i => () => this.setState({ a1ans: i === q1.ok ? 1 : 2 });
+    const LEC = [
+      { q: "¿De qué color es el tren de Bruno?", opts: ["Rojo", "Azul", "Verde"], ok: 1 },
+      { q: "¿Qué animal come pasto en el prado?", opts: ["Una cabra", "Un perro", "Un gato"], ok: 0 },
+      { q: "¿Por dónde pasa el tren?", opts: ["Un río", "Una ciudad", "Un prado"], ok: 2 }
+    ];
+    const ql = LEC[Math.min(s.lecq, 2)];
+    const lpick = i => () => this.setState({ lecans: i === ql.ok ? 1 : 2 });
+    const PA = [
+      { name: "TREN", desc: "Mueve los brazos como ruedas de tren y di: tren, tren, tren.", color: "#8AC926" },
+      { name: "FLOR", desc: "Abre los brazos como una flor que crece y di: flor.", color: "#FF595E" },
+      { name: "PLATO", desc: "Haz un círculo grande con los brazos como un plato y di: plato.", color: "#6A4C93" },
+      { name: "GRILLO", desc: "Salta como un grillo tres veces y di: grillo.", color: "#1982C4" }
+    ];
+    const pa = PA[s.paIdx];
+    const TALK = [
+      { emoji: "🐶", text: "Describe tu mascota o el animal que te gustaría tener." },
+      { emoji: "🎉", text: "Narra qué hiciste el fin de semana: principio, mitad y final." },
+      { emoji: "🏞️", text: "Describe un lugar que te gusta mucho. ¿Cómo es?" },
+      { emoji: "👨‍👩‍👧", text: "Cuéntanos sobre tu familia: ¿quiénes son?" },
+      { emoji: "🍎", text: "Describe tu comida favorita: color, sabor y forma." },
+      { emoji: "🎁", text: "Narra un día especial que recuerdes con alegría." }
+    ];
+    const tk = TALK[s.talk];
+    return {
+      titulo: SCREENS[s.screen].toUpperCase(),
+      num: (s.screen + 1) + " / 7",
+      prev: () => go(-1), next: () => go(1),
+      s1: s.screen === 0, s2: s.screen === 1, s3: s.screen === 2, s4: s.screen === 3,
+      s5: s.screen === 4, s6: s.screen === 5, s7: s.screen === 6,
+      tH, startH: () => this.setState({ hLeft: hMin * 60, hRun: true }),
+      grupos, ejEmoji: g.emoji, ejPal: g.pal, ejHint: g.par + " = " + g.hint,
+      a1Num: "PALABRA " + (Math.min(s.a1q, 4) + 1) + " DE 5",
+      a1Playing: !s.a1done, a1done: s.a1done,
+      a1Emoji: q1.emoji, a1Word: q1.word, a1Full: q1.full,
+      a1o1: q1.opts[0], a1o2: q1.opts[1], a1o3: q1.opts[2],
+      a1p1: a1pick(0), a1p2: a1pick(1), a1p3: a1pick(2),
+      a1ok: s.a1ans === 1, a1bad: s.a1ans === 2,
+      a1next: () => this.setState(st => st.a1q >= 4 ? { a1done: true, a1ans: 0 } : { a1q: st.a1q + 1, a1ans: 0 }),
+      a1Reset: () => this.setState({ a1q: 0, a1ans: 0, a1done: false }),
+      lecPlaying: !s.lecdone, lecDone: s.lecdone,
+      lecNum: "PREGUNTA " + (Math.min(s.lecq, 2) + 1) + " DE 3", lecQ: ql.q,
+      lo1: ql.opts[0], lo2: ql.opts[1], lo3: ql.opts[2],
+      lp1: lpick(0), lp2: lpick(1), lp3: lpick(2),
+      lecOk: s.lecans === 1, lecBad: s.lecans === 2,
+      lecNext: () => this.setState(st => st.lecq >= 2 ? { lecdone: true, lecans: 0 } : { lecq: st.lecq + 1, lecans: 0 }),
+      lecReset: () => this.setState({ lecq: 0, lecans: 0, lecdone: false }),
+      paIdle: s.paPhase === "idle", paRunning: s.paPhase === "run", paDone: s.paPhase === "done",
+      paStart: () => this.setState({ paPhase: "run", paIdx: 0, paLeft: 20 }),
+      paNum: String(s.paIdx + 1), paName: pa.name, paDesc: pa.desc, paColor: pa.color, paTime: String(s.paLeft),
+      talkEmoji: tk.emoji, talkText: tk.text,
+      talkNext: () => this.setState(st => ({ talk: (st.talk + 1) % TALK.length })),
+      rp1: () => this.setState({ r: 2 }), rp2: () => this.setState({ r: 1 }), rp3: () => this.setState({ r: 2 }),
+      rok: s.r === 1, rbad: s.r === 2
+    };
+  }
+}
+</script>
+</body>
+</html>

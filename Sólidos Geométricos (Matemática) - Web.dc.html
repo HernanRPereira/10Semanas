@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<meta name="description" content="Web interactiva: Sólidos geométricos - Grado 2°">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Nunito:wght@700;800;900&display=swap" rel="stylesheet">
+<style>
+body { margin:0; background:#FFF9EF; }
+a { color:#1982C4; } a:hover { color:#FF595E; }
+@keyframes pop { 0% { transform:scale(.6); opacity:0; } 100% { transform:scale(1); opacity:1; } }
+</style>
+<template id="__bundler_thumbnail" data-bg-color="#FFF9EF">
+<svg viewBox="0 0 120 80" xmlns="http://www.w3.org/2000/svg">
+<rect x="24" y="30" width="34" height="34" rx="4" fill="#FF595E"></rect>
+<circle cx="84" cy="47" r="17" fill="#1982C4"></circle>
+</svg>
+</template>
+</helmet>
+<div style="min-height:100vh; display:flex; flex-direction:column; font-family:'Nunito',sans-serif; color:#2A2A40;">
+
+  <header style="display:flex; align-items:center; gap:16px; padding:14px 28px; background:#fff; box-shadow:0 4px 0 rgba(42,42,64,.08);">
+    <span style="width:44px; height:44px; border-radius:14px; background:#1982C4; color:#fff; display:flex; align-items:center; justify-content:center; font-size:22px;">🧊</span>
+    <div style="display:flex; flex-direction:column;">
+      <span style="font-family:'Fredoka',sans-serif; font-size:22px; font-weight:600;">Sólidos Geométricos</span>
+      <span style="font-size:13px; font-weight:900; color:#6A4C93; letter-spacing:1px;">MATEMÁTICA · GRADO 2°</span>
+    </div>
+    <div style="flex:1;"></div>
+    <button onClick="{{ startH }}" style="display:flex; align-items:center; gap:12px; background:#2A2A40; color:#fff; border:none; border-radius:40px; padding:8px 20px; cursor:pointer; font-family:'Nunito',sans-serif;" style-hover="background:#6A4C93;">
+      <span style="font-size:13px; font-weight:900; letter-spacing:1px;">TEMPORIZADOR ▶</span>
+      <span style="font-family:'Fredoka',sans-serif; font-size:24px; font-weight:600; color:#FFCA3A;">{{ tH }}</span>
+    </button>
+    <span style="background:#FFCA3A; border-radius:40px; padding:10px 20px; font-family:'Fredoka',sans-serif; font-size:20px; font-weight:600;">{{ num }}</span>
+  </header>
+
+  <main style="flex:1; display:flex; flex-direction:column; align-items:center; justify-content:center; padding:32px 24px; position:relative; overflow:hidden;">
+
+    <sc-if value="{{ s1 }}" hint-placeholder-val="{{ true }}">
+      <div style="display:flex; flex-direction:column; align-items:center; gap:28px; text-align:center; max-width:900px; animation:pop .4s ease;">
+        <span style="background:#8AC926; color:#fff; border-radius:30px; padding:10px 26px; font-size:16px; font-weight:900; letter-spacing:2px;">¡BIENVENIDOS!</span>
+        <h1 style="margin:0; font-family:'Fredoka',sans-serif; font-size:56px; font-weight:700; line-height:1.1;">Cazadores de formas</h1>
+        <div style="background:#fff; border-radius:28px; padding:32px 40px; box-shadow:0 8px 0 rgba(42,42,64,.1);">
+          <p style="margin:0; font-size:60px;">📦 ⚽ 🥫 🍦</p>
+          <p style="margin:20px 0 0; font-family:'Fredoka',sans-serif; font-size:34px; font-weight:600; color:#6A4C93;">Mira a tu alrededor: ¿qué objetos tienen forma de caja, de pelota o de cono de helado?</p>
+        </div>
+        <p style="margin:0; font-size:20px; font-weight:800; color:#6A4C93;">Piensa y comparte tu idea con la clase.</p>
+      </div>
+    </sc-if>
+
+    <sc-if value="{{ s2 }}" hint-placeholder-val="{{ false }}">
+      <div style="display:flex; flex-direction:column; align-items:center; gap:24px; text-align:center; animation:pop .4s ease;">
+        <span style="background:#1982C4; color:#fff; border-radius:30px; padding:10px 26px; font-size:16px; font-weight:900; letter-spacing:2px;">DESCUBRE LOS SÓLIDOS</span>
+        <h1 style="margin:0; font-family:'Fredoka',sans-serif; font-size:44px; font-weight:700;">Toca cada sólido para conocerlo</h1>
+        <div style="display:flex; gap:18px; flex-wrap:wrap; justify-content:center;">
+          <button onClick="{{ d1 }}" style="width:210px; border:none; border-radius:24px; background:#FF595E; color:#fff; cursor:pointer; padding:22px 16px; font-family:'Fredoka',sans-serif; display:flex; flex-direction:column; gap:8px; align-items:center;" style-hover="transform:scale(1.05);">
+            <span style="font-size:56px;">🧊</span><span style="font-size:26px; font-weight:600;">Cubo</span>
+            <sc-if value="{{ d1on }}" hint-placeholder-val="{{ false }}"><span style="background:#fff; color:#FF595E; border-radius:14px; padding:8px 12px; font-family:'Nunito',sans-serif; font-size:15px; font-weight:800;">6 caras planas · se apila · como un dado</span></sc-if>
+            <sc-if value="{{ d1off }}" hint-placeholder-val="{{ true }}"><span style="font-family:'Nunito',sans-serif; font-size:13px; font-weight:900;">TOCA AQUÍ</span></sc-if>
+          </button>
+          <button onClick="{{ d2 }}" style="width:210px; border:none; border-radius:24px; background:#1982C4; color:#fff; cursor:pointer; padding:22px 16px; font-family:'Fredoka',sans-serif; display:flex; flex-direction:column; gap:8px; align-items:center;" style-hover="transform:scale(1.05);">
+            <span style="font-size:56px;">⚽</span><span style="font-size:26px; font-weight:600;">Esfera</span>
+            <sc-if value="{{ d2on }}" hint-placeholder-val="{{ false }}"><span style="background:#fff; color:#1982C4; border-radius:14px; padding:8px 12px; font-family:'Nunito',sans-serif; font-size:15px; font-weight:800;">toda curva · rueda · como una pelota</span></sc-if>
+            <sc-if value="{{ d2off }}" hint-placeholder-val="{{ true }}"><span style="font-family:'Nunito',sans-serif; font-size:13px; font-weight:900;">TOCA AQUÍ</span></sc-if>
+          </button>
+          <button onClick="{{ d3 }}" style="width:210px; border:none; border-radius:24px; background:#FFCA3A; color:#2A2A40; cursor:pointer; padding:22px 16px; font-family:'Fredoka',sans-serif; display:flex; flex-direction:column; gap:8px; align-items:center;" style-hover="transform:scale(1.05);">
+            <span style="font-size:56px;">🥫</span><span style="font-size:26px; font-weight:600;">Cilindro</span>
+            <sc-if value="{{ d3on }}" hint-placeholder-val="{{ false }}"><span style="background:#fff; color:#C89B1C; border-radius:14px; padding:8px 12px; font-family:'Nunito',sans-serif; font-size:15px; font-weight:800;">2 tapas redondas · rueda · como una lata</span></sc-if>
+            <sc-if value="{{ d3off }}" hint-placeholder-val="{{ true }}"><span style="font-family:'Nunito',sans-serif; font-size:13px; font-weight:900;">TOCA AQUÍ</span></sc-if>
+          </button>
+          <button onClick="{{ d4 }}" style="width:210px; border:none; border-radius:24px; background:#8AC926; color:#fff; cursor:pointer; padding:22px 16px; font-family:'Fredoka',sans-serif; display:flex; flex-direction:column; gap:8px; align-items:center;" style-hover="transform:scale(1.05);">
+            <span style="font-size:56px;">🍦</span><span style="font-size:26px; font-weight:600;">Cono</span>
+            <sc-if value="{{ d4on }}" hint-placeholder-val="{{ false }}"><span style="background:#fff; color:#6FA31E; border-radius:14px; padding:8px 12px; font-family:'Nunito',sans-serif; font-size:15px; font-weight:800;">1 punta y 1 base · rueda · como un helado</span></sc-if>
+            <sc-if value="{{ d4off }}" hint-placeholder-val="{{ true }}"><span style="font-family:'Nunito',sans-serif; font-size:13px; font-weight:900;">TOCA AQUÍ</span></sc-if>
+          </button>
+          <button onClick="{{ d5 }}" style="width:210px; border:none; border-radius:24px; background:#6A4C93; color:#fff; cursor:pointer; padding:22px 16px; font-family:'Fredoka',sans-serif; display:flex; flex-direction:column; gap:8px; align-items:center;" style-hover="transform:scale(1.05);">
+            <span style="font-size:56px;">🔺</span><span style="font-size:26px; font-weight:600;">Pirámide</span>
+            <sc-if value="{{ d5on }}" hint-placeholder-val="{{ false }}"><span style="background:#fff; color:#6A4C93; border-radius:14px; padding:8px 12px; font-family:'Nunito',sans-serif; font-size:15px; font-weight:800;">caras triangulares · se apila · como una carpa</span></sc-if>
+            <sc-if value="{{ d5off }}" hint-placeholder-val="{{ true }}"><span style="font-family:'Nunito',sans-serif; font-size:13px; font-weight:900;">TOCA AQUÍ</span></sc-if>
+          </button>
+        </div>
+      </div>
+    </sc-if>
+
+    <sc-if value="{{ s3 }}" hint-placeholder-val="{{ false }}">
+      <div style="display:flex; flex-direction:column; align-items:center; gap:24px; text-align:center; animation:pop .4s ease;">
+        <span style="background:#FFCA3A; color:#2A2A40; border-radius:30px; padding:10px 26px; font-size:16px; font-weight:900; letter-spacing:2px;">ACTIVIDAD 1 · {{ a1Num }}</span>
+        <h1 style="margin:0; font-family:'Fredoka',sans-serif; font-size:44px; font-weight:700;">¿Qué sólido es este objeto?</h1>
+        <sc-if value="{{ a1Playing }}" hint-placeholder-val="{{ true }}">
+          <div style="background:#fff; border-radius:28px; padding:24px 70px; box-shadow:0 8px 0 rgba(42,42,64,.1);">
+            <p style="margin:0; font-size:100px;">{{ a1Emoji }}</p>
+            <p style="margin:0; font-family:'Fredoka',sans-serif; font-size:34px; font-weight:600; color:#6A4C93;">{{ a1Name }}</p>
+          </div>
+          <div style="display:flex; gap:14px; flex-wrap:wrap; justify-content:center;">
+            <button onClick="{{ a1p1 }}" style="background:#FF595E; color:#fff; border:none; border-radius:20px; padding:14px 24px; font-family:'Fredoka',sans-serif; font-size:24px; font-weight:600; cursor:pointer;" style-hover="transform:scale(1.06);">{{ a1o1 }}</button>
+            <button onClick="{{ a1p2 }}" style="background:#1982C4; color:#fff; border:none; border-radius:20px; padding:14px 24px; font-family:'Fredoka',sans-serif; font-size:24px; font-weight:600; cursor:pointer;" style-hover="transform:scale(1.06);">{{ a1o2 }}</button>
+            <button onClick="{{ a1p3 }}" style="background:#8AC926; color:#fff; border:none; border-radius:20px; padding:14px 24px; font-family:'Fredoka',sans-serif; font-size:24px; font-weight:600; cursor:pointer;" style-hover="transform:scale(1.06);">{{ a1o3 }}</button>
+          </div>
+          <sc-if value="{{ a1ok }}" hint-placeholder-val="{{ false }}">
+            <div style="display:flex; align-items:center; gap:16px; animation:pop .3s ease;">
+              <span style="background:#8AC926; color:#fff; border-radius:30px; padding:12px 30px; font-family:'Fredoka',sans-serif; font-size:24px; font-weight:600;">¡Correcto! ★</span>
+              <button onClick="{{ a1next }}" style="background:#2A2A40; color:#fff; border:none; border-radius:30px; padding:12px 30px; font-size:18px; font-weight:900; cursor:pointer; font-family:'Nunito',sans-serif;">Siguiente ▶</button>
+            </div>
+          </sc-if>
+          <sc-if value="{{ a1bad }}" hint-placeholder-val="{{ false }}">
+            <span style="background:#FF595E; color:#fff; border-radius:30px; padding:12px 30px; font-family:'Fredoka',sans-serif; font-size:24px; font-weight:600; animation:pop .3s ease;">Mira bien su forma e intenta otra vez.</span>
+          </sc-if>
+        </sc-if>
+        <sc-if value="{{ a1done }}" hint-placeholder-val="{{ false }}">
+          <div style="display:flex; flex-direction:column; align-items:center; gap:20px; animation:pop .4s ease;">
+            <span style="font-size:100px; font-family:'Fredoka',sans-serif; color:#FFCA3A;">★ ★ ★ ★ ★</span>
+            <p style="margin:0; font-family:'Fredoka',sans-serif; font-size:40px; font-weight:600; color:#8AC926;">¡Reconoces todos los sólidos!</p>
+            <button onClick="{{ a1Reset }}" style="background:#fff; color:#6A4C93; border:3px solid #6A4C93; border-radius:40px; padding:14px 30px; font-size:18px; font-weight:900; cursor:pointer; font-family:'Nunito',sans-serif;">Jugar otra vez</button>
+          </div>
+        </sc-if>
+      </div>
+    </sc-if>
+
+    <sc-if value="{{ s4 }}" hint-placeholder-val="{{ false }}">
+      <div style="display:flex; flex-direction:column; align-items:center; gap:24px; text-align:center; animation:pop .4s ease;">
+        <span style="background:#8AC926; color:#fff; border-radius:30px; padding:10px 26px; font-size:16px; font-weight:900; letter-spacing:2px;">PAUSA ACTIVA · ¡A MOVER EL CUERPO!</span>
+        <sc-if value="{{ paIdle }}" hint-placeholder-val="{{ true }}">
+          <h1 style="margin:0; font-family:'Fredoka',sans-serif; font-size:52px; font-weight:700;">4 movimientos, 20 segundos cada uno</h1>
+          <p style="margin:0; font-size:24px; font-weight:800; color:#6A4C93; max-width:700px;">Todos de pie, separados de las mesas. Sigue las instrucciones de la pantalla.</p>
+          <button onClick="{{ paStart }}" style="background:#FF595E; color:#fff; border:none; border-radius:50px; padding:22px 56px; font-family:'Fredoka',sans-serif; font-size:34px; font-weight:600; cursor:pointer;" style-hover="transform:scale(1.05);">¡Comenzar! ▶</button>
+        </sc-if>
+        <sc-if value="{{ paRunning }}" hint-placeholder-val="{{ false }}">
+          <span style="background:#fff; border-radius:30px; padding:10px 26px; font-size:18px; font-weight:900; color:#6A4C93;">Movimiento {{ paNum }} de 4</span>
+          <div style="width:220px; height:220px; border-radius:50%; background:{{ paColor }}; display:flex; align-items:center; justify-content:center; box-shadow:0 10px 0 rgba(42,42,64,.12);">
+            <span style="font-family:'Fredoka',sans-serif; font-size:110px; font-weight:600; color:#fff;">{{ paTime }}</span>
+          </div>
+          <h1 style="margin:0; font-family:'Fredoka',sans-serif; font-size:56px; font-weight:700;">{{ paName }}</h1>
+          <p style="margin:0; font-size:26px; font-weight:800; color:#6A4C93; max-width:700px;">{{ paDesc }}</p>
+        </sc-if>
+        <sc-if value="{{ paDone }}" hint-placeholder-val="{{ false }}">
+          <h1 style="margin:0; font-family:'Fredoka',sans-serif; font-size:60px; font-weight:700; color:#8AC926;">¡Excelente trabajo!</h1>
+          <p style="margin:0; font-size:26px; font-weight:800; color:#6A4C93;">Respira profundo tres veces y vuelve a tu puesto en silencio.</p>
+          <button onClick="{{ paStart }}" style="background:#fff; color:#6A4C93; border:3px solid #6A4C93; border-radius:40px; padding:14px 30px; font-size:18px; font-weight:900; cursor:pointer; font-family:'Nunito',sans-serif;">Repetir la pausa</button>
+        </sc-if>
+      </div>
+    </sc-if>
+
+    <sc-if value="{{ s5 }}" hint-placeholder-val="{{ false }}">
+      <div style="display:flex; flex-direction:column; align-items:center; gap:24px; text-align:center; animation:pop .4s ease;">
+        <span style="background:#6A4C93; color:#fff; border-radius:30px; padding:10px 26px; font-size:16px; font-weight:900; letter-spacing:2px;">ACTIVIDAD 2 · {{ a2Num }}</span>
+        <h1 style="margin:0; font-family:'Fredoka',sans-serif; font-size:44px; font-weight:700;">¿Rueda o se apila?</h1>
+        <sc-if value="{{ a2Playing }}" hint-placeholder-val="{{ true }}">
+          <div style="background:#fff; border-radius:28px; padding:24px 60px; box-shadow:0 8px 0 rgba(42,42,64,.1);">
+            <p style="margin:0; font-size:90px;">{{ a2Emoji }}</p>
+            <p style="margin:0; font-family:'Fredoka',sans-serif; font-size:34px; font-weight:600;">{{ a2Name }}</p>
+          </div>
+          <div style="display:flex; gap:20px;">
+            <button onClick="{{ a2rueda }}" style="min-width:220px; background:#8AC926; color:#fff; border:none; border-radius:24px; padding:20px 36px; font-family:'Fredoka',sans-serif; font-size:32px; font-weight:600; cursor:pointer;" style-hover="transform:scale(1.06);">⚙️ Rueda</button>
+            <button onClick="{{ a2apila }}" style="min-width:220px; background:#FF595E; color:#fff; border:none; border-radius:24px; padding:20px 36px; font-family:'Fredoka',sans-serif; font-size:32px; font-weight:600; cursor:pointer;" style-hover="transform:scale(1.06);">🧱 Se apila</button>
+          </div>
+          <sc-if value="{{ a2ok }}" hint-placeholder-val="{{ false }}">
+            <div style="display:flex; align-items:center; gap:16px; animation:pop .3s ease;">
+              <span style="background:#8AC926; color:#fff; border-radius:30px; padding:12px 30px; font-family:'Fredoka',sans-serif; font-size:24px; font-weight:600;">{{ a2fb }}</span>
+              <button onClick="{{ a2next }}" style="background:#2A2A40; color:#fff; border:none; border-radius:30px; padding:12px 30px; font-size:18px; font-weight:900; cursor:pointer; font-family:'Nunito',sans-serif;">Siguiente ▶</button>
+            </div>
+          </sc-if>
+          <sc-if value="{{ a2bad }}" hint-placeholder-val="{{ false }}">
+            <span style="background:#FF595E; color:#fff; border-radius:30px; padding:12px 30px; font-family:'Fredoka',sans-serif; font-size:24px; font-weight:600; animation:pop .3s ease;">Piensa: ¿tiene partes curvas o solo caras planas?</span>
+          </sc-if>
+        </sc-if>
+        <sc-if value="{{ a2done }}" hint-placeholder-val="{{ false }}">
+          <div style="display:flex; flex-direction:column; align-items:center; gap:20px; animation:pop .4s ease;">
+            <span style="font-size:90px; font-family:'Fredoka',sans-serif; color:#FFCA3A;">★ ★ ★ ★</span>
+            <p style="margin:0; font-family:'Fredoka',sans-serif; font-size:40px; font-weight:600; color:#8AC926;">¡Sabes cuáles ruedan y cuáles se apilan!</p>
+            <button onClick="{{ a2Reset }}" style="background:#fff; color:#6A4C93; border:3px solid #6A4C93; border-radius:40px; padding:14px 30px; font-size:18px; font-weight:900; cursor:pointer; font-family:'Nunito',sans-serif;">Jugar otra vez</button>
+          </div>
+        </sc-if>
+      </div>
+    </sc-if>
+
+    <sc-if value="{{ s6 }}" hint-placeholder-val="{{ false }}">
+      <div style="display:flex; flex-direction:column; align-items:center; gap:24px; text-align:center; max-width:900px; animation:pop .4s ease;">
+        <span style="background:#FFCA3A; color:#2A2A40; border-radius:30px; padding:10px 26px; font-size:16px; font-weight:900; letter-spacing:2px;">RETO FINAL</span>
+        <h1 style="margin:0; font-family:'Fredoka',sans-serif; font-size:44px; font-weight:700;">¿Qué sólido NO rueda?</h1>
+        <div style="display:flex; gap:20px;">
+          <button onClick="{{ rp1 }}" style="min-width:190px; background:#fff; border:none; border-radius:24px; padding:24px 30px; font-family:'Fredoka',sans-serif; font-size:28px; font-weight:600; color:#2A2A40; cursor:pointer; box-shadow:0 6px 0 rgba(42,42,64,.1);" style-hover="transform:scale(1.05);">⚽<br>Esfera</button>
+          <button onClick="{{ rp2 }}" style="min-width:190px; background:#fff; border:none; border-radius:24px; padding:24px 30px; font-family:'Fredoka',sans-serif; font-size:28px; font-weight:600; color:#2A2A40; cursor:pointer; box-shadow:0 6px 0 rgba(42,42,64,.1);" style-hover="transform:scale(1.05);">🧊<br>Cubo</button>
+          <button onClick="{{ rp3 }}" style="min-width:190px; background:#fff; border:none; border-radius:24px; padding:24px 30px; font-family:'Fredoka',sans-serif; font-size:28px; font-weight:600; color:#2A2A40; cursor:pointer; box-shadow:0 6px 0 rgba(42,42,64,.1);" style-hover="transform:scale(1.05);">🥫<br>Cilindro</button>
+        </div>
+        <sc-if value="{{ rok }}" hint-placeholder-val="{{ false }}">
+          <div style="display:flex; flex-direction:column; align-items:center; gap:12px; animation:pop .3s ease;">
+            <span style="background:#8AC926; color:#fff; border-radius:30px; padding:14px 34px; font-family:'Fredoka',sans-serif; font-size:28px; font-weight:600;">¡El cubo! Solo tiene caras planas: se apila. ★★★</span>
+            <p style="margin:0; font-size:22px; font-weight:800; color:#6A4C93;">Pregunta de cierre: nombra los 5 sólidos y di cuáles ruedan.</p>
+          </div>
+        </sc-if>
+        <sc-if value="{{ rbad }}" hint-placeholder-val="{{ false }}">
+          <span style="background:#FF595E; color:#fff; border-radius:30px; padding:12px 30px; font-family:'Fredoka',sans-serif; font-size:24px; font-weight:600; animation:pop .3s ease;">Ese sí rueda porque tiene partes curvas...</span>
+        </sc-if>
+      </div>
+    </sc-if>
+
+  </main>
+
+  <footer style="display:flex; align-items:center; justify-content:space-between; padding:16px 28px; background:#fff; box-shadow:0 -4px 0 rgba(42,42,64,.08);">
+    <button onClick="{{ prev }}" style="background:#fff; color:#6A4C93; border:3px solid #6A4C93; border-radius:40px; padding:14px 34px; font-size:18px; font-weight:900; cursor:pointer; font-family:'Nunito',sans-serif;" style-hover="background:#F1EAFB;">◀ Anterior</button>
+    <span style="font-size:16px; font-weight:900; color:#6A4C93; letter-spacing:1px;">{{ titulo }}</span>
+    <button onClick="{{ next }}" style="background:#1982C4; color:#fff; border:none; border-radius:40px; padding:14px 34px; font-size:18px; font-weight:900; cursor:pointer; font-family:'Nunito',sans-serif;" style-hover="background:#136394;">Siguiente ▶</button>
+  </footer>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;timerMinutes&quot;: {&quot;editor&quot;: &quot;int&quot;, &quot;default&quot;: 5, &quot;min&quot;: 1, &quot;max&quot;: 20, &quot;unit&quot;: &quot;min&quot;, &quot;tsType&quot;: &quot;number&quot;, &quot;section&quot;: &quot;Temporizador&quot;}}">
+class Component extends DCLogic {
+  state = {
+    screen: 0,
+    hLeft: undefined, hRun: false,
+    des: [false, false, false, false, false],
+    a1q: 0, a1ans: 0, a1done: false,
+    paPhase: "idle", paIdx: 0, paLeft: 20,
+    a2q: 0, a2ans: 0, a2done: false,
+    r: 0
+  };
+  componentDidMount() {
+    this._iv = setInterval(() => {
+      this.setState(s => {
+        const n = {};
+        if (s.hRun && s.hLeft > 0) { n.hLeft = s.hLeft - 1; if (n.hLeft === 0) n.hRun = false; }
+        if (s.paPhase === "run") {
+          if (s.paLeft > 1) n.paLeft = s.paLeft - 1;
+          else if (s.paIdx < 3) { n.paIdx = s.paIdx + 1; n.paLeft = 20; }
+          else { n.paPhase = "done"; }
+        }
+        return Object.keys(n).length ? n : null;
+      });
+    }, 1000);
+  }
+  componentWillUnmount() { clearInterval(this._iv); }
+  renderVals() {
+    const s = this.state;
+    const SCREENS = ["Cazadores de formas", "Descubre los sólidos", "¿Qué sólido es?", "Pausa activa", "¿Rueda o se apila?", "Reto final"];
+    const go = d => this.setState(st => ({ screen: Math.max(0, Math.min(5, st.screen + d)) }));
+    const hMin = this.props.timerMinutes ?? 5;
+    const tH = s.hLeft === undefined ? hMin + ":00" : (s.hLeft === 0 ? "¡TIEMPO!" : Math.floor(s.hLeft / 60) + ":" + String(s.hLeft % 60).padStart(2, "0"));
+    const mkDes = i => ({
+      ["d" + (i + 1)]: () => this.setState(st => { const d = [...st.des]; d[i] = true; return { des: d }; }),
+      ["d" + (i + 1) + "on"]: s.des[i], ["d" + (i + 1) + "off"]: !s.des[i]
+    });
+    const A1 = [
+      { emoji: "🎲", name: "un dado", opts: ["Cubo", "Esfera", "Cono"], ok: 0 },
+      { emoji: "🥫", name: "una lata", opts: ["Cubo", "Cilindro", "Pirámide"], ok: 1 },
+      { emoji: "🏀", name: "una pelota", opts: ["Cilindro", "Cubo", "Esfera"], ok: 2 },
+      { emoji: "🎉", name: "un gorro de fiesta", opts: ["Cono", "Cubo", "Esfera"], ok: 0 },
+      { emoji: "📦", name: "una caja", opts: ["Esfera", "Cubo", "Cono"], ok: 1 }
+    ];
+    const q1 = A1[Math.min(s.a1q, 4)];
+    const a1pick = i => () => this.setState({ a1ans: i === q1.ok ? 1 : 2 });
+    const A2 = [
+      { emoji: "⚽", name: "Esfera", rueda: true }, { emoji: "🧊", name: "Cubo", rueda: false },
+      { emoji: "🥫", name: "Cilindro", rueda: true }, { emoji: "🔺", name: "Pirámide", rueda: false }
+    ];
+    const q2 = A2[Math.min(s.a2q, 3)];
+    const a2pick = ans => () => this.setState({ a2ans: ans === q2.rueda ? 1 : 2 });
+    const PA = [
+      { name: "Rueda como esfera", desc: "Gira despacio sobre ti mismo con los brazos pegados, como una pelota.", color: "#1982C4" },
+      { name: "Firme como cubo", desc: "Ponte firme y cuadrado, brazos en jarra, ¡sin moverte!", color: "#FF595E" },
+      { name: "Punta de pirámide", desc: "Junta las manos arriba en punta y estírate bien alto.", color: "#6A4C93" },
+      { name: "Salto de estrella", desc: "Salta abriendo brazos y piernas como una estrella.", color: "#8AC926" }
+    ];
+    const pa = PA[s.paIdx];
+    return {
+      titulo: SCREENS[s.screen].toUpperCase(),
+      num: (s.screen + 1) + " / 6",
+      prev: () => go(-1), next: () => go(1),
+      s1: s.screen === 0, s2: s.screen === 1, s3: s.screen === 2, s4: s.screen === 3,
+      s5: s.screen === 4, s6: s.screen === 5,
+      tH, startH: () => this.setState({ hLeft: hMin * 60, hRun: true }),
+      ...mkDes(0), ...mkDes(1), ...mkDes(2), ...mkDes(3), ...mkDes(4),
+      a1Num: "OBJETO " + (Math.min(s.a1q, 4) + 1) + " DE 5",
+      a1Playing: !s.a1done, a1done: s.a1done,
+      a1Emoji: q1.emoji, a1Name: q1.name,
+      a1o1: q1.opts[0], a1o2: q1.opts[1], a1o3: q1.opts[2],
+      a1p1: a1pick(0), a1p2: a1pick(1), a1p3: a1pick(2),
+      a1ok: s.a1ans === 1, a1bad: s.a1ans === 2,
+      a1next: () => this.setState(st => st.a1q >= 4 ? { a1done: true, a1ans: 0 } : { a1q: st.a1q + 1, a1ans: 0 }),
+      a1Reset: () => this.setState({ a1q: 0, a1ans: 0, a1done: false }),
+      paIdle: s.paPhase === "idle", paRunning: s.paPhase === "run", paDone: s.paPhase === "done",
+      paStart: () => this.setState({ paPhase: "run", paIdx: 0, paLeft: 20 }),
+      paNum: String(s.paIdx + 1), paName: pa.name, paDesc: pa.desc, paColor: pa.color, paTime: String(s.paLeft),
+      a2Num: "SÓLIDO " + (Math.min(s.a2q, 3) + 1) + " DE 4",
+      a2Playing: !s.a2done, a2done: s.a2done,
+      a2Emoji: q2.emoji, a2Name: q2.name,
+      a2rueda: a2pick(true), a2apila: a2pick(false),
+      a2ok: s.a2ans === 1, a2bad: s.a2ans === 2,
+      a2fb: q2.rueda ? "¡Sí! Tiene partes curvas: rueda." : "¡Correcto! Solo caras planas: se apila.",
+      a2next: () => this.setState(st => st.a2q >= 3 ? { a2done: true, a2ans: 0 } : { a2q: st.a2q + 1, a2ans: 0 }),
+      a2Reset: () => this.setState({ a2q: 0, a2ans: 0, a2done: false }),
+      rp1: () => this.setState({ r: 2 }), rp2: () => this.setState({ r: 1 }), rp3: () => this.setState({ r: 2 }),
+      rok: s.r === 1, rbad: s.r === 2
+    };
+  }
+}
+</script>
+</body>
+</html>

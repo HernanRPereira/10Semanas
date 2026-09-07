@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<meta name="description" content="Página de dictados 2 con cronómetro para Grado 2°">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Nunito:wght@700;800;900&display=swap" rel="stylesheet">
+<style>
+body { margin:0; background:#FFF9EF; }
+a { color:#1982C4; } a:hover { color:#FF595E; }
+@keyframes pop { 0% { transform:scale(.8); opacity:0; } 100% { transform:scale(1); opacity:1; } }
+@keyframes pulse { 0%,100% { transform:scale(1); } 50% { transform:scale(1.04); } }
+</style>
+<template id="__bundler_thumbnail" data-bg-color="#FFF9EF">
+<svg viewBox="0 0 120 80" xmlns="http://www.w3.org/2000/svg">
+<circle cx="60" cy="40" r="26" fill="#8AC926"></circle>
+<text x="60" y="52" text-anchor="middle" font-size="30">⏱️</text>
+</svg>
+</template>
+</helmet>
+<div style="min-height:100vh; display:flex; flex-direction:column; font-family:'Nunito',sans-serif; color:#2A2A40;">
+
+  <header style="display:flex; align-items:center; gap:16px; padding:14px 30px; background:#fff; box-shadow:0 4px 0 rgba(42,42,64,.08); flex-wrap:wrap;">
+    <span style="width:46px; height:46px; border-radius:14px; background:#8AC926; color:#fff; display:flex; align-items:center; justify-content:center; font-size:24px;">✍️</span>
+    <div style="display:flex; flex-direction:column;">
+      <span style="font-family:'Fredoka',sans-serif; font-size:22px; font-weight:600;">Dictados · Serie 2</span>
+      <span style="font-size:13px; font-weight:900; color:#6A4C93; letter-spacing:1px;">ESPAÑOL · GRADO 2° · ESCUCHA Y ESCRIBE</span>
+    </div>
+    <div style="flex:1; min-width:20px;"></div>
+
+    <div style="display:flex; align-items:center; gap:8px; background:#FFF9EF; border-radius:40px; padding:6px; box-shadow:inset 0 0 0 2px #E9E1D2;">
+      <span style="font-size:13px; font-weight:900; color:#6A4C93; padding:0 8px; letter-spacing:1px;">TIEMPO</span>
+      <button onClick="{{ set1 }}" style="border:none; border-radius:30px; padding:10px 20px; font-family:'Fredoka',sans-serif; font-size:20px; font-weight:600; cursor:pointer; background:{{ b1 }}; color:{{ c1 }};" style-hover="transform:scale(1.05);">1 min</button>
+      <button onClick="{{ set2 }}" style="border:none; border-radius:30px; padding:10px 20px; font-family:'Fredoka',sans-serif; font-size:20px; font-weight:600; cursor:pointer; background:{{ b2 }}; color:{{ c2 }};" style-hover="transform:scale(1.05);">2 min</button>
+      <button onClick="{{ set3 }}" style="border:none; border-radius:30px; padding:10px 20px; font-family:'Fredoka',sans-serif; font-size:20px; font-weight:600; cursor:pointer; background:{{ b3 }}; color:{{ c3 }};" style-hover="transform:scale(1.05);">3 min</button>
+    </div>
+
+    <button onClick="{{ toggleAuto }}" style="border:none; border-radius:40px; padding:12px 22px; font-size:15px; font-weight:900; cursor:pointer; background:{{ autoBg }}; color:{{ autoColor }}; letter-spacing:1px;" style-hover="transform:scale(1.04);">{{ autoLabel }}</button>
+    <span style="background:#FFCA3A; border-radius:40px; padding:10px 20px; font-family:'Fredoka',sans-serif; font-size:18px; font-weight:600;">{{ num }}</span>
+  </header>
+
+  <main style="flex:1; display:grid; grid-template-columns:1.15fr 1fr; gap:26px; padding:30px; align-items:stretch;">
+
+    <div style="background:#fff; border-radius:28px; padding:30px; box-shadow:0 8px 0 rgba(42,42,64,.08); display:flex; flex-direction:column; gap:20px;">
+      <div style="display:flex; align-items:center; gap:12px;">
+        <span style="background:#8AC926; color:#fff; border-radius:20px; padding:8px 20px; font-size:15px; font-weight:900; letter-spacing:1px;">DICTADO N.° {{ idxShow }}</span>
+        <span style="background:#F1EAFB; color:#6A4C93; border-radius:20px; padding:8px 18px; font-size:14px; font-weight:900;">{{ d.foco }}</span>
+      </div>
+      <div style="flex:1; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:22px; text-align:center;">
+        <div style="width:100%; background:#FFF9EF; border-radius:24px; padding:24px; display:flex; align-items:center; justify-content:center;">
+          <span style="font-size:150px; line-height:1;">{{ d.emoji }}</span>
+        </div>
+        <p style="margin:0; font-size:15px; font-weight:900; color:#6A4C93; letter-spacing:1px;">IMAGEN DE REFERENCIA</p>
+        <p style="margin:0; font-family:'Fredoka',sans-serif; font-size:40px; font-weight:600; line-height:1.35; color:#2A2A40;">“{{ d.oracion }}”</p>
+      </div>
+      <div style="display:flex; gap:12px; justify-content:center;">
+        <button onClick="{{ prev }}" style="background:#fff; color:#6A4C93; border:3px solid #6A4C93; border-radius:40px; padding:12px 28px; font-size:18px; font-weight:900; cursor:pointer; font-family:'Nunito',sans-serif;" style-hover="background:#F1EAFB;">◀ Anterior</button>
+        <button onClick="{{ next }}" style="background:#1982C4; color:#fff; border:none; border-radius:40px; padding:12px 28px; font-size:18px; font-weight:900; cursor:pointer; font-family:'Nunito',sans-serif;" style-hover="background:#136394;">Siguiente ▶</button>
+      </div>
+    </div>
+
+    <div style="background:{{ panelBg }}; border-radius:28px; padding:30px; box-shadow:0 8px 0 rgba(42,42,64,.12); display:flex; flex-direction:column; align-items:center; justify-content:center; gap:22px; transition:background .4s;">
+      <p style="margin:0; font-size:18px; font-weight:900; color:{{ panelText }}; letter-spacing:2px;">{{ estado }}</p>
+      <div style="font-family:'Fredoka',sans-serif; font-weight:700; font-size:180px; line-height:.9; color:{{ panelText }}; animation:{{ pulseAnim }};">{{ reloj }}</div>
+      <p style="margin:0; font-size:22px; font-weight:800; color:{{ panelText }};">{{ subTexto }}</p>
+      <div style="display:flex; gap:14px; flex-wrap:wrap; justify-content:center;">
+        <button onClick="{{ startPause }}" style="background:#fff; color:#2A2A40; border:none; border-radius:50px; padding:18px 44px; font-family:'Fredoka',sans-serif; font-size:30px; font-weight:600; cursor:pointer; box-shadow:0 6px 0 rgba(42,42,64,.15);" style-hover="transform:scale(1.05);">{{ btnLabel }}</button>
+        <button onClick="{{ reset }}" style="background:rgba(255,255,255,.25); color:{{ panelText }}; border:3px solid {{ panelText }}; border-radius:50px; padding:16px 30px; font-size:20px; font-weight:900; cursor:pointer; font-family:'Nunito',sans-serif;" style-hover="background:rgba(255,255,255,.4);">↺ Reiniciar</button>
+      </div>
+    </div>
+
+  </main>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;: {&quot;width&quot;: 1200, &quot;height&quot;: 760}}">
+class Component extends DCLogic {
+  state = { mins: 2, left: 120, running: false, done: false, idx: 0, auto: true };
+  DICTADOS = [
+    { oracion: "La brisa fresca mueve las ramas del árbol.", emoji: "🌳", foco: "grupos br, fr" },
+    { oracion: "Mi primo juega con el trompo en el patio.", emoji: "🪀", foco: "grupo tr, pr" },
+    { oracion: "El globo azul subió hasta las nubes.", emoji: "🎈", foco: "grupo gl, bl" },
+    { oracion: "La flor blanca crece junto al camino.", emoji: "🌼", foco: "grupo fl, bl" },
+    { oracion: "El cangrejo camina despacio por la playa.", emoji: "🦀", foco: "grupo cr, gr" },
+    { oracion: "Papá prendió la plancha para la ropa.", emoji: "👕", foco: "grupo pr, pl" },
+    { oracion: "El dragón grande guarda un tesoro brillante.", emoji: "🐉", foco: "grupo dr, gr, br" },
+    { oracion: "Clara toca el triángulo en la clase de música.", emoji: "🎶", foco: "grupo cl, tr" },
+    { oracion: "El tren cruza el puente sobre el río.", emoji: "🚂", foco: "grupo tr, cr, pr" },
+    { oracion: "La abuela abraza a sus nietos con cariño.", emoji: "🤗", foco: "grupo br, mayúscula" }
+  ];
+  componentDidMount() {
+    this._iv = setInterval(() => {
+      if (!this.state.running) return;
+      this.setState(s => {
+        if (s.left > 1) return { left: s.left - 1 };
+        if (s.auto) {
+          const ni = (s.idx + 1) % this.DICTADOS.length;
+          return { idx: ni, left: s.mins * 60, running: true, done: false };
+        }
+        return { left: 0, running: false, done: true };
+      });
+    }, 1000);
+  }
+  componentWillUnmount() { clearInterval(this._iv); }
+  setMins = m => () => this.setState({ mins: m, left: m * 60, running: false, done: false });
+  renderVals() {
+    const s = this.state;
+    const mm = Math.floor(s.left / 60), ss = s.left % 60;
+    const reloj = mm + ":" + String(ss).padStart(2, "0");
+    const d = this.DICTADOS[s.idx];
+    const btn = (m) => ({ bg: s.mins === m ? "#8AC926" : "transparent", col: s.mins === m ? "#fff" : "#6A4C93" });
+    const b1 = btn(1), b2 = btn(2), b3 = btn(3);
+    const panelBg = s.done ? "#8AC926" : (s.running ? "#FF595E" : "#6A4C93");
+    return {
+      num: this.DICTADOS.length + " dictados",
+      idxShow: s.idx + 1,
+      d,
+      set1: this.setMins(1), set2: this.setMins(2), set3: this.setMins(3),
+      b1: b1.bg, c1: b1.col, b2: b2.bg, c2: b2.col, b3: b3.bg, c3: b3.col,
+      reloj,
+      estado: s.done ? "¡TIEMPO TERMINADO!" : (s.running ? "ESCRIBIENDO..." : "LISTOS PARA ESCRIBIR"),
+      subTexto: s.done ? "Revisa tu dictado con calma." : ("Cronómetro de " + s.mins + " minuto" + (s.mins > 1 ? "s" : "")),
+      panelBg, panelText: "#fff",
+      pulseAnim: s.running ? "pulse 1.6s ease-in-out infinite" : "none",
+      btnLabel: s.running ? "⏸ Pausar" : (s.done ? "▶ De nuevo" : "▶ Iniciar"),
+      startPause: () => this.setState(st => {
+        if (st.done) return { left: st.mins * 60, running: true, done: false };
+        return { running: !st.running };
+      }),
+      reset: () => this.setState(st => ({ left: st.mins * 60, running: false, done: false })),
+      prev: () => this.setState(st => ({ idx: (st.idx - 1 + this.DICTADOS.length) % this.DICTADOS.length, left: st.mins * 60, running: false, done: false })),
+      next: () => this.setState(st => ({ idx: (st.idx + 1) % this.DICTADOS.length, left: st.mins * 60, running: false, done: false })),
+      auto: s.auto,
+      autoLabel: s.auto ? "🔁 AUTO: SÍ" : "🔁 AUTO: NO",
+      autoBg: s.auto ? "#8AC926" : "#EEE7D8", autoColor: s.auto ? "#fff" : "#6A4C93",
+      toggleAuto: () => this.setState(st => ({ auto: !st.auto }))
+    };
+  }
+}
+</script>
+</body>
+</html>

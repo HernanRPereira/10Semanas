@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<meta name="description" content="Diapositivas Clase 4: La sílaba y clasificación de palabras - Grado 2°">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Nunito:wght@700;800;900&display=swap" rel="stylesheet">
+<style>
+body { margin:0; background:#FFF9EF; }
+a { color:#1982C4; } a:hover { color:#FF595E; }
+</style>
+</helmet>
+<x-import component-from-global-scope="deck-stage" from="./deck-stage.js" width="1920" height="1080" hint-size="100%,100%">
+
+<section data-label="Portada" data-speaker-notes="Saluda con energía. Pregunta detonadora: di tu nombre aplaudiendo cada pedacito (Ma-ría, Car-los). ¿Cuántos aplausos tiene tu nombre? Juega con 4 o 5 nombres del salón." style="background:#FFF9EF; overflow:hidden; font-family:'Nunito',sans-serif;">
+  <div style="position:absolute; top:-120px; right:-120px; width:380px; height:380px; border-radius:50%; background:#1982C4;"></div>
+  <div style="position:absolute; bottom:-140px; left:-100px; width:420px; height:420px; border-radius:50%; background:#FF595E;"></div>
+  <div style="position:absolute; top:140px; left:200px; width:120px; height:120px; border-radius:28px; background:#8AC926; transform:rotate(-15deg);"></div>
+  <div style="position:absolute; bottom:180px; right:220px; width:90px; height:90px; border-radius:50%; background:#FFCA3A;"></div>
+  <div style="position:absolute; inset:0; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:36px; text-align:center;">
+    <div style="display:flex; gap:16px; align-items:center; background:#fff; border-radius:60px; padding:16px 44px; box-shadow:0 8px 0 rgba(42,42,64,.12);">
+      <span style="font-size:30px; font-weight:900; color:#FF595E; letter-spacing:2px;">ESPAÑOL</span>
+      <span style="font-size:30px; font-weight:900; color:#1982C4;">•</span>
+      <span style="font-size:30px; font-weight:900; color:#1982C4; letter-spacing:2px;">GRADO 2°</span>
+    </div>
+    <h1 style="margin:0; font-family:'Fredoka',sans-serif; font-weight:700; font-size:160px; color:#2A2A40; line-height:1;">La Sílaba</h1>
+    <p style="margin:0; font-size:44px; font-weight:800; color:#2A2A40;">Los pedacitos de las palabras · ¡Aplaude conmigo!</p>
+    <div style="display:flex; gap:16px; font-family:'Fredoka',sans-serif; font-size:60px; font-weight:600;">
+      <span style="background:#FF595E; color:#fff; border-radius:24px; padding:14px 36px;">ma</span>
+      <span style="background:#FFCA3A; color:#2A2A40; border-radius:24px; padding:14px 36px;">ri</span>
+      <span style="background:#8AC926; color:#fff; border-radius:24px; padding:14px 36px;">po</span>
+      <span style="background:#1982C4; color:#fff; border-radius:24px; padding:14px 36px;">sa</span>
+    </div>
+  </div>
+</section>
+
+<section data-label="Objetivo" data-speaker-notes="Lee los objetivos. DBA 8 de Lenguaje. Hoy la palabra clave es APLAUDIR: cada aplauso es una sílaba." style="background:#FFF9EF; font-family:'Nunito',sans-serif; padding:100px; display:flex; flex-direction:column; gap:52px;">
+  <h2 style="margin:0; font-family:'Fredoka',sans-serif; font-weight:700; font-size:80px; color:#2A2A40;">¿Qué aprenderemos hoy?</h2>
+  <div style="display:flex; flex-direction:column; gap:28px; max-width:1500px;">
+    <div style="display:flex; align-items:center; gap:28px; background:#fff; border-radius:28px; padding:28px 40px; box-shadow:0 6px 0 rgba(42,42,64,.1);">
+      <span style="min-width:76px; height:76px; border-radius:50%; background:#FF595E; color:#fff; display:flex; align-items:center; justify-content:center; font-family:'Fredoka',sans-serif; font-size:44px; font-weight:600;">1</span>
+      <p style="margin:0; font-size:38px; font-weight:800; color:#2A2A40;">Separar palabras en <span style="color:#1982C4;">sílabas</span> con aplausos.</p>
+    </div>
+    <div style="display:flex; align-items:center; gap:28px; background:#fff; border-radius:28px; padding:28px 40px; box-shadow:0 6px 0 rgba(42,42,64,.1);">
+      <span style="min-width:76px; height:76px; border-radius:50%; background:#FFCA3A; color:#2A2A40; display:flex; align-items:center; justify-content:center; font-family:'Fredoka',sans-serif; font-size:44px; font-weight:600;">2</span>
+      <p style="margin:0; font-size:38px; font-weight:800; color:#2A2A40;">Contar cuántas sílabas tiene una palabra.</p>
+    </div>
+    <div style="display:flex; align-items:center; gap:28px; background:#fff; border-radius:28px; padding:28px 40px; box-shadow:0 6px 0 rgba(42,42,64,.1);">
+      <span style="min-width:76px; height:76px; border-radius:50%; background:#8AC926; color:#fff; display:flex; align-items:center; justify-content:center; font-family:'Fredoka',sans-serif; font-size:44px; font-weight:600;">3</span>
+      <p style="margin:0; font-size:38px; font-weight:800; color:#2A2A40;">Clasificar palabras: <span style="color:#FF595E;">monosílabas, bisílabas, trisílabas y polisílabas</span>.</p>
+    </div>
+  </div>
+  <p style="margin:0; font-size:30px; font-weight:800; color:#6A4C93;">Necesitas: cuaderno de español, lápiz y tus manos para aplaudir.</p>
+</section>
+
+<section data-label="Copiado 1" data-speaker-notes="Definición de sílaba. Antes del copiado, aplaudan juntos: ca-sa (2), pe-lo-ta (3), sol (1). Temporizador de 5 minutos." style="background:#fff; font-family:'Nunito',sans-serif; padding:80px 100px; display:flex; flex-direction:column; gap:40px;">
+  <div style="display:flex; align-items:center; gap:24px;">
+    <span style="background:#1982C4; color:#fff; border-radius:20px; padding:14px 30px; font-size:28px; font-weight:900; letter-spacing:1px;">ESCRIBE EN TU CUADERNO · PARTE 1</span>
+  </div>
+  <h2 style="margin:0; font-family:'Fredoka',sans-serif; font-weight:700; font-size:76px; color:#FF595E;">La sílaba</h2>
+  <div style="background:repeating-linear-gradient(#fff, #fff 58px, #BFDCF2 58px, #BFDCF2 60px); border:3px solid #BFDCF2; border-radius:20px; padding:10px 40px; max-width:1500px;">
+    <p style="margin:0; font-size:40px; line-height:60px; font-weight:800; color:#2A2A40;">La sílaba es cada <span style="color:#1982C4;">golpe de voz</span> que damos al decir una palabra. ¡Cada aplauso es una sílaba!</p>
+  </div>
+  <div style="display:flex; gap:40px; align-items:center; font-family:'Fredoka',sans-serif;">
+    <div style="display:flex; gap:10px; align-items:center;">
+      <span style="background:#FF595E; color:#fff; border-radius:18px; padding:10px 26px; font-size:48px; font-weight:600;">ca</span>
+      <span style="background:#FFCA3A; color:#2A2A40; border-radius:18px; padding:10px 26px; font-size:48px; font-weight:600;">sa</span>
+      <span style="font-family:'Nunito',sans-serif; font-size:30px; font-weight:900; color:#6A4C93; margin-left:12px;">= 2 aplausos 👏👏</span>
+    </div>
+    <div style="display:flex; gap:10px; align-items:center;">
+      <span style="background:#8AC926; color:#fff; border-radius:18px; padding:10px 26px; font-size:48px; font-weight:600;">pe</span>
+      <span style="background:#1982C4; color:#fff; border-radius:18px; padding:10px 26px; font-size:48px; font-weight:600;">lo</span>
+      <span style="background:#6A4C93; color:#fff; border-radius:18px; padding:10px 26px; font-size:48px; font-weight:600;">ta</span>
+      <span style="font-family:'Nunito',sans-serif; font-size:30px; font-weight:900; color:#6A4C93; margin-left:12px;">= 3 aplausos 👏👏👏</span>
+    </div>
+  </div>
+  <button onClick="{{ start1 }}" style="position:absolute; right:70px; bottom:56px; display:flex; align-items:center; gap:20px; background:#2A2A40; color:#fff; border:none; border-radius:60px; padding:18px 40px; cursor:pointer; font-family:'Nunito',sans-serif;">
+    <span style="font-size:26px; font-weight:900; letter-spacing:1px;">TIEMPO PARA COPIAR ▶</span>
+    <span style="font-family:'Fredoka',sans-serif; font-size:52px; font-weight:600; color:#FFCA3A;">{{ t1 }}</span>
+  </button>
+</section>
+
+<section data-label="Copiado 2" data-speaker-notes="Clasificación por número de sílabas: la tabla de 4 familias. Aplaudan un ejemplo de cada familia antes de copiar. Temporizador de 5 minutos." style="background:#fff; font-family:'Nunito',sans-serif; padding:80px 100px; display:flex; flex-direction:column; gap:36px;">
+  <div style="display:flex; align-items:center; gap:24px;">
+    <span style="background:#1982C4; color:#fff; border-radius:20px; padding:14px 30px; font-size:28px; font-weight:900; letter-spacing:1px;">ESCRIBE EN TU CUADERNO · PARTE 2</span>
+  </div>
+  <h2 style="margin:0; font-family:'Fredoka',sans-serif; font-weight:700; font-size:64px; color:#1982C4;">Las 4 familias de palabras</h2>
+  <div style="display:grid; grid-template-columns:repeat(4, 1fr); gap:24px; max-width:1600px;">
+    <div style="background:#FDE3E4; border-radius:24px; padding:30px 24px; text-align:center; display:flex; flex-direction:column; gap:12px;">
+      <p style="margin:0; font-size:28px; font-weight:900; color:#FF595E;">MONOSÍLABAS</p>
+      <p style="margin:0; font-size:24px; font-weight:800; color:#2A2A40;">1 sílaba</p>
+      <p style="margin:0; font-family:'Fredoka',sans-serif; font-size:44px; font-weight:600; color:#2A2A40;">sol · pan · mar</p>
+      <p style="margin:0; font-size:26px;">👏</p>
+    </div>
+    <div style="background:#FFF3D6; border-radius:24px; padding:30px 24px; text-align:center; display:flex; flex-direction:column; gap:12px;">
+      <p style="margin:0; font-size:28px; font-weight:900; color:#C89B1C;">BISÍLABAS</p>
+      <p style="margin:0; font-size:24px; font-weight:800; color:#2A2A40;">2 sílabas</p>
+      <p style="margin:0; font-family:'Fredoka',sans-serif; font-size:44px; font-weight:600; color:#2A2A40;">ca-sa · ga-to</p>
+      <p style="margin:0; font-size:26px;">👏👏</p>
+    </div>
+    <div style="background:#E9F5D8; border-radius:24px; padding:30px 24px; text-align:center; display:flex; flex-direction:column; gap:12px;">
+      <p style="margin:0; font-size:28px; font-weight:900; color:#6FA31E;">TRISÍLABAS</p>
+      <p style="margin:0; font-size:24px; font-weight:800; color:#2A2A40;">3 sílabas</p>
+      <p style="margin:0; font-family:'Fredoka',sans-serif; font-size:44px; font-weight:600; color:#2A2A40;">pe-lo-ta</p>
+      <p style="margin:0; font-size:26px;">👏👏👏</p>
+    </div>
+    <div style="background:#E3F0FA; border-radius:24px; padding:30px 24px; text-align:center; display:flex; flex-direction:column; gap:12px;">
+      <p style="margin:0; font-size:28px; font-weight:900; color:#1982C4;">POLISÍLABAS</p>
+      <p style="margin:0; font-size:24px; font-weight:800; color:#2A2A40;">4 o más</p>
+      <p style="margin:0; font-family:'Fredoka',sans-serif; font-size:44px; font-weight:600; color:#2A2A40;">ma-ri-po-sa</p>
+      <p style="margin:0; font-size:26px;">👏👏👏👏</p>
+    </div>
+  </div>
+  <button onClick="{{ start2 }}" style="position:absolute; right:70px; bottom:56px; display:flex; align-items:center; gap:20px; background:#2A2A40; color:#fff; border:none; border-radius:60px; padding:18px 40px; cursor:pointer; font-family:'Nunito',sans-serif;">
+    <span style="font-size:26px; font-weight:900; letter-spacing:1px;">TIEMPO PARA COPIAR ▶</span>
+    <span style="font-family:'Fredoka',sans-serif; font-size:52px; font-weight:600; color:#FFCA3A;">{{ t2 }}</span>
+  </button>
+</section>
+
+<section data-label="Copiado 3" data-speaker-notes="Ejemplos para copiar con la separación. Los niños copian la tabla y agregan una palabra propia por familia." style="background:#fff; font-family:'Nunito',sans-serif; padding:80px 100px; display:flex; flex-direction:column; gap:36px;">
+  <div style="display:flex; align-items:center; gap:24px;">
+    <span style="background:#1982C4; color:#fff; border-radius:20px; padding:14px 30px; font-size:28px; font-weight:900; letter-spacing:1px;">ESCRIBE EN TU CUADERNO · PARTE 3</span>
+  </div>
+  <h2 style="margin:0; font-family:'Fredoka',sans-serif; font-weight:700; font-size:64px; color:#8AC926;">Separo palabras en sílabas</h2>
+  <div style="background:repeating-linear-gradient(#fff, #fff 66px, #BFDCF2 66px, #BFDCF2 68px); border:3px solid #BFDCF2; border-radius:20px; padding:14px 40px; max-width:1500px;">
+    <p style="margin:0; font-family:'Fredoka',sans-serif; font-size:42px; line-height:68px; font-weight:600; color:#2A2A40;">luz → luz <span style="color:#6A4C93;">(1 sílaba: monosílaba)</span></p>
+    <p style="margin:0; font-family:'Fredoka',sans-serif; font-size:42px; line-height:68px; font-weight:600; color:#2A2A40;">perro → pe - rro <span style="color:#6A4C93;">(2 sílabas: bisílaba)</span></p>
+    <p style="margin:0; font-family:'Fredoka',sans-serif; font-size:42px; line-height:68px; font-weight:600; color:#2A2A40;">escuela → es - cue - la <span style="color:#6A4C93;">(3 sílabas: trisílaba)</span></p>
+    <p style="margin:0; font-family:'Fredoka',sans-serif; font-size:42px; line-height:68px; font-weight:600; color:#2A2A40;">chocolate → cho - co - la - te <span style="color:#6A4C93;">(4 sílabas: polisílaba)</span></p>
+  </div>
+  <button onClick="{{ start3 }}" style="position:absolute; right:70px; bottom:56px; display:flex; align-items:center; gap:20px; background:#2A2A40; color:#fff; border:none; border-radius:60px; padding:18px 40px; cursor:pointer; font-family:'Nunito',sans-serif;">
+    <span style="font-size:26px; font-weight:900; letter-spacing:1px;">TIEMPO PARA COPIAR ▶</span>
+    <span style="font-family:'Fredoka',sans-serif; font-size:52px; font-weight:600; color:#FFCA3A;">{{ t3 }}</span>
+  </button>
+</section>
+
+<section data-label="Práctica" data-speaker-notes="Práctica individual: 10 minutos. Respuestas: flor (1, mono), mesa (me-sa, 2, bi), tomate (to-ma-te, 3, tri), elefante (e-le-fan-te, 4, poli), pan (1, mono), camisa (ca-mi-sa, 3, tri). Corrige aplaudiendo cada palabra con todo el grupo." style="background:#FFF9EF; font-family:'Nunito',sans-serif; padding:80px 100px; display:flex; flex-direction:column; gap:40px;">
+  <div style="display:flex; align-items:center; gap:24px;">
+    <span style="background:#FF595E; color:#fff; border-radius:20px; padding:14px 30px; font-size:28px; font-weight:900; letter-spacing:1px;">AHORA TÚ · RESUELVE EN TU CUADERNO</span>
+  </div>
+  <h2 style="margin:0; font-family:'Fredoka',sans-serif; font-weight:700; font-size:68px; color:#2A2A40;">¡A practicar!</h2>
+  <div style="background:#fff; border-radius:28px; padding:36px 44px; max-width:1500px; box-shadow:0 6px 0 rgba(42,42,64,.1);">
+    <p style="margin:0 0 16px; font-size:30px; font-weight:900; color:#FF595E;">Separa en sílabas, cuenta y escribe de qué familia es cada palabra:</p>
+    <div style="display:flex; flex-wrap:wrap; gap:18px; font-family:'Fredoka',sans-serif;">
+      <span style="background:#FDE3E4; border-radius:18px; padding:12px 32px; font-size:44px; font-weight:600;">flor</span>
+      <span style="background:#FFF3D6; border-radius:18px; padding:12px 32px; font-size:44px; font-weight:600;">mesa</span>
+      <span style="background:#E9F5D8; border-radius:18px; padding:12px 32px; font-size:44px; font-weight:600;">tomate</span>
+      <span style="background:#E3F0FA; border-radius:18px; padding:12px 32px; font-size:44px; font-weight:600;">elefante</span>
+      <span style="background:#F1EAFB; border-radius:18px; padding:12px 32px; font-size:44px; font-weight:600;">pan</span>
+      <span style="background:#FDE3E4; border-radius:18px; padding:12px 32px; font-size:44px; font-weight:600;">camisa</span>
+    </div>
+  </div>
+  <div style="background:#6A4C93; border-radius:28px; padding:32px 44px; max-width:1500px;">
+    <p style="margin:0; font-size:34px; font-weight:800; color:#fff;">Reto: escribe <span style="color:#FFCA3A;">1 palabra tuya de cada familia</span> (mono, bi, tri y polisílaba).</p>
+  </div>
+  <button onClick="{{ start4 }}" style="position:absolute; right:70px; bottom:56px; display:flex; align-items:center; gap:20px; background:#2A2A40; color:#fff; border:none; border-radius:60px; padding:18px 40px; cursor:pointer; font-family:'Nunito',sans-serif;">
+    <span style="font-size:26px; font-weight:900; letter-spacing:1px;">TIEMPO PARA RESOLVER ▶</span>
+    <span style="font-family:'Fredoka',sans-serif; font-size:52px; font-weight:600; color:#FFCA3A;">{{ t4 }}</span>
+  </button>
+</section>
+
+<section data-label="Cierre" data-speaker-notes="Pregunta de verificación: la sílaba es cada golpe de voz. Aplaudan juntos «mariposa» y pregunten de qué familia es. Felicita y anuncia la ficha de evaluación." style="background:#8AC926; font-family:'Nunito',sans-serif; padding:100px; display:flex; flex-direction:column; justify-content:center; gap:48px;">
+  <span style="background:#FFCA3A; color:#2A2A40; border-radius:20px; padding:14px 30px; font-size:28px; font-weight:900; letter-spacing:1px; align-self:flex-start;">PARA TERMINAR</span>
+  <h2 style="margin:0; font-family:'Fredoka',sans-serif; font-weight:700; font-size:100px; color:#fff; max-width:1600px; line-height:1.15;">¿Cuántas sílabas tiene «mariposa» y de qué familia es?</h2>
+  <p style="margin:0; font-size:40px; font-weight:800; color:#E9F5D8;">Aplaude la palabra y levanta la mano.</p>
+  <div style="display:flex; gap:20px; align-items:center;">
+    <span style="background:#fff; border-radius:60px; padding:18px 40px; font-family:'Fredoka',sans-serif; font-size:36px; font-weight:600; color:#8AC926;">¡Hoy aplaudiste como un experto en palabras!</span>
+  </div>
+</section>
+
+</x-import>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;copyMinutes&quot;: {&quot;editor&quot;: &quot;int&quot;, &quot;default&quot;: 5, &quot;min&quot;: 1, &quot;max&quot;: 15, &quot;unit&quot;: &quot;min&quot;, &quot;tsType&quot;: &quot;number&quot;, &quot;section&quot;: &quot;Temporizadores&quot;}, &quot;practiceMinutes&quot;: {&quot;editor&quot;: &quot;int&quot;, &quot;default&quot;: 10, &quot;min&quot;: 1, &quot;max&quot;: 30, &quot;unit&quot;: &quot;min&quot;, &quot;tsType&quot;: &quot;number&quot;, &quot;section&quot;: &quot;Temporizadores&quot;}}">
+class Component extends DCLogic {
+  state = { left: {}, run: {} };
+  componentDidMount() {
+    this._iv = setInterval(() => {
+      if (!Object.keys(this.state.run).length) return;
+      this.setState(s => {
+        const left = { ...s.left }, run = { ...s.run };
+        for (const k in run) {
+          left[k] = Math.max(0, (left[k] ?? 0) - 1);
+          if (left[k] === 0) delete run[k];
+        }
+        return { left, run };
+      });
+    }, 1000);
+  }
+  componentWillUnmount() { clearInterval(this._iv); }
+  mkStart(id, mins) {
+    return () => this.setState(s => ({ left: { ...s.left, [id]: mins * 60 }, run: { ...s.run, [id]: true } }));
+  }
+  disp(id, mins) {
+    const l = this.state.left[id];
+    if (l === undefined) return mins + ":00";
+    if (l === 0) return "¡TIEMPO!";
+    return Math.floor(l / 60) + ":" + String(l % 60).padStart(2, "0");
+  }
+  renderVals() {
+    const copyMin = this.props.copyMinutes ?? 5;
+    const pracMin = this.props.practiceMinutes ?? 10;
+    return {
+      t1: this.disp("t1", copyMin), start1: this.mkStart("t1", copyMin),
+      t2: this.disp("t2", copyMin), start2: this.mkStart("t2", copyMin),
+      t3: this.disp("t3", copyMin), start3: this.mkStart("t3", copyMin),
+      t4: this.disp("t4", pracMin), start4: this.mkStart("t4", pracMin)
+    };
+  }
+}
+</script>
+</body>
+</html>
